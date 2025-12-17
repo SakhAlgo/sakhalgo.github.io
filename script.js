@@ -1,132 +1,129 @@
-let signs = ['+', '-', '*']
-let container_main = document.querySelector('.main')
-let container_start = document.querySelector('.start')
-let container_start_h3 = container_start.querySelector('h3')
-let question_field = document.querySelector('.question')
-let answer_buttons = document.querySelectorAll('.answer')
-let start_button = document.querySelector('.start-btn')
+let btn = document.querySelector('.btn');
+let container = document.querySelector('.container');
+let btnContainer = document.querySelector('.btn-container');
+let signs = ['+', '-']
+let question = document.querySelector('.question');
+let answersContainer = document.querySelectorAll('.answer');
+let description = document.querySelector('.description')
 
 
-let cookie = false
-let cookies = document.cookie.split('; ')
-for (let i = 0; i < cookies.length; i += 1) {
-    if (cookies[i].split('=')[0] == 'numbers_high_score') {
-        cookie = cookies[i].split('=')[1]
-        break
-    }
-}
-function shuffle(array) {
-    let currentIndex = array.length,  randomIndex;
-  
-    while (currentIndex != 0) {
-      randomIndex = Math.floor(Math.random() * currentIndex);
-      currentIndex--;
-      [array[currentIndex], array[randomIndex]] = [
-        array[randomIndex], array[currentIndex]];
-    }
-  
-    return array;
+function shuffleFisherYates(array) {
+  // Создаем копию массива, чтобы не изменять исходный
+  const shuffledArray = [...array];
+
+
+  for (let i = shuffledArray.length - 1; i > 0; i--) {
+    // Выбираем случайный индекс от $0$ до $i$ (включительно)
+    const j = Math.floor(Math.random() * (i + 1));
+    // Меняем элементы местами
+    [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
   }
 
 
-if (cookie) {
-    let data = cookie.split('/')
-    container_start_h3.innerHTML = `<h3>В прошлый раз вы дали ${data[1]} правильных ответов из ${data[0]}. Точность - ${Math.round(data[1] * 100 / data[0])}%.</h3>`
+  return shuffledArray;
+}
+
+function getRandomIntInclusive(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
 
+btn.addEventListener('click', function() {
+    container.style.display = 'flex';
+    btnContainer.style.display = 'none';
+
+    setTimeout(function(){
+        container.style.display = 'none';
+        btnContainer.style.display = 'block';
+        let percent = correctAnswers / totalQuestions * 100
+        description.innerHTML = `Правильных ответов: ${correctAnswers}<br>
+        Всего: ${totalQuestions}<br> 
+        Процент: ${percent.toFixed(1)}%`
+
+        btn.innerHTML = 'Повторить'
+        document.cookie = `statistic=${encodeURIComponent(description.innerHTML)}`
+    }, 10000)
+});
 
 
-function randint(min, max) {
-    return Math.round(Math.random() * (max - min) + min)
-}
+class Question{
+    constructor(){
+
+        function getCorrectValues(min, max){
+            let a, b, sign, question, correctAnswer
+            do{
+                a = getRandomIntInclusive(min, max);
+                b = getRandomIntInclusive(min, max);
+                sign = signs[getRandomIntInclusive(0, 1)]
+                question = `${a} ${sign} ${b}`;
+                if (sign === '+')  correctAnswer = a + b;
+                if (sign === '-')  correctAnswer = a - b;
+            } while(correctAnswer < min || correctAnswer > max )
+            return [question, correctAnswer]
+        }
+
+        let values = getCorrectValues(10, 90)
+        this.question = values[0]
+        this.correctAnswer = values[1]
 
 
-function getRandomSign() {
-    return signs[randint(0, 2)]
-}
-
-
-class Question {
-    constructor() {
-        let a = randint(1, 30)
-        let b = randint(1, 30)
-        let sign = getRandomSign()
-        this.question = `${a} ${sign} ${b}`
-        if (sign == '+') { this.correct = a + b }
-        else if (sign == '-') { this.correct = a - b }
-        else if (sign == '*') { this.correct = a * b }
         this.answers = [
-            randint(this.correct - 20, this.correct - 1),
-            randint(this.correct - 20, this.correct - 1),
-            this.correct,
-            randint(this.correct + 1, this.correct + 20),
-            randint(this.correct + 1, this.correct + 20),
-        ]
-        shuffle(this.answers);
+            this.correctAnswer,
+            this.correctAnswer + getRandomIntInclusive(1, 10),
+            this.correctAnswer + getRandomIntInclusive(1, 10),
+            this.correctAnswer - getRandomIntInclusive(1, 10),
+            this.correctAnswer - getRandomIntInclusive(1, 10),
+        ];
+        this.answers = shuffleFisherYates(this.answers);
     }
 
-
-    display () {
-        question_field.innerHTML = this.question
-        for (let i = 0; i < this.answers.length; i += 1) {
-            answer_buttons[i].innerHTML = this.answers[i]
+    display(){
+        question.innerHTML = this.question;
+        for(let i = 0; i < answersContainer.length; i++){
+            answersContainer[i].innerHTML = this.answers[i];
         }
     }
 }
 
+let obj = new Question();
+obj.display();
 
-let current_question
-let correct_answers_given
-let total_answers_given
-start_button.addEventListener('click', function() {
-    container_main.style.display = 'flex'
-    container_start.style.display = 'none'
-    current_question = new Question()
-    current_question.display()
+let correctAnswers = 0;
+let totalQuestions = 0;
 
+for(let i = 0; i < answersContainer.length; i++){
+    answersContainer[i].addEventListener('click', function(){
+        if (answersContainer[i].innerHTML == obj.correctAnswer){
+            correctAnswers++;
+            console.log('Correct answers: ' + correctAnswers);
+            answersContainer[i].style.backgroundColor = '#00ff00';
 
-    correct_answers_given = 0
-    total_answers_given = 0
-
-
-    setTimeout(function() {
-        let new_cookie = `numbers_high_score=${total_answers_given}/${correct_answers_given}; max-age=10000000000`
-        document.cookie = new_cookie
-        
-container_main.style.display = 'none'
-container_start.style.display = 'flex'
-container_start_h3.innerHTML = `<h3>Вы дали ${correct_answers_given} правильных ответов из ${total_answers_given}. Точность - ${Math.round(correct_answers_given * 100 / total_answers_given)}%.</h3>`
-    }, 10000)
-})
-
-
-for (let i = 0; i < answer_buttons.length; i += 1) {
-    answer_buttons[i].addEventListener('click', function() {
-        if (answer_buttons[i].innerHTML == current_question.correct) {
-            correct_answers_given += 1
-            answer_buttons[i].style.background = '#00FF00'
             anime({
-                targets: answer_buttons[i],
-                background: '#FFFFFF',
+                targets: answersContainer[i],
+                backgroundColor: '#ffffff',
                 duration: 500,
-                delay: 100,
-                easing: 'linear'
+                delay: 300,
+                easing: 'linear'            
             })
         } else {
-            answer_buttons[i].style.background = '#FF0000'
+            answersContainer[i].style.backgroundColor = '#ff0000';
             anime({
-                targets: answer_buttons[i],
-                background: '#FFFFFF',
+                targets: answersContainer[i],
+                backgroundColor: '#ffffff',
                 duration: 500,
-                delay: 100,
-                easing: 'linear'
+                delay: 300,
+                easing: 'linear'            
             })
         }
-        total_answers_given += 1
-
-
-        current_question = new Question()
-        current_question.display()
-    })
+        totalQuestions++;
+        console.log('Total questions: ' + totalQuestions);
+        obj = new Question();
+        obj.display();
+    });
 }
+
+
+console.log("Cookie:" + decodeURIComponent(document.cookie))
+
