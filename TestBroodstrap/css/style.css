@@ -48,7 +48,7 @@ footer {
 	margin: 0 auto;
 	padding: 8px 30px;
 	color: var(--bs-white);
-	background-color: var(--color1);
+	background-color: var(--color2);
 }
 .btn-itd:hover {
 	background-color: var(--color2);
@@ -73,7 +73,8 @@ footer {
 /* О курсе */
 .about,
 .accordions,
-.leaning {
+.about_author,
+.buy {
 	background-color: #eee;
 }
 
@@ -126,3 +127,11 @@ footer {
 	box-shadow: none;
 }
 
+.rounded {
+	border-radius: 50% !important;
+	border: 3px solid var(--color1);
+}
+
+iframe {
+	margin-top: 100px;
+}
