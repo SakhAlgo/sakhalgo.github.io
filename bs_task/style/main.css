@@ -1,0 +1,140 @@
+:root {
+	--color1: #eebb12;
+	--color2: #fff;
+	--bg1: #070707;
+	--bg2: #111;
+}
+
+h1,
+h3,
+h5,
+p,
+ul,
+li {
+	color: var(--color2);
+}
+p {
+	font-size: 18px;
+}
+.order {
+	padding: 145px 0;
+	background: url(../img/pattern.png) rgba(0, 0, 0, 0.8);
+	background-size: contain;
+}
+section {
+	padding: 100px 0;
+	background-color: var(--bg1);
+}
+body {
+	margin: 0;
+	font-family: var(--bs-font-sans-serif);
+	font-size: 1rem;
+	font-weight: 400;
+	line-height: 1.5;
+	color: #212529;
+	background-color: #fff;
+	-webkit-text-size-adjust: 100%;
+	-webkit-tap-highlight-color: transparent;
+}
+
+.btn-itd {
+	display: block;
+	max-width: 300px;
+	margin: 0 auto;
+	padding-left: 50px !important;
+	padding-right: 50px !important;
+	color: var(--bg1);
+	font-size: 30px !important;
+}
+.btn-itd:hover {
+	background-color: var(--color2);
+	opacity: 0.8;
+}
+.auothor {
+	color: var(--color2);
+}
+.auothor__text {
+	width: 50%;
+	margin: 0 auto;
+}
+.auothor__text h3 {
+	font-size: 26px !important;
+}
+.auothor__text p {
+	font-size: 20px !important;
+}
+.auothor_img img {
+	max-width: 300px !important;
+}
+.curse,
+.faq,
+footer {
+	background: var(--bg2);
+}
+
+.item-block i {
+	font-size: 25px;
+	color: rgba(var(--bs-warning-rgb));
+	border-radius: 50%;
+	border: 3px solid rgba(var(--bs-warning-rgb));
+	padding: 15px;
+}
+.line {
+	width: 100px;
+	height: 3px;
+	background-color: rgba(var(--bs-warning-rgb));
+	margin: 20px auto;
+}
+.embed-container {
+	position: relative;
+	padding-bottom: 56.25%;
+	height: 0;
+	overflow: hidden;
+	max-width: 100%;
+}
+.embed-container iframe,
+.embed-container object,
+.embed-container embed {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+/* Для кого курс */
+.forwhom h5 {
+	padding: 30px;
+	height: 100%;
+	background-color: var(--bg2);
+	/* border: 3px solid var(--color1); */
+}
+.accordion-button:not(.collapsed) {
+	font-weight: bold;
+	color: var(--bs-black);
+	background-color: var(--color1);
+}
+.accordion-body {
+	font-style: italic;
+}
+.programm h4 {
+	font-size: 28px;
+}
+.programm h3 {
+	font-size: 18px;
+}
+.sale h5 {
+	font-size: 18px;
+	margin-top: 100px !important;
+}
+footer a {
+	color: var(--bs-white);
+	text-decoration: none;
+	font-size: 18px;
+}
+.mail-link {
+	font-size: 22px;
+	text-decoration: none;
+	color: var(--color1);
+	padding-bottom: 1px;
+	border-bottom: 1px solid var(--color1);
+}

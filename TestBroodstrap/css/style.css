@@ -135,3 +135,28 @@ footer {
 iframe {
 	margin-top: 100px;
 }
+.btn-social {
+	border-radius: 50% !important;
+	border: 2px solid var(--bs-white);
+	background: transparent;
+	aspect-ratio: 1/1;
+	padding-top: 8px;
+}
+
+@media screen and (max-width: 450px) {
+	body {
+		padding-left: 15px;
+		padding-right: 15px;
+	}
+
+	.container {
+		width: 100%;
+		max-width: 100%;
+		padding-left: 0;
+		padding-right: 0;
+	}
+	.money_frame {
+		text-align: center;
+		padding: 0 15px;
+	}
+}
