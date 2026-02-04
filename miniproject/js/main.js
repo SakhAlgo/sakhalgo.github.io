@@ -1,33 +1,87 @@
 table1.onclick = function (e) {
-  if(e.target.tagName !== 'TH') return;
+  if (e.target.tagName !== "TH") return;
   let th = e.target;
-  sortTable(th.cellIndex, th.dataset.type, 'table1');
-}
+  sortTable(th.cellIndex, th.dataset.type, "table1");
+};
 table2.onclick = function (e) {
-  if(e.target.tagName !== 'TH') return;
+  if (e.target.tagName !== "TH") return;
   let th = e.target;
-  sortTable(th.cellIndex, th.dataset.type, 'table2');
-}
+  sortTable(th.cellIndex, th.dataset.type, "table2");
+};
 
 function sortTable(colNum, type, id) {
   let elem = document.getElementById(id);
   let tbody = elem.querySelector("tbody");
-  let rowArray = Array.from(tbody.rows);
+  let rowsArray = Array.from(tbody.rows);
   let compare;
-  switch (type) {
-    case "number":
-      compare = function (rowA, rowB) {
-        return rowA.cells[colNum].innerHTML - rowB.cells[colNum].innerHTML;
-      };
-      break;
-    case "string":
-      compare = function (rowA, rowB) {
-        return rowA.cells[colNum].innerHTML > rowB.cells[colNum].innerHTML ?1 : -1;
-      };
-      break;
+  //Создание пустого элемента sorts в локальном хранилище для каждой таблицы свой
+  if (!localStorage.getItem(id)) {
+    localStorage.setItem(id, JSON.stringify([colNum, "asc"])); // colNum, order: asc/desc
   }
-  rowArray.sort(compare);
-  tbody.append(...rowArray);
+  let sorts = JSON.parse(localStorage.getItem(id));
+  if (sorts[0] == colNum) {
+    //Если по колонке уже отсортировано:
+    if (sorts[1] == "desc") {
+      //Если отсортировано по убыванию, сортируем по возрастанию
+      switch (type) {
+        case "number":
+          compare = function (rowA, rowB) {
+            return rowA.cells[colNum].innerHTML - rowB.cells[colNum].innerHTML;
+          };
+          break;
+        case "string":
+          compare = function (rowA, rowB) {
+            return rowA.cells[colNum].innerHTML > rowB.cells[colNum].innerHTML
+              ? 1
+              : -1;
+          };
+          break;
+      }
+      rowsArray.sort(compare);
+      tbody.append(...rowsArray);
+      sorts[1] = "asc";
+    } else {
+      //В обратную сторону
+      switch (type) {
+        case "number":
+          compare = function (rowA, rowB) {
+            return rowB.cells[colNum].innerHTML - rowA.cells[colNum].innerHTML;
+          };
+          break;
+        case "string":
+          compare = function (rowA, rowB) {
+            return rowA.cells[colNum].innerHTML > rowB.cells[colNum].innerHTML
+              ? -1
+              : 1;
+          };
+          break;
+      }
+      rowsArray.sort(compare);
+      tbody.append(...rowsArray);
+      sorts[1] = "desc";
+    }
+  } else {
+    //Если по колонке сейчас не отсортировано, то сортируем по возрастанию
+    switch (type) {
+      case "number":
+        compare = function (rowA, rowB) {
+          return rowA.cells[colNum].innerHTML - rowB.cells[colNum].innerHTML;
+        };
+        break;
+      case "string":
+        compare = function (rowA, rowB) {
+          return rowA.cells[colNum].innerHTML > rowB.cells[colNum].innerHTML
+            ? 1
+            : -1;
+        };
+        break;
+    }
+    rowsArray.sort(compare);
+    tbody.append(...rowsArray);
+    sorts[0] = colNum;
+    sorts[1] = "asc";
+  }
+  localStorage.setItem(id, JSON.stringify(sorts));
 }
 
 if (!localStorage.getItem("goods")) {
