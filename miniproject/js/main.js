@@ -170,7 +170,7 @@ function update_goods() {
   }
   document.querySelector(".price_result").innerHTML = result_price + "&#8381;";
 }
-
+// Удаление товара
 document.querySelector(".list").addEventListener("click", function (e) {
   if (!e.target.dataset.delete) {
     return;
@@ -200,6 +200,7 @@ document.querySelector(".list").addEventListener("click", function (e) {
   });
 });
 
+// Добаление товара в карточку
 document.querySelector(".list").addEventListener("click", function (e) {
   console.log("kkk");
   if (!e.target.dataset.goods) {
@@ -216,6 +217,7 @@ document.querySelector(".list").addEventListener("click", function (e) {
   }
 });
 
+// Удаление в каточки единицы товара
 document.querySelector(".cart").addEventListener("click", function (e) {
   if (!e.target.dataset.delete) {
     return;
@@ -231,6 +233,7 @@ document.querySelector(".cart").addEventListener("click", function (e) {
   }
 });
 
+// Расчет скидки
 document.querySelector(".cart").addEventListener("change", function (e) {
   if (!e.target.dataset.goodid) {
     return;
