@@ -1,8 +1,30 @@
 {
+  "name": "poomsae-master",
+  "version": "1.0.0",
+  "description": "Современный адаптивный веб-сайт для обучения технике пхумсе в тхэквондо",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx serve .",
+    "dev": "npx live-server --open=index.html",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "taekwondo",
+    "poomsae",
+    "martial-arts",
+    "education",
+    "training",
+    "responsive",
+    "modern-design"
+  ],
+  "author": "Poomsae Master",
+  "license": "MIT",
   "dependencies": {
-    "bootstrap": "^5.3.8",
-    "bootstrap-icons": "^1.13.1",
-    "list.js": "^2.3.1",
-    "sweetalert2": "^11.26.17"
+    "bootstrap": "^5.3.2",
+    "bootstrap-icons": "^1.11.1"
+  },
+  "devDependencies": {
+    "serve": "^14.2.1",
+    "live-server": "^1.2.2"
   }
 }
