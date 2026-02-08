@@ -773,6 +773,10 @@ body {
     rgba(84, 24, 24, 1) 100%
   );
 }
+/* .swiper {
+  width: 600px;
+  height: 300px;
+} */
 
 /* Улучшенная производительность */
 @media (prefers-reduced-motion: reduce) {
