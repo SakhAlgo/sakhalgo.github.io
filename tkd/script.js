@@ -1,453 +1,316 @@
-// Темная/светлая тема
-document.addEventListener('DOMContentLoaded', function() {
-    const themeToggle = document.getElementById('theme-toggle');
-    const body = document.body;
+// Гамбургер меню
+const hamburger = document.getElementById('hamburger');
+const navMenu = document.getElementById('navMenu');
+const navLinks = document.querySelectorAll('.nav-link');
 
-    // Проверяем сохраненную тему или используем темную по умолчанию
-    const savedTheme = localStorage.getItem('theme') || 'dark';
-    body.setAttribute('data-theme', savedTheme);
+// Переключение мобильного меню
+hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    navMenu.classList.toggle('active');
+});
 
-    // Обновляем иконку в зависимости от текущей темы
-    if (savedTheme === 'dark') {
-        themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
-    } else {
-        themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
-    }
-
-    // Переключение темы
-    themeToggle.addEventListener('click', () => {
-        const currentTheme = body.getAttribute('data-theme');
-        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-
-        body.setAttribute('data-theme', newTheme);
-        localStorage.setItem('theme', newTheme);
-
-        // Обновляем иконку
-        if (newTheme === 'dark') {
-            themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
-        } else {
-            themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
-        }
-    });
-    
-    // Мобильное меню
-    const hamburger = document.getElementById('hamburger');
-    const navMenu = document.getElementById('nav-menu');
-
-    hamburger.addEventListener('click', () => {
-        navMenu.classList.toggle('active');
-
-        // Анимация гамбургера
-        hamburger.classList.toggle('active');
-    });
-
-    // Закрытие меню при клике на ссылку
-    document.querySelectorAll('.nav-link').forEach(link => {
-        link.addEventListener('click', () => {
-            navMenu.classList.remove('active');
-            hamburger.classList.remove('active');
-        });
+// Закрытие меню при клике на ссылку
+navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        navMenu.classList.remove('active');
     });
 });
 
-// Плавная прокрутка к якорям
+// Закрытие меню при клике вне его
+document.addEventListener('click', (e) => {
+    if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
+        hamburger.classList.remove('active');
+        navMenu.classList.remove('active');
+    }
+});
+
+// Изменение навбара при скролле
+const navbar = document.getElementById('navbar');
+let lastScroll = 0;
+
+window.addEventListener('scroll', () => {
+    const currentScroll = window.pageYOffset;
+    
+    if (currentScroll > 100) {
+        navbar.classList.add('scrolled');
+    } else {
+        navbar.classList.remove('scrolled');
+    }
+    
+    lastScroll = currentScroll;
+});
+
+// Анимация элементов при скролле
+const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            // Отключаем наблюдение после появления элемента для производительности
+            observer.unobserve(entry.target);
+        }
+    });
+}, observerOptions);
+
+// Наблюдаем за всеми элементами с классом animate-on-scroll
+const animatedElements = document.querySelectorAll('.animate-on-scroll');
+animatedElements.forEach(el => observer.observe(el));
+
+// Плавная прокрутка для якорных ссылок
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
+    anchor.addEventListener('click', function (e) {
         e.preventDefault();
-
-        const targetId = this.getAttribute('href');
-        if (targetId === '#') return;
-
-        const targetElement = document.querySelector(targetId);
-        if (targetElement) {
+        const target = document.querySelector(this.getAttribute('href'));
+        
+        if (target) {
+            const navbarHeight = navbar.offsetHeight;
+            const targetPosition = target.offsetTop - navbarHeight;
+            
             window.scrollTo({
-                top: targetElement.offsetTop - 80,
+                top: targetPosition,
                 behavior: 'smooth'
             });
         }
     });
 });
-// Модальное окно для пхумсе
-const modal = document.getElementById('poomsae-modal');
-const closeModal = document.getElementById('close-modal');
-const modalTitle = document.getElementById('modal-title');
-const modalVideo = document.getElementById('modal-video');
 
-// Открытие модального окна при клике на кнопку "Подробнее"
-document.querySelectorAll('.btn-outline').forEach(button => {
-    button.addEventListener('click', (e) => {
-        e.preventDefault();
+// Подсветка активной ссылки в навигации
+// const sections = document.querySelectorAll('section[id]');
+
+// function highlightNavigation() {
+//     const scrollY = window.pageYOffset;
+    
+//     sections.forEach(section => {
+//         const sectionHeight = section.offsetHeight;
+//         const sectionTop = section.offsetTop - navbar.offsetHeight - 10;
+//         const sectionId = section.getAttribute('id');
+//         const navLink = document.querySelector(`.nav-link[href="#${sectionId}"]`);
         
-        // Получаем название пхумсе из карточки
-        const card = button.closest('.poomsae-card');
-        const title = card.querySelector('.card-header h3').textContent + ' (' + 
-                     card.querySelector('.card-header p').textContent + ')';
-        
-        modalTitle.textContent = title;
-        modal.style.display = 'block';
-        document.body.style.overflow = 'hidden'; // Предотвращаем прокрутку фона
-        
-        // Автовоспроизведение видео при открытии модального окна
-        setTimeout(() => {
-            modalVideo.play().catch(e => console.log("Автовоспроизведение заблокировано:", e));
-        }, 300);
+//         if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+//             navLinks.forEach(link => link.classList.remove('active-link'));
+//             if (navLink) {
+//                 navLink.classList.add('active-link');
+//             }
+//         }
+//     });
+// }
+
+window.addEventListener('scroll', highlightNavigation);
+
+// Ленивая загрузка iframe для улучшения производительности
+const iframes = document.querySelectorAll('iframe');
+
+const iframeObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const iframe = entry.target;
+            // Iframe уже имеет src, просто добавляем класс loaded
+            iframe.classList.add('loaded');
+            iframeObserver.unobserve(iframe);
+        }
+    });
+}, {
+    rootMargin: '200px' // Загружаем видео за 200px до появления
+});
+
+iframes.forEach(iframe => {
+    iframeObserver.observe(iframe);
+});
+
+// Анимация поясов при наведении
+const beltItems = document.querySelectorAll('.belt-item');
+
+beltItems.forEach(item => {
+    item.addEventListener('mouseenter', function() {
+        this.style.transform = 'translateX(10px) scale(1.02)';
+    });
+    
+    item.addEventListener('mouseleave', function() {
+        this.style.transform = 'translateX(0) scale(1)';
     });
 });
 
-// Закрытие модального окна
-closeModal.addEventListener('click', () => {
-    modal.style.display = 'none';
-    document.body.style.overflow = 'auto'; // Возвращаем прокрутку
+// Добавление эффекта параллакса для секций (опционально)
+window.addEventListener('scroll', () => {
+    const scrolled = window.pageYOffset;
+    const parallaxElements = document.querySelectorAll('.poomsae-section, .hero, .freestyle-section');
     
-    // Останавливаем видео при закрытии
-    modalVideo.pause();
-    modalVideo.currentTime = 0;
+    parallaxElements.forEach((element, index) => {
+        const speed = 0.5;
+        const yPos = -(scrolled * speed);
+        // Применяем небольшой параллакс эффект
+        if (element.getBoundingClientRect().top < window.innerHeight && element.getBoundingClientRect().bottom > 0) {
+            element.style.backgroundPosition = `center ${yPos}px`;
+        }
+    });
 });
 
-// Закрытие модального окна при клике вне его области
-window.addEventListener('click', (e) => {
-    if (e.target === modal) {
-        modal.style.display = 'none';
-        document.body.style.overflow = 'auto';
-        modalVideo.pause();
-        modalVideo.currentTime = 0;
-    }
-});
-
-// Календарь событий
-const calendarDays = document.getElementById('calendar-days');
-const currentMonthYear = document.getElementById('current-month-year');
-const prevMonthBtn = document.getElementById('prev-month');
-const nextMonthBtn = document.getElementById('next-month');
-
-let currentDate = new Date();
-let currentMonth = currentDate.getMonth();
-let currentYear = currentDate.getFullYear();
-
-// Инициализация календаря
-renderCalendar(currentMonth, currentYear);
-
-prevMonthBtn.addEventListener('click', () => {
-    currentMonth--;
-    if (currentMonth < 0) {
-        currentMonth = 11;
-        currentYear--;
-    }
-    renderCalendar(currentMonth, currentYear);
-});
-
-nextMonthBtn.addEventListener('click', () => {
-    currentMonth++;
-    if (currentMonth > 11) {
-        currentMonth = 0;
-        currentYear++;
-    }
-    renderCalendar(currentMonth, currentYear);
-});
-
-function renderCalendar(month, year) {
-    const firstDay = new Date(year, month, 1);
-    const lastDay = new Date(year, month + 1, 0);
-    const startDate = new Date(firstDay);
-    startDate.setDate(startDate.getDate() - firstDay.getDay()); // Начало недели
+// Счетчик для анимации чисел (можно использовать для статистики)
+function animateCounter(element, target, duration = 2000) {
+    let start = 0;
+    const increment = target / (duration / 16);
     
-    currentMonthYear.textContent = getMonthName(month) + ' ' + year;
-    
-    calendarDays.innerHTML = '';
-    
-    // Создаем дни календаря
-    for (let i = 0; i < 42; i++) { // 6 недель * 7 дней
-        const day = new Date(startDate);
-        day.setDate(startDate.getDate() + i);
-        
-        const dayElement = document.createElement('div');
-        dayElement.classList.add('day');
-        dayElement.textContent = day.getDate();
-        
-        // Проверяем, относится ли день к текущему месяцу
-        if (day.getMonth() === month && day.getFullYear() === year) {
-            dayElement.classList.add('current-month');
-            
-            // Отмечаем сегодняшний день
-            const today = new Date();
-            if (day.toDateString() === today.toDateString()) {
-                dayElement.classList.add('today');
-            }
+    const timer = setInterval(() => {
+        start += increment;
+        if (start >= target) {
+            element.textContent = target;
+            clearInterval(timer);
         } else {
-            dayElement.classList.add('other-month');
-            dayElement.style.color = 'var(--text-light)';
+            element.textContent = Math.floor(start);
         }
-        
-        // Добавляем обработчик клика
-        dayElement.addEventListener('click', () => {
-            // Здесь можно добавить функционал выбора даты
-            console.log(`Выбрана дата: ${day.getDate()}.${day.getMonth() + 1}.${day.getFullYear()}`);
-        });
-        
-        calendarDays.appendChild(dayElement);
+    }, 16);
+}
+
+// Добавление эффекта ripple при клике на кнопки
+function createRipple(event) {
+    const button = event.currentTarget;
+    const ripple = document.createElement('span');
+    const diameter = Math.max(button.clientWidth, button.clientHeight);
+    const radius = diameter / 2;
+    
+    ripple.style.width = ripple.style.height = `${diameter}px`;
+    ripple.style.left = `${event.clientX - button.offsetLeft - radius}px`;
+    ripple.style.top = `${event.clientY - button.offsetTop - radius}px`;
+    ripple.classList.add('ripple');
+    
+    const rippleElement = button.getElementsByClassName('ripple')[0];
+    if (rippleElement) {
+        rippleElement.remove();
     }
+    
+    button.appendChild(ripple);
 }
 
-function getMonthName(month) {
-    const months = [
-        'Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь',
-        'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'
-    ];
-    return months[month];
-}
-
-// Система прогресса
-function updateProgress() {
-    const progressFill = document.getElementById('progress-fill');
-    const completedCount = document.getElementById('completed-count');
-    const totalCount = document.getElementById('total-count');
-    const currentLevel = document.getElementById('current-level');
-    
-    // В реальном приложении эти данные будут получаться из системы учета пользователя
-    const completed = 4; // Пример: сколько пхумсе завершено
-    const total = 12; // Пример: всего пхумсе
-    const level = 'Желтый пояс (8 гуп)'; // Пример: текущий уровень
-    
-    const percentage = (completed / total) * 100;
-    
-    progressFill.style.width = `${percentage}%`;
-    completedCount.textContent = completed;
-    totalCount.textContent = total;
-    currentLevel.textContent = level;
-}
-
-// Инициализация прогресса
-updateProgress();
-
-// Анимация при прокрутке
-function animateOnScroll() {
-    const elements = document.querySelectorAll('.feature-card, .poomsae-card, .blog-card, .achievement-item');
-    
-    elements.forEach(element => {
-        const elementPosition = element.getBoundingClientRect().top;
-        const screenPosition = window.innerHeight / 1.3;
-        
-        if (elementPosition < screenPosition) {
-            element.style.opacity = '1';
-            element.style.transform = 'translateY(0)';
-        }
-    });
-}
-
-// Устанавливаем начальные стили для анимации
-document.querySelectorAll('.feature-card, .poomsae-card, .blog-card, .achievement-item').forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(20px)';
-    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+// Применяем ripple эффект к ссылкам навигации
+navLinks.forEach(link => {
+    link.addEventListener('click', createRipple);
 });
 
-// Добавляем обработчик прокрутки
-window.addEventListener('scroll', animateOnScroll);
-
-// Инициализация анимации при загрузке
-setTimeout(animateOnScroll, 100);
-
-// Таймер тренировок (функционал для интерактивного таймера)
-function initializeTimer() {
-    // В реальном приложении здесь будет реализован таймер
-    console.log('Таймер тренировок инициализирован');
-}
-
-// Инициализация таймера
-initializeTimer();
-
-// Функция для фильтрации пхумсе по уровню сложности
-function filterPoomsaeByLevel(level) {
-    // В реальном приложении здесь будет фильтрация карточек пхумсе
-    console.log(`Фильтрация пхумсе по уровню: ${level}`);
+// Предзагрузка изображений и оптимизация
+window.addEventListener('load', () => {
+    // Удаляем класс loading после полной загрузки страницы
+    document.body.classList.add('loaded');
     
-    // Пример: показать только пхумсе с определенным классом сложности
-    const cards = document.querySelectorAll('.poomsae-card');
-    cards.forEach(card => {
-        if (level === 'all') {
-            card.style.display = 'block';
-        } else {
-            const difficulty = card.querySelector('.difficulty-badge').classList.contains(level) ? level : null;
-            card.style.display = difficulty === level ? 'block' : 'none';
+    // Инициализируем все анимации
+    setTimeout(() => {
+        animatedElements.forEach(el => {
+            if (el.getBoundingClientRect().top < window.innerHeight) {
+                el.classList.add('visible');
+            }
+        });
+    }, 100);
+});
+
+// Обработка ошибок загрузки видео
+iframes.forEach(iframe => {
+    iframe.addEventListener('error', function() {
+        console.error('Ошибка загрузки видео:', this.src);
+        const container = this.closest('.video-container');
+        if (container) {
+            container.innerHTML = '<div style="padding: 2rem; text-align: center; color: #fff;">Видео временно недоступно</div>';
         }
-    });
-}
-
-// Поиск по пхумсе
-function searchPoomsae(query) {
-    // В реальном приложении здесь будет поиск по названиям и описаниям пхумсе
-    console.log(`Поиск пхумсе по запросу: ${query}`);
-    
-    // Пример: фильтрация карточек по содержанию текста
-    const cards = document.querySelectorAll('.poomsae-card');
-    cards.forEach(card => {
-        const text = card.textContent.toLowerCase();
-        card.style.display = text.includes(query.toLowerCase()) ? 'block' : 'none';
-    });
-}
-
-// Инициализация интерактивных элементов
-document.addEventListener('DOMContentLoaded', function() {
-    // Добавляем обработчики для фильтров и поиска
-    console.log('Интерактивные элементы инициализированы');
-    
-    // Добавляем плавную прокрутку для кнопок "Смотреть пхумсе" в секции поясов
-    const watchButtons = document.querySelectorAll('.btn-watch');
-    watchButtons.forEach(button => {
-        button.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            const targetId = this.getAttribute('href');
-            if (targetId === '#') return;
-            
-            const targetElement = document.querySelector(targetId);
-            if (targetElement) {
-                window.scrollTo({
-                    top: targetElement.offsetTop - 80,
-                    behavior: 'smooth'
-                });
-            }
-        });
-    });
-    
-    // Добавляем плавную прокрутку для ссылок поясов в навигации
-    const beltLinks = document.querySelectorAll('.belt-link');
-    beltLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            // Находим соответствующий пояс в секции по ID
-            const beltColor = this.getAttribute('data-belt');
-            let targetElement;
-            
-            switch(beltColor) {
-                case 'yellow':
-                    targetElement = document.querySelector('#yellow-belt');
-                    break;
-                case 'green':
-                    targetElement = document.querySelector('#green-belt');
-                    break;
-                case 'blue':
-                    targetElement = document.querySelector('#blue-belt');
-                    break;
-                case 'red':
-                    targetElement = document.querySelector('#red-belt');
-                    break;
-                case 'brown':
-                    targetElement = document.querySelector('#brown-belt');
-                    break;
-                case 'black':
-                    targetElement = document.querySelector('#black-belt');
-                    break;
-                default:
-                    targetElement = document.querySelector('#belt-ranks');
-            }
-            
-            if (targetElement) {
-                // Прокручиваем к секции поясов и выделяем нужный пояс
-                const offsetTop = targetElement.offsetTop - 80;
-                window.scrollTo({
-                    top: offsetTop,
-                    behavior: 'smooth'
-                });
-                
-                // Добавляем временный класс для выделения выбранного пояса
-                targetElement.classList.add('highlight');
-                setTimeout(() => {
-                    targetElement.classList.remove('highlight');
-                }, 2000);
-                
-                // Закрываем мобильное меню после выбора
-                const navMenu = document.getElementById('nav-menu');
-                const hamburger = document.getElementById('hamburger');
-                navMenu.classList.remove('active');
-                hamburger.classList.remove('active');
-            }
-        });
-    });
-    
-    // Обработчик для гамбургер-меню
-    const hamburger = document.getElementById('hamburger');
-    const navMenu = document.getElementById('nav-menu');
-    
-    if (hamburger && navMenu) {
-        hamburger.addEventListener('click', function() {
-            navMenu.classList.toggle('active');
-            hamburger.classList.toggle('active');
-        });
-    }
-    
-    // Закрытие меню при клике на ссылку (для мобильных устройств)
-    const beltLinks = document.querySelectorAll('.belt-link');
-    beltLinks.forEach(link => {
-        link.addEventListener('click', function() {
-            navMenu.classList.remove('active');
-            hamburger.classList.remove('active');
-        });
     });
 });
 
-// Функции для карусели поясов
-let slideIndex = [1, 1, 1, 1, 1, 1]; // Индекс слайдов для каждого карусели
+// Добавление кнопки "Наверх"
+const scrollTopBtn = document.createElement('button');
+scrollTopBtn.innerHTML = '↑';
+scrollTopBtn.className = 'scroll-top-btn';
+scrollTopBtn.style.cssText = `
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 999;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+`;
 
-function changeSlide(n, carouselId) {
-    slideIndex[carouselId] += n;
-    showSlides(carouselId);
-}
+document.body.appendChild(scrollTopBtn);
 
-function currentSlide(n, carouselId) {
-    slideIndex[carouselId] = n;
-    showSlides(carouselId);
-}
-
-function showSlides(carouselId) {
-    const beltCards = document.querySelectorAll('.belt-card');
-    if (beltCards[carouselId]) {
-        const slides = beltCards[carouselId].querySelectorAll('.carousel-slide');
-        const indicators = beltCards[carouselId].querySelectorAll('.indicator');
-        
-        if (slides.length === 0) return;
-        
-        // Скрываем все слайды
-        slides.forEach(slide => slide.classList.remove('active'));
-        
-        // Убираем активный класс с индикаторов
-        indicators.forEach(indicator => indicator.classList.remove('active'));
-        
-        // Если индекс выходит за границы, возвращаемся к началу или концу
-        if (slideIndex[carouselId] > slides.length) {
-            slideIndex[carouselId] = 1;
-        }
-        if (slideIndex[carouselId] < 1) {
-            slideIndex[carouselId] = slides.length;
-        }
-        
-        // Показываем текущий слайд
-        if (slides[slideIndex[carouselId] - 1]) {
-            slides[slideIndex[carouselId] - 1].classList.add('active');
-        }
-        
-        // Делаем активным текущий индикатор
-        if (indicators[slideIndex[carouselId] - 1]) {
-            indicators[slideIndex[carouselId] - 1].classList.add('active');
-        }
+// Показываем/скрываем кнопку "Наверх"
+window.addEventListener('scroll', () => {
+    if (window.pageYOffset > 500) {
+        scrollTopBtn.style.opacity = '1';
+        scrollTopBtn.style.visibility = 'visible';
+    } else {
+        scrollTopBtn.style.opacity = '0';
+        scrollTopBtn.style.visibility = 'hidden';
     }
-}
+});
 
-// Инициализируем все карусели
-document.addEventListener('DOMContentLoaded', function() {
-    // Устанавливаем первый слайд активным для каждой карусели
-    const beltCards = document.querySelectorAll('.belt-card');
-    beltCards.forEach((beltCard, index) => {
-        const firstSlide = beltCard.querySelector('.carousel-slide');
-        if (firstSlide) {
-            firstSlide.classList.add('active');
-        }
-        
-        // Устанавливаем первый индикатор как активный
-        const firstIndicator = beltCard.querySelector('.carousel-indicators .indicator');
-        if (firstIndicator) {
-            firstIndicator.classList.add('active');
-        }
+// Прокрутка наверх при клике
+scrollTopBtn.addEventListener('click', () => {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
     });
 });
+
+// Hover эффект для кнопки "Наверх"
+scrollTopBtn.addEventListener('mouseenter', function() {
+    this.style.transform = 'scale(1.1) translateY(-5px)';
+});
+
+scrollTopBtn.addEventListener('mouseleave', function() {
+    this.style.transform = 'scale(1) translateY(0)';
+});
+
+// Добавление CSS для ripple эффекта
+const style = document.createElement('style');
+style.textContent = `
+    .ripple {
+        position: absolute;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.6);
+        transform: scale(0);
+        animation: ripple-animation 0.6s ease-out;
+        pointer-events: none;
+    }
+    
+    @keyframes ripple-animation {
+        to {
+            transform: scale(4);
+            opacity: 0;
+        }
+    }
+    
+    .nav-link {
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .active-link {
+        background: rgba(255, 255, 255, 0.25) !important;
+        font-weight: 700;
+    }
+    
+    .scroll-top-btn:hover {
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    }
+    
+    .scroll-top-btn:active {
+        transform: scale(0.95) translateY(0) !important;
+    }
+`;
+
+document.head.appendChild(style);
+
+// Консольное сообщение для разработчиков
+console.log('%c🥋 Пхумсе Тхэквондо', 'font-size: 24px; color: #667eea; font-weight: bold;');
+console.log('%cСайт успешно загружен!', 'font-size: 14px; color: #764ba2;');
+console.log('%cТренируйтесь усердно! 💪', 'font-size: 12px; color: #ff6b35;');

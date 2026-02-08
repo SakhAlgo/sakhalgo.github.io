@@ -3,543 +3,365 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Изучение техники пхумсе в тхэквондо</title>
-
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Пхумсе Тхэквондо - Обучение</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-<body data-theme="dark">
-    <!-- Навигационное меню -->
-    <nav class="navbar">
+<body>
+    <!-- Навигация -->
+    <nav class="navbar" id="navbar">
         <div class="nav-container">
-            <div class="logo">
-                <h2><span>Пхумсе тхэквондо</span></h2>
+            <div class="nav-logo">
+                <div class="logo-icon">🥋</div>
+                <h1>Пхумсе Тхэквондо</h1>
             </div>
-            <div class="nav-menu" id="nav-menu">
-                <div class="belt-navigation">
-                    <a href="#yellow-belt" class="nav-link belt-link yellow-belt" data-belt="yellow">🟡 Жёлтый</a>
-                    <a href="#green-belt" class="nav-link belt-link green-belt" data-belt="green">🟢 Зелёный</a>
-                    <a href="#blue-belt" class="nav-link belt-link blue-belt" data-belt="blue">🔵 Синий</a>
-                    <a href="#red-belt" class="nav-link belt-link red-belt" data-belt="red">🔴 Красный</a>
-                    <a href="#brown-belt" class="nav-link belt-link brown-belt" data-belt="brown">🟤 Коричневый</a>
-                    <a href="#black-belt" class="nav-link belt-link black-belt" data-belt="black">⚫ Чёрный</a>
-                </div>
-            </div>
-            <div class="nav-controls">
-                <button class="theme-toggle" id="theme-toggle" aria-label="Переключить тему">
-                    <i class="fas fa-moon"></i>
-                </button>
-            </div>
+            
             <div class="hamburger" id="hamburger">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
+            
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#about" class="nav-link">О Пхумсе</a></li>
+                <li><a href="#poomsae1" class="nav-link">Пум1</a></li>
+                <li><a href="#poomsae2" class="nav-link">Пум2</a></li>
+                <li><a href="#poomsae3" class="nav-link">Пум3</a></li>
+                <li><a href="#poomsae4" class="nav-link">Пум4</a></li>
+                <li><a href="#poomsae5" class="nav-link">Пум5</a></li>
+                <li><a href="#poomsae6" class="nav-link">Пум6</a></li>
+                <li><a href="#poomsae7" class="nav-link">Пум7</a></li>
+                <li><a href="#poomsae8" class="nav-link">Пум8</a></li>
+                <!-- <li><a href="#koryo" class="nav-link">Коре</a></li>
+                <li><a href="#kumgang" class="nav-link">Кумган</a></li> -->
+                <!-- <li><a href="#freestyle" class="nav-link">Фристайл</a></li> -->
+            </ul>
         </div>
     </nav>
 
-    <!-- Описание философии -->
-    <section id="about" class="about">
-        <div class="container">
-            <div class="about-content">
-                <div class="about-text">
-                    <h2>Философия пхумсе</h2>
-                    <p>Пхумсе (品勢) — это сердце тхэквондо, представляющее собой набор предопределенных формальных движений, демонстрируемых против воображаемого противника. Эти формы символизируют философию тхэквондо и являются основой для развития техники, силы, гибкости и концентрации.</p>
-                    <p>Каждая форма содержит в себе глубокий смысл, связанный с восточной философией и культурой Кореи. Изучая пхумсе, вы не только развиваете физические навыки, но и приобщаетесь к древней мудрости.</p>
+    <!-- Секция описания -->
+    <section class="hero" id="about">
+        <div class="hero-content">
+            <h2 class="section-title animate-on-scroll">Что такое Пхумсе?</h2>
+            <div class="philosophy-box animate-on-scroll">
+                <p class="philosophy-text">
+                    <strong>Пхумсе (или Пумсе)</strong> — это предопределённые формы в тхэквондо, представляющие собой набор движений, имитирующих бой против нескольких воображаемых противников. Эти формы являются важной частью тренировочного процесса и помогают развивать координацию, баланс, силу и концентрацию.
+                </p>
+            </div>
+
+            <!-- Иерархия поясов -->
+            <div class="belts-section animate-on-scroll">
+                <h3 class="subsection-title">Иерархия в Тхэквондо</h3>
+                <p class="intro-text">
+                    В тхэквондо иерархия делится на ученические степени (гып) и мастерские (дан). Путь начинается с 10-го гыпа и идет по убывающей к 1-му, после чего следует 1-й дан.
+                </p>
+
+                <div class="belts-grid">
+                    <div class="belt-category">
+                        <h4>Ученические пояса (Гыпы)</h4>
+                        <div class="belt-list">
+                            <div class="belt-item" data-belt="white">
+                                <div class="belt-color white"></div>
+                                <div class="belt-info">
+                                    <strong>Белый (10 гып)</strong>
+                                    <span>Уровень новичка</span>
+                                </div>
+                            </div>
+                            <div class="belt-item" data-belt="white-yellow">
+                                <div class="belt-color white-yellow"></div>
+                                <div class="belt-info">
+                                    <strong>Бело-желтый (9 гып)</strong>
+                                    <span>Переходный этап</span>
+                                </div>
+                            </div>
+                            <div class="belt-item" data-belt="yellow">
+                                <div class="belt-color yellow"></div>
+                                <div class="belt-info">
+                                    <strong>Желтый (8 гып)</strong>
+                                    <span>Фундамент мастерства</span>
+                                </div>
+                            </div>
+                            <div class="belt-item" data-belt="yellow-green">
+                                <div class="belt-color yellow-green"></div>
+                                <div class="belt-info">
+                                    <strong>Желто-зеленый (7 гып)</strong>
+                                </div>
+                            </div>
+                            <div class="belt-item" data-belt="green">
+                                <div class="belt-color green"></div>
+                                <div class="belt-info">
+                                    <strong>Зеленый (6 гып)</strong>
+                                    <span>Символ роста навыков</span>
+                                </div>
+                            </div>
+                            <div class="belt-item" data-belt="green-blue">
+                                <div class="belt-color green-blue"></div>
+                                <div class="belt-info">
+                                    <strong>Зелено-синий (5 гып)</strong>
+                                </div>
+                            </div>
+                            <div class="belt-item" data-belt="blue">
+                                <div class="belt-color blue"></div>
+                                <div class="belt-info">
+                                    <strong>Синий (4 гып)</strong>
+                                    <span>Уверенное владение техникой</span>
+                                </div>
+                            </div>
+                            <div class="belt-item" data-belt="blue-red">
+                                <div class="belt-color blue-red"></div>
+                                <div class="belt-info">
+                                    <strong>Сине-красный (3 гып)</strong>
+                                </div>
+                            </div>
+                            <div class="belt-item" data-belt="red">
+                                <div class="belt-color red"></div>
+                                <div class="belt-info">
+                                    <strong>Красный (2 гып)</strong>
+                                    <span>Высокий уровень, требующий самоконтроля</span>
+                                </div>
+                            </div>
+                            <div class="belt-item" data-belt="red-black">
+                                <div class="belt-color red-black"></div>
+                                <div class="belt-info">
+                                    <strong>Красно-черный (1 гып)</strong>
+                                    <span>Подготовка к мастерству</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="belt-category">
+                        <h4>Мастерские степени (Даны)</h4>
+                        <div class="dan-info">
+                            <div class="dan-item">
+                                <div class="belt-color black"></div>
+                                <div class="dan-details">
+                                    <strong>Черный пояс (1–9 даны)</strong>
+                                    <ul>
+                                        <li><strong>1–3 дан:</strong> Помощник инструктора / Инструктор</li>
+                                        <li><strong>4–6 дан:</strong> Мастер (сабом)</li>
+                                        <li><strong>7–9 дан:</strong> Великий мастер (сасон)</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="important-note">
+                                <strong>⚠️ Важно:</strong> Дети до 15 лет вместо черного пояса получают красно-черный пояс «Пум», который при достижении совершеннолетия автоматически заменяется на соответствующий дан.
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="about-image">
-                    <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Тхэквондо практика">
+
+                <div class="exam-info animate-on-scroll">
+                    <p class="exam-text">
+                        <strong>Требования на экзаменах (аттестациях)</strong> делятся на несколько ключевых блоков. Чем выше пояс, тем сложнее и объемнее становятся задания.
+                    </p>
                 </div>
             </div>
         </div>
     </section>
 
-   <!-- Секция: Техника сдачи поясов -->
-    <section id="belt-ranks" class="belt-ranks-section">
-      <div class="container">
-        <h2 class="section-title">🥋 Техника сдачи поясов</h2>
-        <p class="section-subtitle">Программа экзаменов от жёлтого до чёрного пояса (по системе WT/Kukkiwon)</p>
-
-        <div class="belt-grid">
-          <!-- ЖЁЛТЫЙ ПОЯС -->
-          <div class="belt-card yellow-belt" id="yellow-belt">
-            <div class="belt-header">
-              <span class="belt-icon">🟡</span>
-              <h3>8-й гуп — Жёлтый пояс</h3>
-              <span class="belt-color-name">Hwang (황)</span>
+    <!-- Секции видео Пхумсе -->
+    <section class="poomsae-section" id="poomsae1">
+        <div class="poomsae-content">
+            <h2 class="poomsae-title animate-on-scroll">Пхумсе 1 (Тхэгук Иль Джан)</h2>
+            <p class="poomsae-description animate-on-scroll">
+                Первая форма, символизирующая небо и начало пути в тхэквондо. Основа для всех последующих форм.
+            </p>
+            <div class="video-container animate-on-scroll">
+                <iframe src="https://vkvideo.ru/video_ext.php?oid=-60607921&id=456239029&hd=2" 
+                        allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" 
+                        frameborder="0" 
+                        allowfullscreen>
+                </iframe>
             </div>
-
-            <div class="belt-carousel-container">
-              <div class="belt-carousel">
-                <div class="carousel-slide active">
-                  <video controls poster="https://images.unsplash.com/photo-1518611012118-696072aa579a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80">
-                    <source src="https://assets.mixkit.co/videos/preview/mixkit-martial-arts-student-doing-forms-4091-large.mp4" type="video/mp4">
-                    Ваш браузер не поддерживает видео.
-                  </video>
-                </div>
-                <div class="carousel-slide">
-                  <video controls poster="https://images.unsplash.com/photo-1518611012118-696072aa579a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80">
-                    <source src="https://assets.mixkit.co/videos/preview/mixkit-martial-arts-student-doing-forms-4091-large.mp4" type="video/mp4">
-                    Ваш браузер не поддерживает видео.
-                  </video>
-                </div>
-              </div>
-              <div class="carousel-nav">
-                <button class="carousel-btn prev" onclick="changeSlide(-1, 0)">❮</button>
-                <button class="carousel-btn next" onclick="changeSlide(1, 0)">❯</button>
-              </div>
-              <div class="carousel-indicators">
-                <span class="indicator active" onclick="currentSlide(1, 0)"></span>
-                <span class="indicator" onclick="currentSlide(2, 0)"></span>
-              </div>
-            </div>
-
-            <div class="belt-content">
-              <div class="requirement-block">
-                <h4>🎯 Пхумсе</h4>
-                <p><strong>Тэгук Иль Чжанг</strong> (Taegeuk Il Jang)</p>
-                <ul>
-                  <li>18 движений</li>
-                  <li>Философия: Начало, символизирует Небо (Кён)</li>
-                </ul>
-              </div>
-
-              <div class="requirement-block">
-                <h4>💪 Базовые техники</h4>
-                <ul>
-                  <li>Стойки: чонби сеоги, мозуби сеоги, ап куби</li>
-                  <li>Удары руками: ап чхиги, ольгюль чхиги</li>
-                  <li>Блоки: ап чхаги, ольгюль макки</li>
-                  <li>Удары ногой: ап чхаги</li>
-                </ul>
-              </div>
-
-              <div class="requirement-block">
-                <h4>🥊 Спарринг</h4>
-                <ul>
-                  <li>Базовые шаги и дистанция</li>
-                  <li>Один шаг — один удар (илбо матсок)</li>
-                </ul>
-              </div>
-
-              <div class="requirement-block">
-                <h4>📚 Теория</h4>
-                <ul>
-                  <li>История тхэквондо</li>
-                  <li>Значение жёлтого цвета (земля, на которой растёт мастерство)</li>
-                  <li>Основные термины на корейском</li>
-                </ul>
-              </div>
-
-              <a href="#poomsae" class="btn-watch">Смотреть пхумсе</a>
-            </div>
-          </div>
-
-          <!-- ЗЕЛЁНЫЙ ПОЯС -->
-          <div class="belt-card green-belt" id="green-belt">
-            <div class="belt-header">
-              <span class="belt-icon">🟢</span>
-              <h3>7-й гуп — Зелёный пояс</h3>
-              <span class="belt-color-name">Chorok (초록)</span>
-            </div>
-
-            <div class="belt-carousel-container">
-              <div class="belt-carousel">
-                <div class="carousel-slide active">
-                  <video controls poster="https://images.unsplash.com/photo-1518611012118-696072aa579a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80">
-                    <source src="https://assets.mixkit.co/videos/preview/mixkit-martial-arts-student-doing-forms-4091-large.mp4" type="video/mp4">
-                    Ваш браузер не поддерживает видео.
-                  </video>
-                </div>
-                <div class="carousel-slide">
-                  <video controls poster="https://images.unsplash.com/photo-1518611012118-696072aa579a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80">
-                    <source src="https://assets.mixkit.co/videos/preview/mixkit-martial-arts-student-doing-forms-4091-large.mp4" type="video/mp4">
-                    Ваш браузер не поддерживает видео.
-                  </video>
-                </div>
-              </div>
-              <div class="carousel-nav">
-                <button class="carousel-btn prev" onclick="changeSlide(-1, 1)">❮</button>
-                <button class="carousel-btn next" onclick="changeSlide(1, 1)">❯</button>
-              </div>
-              <div class="carousel-indicators">
-                <span class="indicator active" onclick="currentSlide(1, 1)"></span>
-                <span class="indicator" onclick="currentSlide(2, 1)"></span>
-              </div>
-            </div>
-
-            <div class="belt-content">
-              <div class="requirement-block">
-                <h4>🎯 Пхумсе</h4>
-                <p><strong>Тэгук И Чжанг</strong> (Taegeuk Yi Jang)</p>
-                <ul>
-                  <li>18 движений</li>
-                  <li>Философия: Радость и гармония (Тэ)</li>
-                </ul>
-              </div>
-
-              <div class="requirement-block">
-                <h4>💪 Базовые техники</h4>
-                <ul>
-                  <li>Новые стойки: твит куби, ханбол чхаги</li>
-                  <li>Удары ногой: йоп чхаги, доло чхаги</li>
-                  <li>Комбинации: ап чхаги → йоп чхаги</li>
-                </ul>
-              </div>
-
-              <div class="requirement-block">
-                <h4>🥊 Спарринг</h4>
-                <ul>
-                  <li>Три шага — три удара (самбо матсок)</li>
-                  <li>Базовая защита и контратака</li>
-                </ul>
-              </div>
-
-              <div class="requirement-block">
-                <h4>🔨 Разбивание</h4>
-                <ul>
-                  <li>Доска: ап чхаги (удар вперёд)</li>
-                </ul>
-              </div>
-
-              <a href="#poomsae" class="btn-watch">Смотреть пхумсе</a>
-            </div>
-          </div>
-
-          <!-- СИНИЙ ПОЯС -->
-          <div class="belt-card blue-belt" id="blue-belt">
-            <div class="belt-header">
-              <span class="belt-icon">🔵</span>
-              <h3>6-й гуп — Синий пояс</h3>
-              <span class="belt-color-name">Pharan (파란)</span>
-            </div>
-
-            <div class="belt-carousel-container">
-              <div class="belt-carousel">
-                <div class="carousel-slide active">
-                  <video controls poster="https://images.unsplash.com/photo-1518611012118-696072aa579a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80">
-                    <source src="https://assets.mixkit.co/videos/preview/mixkit-martial-arts-student-doing-forms-4091-large.mp4" type="video/mp4">
-                    Ваш браузер не поддерживает видео.
-                  </video>
-                </div>
-                <div class="carousel-slide">
-                  <video controls poster="https://images.unsplash.com/photo-1518611012118-696072aa579a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80">
-                    <source src="https://assets.mixkit.co/videos/preview/mixkit-martial-arts-student-doing-forms-4091-large.mp4" type="video/mp4">
-                    Ваш браузер не поддерживает видео.
-                  </video>
-                </div>
-              </div>
-              <div class="carousel-nav">
-                <button class="carousel-btn prev" onclick="changeSlide(-1, 2)">❮</button>
-                <button class="carousel-btn next" onclick="changeSlide(1, 2)">❯</button>
-              </div>
-              <div class="carousel-indicators">
-                <span class="indicator active" onclick="currentSlide(1, 2)"></span>
-                <span class="indicator" onclick="currentSlide(2, 2)"></span>
-              </div>
-            </div>
-
-            <div class="belt-content">
-              <div class="requirement-block">
-                <h4>🎯 Пхумсе</h4>
-                <p><strong>Тэгук Сам Чжанг</strong> (Taegeuk Sam Jang)</p>
-                <ul>
-                  <li>20 движений</li>
-                  <li>Философия: Огонь и солнце (Ри)</li>
-                </ul>
-              </div>
-
-              <div class="requirement-block">
-                <h4>💪 Базовые техники</h4>
-                <ul>
-                  <li>Удары ногой: твит чхаги, наэро чхаги</li>
-                  <li>Прыжковые элементы: прыжок + ап чхаги</li>
-                  <li>Блоки: твит макки (блок с разворотом)</li>
-                </ul>
-              </div>
-
-              <div class="requirement-block">
-                <h4>🥊 Спарринг</h4>
-                <ul>
-                  <li>Свободный спарринг (лёгкий контакт)</li>
-                  <li>Работа с дистанцией и уходами</li>
-                </ul>
-              </div>
-
-              <div class="requirement-block">
-                <h4>🔨 Разбивание</h4>
-                <ul>
-                  <li>Доска: йоп чхаги (боковой удар)</li>
-                </ul>
-              </div>
-
-              <a href="#poomsae" class="btn-watch">Смотреть пхумсе</a>
-            </div>
-          </div>
-
-          <!-- КРАСНЫЙ ПОЯС -->
-          <div class="belt-card red-belt" id="red-belt">
-            <div class="belt-header">
-              <span class="belt-icon">🔴</span>
-              <h3>5-й гуп — Красный пояс</h3>
-              <span class="belt-color-name">Hon (홍)</span>
-            </div>
-
-            <div class="belt-carousel-container">
-              <div class="belt-carousel">
-                <div class="carousel-slide active">
-                  <video controls poster="https://images.unsplash.com/photo-1518611012118-696072aa579a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80">
-                    <source src="https://assets.mixkit.co/videos/preview/mixkit-martial-arts-student-doing-forms-4091-large.mp4" type="video/mp4">
-                    Ваш браузер не поддерживает видео.
-                  </video>
-                </div>
-                <div class="carousel-slide">
-                  <video controls poster="https://images.unsplash.com/photo-1518611012118-696072aa579a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80">
-                    <source src="https://assets.mixkit.co/videos/preview/mixkit-martial-arts-student-doing-forms-4091-large.mp4" type="video/mp4">
-                    Ваш браузер не поддерживает видео.
-                  </video>
-                </div>
-              </div>
-              <div class="carousel-nav">
-                <button class="carousel-btn prev" onclick="changeSlide(-1, 3)">❮</button>
-                <button class="carousel-btn next" onclick="changeSlide(1, 3)">❯</button>
-              </div>
-              <div class="carousel-indicators">
-                <span class="indicator active" onclick="currentSlide(1, 3)"></span>
-                <span class="indicator" onclick="currentSlide(2, 3)"></span>
-              </div>
-            </div>
-
-            <div class="belt-content">
-              <div class="requirement-block">
-                <h4>🎯 Пхумсе</h4>
-                <p><strong>Тэгук Са Чжанг</strong> (Taegeuk Sa Jang)</p>
-                <ul>
-                  <li>20 движений</li>
-                  <li>Философия: Гром и молния (Чин)</li>
-                </ul>
-              </div>
-
-              <div class="requirement-block">
-                <h4>💪 Базовые техники</h4>
-                <ul>
-                  <li>Удары ногой: копуро чхаги, двит чхаги</li>
-                  <li>Комбинации из 3+ ударов ногой</li>
-                  <li>Работа на балансе в сложных стойках</li>
-                </ul>
-              </div>
-
-              <div class="requirement-block">
-                <h4>🥊 Спарринг</h4>
-                <ul>
-                  <li>Полноценный спарринг с защитным снаряжением</li>
-                  <li>Тактические комбинации</li>
-                </ul>
-              </div>
-
-              <div class="requirement-block">
-                <h4>🔨 Разбивание</h4>
-                <ul>
-                  <li>Доска: копуро чхаги (круговой удар)</li>
-                </ul>
-              </div>
-
-              <a href="#poomsae" class="btn-watch">Смотреть пхумсе</a>
-            </div>
-          </div>
-
-          <!-- КОРИЧНЕВЫЕ ПОЯСА -->
-          <div class="belt-card brown-belt" id="brown-belt">
-            <div class="belt-header">
-              <span class="belt-icon">🟤</span>
-              <h3>4-й–1-й гуп — Подготовка к чёрному поясу</h3>
-              <span class="belt-color-name">Chogap (초급)</span>
-            </div>
-
-            <div class="belt-carousel-container">
-              <div class="belt-carousel">
-                <div class="carousel-slide active">
-                  <video controls poster="https://images.unsplash.com/photo-1518611012118-696072aa579a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80">
-                    <source src="https://assets.mixkit.co/videos/preview/mixkit-martial-arts-student-doing-forms-4091-large.mp4" type="video/mp4">
-                    Ваш браузер не поддерживает видео.
-                  </video>
-                </div>
-                <div class="carousel-slide">
-                  <video controls poster="https://images.unsplash.com/photo-1518611012118-696072aa579a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80">
-                    <source src="https://assets.mixkit.co/videos/preview/mixkit-martial-arts-student-doing-forms-4091-large.mp4" type="video/mp4">
-                    Ваш браузер не поддерживает видео.
-                  </video>
-                </div>
-              </div>
-              <div class="carousel-nav">
-                <button class="carousel-btn prev" onclick="changeSlide(-1, 4)">❮</button>
-                <button class="carousel-btn next" onclick="changeSlide(1, 4)">❯</button>
-              </div>
-              <div class="carousel-indicators">
-                <span class="indicator active" onclick="currentSlide(1, 4)"></span>
-                <span class="indicator" onclick="currentSlide(2, 4)"></span>
-              </div>
-            </div>
-
-            <div class="belt-content">
-              <div class="requirement-block">
-                <h4>🎯 Пхумсе</h4>
-                <ul>
-                  <li><strong>4-й гуп:</strong> Тэгук О Чжанг (20 движений)</li>
-                  <li><strong>3-й гуп:</strong> Тэгук Ёк Чжанг (23 движения)</li>
-                  <li><strong>2-й гуп:</strong> Тэгук Чхиль Чжанг (25 движений)</li>
-                  <li><strong>1-й гуп:</strong> Тэгук Паль Чжанг (24 движения)</li>
-                </ul>
-              </div>
-
-              <div class="requirement-block">
-                <h4>💪 Продвинутые техники</h4>
-                <ul>
-                  <li>Прыжковые удары: твит йоп чхаги, прыжок + копуро чхаги</li>
-                  <li>Удары в прыжке с разворотом на 360°</li>
-                  <li>Работа с несколькими противниками (хосинсул)</li>
-                </ul>
-              </div>
-
-              <div class="requirement-block">
-                <h4>🥊 Спарринг</h4>
-                <ul>
-                  <li>Турнирный спарринг по правилам WT</li>
-                  <li>Стратегическое мышление и тактика</li>
-                </ul>
-              </div>
-
-              <div class="requirement-block">
-                <h4>🔨 Разбивание</h4>
-                <ul>
-                  <li>Множественные доски</li>
-                  <li>Разбивание в прыжке</li>
-                  <li>Комбинации ударов</li>
-                </ul>
-              </div>
-
-              <div class="requirement-block">
-                <h4>📚 Теория</h4>
-                <ul>
-                  <li>Философия 8 трёхграммов (Пхалгве)</li>
-                  <li>История корейских династий</li>
-                  <li>Этика тхэквондо (5 принципов)</li>
-                </ul>
-              </div>
-
-              <a href="#poomsae" class="btn-watch">Смотреть все пхумсе</a>
-            </div>
-          </div>
-
-          <!-- ЧЁРНЫЙ ПОЯС -->
-          <div class="belt-card black-belt" id="black-belt">
-            <div class="belt-header">
-              <span class="belt-icon">⚫</span>
-              <h3>1-й дан — Чёрный пояс</h3>
-              <span class="belt-color-name">Poom/Dan (품/단)</span>
-            </div>
-
-            <div class="belt-carousel-container">
-              <div class="belt-carousel">
-                <div class="carousel-slide active">
-                  <video controls poster="https://images.unsplash.com/photo-1518611012118-696072aa579a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80">
-                    <source src="https://assets.mixkit.co/videos/preview/mixkit-martial-arts-student-doing-forms-4091-large.mp4" type="video/mp4">
-                    Ваш браузер не поддерживает видео.
-                  </video>
-                </div>
-                <div class="carousel-slide">
-                  <video controls poster="https://images.unsplash.com/photo-1518611012118-696072aa579a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80">
-                    <source src="https://assets.mixkit.co/videos/preview/mixkit-martial-arts-student-doing-forms-4091-large.mp4" type="video/mp4">
-                    Ваш браузер не поддерживает видео.
-                  </video>
-                </div>
-              </div>
-              <div class="carousel-nav">
-                <button class="carousel-btn prev" onclick="changeSlide(-1, 5)">❮</button>
-                <button class="carousel-btn next" onclick="changeSlide(1, 5)">❯</button>
-              </div>
-              <div class="carousel-indicators">
-                <span class="indicator active" onclick="currentSlide(1, 5)"></span>
-                <span class="indicator" onclick="currentSlide(2, 5)"></span>
-              </div>
-            </div>
-
-            <div class="belt-content">
-              <div class="requirement-block">
-                <h4>🎯 Пхумсе</h4>
-                <p><strong>Корё</strong> (Koryo)</p>
-                <ul>
-                  <li>30 движений</li>
-                  <li>Философия: Воины Корё, борьба с тьмой</li>
-                  <li>Сложные переходы, удары в прыжке, баланс</li>
-                </ul>
-              </div>
-
-              <div class="requirement-block">
-                <h4>💪 Технические требования</h4>
-                <ul>
-                  <li>Все 8 Тэгук пхумсе без ошибок</li>
-                  <li>20+ базовых техник ногой с точностью 90%+</li>
-                  <li>Свободные спарринги с разными соперниками</li>
-                  <li>Хосинсул — защита от вооружённого противника</li>
-                </ul>
-              </div>
-
-              <div class="requirement-block">
-                <h4>🔨 Разбивание</h4>
-                <ul>
-                  <li>2+ доски одним ударом</li>
-                  <li>Разбивание в движении</li>
-                  <li>Демонстрация силы и точности</li>
-                </ul>
-              </div>
-
-              <div class="requirement-block">
-                <h4>📝 Экзаменационные требования</h4>
-                <ul>
-                  <li>Возраст: минимум 15 лет для дана (до 15 лет — пом)</li>
-                  <li>Стаж: минимум 1 год на красно-чёрном поясе</li>
-                  <li>Письменный экзамен по теории</li>
-                  <li>Демонстрация лидерских качеств</li>
-                </ul>
-              </div>
-
-              <div class="requirement-block">
-                <h4>🧘 Философия</h4>
-                <ul>
-                  <li>Чёрный цвет — зрелость, мастерство, начало нового пути</li>
-                  <li>«Чёрный пояс — это не конец, а начало настоящего обучения»</li>
-                </ul>
-              </div>
-
-              <a href="#poomsae" class="btn-watch">Смотреть Корё</a>
-            </div>
-          </div>
         </div>
-
-        <div class="belt-notice">
-          <p><strong>⚠️ Важно:</strong> Требования могут незначительно отличаться в зависимости от национальной федерации и школы. Рекомендуется уточнять программу у главного инструктора конкретного клуба.</p>
-        </div>
-      </div>
     </section>
+
+    <section class="poomsae-section" id="poomsae2">
+        <div class="poomsae-content">
+            <h2 class="poomsae-title animate-on-scroll">Пхумсе 2 (Тхэгук И Джан)</h2>
+            <p class="poomsae-description animate-on-scroll">
+                Вторая форма, символизирующая радость и внутреннюю силу. Развивает уверенность в движениях.
+            </p>
+            <div class="video-container animate-on-scroll">
+                <iframe src="https://vkvideo.ru/video_ext.php?oid=-60607921&id=456239030&hd=2" 
+                        allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" 
+                        frameborder="0" 
+                        allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <section class="poomsae-section" id="poomsae3">
+        <div class="poomsae-content">
+            <h2 class="poomsae-title animate-on-scroll">Пхумсе 3 (Тхэгук Сам Джан)</h2>
+            <p class="poomsae-description animate-on-scroll">
+                Третья форма, символизирующая огонь и энергию. Учит контролировать силу и скорость.
+            </p>
+            <div class="video-container animate-on-scroll">
+                <iframe src="https://vkvideo.ru/video_ext.php?oid=-60607921&id=456239031&hd=2" 
+                        allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" 
+                        frameborder="0" 
+                        allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <section class="poomsae-section" id="poomsae4">
+        <div class="poomsae-content">
+            <h2 class="poomsae-title animate-on-scroll">Пхумсе 4 (Тхэгук Са Джан)</h2>
+            <p class="poomsae-description animate-on-scroll">
+                Четвертая форма, символизирующая гром и мощь. Развивает силу и решительность.
+            </p>
+            <div class="video-container animate-on-scroll">
+                <iframe src="https://vkvideo.ru/video_ext.php?oid=-60607921&id=456239032&hd=2" 
+                        allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" 
+                        frameborder="0" 
+                        allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <section class="poomsae-section" id="poomsae5">
+        <div class="poomsae-content">
+            <h2 class="poomsae-title animate-on-scroll">Пхумсе 5 (Тхэгук О Джан)</h2>
+            <p class="poomsae-description animate-on-scroll">
+                Пятая форма, символизирующая ветер и гибкость. Учит плавности и адаптивности движений.
+            </p>
+            <div class="video-container animate-on-scroll">
+                <iframe src="https://vkvideo.ru/video_ext.php?oid=-60607921&id=456239033&hd=2" 
+                        allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" 
+                        frameborder="0" 
+                        allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <section class="poomsae-section" id="poomsae6">
+        <div class="poomsae-content">
+            <h2 class="poomsae-title animate-on-scroll">Пхумсе 6 (Тхэгук Юк Джан)</h2>
+            <p class="poomsae-description animate-on-scroll">
+                Шестая форма, символизирующая воду и текучесть. Развивает плавность и непрерывность техники.
+            </p>
+            <div class="video-container animate-on-scroll">
+                <iframe src="https://vkvideo.ru/video_ext.php?oid=-60607921&id=456239034&hd=2" 
+                        allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" 
+                        frameborder="0" 
+                        allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <section class="poomsae-section" id="poomsae7">
+        <div class="poomsae-content">
+            <h2 class="poomsae-title animate-on-scroll">Пхумсе 7 (Тхэгук Чиль Джан)</h2>
+            <p class="poomsae-description animate-on-scroll">
+                Седьмая форма, символизирующая гору и устойчивость. Учит стабильности и непоколебимости.
+            </p>
+            <div class="video-container animate-on-scroll">
+                <iframe src="https://vkvideo.ru/video_ext.php?oid=-60607921&id=456239035&hd=2" 
+                        allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" 
+                        frameborder="0" 
+                        allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <section class="poomsae-section" id="poomsae8">
+        <div class="poomsae-content">
+            <h2 class="poomsae-title animate-on-scroll">Пхумсе 8 (Тхэгук Пхаль Джан)</h2>
+            <p class="poomsae-description animate-on-scroll">
+                Восьмая форма, символизирующая землю и завершение базового цикла. Объединяет все предыдущие знания.
+            </p>
+            <div class="video-container animate-on-scroll">
+                <iframe src="https://vkvideo.ru/video_ext.php?oid=-60607921&id=456239036&hd=2" 
+                        allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" 
+                        frameborder="0" 
+                        allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Черные пояса -->
+    <section class="poomsae-section black-belt" id="koryo">
+        <div class="poomsae-content">
+            <h2 class="poomsae-title animate-on-scroll">Коре (Koryo) - 1 дан</h2>
+            <p class="poomsae-description animate-on-scroll">
+                Коре — формальный комплекс для аттестации на 1-й пум/дан. Представляет собой последовательность защитных и атакующих действий против воображаемого противника, демонстрируя мастерство и зрелость техники.
+            </p>
+            <div class="video-container animate-on-scroll">
+                <iframe src="https://vkvideo.ru/video_ext.php?oid=-60607921&id=456239037&hd=2" 
+                        allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" 
+                        frameborder="0" 
+                        allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <section class="poomsae-section black-belt" id="kumgang">
+        <div class="poomsae-content">
+            <h2 class="poomsae-title animate-on-scroll">Кумган (Kumgang) - 2 дан</h2>
+            <p class="poomsae-description animate-on-scroll">
+                Кумган — формальный комплекс для аттестации на 2-й пум/дан. Символизирует твердость и несокрушимость, как алмаз. Требует высокого уровня технического мастерства и духовной зрелости.
+            </p>
+            <div class="video-container animate-on-scroll">
+                <iframe src="https://vkvideo.ru/video_ext.php?oid=-60607921&id=456239038&hd=2" 
+                        allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" 
+                        frameborder="0" 
+                        allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Секция Фристайл -->
+    <!-- <section class="freestyle-section" id="freestyle">
+        <div class="freestyle-content">
+            <h2 class="section-title animate-on-scroll">🌟 Фристайл Пхумсе</h2>
+            <p class="freestyle-intro animate-on-scroll">
+                Фристайл пхумсе — это творческое направление в тхэквондо, где традиционные формы сочетаются с акробатикой, музыкой и артистизмом. Это зрелищное искусство, демонстрирующее высочайший уровень мастерства!
+            </p>
+
+            <div class="freestyle-video-grid">
+                <div class="freestyle-item animate-on-scroll">
+                    <h3>Победитель Наполи 2019</h3>
+                    <p>Традиционное пхумсе + фристайл</p>
+                    <div class="video-container">
+                        <iframe src="https://vkvideo.ru/video_ext.php?oid=-172812488&id=456239052&hd=2" 
+                                allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" 
+                                frameborder="0" 
+                                allowfullscreen>
+                        </iframe>
+                    </div>
+                </div>
+
+                <div class="freestyle-item animate-on-scroll">
+                    <h3>О Фристайл Пхумсе</h3>
+                    <p>Краткая информация о направлении</p>
+                    <div class="video-container">
+                        <iframe src="https://vkvideo.ru/video_ext.php?oid=-172812488&id=456239054&hd=2" 
+                                allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" 
+                                frameborder="0" 
+                                allowfullscreen>
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> -->
 
     <!-- Футер -->
-    <footer id="contact">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">
-                    <h3>TKD</h3>
-                    <p>Подпишитесь на обновления</p>
-                </div>
-                <div class="email-subscribe">
-                    <input type="email" placeholder="Введите ваш email">
-                    <button class="btn btn-primary">Подписаться</button>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 TKD. Все права защищены.</p>
-            </div>
+    <footer class="footer">
+        <div class="footer-content">
+            <p>🥋 Пхумсе Тхэквондо - Путь к совершенству</p>
+            <p class="footer-note">Тренируйтесь усердно, уважайте традиции!</p>
         </div>
     </footer>
 
