@@ -80,25 +80,25 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 // Подсветка активной ссылки в навигации
-const sections = document.querySelectorAll('section[id]');
+// const sections = document.querySelectorAll('section[id]');
 
-function highlightNavigation() {
-    const scrollY = window.pageYOffset;
+// function highlightNavigation() {
+//     const scrollY = window.pageYOffset;
     
-    sections.forEach(section => {
-        const sectionHeight = section.offsetHeight;
-        const sectionTop = section.offsetTop - navbar.offsetHeight - 100;
-        const sectionId = section.getAttribute('id');
-        const navLink = document.querySelector(`.nav-link[href="#${sectionId}"]`);
+//     sections.forEach(section => {
+//         const sectionHeight = section.offsetHeight;
+//         const sectionTop = section.offsetTop - navbar.offsetHeight - 10;
+//         const sectionId = section.getAttribute('id');
+//         const navLink = document.querySelector(`.nav-link[href="#${sectionId}"]`);
         
-        if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-            navLinks.forEach(link => link.classList.remove('active-link'));
-            if (navLink) {
-                navLink.classList.add('active-link');
-            }
-        }
-    });
-}
+//         if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+//             navLinks.forEach(link => link.classList.remove('active-link'));
+//             if (navLink) {
+//                 navLink.classList.add('active-link');
+//             }
+//         }
+//     });
+// }
 
 window.addEventListener('scroll', highlightNavigation);
 

@@ -198,12 +198,12 @@ body {
   }
 }
 
-/* Стили для остальной части сайта продолжаются ниже... */  gap: 0.5rem;
-  padding: 0.5rem 1rem;
+/* Стили для остальной части сайта продолжаются ниже...  gap: 0.5rem; */
+  /* padding: 0.5rem 1rem;
   border-radius: 20px;
   text-decoration: none;
   transition: all 0.3s ease;
-}
+} */
 
 .belt-link.yellow-belt {
   background: linear-gradient(135deg, #f4d03f 0%, #f1c40f 100%);
