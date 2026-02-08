@@ -674,6 +674,10 @@ body {
 }
 
 @media (max-width: 900px) {
+  .swiper {
+    max-width: 600px;
+    min-height: 300px;
+  }
   .hamburger {
     display: flex;
   }
