@@ -1,50 +1,52 @@
 // Темная/светлая тема
-const themeToggle = document.getElementById('theme-toggle');
-const body = document.body;
+document.addEventListener('DOMContentLoaded', function() {
+    const themeToggle = document.getElementById('theme-toggle');
+    const body = document.body;
 
-// Проверяем сохраненную тему или используем светлую по умолчанию
-const savedTheme = localStorage.getItem('theme') || 'light';
-body.setAttribute('data-theme', savedTheme);
+    // Проверяем сохраненную тему или используем темную по умолчанию
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    body.setAttribute('data-theme', savedTheme);
 
-// Обновляем иконку в зависимости от текущей темы
-if (savedTheme === 'dark') {
-    themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
-} else {
-    themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
-}
-
-// Переключение темы
-themeToggle.addEventListener('click', () => {
-    const currentTheme = body.getAttribute('data-theme');
-    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-    
-    body.setAttribute('data-theme', newTheme);
-    localStorage.setItem('theme', newTheme);
-    
-    // Обновляем иконку
-    if (newTheme === 'dark') {
+    // Обновляем иконку в зависимости от текущей темы
+    if (savedTheme === 'dark') {
         themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
     } else {
         themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
     }
-});
 
-// Мобильное меню
-const hamburger = document.getElementById('hamburger');
-const navMenu = document.getElementById('nav-menu');
+    // Переключение темы
+    themeToggle.addEventListener('click', () => {
+        const currentTheme = body.getAttribute('data-theme');
+        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
 
-hamburger.addEventListener('click', () => {
-    navMenu.classList.toggle('active');
+        body.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+
+        // Обновляем иконку
+        if (newTheme === 'dark') {
+            themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+        } else {
+            themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+        }
+    });
     
-    // Анимация гамбургера
-    hamburger.classList.toggle('active');
-});
+    // Мобильное меню
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.getElementById('nav-menu');
 
-// Закрытие меню при клике на ссылку
-document.querySelectorAll('.nav-link').forEach(link => {
-    link.addEventListener('click', () => {
-        navMenu.classList.remove('active');
-        hamburger.classList.remove('active');
+    hamburger.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
+
+        // Анимация гамбургера
+        hamburger.classList.toggle('active');
+    });
+
+    // Закрытие меню при клике на ссылку
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+            navMenu.classList.remove('active');
+            hamburger.classList.remove('active');
+        });
     });
 });
 
@@ -52,10 +54,10 @@ document.querySelectorAll('.nav-link').forEach(link => {
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
         e.preventDefault();
-        
+
         const targetId = this.getAttribute('href');
         if (targetId === '#') return;
-        
+
         const targetElement = document.querySelector(targetId);
         if (targetElement) {
             window.scrollTo({
@@ -65,7 +67,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         }
     });
 });
-
 // Модальное окно для пхумсе
 const modal = document.getElementById('poomsae-modal');
 const closeModal = document.getElementById('close-modal');

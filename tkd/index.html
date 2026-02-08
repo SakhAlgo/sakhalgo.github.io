@@ -3,17 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Poomsae Master - Изучение техники пхумсе в тхэквондо</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Изучение техники пхумсе в тхэквондо</title>
+
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body data-theme="dark">
     <!-- Навигационное меню -->
     <nav class="navbar">
         <div class="nav-container">
             <div class="logo">
-                <h2><span>TKD</span></h2>
+                <h2><span>Пхумсе тхэквондо</span></h2>
             </div>
             <div class="nav-menu" id="nav-menu">
                 <div class="belt-navigation">
@@ -24,6 +25,11 @@
                     <a href="#brown-belt" class="nav-link belt-link brown-belt" data-belt="brown">🟤 Коричневый</a>
                     <a href="#black-belt" class="nav-link belt-link black-belt" data-belt="black">⚫ Чёрный</a>
                 </div>
+            </div>
+            <div class="nav-controls">
+                <button class="theme-toggle" id="theme-toggle" aria-label="Переключить тему">
+                    <i class="fas fa-moon"></i>
+                </button>
             </div>
             <div class="hamburger" id="hamburger">
                 <span class="bar"></span>
@@ -49,7 +55,7 @@
         </div>
     </section>
 
-     <!-- Секция: Техника сдачи поясов -->
+   <!-- Секция: Техника сдачи поясов -->
     <section id="belt-ranks" class="belt-ranks-section">
       <div class="container">
         <h2 class="section-title">🥋 Техника сдачи поясов</h2>
@@ -523,7 +529,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">
-                    <h3>跆拳道 TKD</h3>
+                    <h3>TKD</h3>
                     <p>Подпишитесь на обновления</p>
                 </div>
                 <div class="email-subscribe">
@@ -536,66 +542,6 @@
             </div>
         </div>
     </footer>
-
-    <!-- Модальное окно для деталей пхумсе -->
-    <div class="modal" id="poomsae-modal">
-        <div class="modal-content">
-            <span class="close" id="close-modal">&times;</span>
-            <h2 id="modal-title">Тажеон (Taegeuk Il Jang)</h2>
-            <div class="modal-body">
-                <div class="modal-video-container">
-                    <video controls id="modal-video">
-                        <source src="https://assets.mixkit.co/videos/preview/mixkit-martial-arts-student-doing-forms-4091-large.mp4" type="video/mp4">
-                        Ваш браузер не поддерживает видео.
-                    </video>
-                </div>
-                <div class="modal-info">
-                    <h3>Историческая справка</h3>
-                    <p>Тажеон (태전) — первая форма в системе тхэквондо WTF, предназначенная для учеников с 10-го по 9-й гуп. Эта форма символизирует небо и начало всего сущего. Она состоит из основных техник: блоков, ударов и стоек, которые являются фундаментом для дальнейшего изучения более сложных форм.</p>
-                    
-                    <h3>Философское значение</h3>
-                    <p>Символ Тажеон представляет собой три линии, соединенные одной прямой линией, что символизирует небеса, землю и человека. Это напоминание о том, что все в мире взаимосвязано и гармонично.</p>
-                    
-                    <h3>Пошаговая разбивка</h3>
-                    <div class="steps-container">
-                        <div class="step">
-                            <div class="step-number">1</div>
-                            <div class="step-content">
-                                <h4>Ap Kubi (앞굽이) - Передняя стойка</h4>
-                                <p><strong>Корейский:</strong> 앞굽이<br>
-                                <strong>Техника:</strong> Встаньте прямо, ноги на ширине плеч, вес тела распределен поровну между обеими ногами. Руки свободно опущены вдоль тела.</p>
-                                <div class="muscles-involved">
-                                    <p><strong>Задействованные мышцы:</strong> Ягодицы, передняя большеберцовая мышца, мышцы кора</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="step">
-                            <div class="step-number">2</div>
-                            <div class="step-content">
-                                <h4>Are Makgi (아래막기) - Нижний блок</h4>
-                                <p><strong>Корейский:</strong> 아래막기<br>
-                                <strong>Техника:</strong> Поднимите правую руку к плечу, затем опустите вниз с внешнего края ладони до уровня бедра, одновременно делая шаг левой ногой вперед.</p>
-                                <div class="muscles-involved">
-                                    <p><strong>Задействованные мышцы:</strong> Трицепсы, передние дельты, мышцы кора</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="step">
-                            <div class="step-number">3</div>
-                            <div class="step-content">
-                                <h4>Jirugi (지르기) - Прямой удар</h4>
-                                <p><strong>Корейский:</strong> 지르기<br>
-                                <strong>Техника:</strong> Выполните прямой удар правой рукой вперед на уровне груди, левую руку отведите назад для баланса.</p>
-                                <div class="muscles-involved">
-                                    <p><strong>Задействованные мышцы:</strong> Трицепсы, передние дельты, мышцы кора</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <script src="script.js"></script>
 </body>
