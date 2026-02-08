@@ -773,6 +773,13 @@ body {
     rgba(84, 24, 24, 1) 100%
   );
 }
+
+.swiper-button-prev{
+  margin-top: 60px !important;
+}
+.swiper-button-next {
+  margin-top: 60px !important;
+}
 /* .swiper {
   width: 600px;
   height: 300px;
