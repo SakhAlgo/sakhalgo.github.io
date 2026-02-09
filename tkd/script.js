@@ -101,28 +101,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Подсветка активной ссылки в навигации
-// const sections = document.querySelectorAll('section[id]');
-
-// function highlightNavigation() {
-//     const scrollY = window.pageYOffset;
-    
-//     sections.forEach(section => {
-//         const sectionHeight = section.offsetHeight;
-//         const sectionTop = section.offsetTop - navbar.offsetHeight - 10;
-//         const sectionId = section.getAttribute('id');
-//         const navLink = document.querySelector(`.nav-link[href="#${sectionId}"]`);
-        
-//         if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-//             navLinks.forEach(link => link.classList.remove('active-link'));
-//             if (navLink) {
-//                 navLink.classList.add('active-link');
-//             }
-//         }
-//     });
-// }
-
-window.addEventListener('scroll', highlightNavigation);
 
 // Ленивая загрузка iframe для улучшения производительности
 const iframes = document.querySelectorAll('iframe');
@@ -243,6 +221,7 @@ iframes.forEach(iframe => {
 const scrollTopBtn = document.createElement('button');
 scrollTopBtn.innerHTML = '↑';
 scrollTopBtn.className = 'scroll-top-btn';
+scrollTopBtn.setAttribute('aria-label', 'Вернуться наверх');
 scrollTopBtn.style.cssText = `
     position: fixed;
     bottom: 30px;
@@ -260,6 +239,9 @@ scrollTopBtn.style.cssText = `
     transition: all 0.3s ease;
     z-index: 999;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 `;
 
 document.body.appendChild(scrollTopBtn);
@@ -290,6 +272,14 @@ scrollTopBtn.addEventListener('mouseenter', function() {
 
 scrollTopBtn.addEventListener('mouseleave', function() {
     this.style.transform = 'scale(1) translateY(0)';
+});
+
+// Убедимся, что кнопка появляется сразу при загрузке страницы, если пользователь уже прокрутил
+document.addEventListener('DOMContentLoaded', () => {
+    if (window.pageYOffset > 500) {
+        scrollTopBtn.style.opacity = '1';
+        scrollTopBtn.style.visibility = 'visible';
+    }
 });
 
 // Добавление CSS для ripple эффекта
