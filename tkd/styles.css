@@ -703,12 +703,12 @@ body {
   }
 
   .nav-menu li {
-    margin: 0.5rem 0;
+    /* margin: 0.5rem 0; */
   }
 
   .nav-link {
-    display: block;
-    padding: 1rem;
+    /* display: block; */
+    /* padding: 1rem; */
     width: 90%;
     margin: 0 auto;
   }
