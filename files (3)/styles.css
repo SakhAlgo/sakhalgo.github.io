@@ -183,7 +183,7 @@ body {
 /* Контейнер для переключателей темы и языка */
 .controls-container {
   position: fixed;
-  top: 125px;
+  top: 100px;
   right: 20px;
   z-index: 999;
   display: flex;
@@ -413,6 +413,22 @@ body {
   border: 1px solid var(--border-color);
   transition: all 0.3s ease;
 }
+/* .belts-section::after {
+  content: "";
+  position: absolute;
+  width: 380px;
+  height: 380px;
+  border-radius: 50%;
+  background: linear-gradient(
+    135deg,
+    rgba(91, 140, 255, 0.25),
+    rgba(255, 140, 107, 0.4)
+  );
+  top: -160px;
+  right: -160px;
+  z-index: 0;
+  filter: blur(4px);
+} */
 
 .subsection-title {
   font-size: 1.8rem;
@@ -923,6 +939,10 @@ body {
     right: 0;
   }
 
+  /* .nav-menu li {
+    margin: 0.5rem 0;
+  } */
+
   .nav-link {
     display: block;
     /* padding: 1rem; */
@@ -1011,7 +1031,7 @@ body {
 
   /* Адаптация переключателей для мобильных */
   .controls-container {
-    top: 90px;
+    top: 80px;
     right: 10px;
     gap: 10px;
   }

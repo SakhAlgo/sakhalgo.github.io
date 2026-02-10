@@ -20,34 +20,6 @@
   );
   --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   --shadow-hover: 0 15px 40px rgba(0, 0, 0, 0.2);
-
-  /* Цвета для светлой темы */
-  --bg-primary: #f8f9fa;
-  --bg-secondary: #ffffff;
-  --text-primary: #1a1a2e;
-  --text-secondary: #4a5568;
-  --border-color: #e2e8f0;
-  --card-bg: #ffffff;
-  --navbar-gradient: linear-gradient(135deg, #667eea 0%, #2a064f 100%);
-  --philosophy-bg: rgba(255, 255, 255, 0.95);
-  --belt-item-bg: #f7fafc;
-  --belt-item-hover: #edf2f7;
-}
-
-/* Темная тема */
-[data-theme="dark"] {
-  --bg-primary: #0f172a;
-  --bg-secondary: #1e293b;
-  --text-primary: #f1f5f9;
-  --text-secondary: #cbd5e1;
-  --border-color: #334155;
-  --card-bg: #1e293b;
-  --navbar-gradient: linear-gradient(135deg, #4c1d95 0%, #1e1b4b 100%);
-  --philosophy-bg: rgba(30, 41, 59, 0.95);
-  --belt-item-bg: #1e293b;
-  --belt-item-hover: #334155;
-  --shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-  --shadow-hover: 0 15px 40px rgba(0, 0, 0, 0.7);
 }
 
 html {
@@ -57,17 +29,14 @@ html {
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.6;
-  color: var(--text-primary);
-  background: var(--bg-primary);
+  color: var(--text-dark);
+  background: var(--bg-light);
   overflow-x: hidden;
-  transition:
-    background-color 0.3s ease,
-    color 0.3s ease;
 }
 
 /* Навигация */
 .navbar {
-  background: var(--navbar-gradient);
+  background: linear-gradient(135deg, #667eea 0%, #2a064f 100%);
   padding: 1rem 0;
   position: sticky;
   top: 0;
@@ -180,170 +149,15 @@ body {
   transform: rotate(-45deg) translate(8px, -8px);
 }
 
-/* Контейнер для переключателей темы и языка */
-.controls-container {
-  position: fixed;
-  top: 125px;
-  right: 20px;
-  z-index: 999;
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-/* Переключатель темы */
-.theme-toggle {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 55px;
-  height: 55px;
-  background: var(--navbar-gradient);
-  border-radius: 50%;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-}
-
-.theme-toggle:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-}
-
-/* Переключатель языка */
-.language-toggle {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 55px;
-  height: 55px;
-  background: var(--navbar-gradient);
-  border-radius: 50%;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-  color: white;
-}
-
-.language-toggle:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-}
-
-.theme-icon-container {
-  position: relative;
-  width: 30px;
-  height: 30px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.language-icon-container {
-  position: relative;
-  width: 30px;
-  height: 30px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-}
-
-.theme-toggle-switch {
-  position: relative;
-  width: 50px;
-  height: 26px;
-  background: rgba(255, 255, 255, 0.3);
-  border-radius: 50px;
-  transition: all 0.3s ease;
-}
-
-.theme-toggle-switch::before {
-  content: "";
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background: white;
-  top: 3px;
-  left: 3px;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-}
-
-[data-theme="dark"] .theme-toggle-switch {
-  background: rgba(255, 210, 63, 0.3);
-}
-
-[data-theme="dark"] .theme-toggle-switch::before {
-  transform: translateX(24px);
-  background: #ffd23f;
-}
-
-.theme-icon {
-  font-size: 1.5rem;
-  transition: all 0.3s ease;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.language-flag {
-  font-size: 1.5rem;
-  transition: all 0.3s ease;
-  position: absolute;
-  top: 40%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.theme-icon.sun {
-  opacity: 1;
-}
-
-.theme-icon.moon {
-  opacity: 0;
-}
-
-[data-theme="dark"] .theme-icon.sun {
-  opacity: 0;
-}
-
-[data-theme="dark"] .theme-icon.moon {
-  opacity: 1;
-}
-
-/* Языковые флаги */
-.language-flag.ru {
-  opacity: 1;
-}
-
-.language-flag.en {
-  opacity: 0;
-}
-
-[lang="en"] .language-flag.ru {
-  opacity: 0;
-}
-
-[lang="en"] .language-flag.en {
-  opacity: 1;
-}
-
-.theme-toggle-label {
-  color: var(--text-light);
-  font-size: 0.9rem;
-  font-weight: 500;
-  white-space: nowrap;
-}
-
 /* Hero секция */
 .hero {
-  background: var(--bg-secondary);
+  background: linear-gradient(
+    93deg,
+    rgb(209 229 240) 0%,
+    rgb(186 192 213) 100%
+  );
   padding: 4rem 2rem;
   min-height: auto;
-  transition: background 0.3s ease;
 }
 
 .hero-content {
@@ -375,7 +189,7 @@ body {
 }
 
 .philosophy-box {
-  background: var(--card-bg);
+  background: linear-gradient(135deg, #ffffff 10%, #dbe4ff 45%, #ffffff 100%);
   padding: 2.5rem;
   border-radius: 20px;
   box-shadow: var(--shadow);
@@ -383,7 +197,6 @@ body {
   transform: translateY(20px);
   opacity: 0;
   transition: all 0.6s ease;
-  border: 1px solid var(--border-color);
 }
 .philosophy-box img {
   max-width: 70px;
@@ -395,45 +208,57 @@ body {
 
 .philosophy-text {
   border-radius: 15px;
-  background-color: var(--card-bg);
+  background-color: white;
   font-size: 1.2rem;
   line-height: 1.8;
-  color: var(--text-primary);
+  color: var(--text-dark);
   padding: 10px;
-  transition: all 0.3s ease;
 }
 
 /* Секция поясов */
 .belts-section {
-  background: var(--card-bg);
+  background: linear-gradient(135deg, #f6f7fb 10% 10%, #e7e9f0 45%, #ffffff 100%);
   padding: 3rem;
   border-radius: 20px;
   box-shadow: var(--shadow);
   margin-top: 2rem;
-  border: 1px solid var(--border-color);
-  transition: all 0.3s ease;
 }
+/* .belts-section::after {
+  content: "";
+  position: absolute;
+  width: 380px;
+  height: 380px;
+  border-radius: 50%;
+  background: linear-gradient(
+    135deg,
+    rgba(91, 140, 255, 0.25),
+    rgba(255, 140, 107, 0.4)
+  );
+  top: -160px;
+  right: -160px;
+  z-index: 0;
+  filter: blur(4px);
+} */
 
 .subsection-title {
   font-size: 1.8rem;
-  color: var(--primary-color);
+  color: var(--secondary-color);
   text-align: center;
   margin-bottom: 1.5rem;
-  background-color: var(--card-bg);
+  background-color: white;
   border-radius: 15px;
   padding: 10px;
-  transition: all 0.3s ease;
+
 }
 
 .intro-text {
   font-size: 1.1rem;
   text-align: center;
   margin-bottom: 2rem;
-  color: var(--text-secondary);
-  background-color: var(--card-bg);
+  color: #555;
+  background-color: white;
   border-radius: 15px;
   padding: 10px;
-  transition: all 0.3s ease;
 }
 
 .belts-grid {
@@ -461,17 +286,15 @@ body {
   align-items: center;
   gap: 1rem;
   padding: 1rem;
-  background: var(--belt-item-bg);
+  background: #f8f9fa;
   border-radius: 12px;
   transition: all 0.3s ease;
   cursor: pointer;
-  border: 1px solid var(--border-color);
 }
 
 .belt-item:hover {
   transform: translateX(10px);
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  background: var(--belt-item-hover);
 }
 
 .belt-color {
@@ -524,12 +347,12 @@ body {
 
 .belt-info strong {
   font-size: 1.1rem;
-  color: var(--text-primary);
+  color: var(--text-dark);
 }
 
 .belt-info span {
   font-size: 0.9rem;
-  color: var(--text-secondary);
+  color: #666;
   font-style: italic;
 }
 
@@ -544,10 +367,8 @@ body {
   display: flex;
   gap: 1rem;
   padding: 1.5rem;
-  background: var(--belt-item-bg);
+  background: #f8f9fa;
   border-radius: 12px;
-  border: 1px solid var(--border-color);
-  transition: all 0.3s ease;
 }
 
 .dan-details {
@@ -556,7 +377,7 @@ body {
 
 .dan-details strong {
   font-size: 1.2rem;
-  color: var(--text-primary);
+  color: var(--text-dark);
   display: block;
   margin-bottom: 1rem;
 }
@@ -568,8 +389,7 @@ body {
 
 .dan-details li {
   padding: 0.5rem 0;
-  border-bottom: 1px solid var(--border-color);
-  color: var(--text-secondary);
+  border-bottom: 1px solid #e0e0e0;
 }
 
 .dan-details li:last-child {
@@ -584,23 +404,17 @@ body {
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
-[data-theme="dark"] .important-note {
-  background: linear-gradient(135deg, #795548 0%, #5d4037 100%);
-}
-
 .exam-info {
   margin-top: 2rem;
   padding: 1.5rem;
-  background: var(--card-bg);
+  background: linear-gradient(135deg, #e1e1e1 0%, #d4dee1 100%);
   border-radius: 12px;
   text-align: center;
-  border: 1px solid var(--border-color);
-  transition: all 0.3s ease;
 }
 
 .exam-text {
   font-size: 1.1rem;
-  color: var(--text-primary);
+  color: var(--text-dark);
 }
 
 /* Секции Пхумсе */
@@ -873,7 +687,7 @@ body {
     opacity: 1;
   }
 }
-.email {
+.email{
   font-size: 16px;
   color: white;
 }
@@ -922,6 +736,10 @@ body {
   .nav-menu.active {
     right: 0;
   }
+
+  /* .nav-menu li {
+    margin: 0.5rem 0;
+  } */
 
   .nav-link {
     display: block;
@@ -1007,24 +825,6 @@ body {
 
   .dan-item {
     flex-direction: column;
-  }
-
-  /* Адаптация переключателей для мобильных */
-  .controls-container {
-    top: 90px;
-    right: 10px;
-    gap: 10px;
-  }
-
-  .theme-toggle,
-  .language-toggle {
-    width: 45px;
-    height: 45px;
-  }
-
-  .theme-icon,
-  .language-flag {
-    font-size: 1.2rem;
   }
 }
 

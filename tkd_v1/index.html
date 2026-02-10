@@ -1,0 +1,1079 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Пхумсе Тхэквондо - Обучение</title>
+    <link rel="shortcut icon" href="img/icon.png" type="image/x-icon" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- Навигация -->
+    <nav class="navbar" id="navbar">
+      <div class="nav-container">
+        <div class="nav-logo">
+          <div class="logo-icon">🥋</div>
+          <h1>Пхумсе Тхэквондо</h1>
+        </div>
+
+        <div class="hamburger" id="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+
+        <ul class="nav-menu" id="navMenu">
+          <li>
+            <a href="#about" class="nav-link">
+              <img src="img/white_belt.svg" alt="White" />
+            </a>
+          </li>
+          <li>
+            <a href="#poomsae1" class="nav-link">
+              <img src="img/yellow_belt.svg" alt="Yellow" />
+            </a>
+          </li>
+          <li>
+            <a href="#poomsae2" class="nav-link">
+              <img src="img/yellow_strip_belt.svg" alt="YellowStrip" />
+            </a>
+          </li>
+          <li>
+            <a href="#poomsae3" class="nav-link">
+              <img src="img/green_belt.svg" alt="Green" />
+            </a>
+          </li>
+          <li>
+            <a href="#poomsae4" class="nav-link">
+              <img src="img/green_belt_strip.svg" alt="GreenStrip" />
+            </a>
+          </li>
+          <li>
+            <a href="#poomsae5" class="nav-link">
+              <img src="img/blue_belt.svg" alt="Blue" />
+            </a>
+          </li>
+          <li>
+            <a href="#poomsae6" class="nav-link">
+              <img src="img/blue_belt_strip.svg" alt="BlueSrip" />
+            </a>
+          </li>
+          <li>
+            <a href="#poomsae7" class="nav-link">
+              <img src="img/red_belt.svg" alt="Red" />
+            </a>
+          </li>
+          <li>
+            <a href="#poomsae8" class="nav-link">
+              <img src="img/brown_belt.svg" alt="Brown" />
+            </a>
+          </li>
+          <li>
+            <a href="#koryo" class="nav-link">
+              <img src="img/black_belt.svg" alt="Black" />
+            </a>
+          </li>
+          <!-- <li><a href="#kumgang" class="nav-link">Кумган</a></li> -->
+          <!-- <li><a href="#freestyle" class="nav-link">Фристайл</a></li> -->
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Секция описания -->
+    <section class="hero" id="about">
+      <div class="hero-content">
+        <!-- <h2 class="section-title animate-on-scroll">Что такое Пхумсе?</h2> -->
+        <div class="philosophy-box animate-on-scroll">
+          <p class="philosophy-text">
+            <img src="img/kids.png" alt="" />
+            <strong>Пхумсе (или Пумсе)</strong>
+            — это предопределённые формы в тхэквондо, представляющие собой набор
+            движений, имитирующих бой против нескольких воображаемых
+            противников. Эти формы являются важной частью тренировочного
+            процесса и помогают развивать координацию, баланс, силу и
+            концентрацию.
+          </p>
+        </div>
+
+        <!-- Иерархия поясов -->
+        <div class="belts-section animate-on-scroll">
+          <h3 class="subsection-title">Иерархия в Тхэквондо</h3>
+          <p class="intro-text">
+            В тхэквондо иерархия делится на ученические степени (гып) и
+            мастерские (дан). Путь начинается с 10-го гыпа и идет по убывающей к
+            1-му, после чего следует 1-й дан.
+          </p>
+
+          <div class="belts-grid">
+            <div class="belt-category">
+              <h4>Ученические пояса (Гыпы)</h4>
+              <div class="belt-list">
+                <div class="belt-item" data-belt="white">
+                  <div class="belt-color white"></div>
+                  <div class="belt-info">
+                    <strong>Белый (10 гып)</strong>
+                    <span>Уровень новичка</span>
+                  </div>
+                </div>
+                <div class="belt-item" data-belt="white-yellow">
+                  <div class="belt-color white-yellow"></div>
+                  <div class="belt-info">
+                    <strong>Бело-желтый (9 гып)</strong>
+                    <span>Переходный этап</span>
+                  </div>
+                </div>
+                <div class="belt-item" data-belt="yellow">
+                  <div class="belt-color yellow"></div>
+                  <div class="belt-info">
+                    <strong>Желтый (8 гып)</strong>
+                    <span>Фундамент мастерства</span>
+                  </div>
+                </div>
+                <div class="belt-item" data-belt="yellow-green">
+                  <div class="belt-color yellow-green"></div>
+                  <div class="belt-info">
+                    <strong>Желто-зеленый (7 гып)</strong>
+                  </div>
+                </div>
+                <div class="belt-item" data-belt="green">
+                  <div class="belt-color green"></div>
+                  <div class="belt-info">
+                    <strong>Зеленый (6 гып)</strong>
+                    <span>Символ роста навыков</span>
+                  </div>
+                </div>
+                <div class="belt-item" data-belt="green-blue">
+                  <div class="belt-color green-blue"></div>
+                  <div class="belt-info">
+                    <strong>Зелено-синий (5 гып)</strong>
+                  </div>
+                </div>
+                <div class="belt-item" data-belt="blue">
+                  <div class="belt-color blue"></div>
+                  <div class="belt-info">
+                    <strong>Синий (4 гып)</strong>
+                    <span>Уверенное владение техникой</span>
+                  </div>
+                </div>
+                <div class="belt-item" data-belt="blue-red">
+                  <div class="belt-color blue-red"></div>
+                  <div class="belt-info">
+                    <strong>Сине-красный (3 гып)</strong>
+                  </div>
+                </div>
+                <div class="belt-item" data-belt="red">
+                  <div class="belt-color red"></div>
+                  <div class="belt-info">
+                    <strong>Красный (2 гып)</strong>
+                    <span>Высокий уровень, требующий самоконтроля</span>
+                  </div>
+                </div>
+                <div class="belt-item" data-belt="red-black">
+                  <div class="belt-color red-black"></div>
+                  <div class="belt-info">
+                    <strong>Красно-черный (1 гып)</strong>
+                    <span>Подготовка к мастерству</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="belt-category">
+              <h4>Мастерские степени (Даны)</h4>
+              <div class="dan-info">
+                <div class="dan-item">
+                  <div class="belt-color black"></div>
+                  <div class="dan-details">
+                    <strong>Черный пояс (1–9 даны)</strong>
+                    <ul>
+                      <li>
+                        <strong>1–3 дан:</strong>
+                        Помощник инструктора / Инструктор
+                      </li>
+                      <li>
+                        <strong>4–6 дан:</strong>
+                        Мастер (сабом)
+                      </li>
+                      <li>
+                        <strong>7–9 дан:</strong>
+                        Великий мастер (сасон)
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="important-note">
+                  <strong>⚠️ Важно:</strong>
+                  Дети до 15 лет вместо черного пояса получают красно-черный
+                  пояс «Пум», который при достижении совершеннолетия
+                  автоматически заменяется на соответствующий дан.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="exam-info animate-on-scroll">
+            <p class="exam-text">
+              <strong>Требования на экзаменах (аттестациях)</strong>
+              делятся на несколько ключевых блоков. Чем выше пояс, тем сложнее и
+              объемнее становятся задания.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Секции видео Пхумсе -->
+    <section class="poomsae-section" id="poomsae1">
+      <!-- начало -->
+      <div class="swiper">
+        <!-- Additional required wrapper -->
+        <div class="swiper-wrapper">
+          <!-- Slides -->
+          <div class="swiper-slide">
+            <div class="poomsae-content">
+              <h2 class="poomsae-title animate-on-scroll">
+                Пхумсе 1 (Тхэгук Иль Джан)
+              </h2>
+              <p class="poomsae-description animate-on-scroll">
+                Первая форма, символизирующая небо и начало пути в тхэквондо.
+                Основа для всех последующих форм.
+              </p>
+              <div class="video-container animate-on-scroll">
+                <iframe
+                  src="https://vkvideo.ru/video_ext.php?oid=-235853800&id=456239019&hash=2dbf703c78b50284&hd=3"
+                  width="1280"
+                  height="720"
+                  allow="
+                    autoplay;
+                    encrypted-media;
+                    fullscreen;
+                    picture-in-picture;
+                    screen-wake-lock;
+                  "
+                  frameborder="0"
+                  allowfullscreen
+                ></iframe>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="poomsae-content">
+              <h2 class="poomsae-title animate-on-scroll">
+                Пхумсе 1 (Тхэгук Иль Джан)
+              </h2>
+              <p class="poomsae-description animate-on-scroll">
+                Первая форма, символизирующая небо и начало пути в тхэквондо.
+                Основа для всех последующих форм.
+              </p>
+              <div class="video-container animate-on-scroll">
+                <iframe
+                  src="https://vkvideo.ru/video_ext.php?oid=-235853800&id=456239017&hash=0db77e50c48a4f77&hd=3"
+                  width="1280"
+                  height="720"
+                  allow="
+                    autoplay;
+                    encrypted-media;
+                    fullscreen;
+                    picture-in-picture;
+                    screen-wake-lock;
+                  "
+                  frameborder="0"
+                  allowfullscreen
+                ></iframe>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="poomsae-content">
+              <h2 class="poomsae-title animate-on-scroll">
+                Пхумсе 1 (Тхэгук Иль Джан)
+              </h2>
+              <p class="poomsae-description animate-on-scroll">
+                Первая форма, символизирующая небо и начало пути в тхэквондо.
+                Основа для всех последующих форм.
+              </p>
+              <div class="video-container animate-on-scroll">
+                <iframe
+                  src="https://vkvideo.ru/video_ext.php?oid=-60607921&id=456239029&hd=2"
+                  allow="
+                    autoplay;
+                    encrypted-media;
+                    fullscreen;
+                    picture-in-picture;
+                    screen-wake-lock;
+                  "
+                  frameborder="0"
+                  allowfullscreen
+                ></iframe>
+              </div>
+            </div>
+          </div>
+          ...
+        </div>
+        <!-- If we need pagination -->
+        <div class="swiper-pagination"></div>
+
+        <!-- If we need navigation buttons -->
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+
+        <!-- If we need scrollbar -->
+        <div class="swiper-scrollbar"></div>
+      </div>
+      <!-- конец -->
+    </section>
+
+    <section class="poomsae-section" id="poomsae2">
+      <div class="swiper">
+        <!-- Additional required wrapper -->
+        <div class="swiper-wrapper">
+          <!-- Slides -->
+          <div class="swiper-slide">
+            <div class="poomsae-content">
+              <h2 class="poomsae-title animate-on-scroll">
+                Пхумсе 2 (Тхэгук И Джан)
+              </h2>
+              <p class="poomsae-description animate-on-scroll">
+                Вторая форма, символизирующая радость и внутреннюю силу.
+                Развивает уверенность в движениях.
+              </p>
+              <div class="video-container animate-on-scroll">
+                <iframe
+                  src="https://vkvideo.ru/video_ext.php?oid=-235853800&id=456239018&hash=f1af63bbc1b3c2b4&hd=3"
+                  width="1280"
+                  height="720"
+                  allow="
+                    autoplay;
+                    encrypted-media;
+                    fullscreen;
+                    picture-in-picture;
+                    screen-wake-lock;
+                  "
+                  frameborder="0"
+                  allowfullscreen
+                ></iframe>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="poomsae-content">
+              <h2 class="poomsae-title animate-on-scroll">
+                Пхумсе 2 (Тхэгук И Джан)
+              </h2>
+              <p class="poomsae-description animate-on-scroll">
+                Вторая форма, символизирующая радость и внутреннюю силу.
+                Развивает уверенность в движениях.
+              </p>
+              <div class="video-container animate-on-scroll">
+                <iframe
+                  src="https://vkvideo.ru/video_ext.php?oid=-235853800&id=456239020&hash=c51015d54e10b4f5&hd=3"
+                  width="1280"
+                  height="720"
+                  allow="
+                    autoplay;
+                    encrypted-media;
+                    fullscreen;
+                    picture-in-picture;
+                    screen-wake-lock;
+                  "
+                  frameborder="0"
+                  allowfullscreen
+                ></iframe>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="poomsae-content">
+              <h2 class="poomsae-title animate-on-scroll">
+                Пхумсе 2 (Тхэгук И Джан)
+              </h2>
+              <p class="poomsae-description animate-on-scroll">
+                Вторая форма, символизирующая радость и внутреннюю силу.
+                Развивает уверенность в движениях.
+              </p>
+              <div class="video-container animate-on-scroll">
+                <iframe
+                  src="https://vkvideo.ru/video_ext.php?oid=-60607921&id=456239030&hd=2"
+                  allow="
+                    autoplay;
+                    encrypted-media;
+                    fullscreen;
+                    picture-in-picture;
+                    screen-wake-lock;
+                  "
+                  frameborder="0"
+                  allowfullscreen
+                ></iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- If we need pagination -->
+        <div class="swiper-pagination"></div>
+
+        <!-- If we need navigation buttons -->
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+
+        <!-- If we need scrollbar -->
+        <div class="swiper-scrollbar"></div>
+        <!-- </div> -->
+      </div>
+    </section>
+
+    <section class="poomsae-section" id="poomsae3">
+      <div class="swiper">
+        <!-- Additional required wrapper -->
+        <div class="swiper-wrapper">
+          <!-- Slides -->
+          <div class="swiper-slide">
+            <div class="poomsae-content">
+              <h2 class="poomsae-title animate-on-scroll">
+                Пхумсе 3 (Тхэгук Сам Джан)
+              </h2>
+              <p class="poomsae-description animate-on-scroll">
+                Третья форма, символизирующая огонь и энергию. Учит
+                контролировать силу и скорость.
+              </p>
+              <div class="video-container animate-on-scroll">
+                <iframe
+                  src="https://vkvideo.ru/video_ext.php?oid=-235853800&id=456239021&hash=588433fb20608e49&hd=3"
+                  width="1280"
+                  height="720"
+                  allow="
+                    autoplay;
+                    encrypted-media;
+                    fullscreen;
+                    picture-in-picture;
+                    screen-wake-lock;
+                  "
+                  frameborder="0"
+                  allowfullscreen
+                ></iframe>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="poomsae-content">
+              <h2 class="poomsae-title animate-on-scroll">
+                Пхумсе 3 (Тхэгук Сам Джан)
+              </h2>
+              <p class="poomsae-description animate-on-scroll">
+                Третья форма, символизирующая огонь и энергию. Учит
+                контролировать силу и скорость.
+              </p>
+              <div class="video-container animate-on-scroll">
+                <iframe
+                  src="https://vkvideo.ru/video_ext.php?oid=-235853800&id=456239022&hash=533fefc067a43e2a&hd=3"
+                  width="1280"
+                  height="720"
+                  allow="
+                    autoplay;
+                    encrypted-media;
+                    fullscreen;
+                    picture-in-picture;
+                    screen-wake-lock;
+                  "
+                  frameborder="0"
+                  allowfullscreen
+                ></iframe>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="poomsae-content">
+              <h2 class="poomsae-title animate-on-scroll">
+                Пхумсе 3 (Тхэгук Сам Джан)
+              </h2>
+              <p class="poomsae-description animate-on-scroll">
+                Третья форма, символизирующая огонь и энергию. Учит
+                контролировать силу и скорость.
+              </p>
+              <div class="video-container animate-on-scroll">
+                <iframe
+                  src="https://vkvideo.ru/video_ext.php?oid=-60607921&id=456239031&hd=2"
+                  allow="
+                    autoplay;
+                    encrypted-media;
+                    fullscreen;
+                    picture-in-picture;
+                    screen-wake-lock;
+                  "
+                  frameborder="0"
+                  allowfullscreen
+                ></iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- If we need pagination -->
+        <div class="swiper-pagination"></div>
+
+        <!-- If we need navigation buttons -->
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+
+        <!-- If we need scrollbar -->
+        <div class="swiper-scrollbar"></div>
+        <!-- </div> -->
+      </div>
+    </section>
+
+    <section class="poomsae-section" id="poomsae4">
+      <div class="swiper">
+        <!-- Additional required wrapper -->
+        <div class="swiper-wrapper">
+          <!-- Slides -->
+          <div class="swiper-slide">
+            <div class="poomsae-content">
+              <h2 class="poomsae-title animate-on-scroll">
+                Пхумсе 4 (Тхэгук Са Джан)
+              </h2>
+              <p class="poomsae-description animate-on-scroll">
+                Четвертая форма, символизирующая гром и мощь. Развивает силу и
+                решительность.
+              </p>
+              <div class="video-container animate-on-scroll">
+                <iframe
+                  src="https://vkvideo.ru/video_ext.php?oid=-235853800&id=456239027&hash=73f80b50e81c40ca&hd=3"
+                  width="1280"
+                  height="720"
+                  allow="
+                    autoplay;
+                    encrypted-media;
+                    fullscreen;
+                    picture-in-picture;
+                    screen-wake-lock;
+                  "
+                  frameborder="0"
+                  allowfullscreen
+                ></iframe>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="poomsae-content">
+              <h2 class="poomsae-title animate-on-scroll">
+                Пхумсе 4 (Тхэгук Са Джан)
+              </h2>
+              <p class="poomsae-description animate-on-scroll">
+                Четвертая форма, символизирующая гром и мощь. Развивает силу и
+                решительность.
+              </p>
+              <div class="video-container animate-on-scroll">
+                <iframe
+                  src="https://vkvideo.ru/video_ext.php?oid=-60607921&id=456239032&hd=2"
+                  allow="
+                    autoplay;
+                    encrypted-media;
+                    fullscreen;
+                    picture-in-picture;
+                    screen-wake-lock;
+                  "
+                  frameborder="0"
+                  allowfullscreen
+                ></iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- If we need pagination -->
+        <div class="swiper-pagination"></div>
+
+        <!-- If we need navigation buttons -->
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+
+        <!-- If we need scrollbar -->
+        <div class="swiper-scrollbar"></div>
+        <!-- </div> -->
+      </div>
+    </section>
+
+    <section class="poomsae-section" id="poomsae5">
+      <div class="swiper">
+        <!-- Additional required wrapper -->
+        <div class="swiper-wrapper">
+          <!-- Slides -->
+          <div class="swiper-slide">
+            <div class="poomsae-content">
+              <h2 class="poomsae-title animate-on-scroll">
+                Пхумсе 5 (Тхэгук О Джан)
+              </h2>
+              <p class="poomsae-description animate-on-scroll">
+                Пятая форма, символизирующая ветер и гибкость. Учит плавности и
+                адаптивности движений.
+              </p>
+              <div class="video-container animate-on-scroll">
+                <iframe
+                  src="https://vkvideo.ru/video_ext.php?oid=-235853800&id=456239028&hash=5926b159e01a65e8&hd=3"
+                  width="1280"
+                  height="720"
+                  allow="
+                    autoplay;
+                    encrypted-media;
+                    fullscreen;
+                    picture-in-picture;
+                    screen-wake-lock;
+                  "
+                  frameborder="0"
+                  allowfullscreen
+                ></iframe>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="poomsae-content">
+              <h2 class="poomsae-title animate-on-scroll">
+                Пхумсе 5 (Тхэгук О Джан)
+              </h2>
+              <p class="poomsae-description animate-on-scroll">
+                Пятая форма, символизирующая ветер и гибкость. Учит плавности и
+                адаптивности движений.
+              </p>
+              <div class="video-container animate-on-scroll">
+                <iframe
+                  src="https://vkvideo.ru/video_ext.php?oid=-60607921&id=456239033&hd=2"
+                  allow="
+                    autoplay;
+                    encrypted-media;
+                    fullscreen;
+                    picture-in-picture;
+                    screen-wake-lock;
+                  "
+                  frameborder="0"
+                  allowfullscreen
+                ></iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- If we need pagination -->
+        <div class="swiper-pagination"></div>
+
+        <!-- If we need navigation buttons -->
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+
+        <!-- If we need scrollbar -->
+        <div class="swiper-scrollbar"></div>
+        <!-- </div> -->
+      </div>
+    </section>
+
+    <section class="poomsae-section" id="poomsae6">
+      <div class="swiper">
+        <!-- Additional required wrapper -->
+        <div class="swiper-wrapper">
+          <!-- Slides -->
+          <div class="swiper-slide">
+            <div class="poomsae-content">
+              <h2 class="poomsae-title animate-on-scroll">
+                Пхумсе 6 (Тхэгук Юк Джан)
+              </h2>
+              <p class="poomsae-description animate-on-scroll">
+                Шестая форма, символизирующая воду и текучесть. Развивает
+                плавность и непрерывность техники.
+              </p>
+              <div class="video-container animate-on-scroll">
+                <iframe
+                  src="https://vkvideo.ru/video_ext.php?oid=-235853800&id=456239029&hash=5017d5b8e4c44eb6&hd=3"
+                  width="1280"
+                  height="720"
+                  allow="
+                    autoplay;
+                    encrypted-media;
+                    fullscreen;
+                    picture-in-picture;
+                    screen-wake-lock;
+                  "
+                  frameborder="0"
+                  allowfullscreen
+                ></iframe>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="poomsae-content">
+              <h2 class="poomsae-title animate-on-scroll">
+                Пхумсе 6 (Тхэгук Юк Джан)
+              </h2>
+              <p class="poomsae-description animate-on-scroll">
+                Шестая форма, символизирующая воду и текучесть. Развивает
+                плавность и непрерывность техники.
+              </p>
+              <div class="video-container animate-on-scroll">
+                <iframe
+                  src="https://vkvideo.ru/video_ext.php?oid=-60607921&id=456239034&hd=2"
+                  allow="
+                    autoplay;
+                    encrypted-media;
+                    fullscreen;
+                    picture-in-picture;
+                    screen-wake-lock;
+                  "
+                  frameborder="0"
+                  allowfullscreen
+                ></iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- If we need pagination -->
+        <div class="swiper-pagination"></div>
+
+        <!-- If we need navigation buttons -->
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+
+        <!-- If we need scrollbar -->
+        <div class="swiper-scrollbar"></div>
+        <!-- </div> -->
+      </div>
+    </section>
+
+    <section class="poomsae-section" id="poomsae7">
+      <div class="swiper">
+        <!-- Additional required wrapper -->
+        <div class="swiper-wrapper">
+          <!-- Slides -->
+          <div class="swiper-slide">
+            <div class="poomsae-content">
+              <h2 class="poomsae-title animate-on-scroll">
+                Пхумсе 7 (Тхэгук Чиль Джан)
+              </h2>
+              <p class="poomsae-description animate-on-scroll">
+                Седьмая форма, символизирующая гору и устойчивость. Учит
+                стабильности и непоколебимости.
+              </p>
+              <div class="video-container animate-on-scroll">
+                <iframe
+                  src="https://vkvideo.ru/video_ext.php?oid=-235853800&id=456239030&hash=d7406867f05ff001&hd=3"
+                  width="1280"
+                  height="720"
+                  allow="
+                    autoplay;
+                    encrypted-media;
+                    fullscreen;
+                    picture-in-picture;
+                    screen-wake-lock;
+                  "
+                  frameborder="0"
+                  allowfullscreen
+                ></iframe>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="poomsae-content">
+              <h2 class="poomsae-title animate-on-scroll">
+                Пхумсе 7 (Тхэгук Чиль Джан)
+              </h2>
+              <p class="poomsae-description animate-on-scroll">
+                Седьмая форма, символизирующая гору и устойчивость. Учит
+                стабильности и непоколебимости.
+              </p>
+              <div class="video-container animate-on-scroll">
+                <iframe
+                  src="https://vkvideo.ru/video_ext.php?oid=-60607921&id=456239035&hd=2"
+                  allow="
+                    autoplay;
+                    encrypted-media;
+                    fullscreen;
+                    picture-in-picture;
+                    screen-wake-lock;
+                  "
+                  frameborder="0"
+                  allowfullscreen
+                ></iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- If we need pagination -->
+        <div class="swiper-pagination"></div>
+
+        <!-- If we need navigation buttons -->
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+
+        <!-- If we need scrollbar -->
+        <div class="swiper-scrollbar"></div>
+        <!-- </div> -->
+      </div>
+    </section>
+
+    <section class="poomsae-section" id="poomsae8">
+      <div class="swiper">
+        <!-- Additional required wrapper -->
+        <div class="swiper-wrapper">
+          <!-- Slides -->
+          <div class="swiper-slide">
+            <div class="poomsae-content">
+              <h2 class="poomsae-title animate-on-scroll">
+                Пхумсе 8 (Тхэгук Пхаль Джан)
+              </h2>
+              <p class="poomsae-description animate-on-scroll">
+                Восьмая форма, символизирующая землю и завершение базового
+                цикла. Объединяет все предыдущие знания.
+              </p>
+              <div class="video-container animate-on-scroll">
+                <iframe
+                  src="https://vkvideo.ru/video_ext.php?oid=-235853800&id=456239031&hash=36af5227149bccbb&hd=3"
+                  width="1280"
+                  height="720"
+                  allow="
+                    autoplay;
+                    encrypted-media;
+                    fullscreen;
+                    picture-in-picture;
+                    screen-wake-lock;
+                  "
+                  frameborder="0"
+                  allowfullscreen
+                ></iframe>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="poomsae-content">
+              <h2 class="poomsae-title animate-on-scroll">
+                Пхумсе 8 (Тхэгук Пхаль Джан)
+              </h2>
+              <p class="poomsae-description animate-on-scroll">
+                Восьмая форма, символизирующая землю и завершение базового
+                цикла. Объединяет все предыдущие знания.
+              </p>
+              <div class="video-container animate-on-scroll">
+                <iframe
+                  src="https://vkvideo.ru/video_ext.php?oid=-60607921&id=456239036&hd=2"
+                  allow="
+                    autoplay;
+                    encrypted-media;
+                    fullscreen;
+                    picture-in-picture;
+                    screen-wake-lock;
+                  "
+                  frameborder="0"
+                  allowfullscreen
+                ></iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- If we need pagination -->
+        <div class="swiper-pagination"></div>
+
+        <!-- If we need navigation buttons -->
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+
+        <!-- If we need scrollbar -->
+        <div class="swiper-scrollbar"></div>
+        <!-- </div> -->
+      </div>
+    </section>
+
+    <!-- Черные пояса -->
+    <section class="poomsae-section black-belt" id="koryo">
+      <div class="swiper">
+        <!-- Additional required wrapper -->
+        <div class="swiper-wrapper">
+          <!-- Slides -->
+          <div class="swiper-slide">
+            <div class="poomsae-content">
+              <h2 class="poomsae-title animate-on-scroll">
+                Коре (Koryo) - 1 дан
+              </h2>
+              <p class="poomsae-description animate-on-scroll">
+                Коре — формальный комплекс для аттестации на 1-й пум/дан.
+                Представляет собой последовательность защитных и атакующих
+                действий против воображаемого противника, демонстрируя
+                мастерство и зрелость техники.
+              </p>
+              <div class="video-container animate-on-scroll">
+                <iframe
+                  src="https://vkvideo.ru/video_ext.php?oid=-235853800&id=456239032&hash=180c7b77fafe30a7&hd=3"
+                  width="1280"
+                  height="720"
+                  allow="
+                    autoplay;
+                    encrypted-media;
+                    fullscreen;
+                    picture-in-picture;
+                    screen-wake-lock;
+                  "
+                  frameborder="0"
+                  allowfullscreen
+                ></iframe>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="poomsae-content">
+              <h2 class="poomsae-title animate-on-scroll">
+                Коре (Koryo) - 1 дан
+              </h2>
+              <p class="poomsae-description animate-on-scroll">
+                Коре — формальный комплекс для аттестации на 1-й пум/дан.
+                Представляет собой последовательность защитных и атакующих
+                действий против воображаемого противника, демонстрируя
+                мастерство и зрелость техники.
+              </p>
+              <div class="video-container animate-on-scroll">
+                <iframe
+                  src="https://vkvideo.ru/video_ext.php?oid=-60607921&id=456239037&hd=2"
+                  allow="
+                    autoplay;
+                    encrypted-media;
+                    fullscreen;
+                    picture-in-picture;
+                    screen-wake-lock;
+                  "
+                  frameborder="0"
+                  allowfullscreen
+                ></iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- If we need pagination -->
+        <div class="swiper-pagination"></div>
+
+        <!-- If we need navigation buttons -->
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+
+        <!-- If we need scrollbar -->
+        <div class="swiper-scrollbar"></div>
+        <!-- </div> -->
+      </div>
+    </section>
+
+    <section class="poomsae-section black-belt" id="kumgang">
+      <div class="swiper">
+        <!-- Additional required wrapper -->
+        <div class="swiper-wrapper">
+          <!-- Slides -->
+          <div class="swiper-slide">
+            <div class="poomsae-content">
+              <h2 class="poomsae-title animate-on-scroll">
+                Кумган (Kumgang) - 2 дан
+              </h2>
+              <p class="poomsae-description animate-on-scroll">
+                Кумган — формальный комплекс для аттестации на 2-й пум/дан.
+                Символизирует твердость и несокрушимость, как алмаз. Требует
+                высокого уровня технического мастерства и духовной зрелости.
+              </p>
+              <div class="video-container animate-on-scroll">
+                <iframe
+                  src="https://vkvideo.ru/video_ext.php?oid=-235853800&id=456239032&hash=180c7b77fafe30a7&hd=3"
+                  width="1280"
+                  height="720"
+                  allow="
+                    autoplay;
+                    encrypted-media;
+                    fullscreen;
+                    picture-in-picture;
+                    screen-wake-lock;
+                  "
+                  frameborder="0"
+                  allowfullscreen
+                ></iframe>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="poomsae-content">
+              <h2 class="poomsae-title animate-on-scroll">
+                Кумган (Kumgang) - 2 дан
+              </h2>
+              <p class="poomsae-description animate-on-scroll">
+                Кумган — формальный комплекс для аттестации на 2-й пум/дан.
+                Символизирует твердость и несокрушимость, как алмаз. Требует
+                высокого уровня технического мастерства и духовной зрелости.
+              </p>
+              <div class="video-container animate-on-scroll">
+                <iframe
+                  src="https://vkvideo.ru/video_ext.php?oid=-235853800&id=456239033&hash=1fb1787ed3ec97a9&hd=3"
+                  width="1280"
+                  height="720"
+                  allow="
+                    autoplay;
+                    encrypted-media;
+                    fullscreen;
+                    picture-in-picture;
+                    screen-wake-lock;
+                  "
+                  frameborder="0"
+                  allowfullscreen
+                ></iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- If we need pagination -->
+        <div class="swiper-pagination"></div>
+
+        <!-- If we need navigation buttons -->
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+
+        <!-- If we need scrollbar -->
+        <div class="swiper-scrollbar"></div>
+        <!-- </div> -->
+      </div>
+    </section>
+
+    <!-- Секция Фристайл -->
+    <!-- <section class="freestyle-section" id="freestyle">
+        <div class="freestyle-content">
+            <h2 class="section-title animate-on-scroll">🌟 Фристайл Пхумсе</h2>
+            <p class="freestyle-intro animate-on-scroll">
+                Фристайл пхумсе — это творческое направление в тхэквондо, где традиционные формы сочетаются с акробатикой, музыкой и артистизмом. Это зрелищное искусство, демонстрирующее высочайший уровень мастерства!
+            </p>
+
+            <div class="freestyle-video-grid">
+                <div class="freestyle-item animate-on-scroll">
+                    <h3>Победитель Наполи 2019</h3>
+                    <p>Традиционное пхумсе + фристайл</p>
+                    <div class="video-container">
+                        <iframe src="https://vkvideo.ru/video_ext.php?oid=-172812488&id=456239052&hd=2" 
+                                allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" 
+                                frameborder="0" 
+                                allowfullscreen>
+                        </iframe>
+                    </div>
+                </div>
+
+                <div class="freestyle-item animate-on-scroll">
+                    <h3>О Фристайл Пхумсе</h3>
+                    <p>Краткая информация о направлении</p>
+                    <div class="video-container">
+                        <iframe src="https://vkvideo.ru/video_ext.php?oid=-172812488&id=456239054&hd=2" 
+                                allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" 
+                                frameborder="0" 
+                                allowfullscreen>
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> -->
+
+    <!-- Футер -->
+    <footer class="footer">
+      <div class="footer-content">
+        <p>🥋 Пхумсе Тхэквондо - Путь к совершенству</p>
+        <p class="footer-note">Тренируйтесь усердно, уважайте традиции!</p>
+        <a class="email" href="mailto:sakhalgo@gmail.com">sakhalgo@gmail.com</a>
+      </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
