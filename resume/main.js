@@ -34,18 +34,6 @@
             });
         }
 
-        // Theme toggle
-        function toggleTheme() {
-            document.body.classList.toggle('dark-theme');
-            const isDark = document.body.classList.contains('dark-theme');
-            document.querySelector('.theme-toggle').textContent = isDark ? '☀️' : '🌙';
-            localStorage.setItem('theme', isDark ? 'dark' : 'light');
-        }
-
-        // Load theme from localStorage
-        if (localStorage.getItem('theme') === 'dark') {
-            toggleTheme();
-        }
 
         // Photo upload
         function handlePhotoUpload(event) {

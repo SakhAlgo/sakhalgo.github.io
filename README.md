@@ -1,35 +1,41 @@
-# Workspace Overview
+# Платформа разработок автора
 
-This repository contains various web development projects and examples created by our team.
+Репозиторий представляет собой коллекцию веб-приложений и сервисов, созданных для решения практических задач.
 
-## Projects Included
+📧 **Контактная почта:** [sakhalgo@gmail.com](mailto:sakhalgo@gmail.com)
 
-- **TestBroodstrap**: A Bootstrap-based test project
-- **bwlanding**: A landing page project with CSS, fonts, images and JavaScript
-- **dveri-master**: A comprehensive website project with multiple pages (index, about, catalog, contacts, etc.)
-- **fclanding**: Another landing page project
-- **fragment1** & **fragment2**: Design fragment projects
-- **examples**: Contains Figma design examples
-- **makets**: Contains archived versions of projects
-- **test**: A simple test project
+---
 
-## Project Details
+## 🚀 Проекты
 
-Each project folder typically includes:
-- HTML files for structure
-- CSS folders for styling
-- JS folders for interactivity
-- Image assets
-- Font resources
+### 📄 [Сервис создания резюме](https://sakhalgo.github.io/resume/)
+Генератор профессиональных резюме с удобным интерфейсом и современным дизайном.
 
-## Usage
+---
 
-To explore any specific project, navigate to its directory and open the index.html file in a web browser.
+### 🥋 [Сервис обучения пхумсэ тхэквондо](https://sakhalgo.github.io/tkd/)
+Интерактивная платформа для изучения формальных комплексов в тхэквондо.
 
-## Technologies Used
+---
 
+### 🧮 [Калькулятор кулинарных рецептов](https://sakhalgo.github.io/calc/)
+Умный калькулятор с автоматическим пересчетом ингредиентов. Просто меняйте количество порций — остальное программа сделает сама.
+
+---
+
+## 🛠 Технологический стек
+
+**Базовые технологии:**
 - HTML5
 - CSS3
 - JavaScript
-- Bootstrap (in some projects)
-- Various image and font assets
+
+**Фреймворки и библиотеки:**
+- [Bootstrap 5.3.8](https://getbootstrap.com/) — CSS и JS фреймворк
+- [Bootstrap Icons](https://icons.getbootstrap.com/) — векторные иконки
+- [List.js](https://listjs.com/) — поиск и фильтрация данных
+- [SweetAlert2](https://sweetalert2.github.io/) — улучшенные диалоговые окна
+
+---
+
+*Репозиторий постоянно развивается, добавляются новые проекты и функциональность* ⚡

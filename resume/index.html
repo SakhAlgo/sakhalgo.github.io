@@ -3,7 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ResumeLite - Конструктор профессиональных резюме</title>
+    <title>ResumeBuilder - Конструктор резюме</title>
+    <link rel="shortcut icon" href="img/icon.png" type="image/x-icon" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
     <link rel="stylesheet" href="style.css" />
@@ -12,7 +13,7 @@
     <!-- Header -->
     <header class="header">
       <div class="header-content">
-        <div class="logo">📄 ResumeLite</div>
+        <div class="logo"><img src="img/icon.png" alt=""> ResumeBuilder</div>
         <nav class="nav-menu">
           <div class="header-actions">
             <button
@@ -24,10 +25,18 @@
             <button class="btn btn-secondary" onclick="openModal('tipsModal')">
               💡 Советы
             </button>
-            <button class="btn btn-secondary" onclick="openModal('historyModal')">
+            <button
+              class="btn btn-secondary"
+              onclick="openModal('historyModal')"
+            >
               ⏱️ История
             </button>
-            <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
+            <button
+              class="btn btn-secondary"
+              onclick="openModal('contactsModal')"
+            >
+              📞 Контакты
+            </button>
           </div>
         </nav>
         <div class="hamburger-menu" onclick="toggleMobileMenu()">
@@ -153,7 +162,6 @@
             onchange="updatePreview()"
           ></textarea>
         </div>
-
       </aside>
 
       <!-- Main Editor Area -->
@@ -485,7 +493,7 @@
           </li>
           <li>
             <strong>Краткость:</strong>
-            Оптимальная длина - 1-2 страницы
+            Оптимальная длина - 1 страница
           </li>
           <li>
             <strong>Проверяйте орфографию:</strong>
@@ -530,6 +538,28 @@
           </button>
         </div>
         <div id="savedResumesList"></div>
+      </div>
+    </div>
+
+    <!-- Contacts Modal -->
+    <div id="contactsModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title">📞 Контакты</h3>
+          <button class="close-modal" onclick="closeModal('contactsModal')">
+            ✕
+          </button>
+        </div>
+        <div>
+          <p>
+            Если вы нашли ошибку, напишите email:
+            <a href="mailto:sakhalgo@gmail.com">sakhalgo@gmail.com</a>
+          </p>
+          <p>
+            Если хотите поблагодарить: карта Сбербанка:
+            <strong>2202208058784589</strong>
+          </p>
+        </div>
       </div>
     </div>
 

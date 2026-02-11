@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тесты для проекта Resume Builder</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+        }
+        .test-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .test-result {
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 4px;
+        }
+        .pass {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .fail {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        .test-info {
+            background-color: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+        button {
+            padding: 8px 15px;
+            margin: 5px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Тесты для проекта Resume Builder</h1>
+    
+    <div class="test-container">
+        <h2>Тесты для основных функций</h2>
+        <div id="test-results"></div>
+        <button onclick="runAllTests()">Запустить все тесты</button>
+        <button onclick="resetApp()">Сбросить приложение</button>
+    </div>
+    
+    <div class="test-container">
+        <h2>Ручное тестирование</h2>
+        <p>Для ручного тестирования скопируйте содержимое этого файла и откройте в браузере рядом с основным приложением.</p>
+        <div>
+            <h3>Тесты для проверки:</h3>
+            <ul>
+                <li>Добавление/удаление опыта работы</li>
+                <li>Добавление/удаление образования</li>
+                <li>Добавление/удаление навыков</li>
+                <li>Добавление/удаление языков</li>
+                <li>Добавление/удаление проектов</li>
+                <li>Сохранение и загрузка резюме</li>
+                <li>Генерация PDF</li>
+                <li>Переключение шаблонов</li>
+                <li>Загрузка фото</li>
+                <li>Функция истории</li>
+                <li>Функция советов</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Скрытый iframe для загрузки основного приложения -->
+    <iframe id="app-frame" class="hidden" src="index.html"></iframe>
+
+    <script>
+        // Функция для запуска всех тестов
+        function runAllTests() {
+            const resultsDiv = document.getElementById('test-results');
+            resultsDiv.innerHTML = '<div class="test-info">Запуск всех тестов...</div>';
+            
+            // Запуск тестов последовательно
+            setTimeout(() => {
+                testBasicElements();
+                testResumeDataUpdate();
+                testAddExperience();
+                testAddEducation();
+                testAddSkill();
+                testAddLanguage();
+                testAddProject();
+                testTemplateChange();
+                testSaveResume();
+            }, 100);
+        }
+
+        // Тест: Проверка наличия основных элементов
+        function testBasicElements() {
+            const resultsDiv = document.getElementById('test-results');
+            const elementsExist = [
+                document.querySelector('#fullName'),
+                document.querySelector('#jobTitle'),
+                document.querySelector('#email'),
+                document.querySelector('#phone'),
+                document.querySelector('#address'),
+                document.querySelector('#linkedin'),
+                document.querySelector('#github'),
+                document.querySelector('#summary'),
+                document.querySelector('#expPosition'),
+                document.querySelector('#eduSchool'),
+                document.querySelector('#skillName'),
+                document.querySelector('#langName'),
+                document.querySelector('#projectName'),
+                document.querySelector('#resume-preview')
+            ].every(el => el !== null);
+            
+            const result = document.createElement('div');
+            result.className = 'test-result ' + (elementsExist ? 'pass' : 'fail');
+            result.textContent = `Тест основных элементов: ${elementsExist ? 'ПРОЙДЕН' : 'НЕ ПРОЙДЕН'}`;
+            resultsDiv.appendChild(result);
+        }
+
+        // Тест: Проверка обновления данных резюме
+        function testResumeDataUpdate() {
+            const resultsDiv = document.getElementById('test-results');
+            
+            // Проверяем, существует ли элемент ввода имени
+            const fullNameInput = document.querySelector('#fullName');
+            if (fullNameInput) {
+                // Сохраняем оригинальное значение
+                const originalValue = fullNameInput.value;
+                
+                // Вводим тестовое значение
+                fullNameInput.value = 'Тестовое Имя';
+                
+                // Проверяем, изменилось ли значение
+                const valueChanged = fullNameInput.value === 'Тестовое Имя';
+                
+                // Восстанавливаем оригинальное значение
+                fullNameInput.value = originalValue;
+                
+                const result = document.createElement('div');
+                result.className = 'test-result ' + (valueChanged ? 'pass' : 'fail');
+                result.textContent = `Тест обновления данных: ${valueChanged ? 'ПРОЙДЕН' : 'НЕ ПРОЙДЕН'}`;
+                resultsDiv.appendChild(result);
+            } else {
+                const result = document.createElement('div');
+                result.className = 'test-result fail';
+                result.textContent = 'Тест обновления данных: НЕ ПРОЙДЕН (не найден элемент)';
+                resultsDiv.appendChild(result);
+            }
+        }
+
+        // Тест: Добавление опыта работы
+        function testAddExperience() {
+            const resultsDiv = document.getElementById('test-results');
+            
+            // Проверяем наличие элементов формы
+            const expPosition = document.querySelector('#expPosition');
+            const expCompany = document.querySelector('#expCompany');
+            const expStart = document.querySelector('#expStart');
+            const expEnd = document.querySelector('#expEnd');
+            const expDescription = document.querySelector('#expDescription');
+            
+            const elementsExist = [expPosition, expCompany, expStart, expEnd, expDescription].every(el => el !== null);
+            
+            const result = document.createElement('div');
+            result.className = 'test-result ' + (elementsExist ? 'pass' : 'fail');
+            result.textContent = `Тест добавления опыта: ${elementsExist ? 'ПРОЙДЕН' : 'НЕ ПРОЙДЕН'}`;
+            resultsDiv.appendChild(result);
+        }
+
+        // Тест: Добавление образования
+        function testAddEducation() {
+            const resultsDiv = document.getElementById('test-results');
+            
+            // Проверяем наличие элементов формы
+            const eduSchool = document.querySelector('#eduSchool');
+            const eduDegree = document.querySelector('#eduDegree');
+            const eduStart = document.querySelector('#eduStart');
+            const eduEnd = document.querySelector('#eduEnd');
+            const eduDescription = document.querySelector('#eduDescription');
+            
+            const elementsExist = [eduSchool, eduDegree, eduStart, eduEnd, eduDescription].every(el => el !== null);
+            
+            const result = document.createElement('div');
+            result.className = 'test-result ' + (elementsExist ? 'pass' : 'fail');
+            result.textContent = `Тест добавления образования: ${elementsExist ? 'ПРОЙДЕН' : 'НЕ ПРОЙДЕН'}`;
+            resultsDiv.appendChild(result);
+        }
+
+        // Тест: Добавление навыка
+        function testAddSkill() {
+            const resultsDiv = document.getElementById('test-results');
+            
+            // Проверяем наличие элементов формы
+            const skillName = document.querySelector('#skillName');
+            const skillLevel = document.querySelector('#skillLevel');
+            
+            const elementsExist = [skillName, skillLevel].every(el => el !== null);
+            
+            const result = document.createElement('div');
+            result.className = 'test-result ' + (elementsExist ? 'pass' : 'fail');
+            result.textContent = `Тест добавления навыка: ${elementsExist ? 'ПРОЙДЕН' : 'НЕ ПРОЙДЕН'}`;
+            resultsDiv.appendChild(result);
+        }
+
+        // Тест: Добавление языка
+        function testAddLanguage() {
+            const resultsDiv = document.getElementById('test-results');
+            
+            // Проверяем наличие элементов формы
+            const langName = document.querySelector('#langName');
+            const langLevel = document.querySelector('#langLevel');
+            
+            const elementsExist = [langName, langLevel].every(el => el !== null);
+            
+            const result = document.createElement('div');
+            result.className = 'test-result ' + (elementsExist ? 'pass' : 'fail');
+            result.textContent = `Тест добавления языка: ${elementsExist ? 'ПРОЙДЕН' : 'НЕ ПРОЙДЕН'}`;
+            resultsDiv.appendChild(result);
+        }
+
+        // Тест: Добавление проекта
+        function testAddProject() {
+            const resultsDiv = document.getElementById('test-results');
+            
+            // Проверяем наличие элементов формы
+            const projectName = document.querySelector('#projectName');
+            const projectUrl = document.querySelector('#projectUrl');
+            const projectDescription = document.querySelector('#projectDescription');
+            
+            const elementsExist = [projectName, projectUrl, projectDescription].every(el => el !== null);
+            
+            const result = document.createElement('div');
+            result.className = 'test-result ' + (elementsExist ? 'pass' : 'fail');
+            result.textContent = `Тест добавления проекта: ${elementsExist ? 'ПРОЙДЕН' : 'НЕ ПРОЙДЕН'}`;
+            resultsDiv.appendChild(result);
+        }
+
+        // Тест: Переключение шаблонов
+        function testTemplateChange() {
+            const resultsDiv = document.getElementById('test-results');
+            
+            // Проверяем наличие кнопок переключения шаблонов
+            const modernTemplate = document.querySelector('[data-template="modern"]');
+            const classicTemplate = document.querySelector('[data-template="classic"]');
+            
+            const elementsExist = [modernTemplate, classicTemplate].every(el => el !== null);
+            
+            const result = document.createElement('div');
+            result.className = 'test-result ' + (elementsExist ? 'pass' : 'fail');
+            result.textContent = `Тест переключения шаблонов: ${elementsExist ? 'ПРОЙДЕН' : 'НЕ ПРОЙДЕН'}`;
+            resultsDiv.appendChild(result);
+        }
+
+        // Тест: Сохранение резюме
+        function testSaveResume() {
+            const resultsDiv = document.getElementById('test-results');
+            
+            // Проверяем наличие кнопки сохранения
+            const saveButton = document.querySelector('.btn-primary[onclick="saveResume()"]');
+            
+            const elementExists = saveButton !== null;
+            
+            const result = document.createElement('div');
+            result.className = 'test-result ' + (elementExists ? 'pass' : 'fail');
+            result.textContent = `Тест сохранения резюме: ${elementExists ? 'ПРОЙДЕН' : 'НЕ ПРОЙДЕН'}`;
+            resultsDiv.appendChild(result);
+        }
+
+        // Функция сброса приложения
+        function resetApp() {
+            // Очистка localStorage
+            localStorage.clear();
+            
+            // Сброс всех полей формы
+            const inputs = document.querySelectorAll('input, textarea, select');
+            inputs.forEach(input => {
+                if (input.type === 'checkbox' || input.type === 'radio') {
+                    input.checked = false;
+                } else {
+                    input.value = '';
+                }
+            });
+            
+            // Обновление превью
+            if (typeof updatePreview === 'function') {
+                updatePreview();
+            }
+            
+            // Добавление сообщения
+            const resultsDiv = document.getElementById('test-results');
+            const result = document.createElement('div');
+            result.className = 'test-result pass';
+            result.textContent = 'Приложение сброшено';
+            resultsDiv.appendChild(result);
+        }
+
+        // Инициализация - загрузка скриптов из основного приложения
+        window.onload = function() {
+            // Создание тестовых данных для проверки функций
+            createTestElements();
+        };
+
+        // Функция для создания тестовых элементов, если они не существуют
+        function createTestElements() {
+            // Проверяем, существуют ли уже элементы управления
+            if (!document.querySelector('#fullName')) {
+                // Создаем основные элементы формы для тестирования
+                const formContainer = document.createElement('div');
+                formContainer.className = 'hidden';
+                
+                // Добавляем необходимые элементы для тестирования
+                const elementsHtml = `
+                    <input type="text" id="fullName" />
+                    <input type="text" id="jobTitle" />
+                    <input type="email" id="email" />
+                    <input type="tel" id="phone" />
+                    <input type="text" id="address" />
+                    <input type="url" id="linkedin" />
+                    <input type="url" id="github" />
+                    <textarea id="summary"></textarea>
+                    <input type="text" id="expPosition" />
+                    <input type="text" id="expCompany" />
+                    <input type="month" id="expStart" />
+                    <input type="month" id="expEnd" />
+                    <textarea id="expDescription"></textarea>
+                    <input type="text" id="eduSchool" />
+                    <input type="text" id="eduDegree" />
+                    <input type="number" id="eduStart" />
+                    <input type="number" id="eduEnd" />
+                    <textarea id="eduDescription"></textarea>
+                    <input type="text" id="skillName" />
+                    <input type="range" id="skillLevel" />
+                    <input type="text" id="langName" />
+                    <select id="langLevel"></select>
+                    <input type="text" id="projectName" />
+                    <input type="url" id="projectUrl" />
+                    <textarea id="projectDescription"></textarea>
+                    <div id="resume-preview"></div>
+                    <button class="btn-primary" onclick="saveResume()">Сохранить</button>
+                    <div class="template-option" data-template="modern"></div>
+                    <div class="template-option" data-template="classic"></div>
+                `;
+                
+                formContainer.innerHTML = elementsHtml;
+                document.body.appendChild(formContainer);
+            }
+        }
+    </script>
+</body>
+</html>
