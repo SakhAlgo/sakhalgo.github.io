@@ -1,0 +1,541 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ResumeLite - Конструктор профессиональных резюме</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="header">
+      <div class="header-content">
+        <div class="logo">📄 ResumeLite</div>
+        <nav class="nav-menu">
+          <div class="header-actions">
+            <button
+              class="btn btn-secondary"
+              onclick="openModal('savedResumesModal')"
+            >
+              💾 Мои резюме
+            </button>
+            <button class="btn btn-secondary" onclick="openModal('tipsModal')">
+              💡 Советы
+            </button>
+            <button class="btn btn-secondary" onclick="openModal('historyModal')">
+              ⏱️ История
+            </button>
+            <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
+          </div>
+        </nav>
+        <div class="hamburger-menu" onclick="toggleMobileMenu()">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="container">
+      <!-- Sidebar - Editor -->
+      <aside class="sidebar">
+        <h2 class="section-title">Редактор</h2>
+
+        <!-- Personal Info -->
+        <div class="form-group">
+          <label class="form-label">Фото профиля</label>
+          <div
+            class="photo-upload"
+            onclick="document.getElementById('photoInput').click()"
+          >
+            <img
+              id="photoPreview"
+              class="photo-preview"
+              style="display: none"
+            />
+            <div id="photoPlaceholder">📷 Загрузить фото</div>
+            <input
+              type="file"
+              id="photoInput"
+              accept="image/*"
+              style="display: none"
+              onchange="handlePhotoUpload(event)"
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Полное имя</label>
+          <input
+            type="text"
+            class="form-input"
+            id="fullName"
+            placeholder="Иван Иванов"
+            onchange="updatePreview()"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Должность</label>
+          <input
+            type="text"
+            class="form-input"
+            id="jobTitle"
+            placeholder="Frontend Developer"
+            onchange="updatePreview()"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Email</label>
+          <input
+            type="email"
+            class="form-input"
+            id="email"
+            placeholder="ivan@example.com"
+            onchange="updatePreview()"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Телефон</label>
+          <input
+            type="tel"
+            class="form-input"
+            id="phone"
+            placeholder="+7 (999) 123-45-67"
+            onchange="updatePreview()"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Адрес</label>
+          <input
+            type="text"
+            class="form-input"
+            id="address"
+            placeholder="Москва, Россия"
+            onchange="updatePreview()"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">LinkedIn</label>
+          <input
+            type="url"
+            class="form-input"
+            id="linkedin"
+            placeholder="linkedin.com/in/username"
+            onchange="updatePreview()"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">GitHub</label>
+          <input
+            type="url"
+            class="form-input"
+            id="github"
+            placeholder="github.com/username"
+            onchange="updatePreview()"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">О себе</label>
+          <textarea
+            class="form-textarea"
+            id="summary"
+            placeholder="Краткое описание вашего опыта и навыков..."
+            onchange="updatePreview()"
+          ></textarea>
+        </div>
+
+      </aside>
+
+      <!-- Main Editor Area -->
+      <main class="editor">
+        <div id="sortableSections">
+          <!-- Experience Section -->
+          <div class="section-block" data-section="experience">
+            <div class="section-header">
+              <span class="section-name">💼 Опыт работы</span>
+              <div class="section-actions">
+                <button class="icon-btn" onclick="openModal('experienceModal')">
+                  ➕
+                </button>
+              </div>
+            </div>
+            <div id="experienceList" class="item-list"></div>
+          </div>
+
+          <!-- Education Section -->
+          <div class="section-block" data-section="education">
+            <div class="section-header">
+              <span class="section-name">🎓 Образование</span>
+              <div class="section-actions">
+                <button class="icon-btn" onclick="openModal('educationModal')">
+                  ➕
+                </button>
+              </div>
+            </div>
+            <div id="educationList" class="item-list"></div>
+          </div>
+
+          <!-- Skills Section -->
+          <div class="section-block" data-section="skills">
+            <div class="section-header">
+              <span class="section-name">⚡ Навыки</span>
+              <div class="section-actions">
+                <button class="icon-btn" onclick="openModal('skillModal')">
+                  ➕
+                </button>
+              </div>
+            </div>
+            <div id="skillsList" class="item-list"></div>
+          </div>
+
+          <!-- Languages Section -->
+          <div class="section-block" data-section="languages">
+            <div class="section-header">
+              <span class="section-name">🌍 Языки</span>
+              <div class="section-actions">
+                <button class="icon-btn" onclick="openModal('languageModal')">
+                  ➕
+                </button>
+              </div>
+            </div>
+            <div id="languagesList" class="item-list"></div>
+          </div>
+
+          <!-- Projects Section -->
+          <div class="section-block" data-section="projects">
+            <div class="section-header">
+              <span class="section-name">🚀 Проекты</span>
+              <div class="section-actions">
+                <button class="icon-btn" onclick="openModal('projectModal')">
+                  ➕
+                </button>
+              </div>
+            </div>
+            <div id="projectsList" class="item-list"></div>
+          </div>
+        </div>
+      </main>
+
+      <!-- Preview Panel -->
+      <aside class="preview-panel">
+        <div class="preview-header">
+          <h3 class="section-title">Предпросмотр</h3>
+          <div class="template-selector">
+            <div
+              class="template-option active"
+              data-template="modern"
+              onclick="changeTemplate('modern')"
+            >
+              Современный
+            </div>
+            <div
+              class="template-option"
+              data-template="classic"
+              onclick="changeTemplate('classic')"
+            >
+              Классический
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Ориентация PDF</label>
+            <select class="form-select" id="pdfOrientation">
+              <option value="portrait">Портрет</option>
+              <option value="landscape">Альбом</option>
+            </select>
+          </div>
+          <button
+            class="btn btn-primary"
+            style="width: 100%; margin-top: 1rem"
+            onclick="saveResume()"
+          >
+            💾 Сохранить версию
+          </button>
+          <button
+            class="btn btn-primary"
+            style="width: 100%; margin-top: 1rem"
+            onclick="exportToPDF()"
+          >
+            📥 Скачать PDF
+          </button>
+        </div>
+        <div class="preview-container">
+          <div id="resume-preview" class="resume-modern"></div>
+        </div>
+      </aside>
+    </div>
+
+    <!-- Modals -->
+    <!-- Experience Modal -->
+    <div id="experienceModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title">Добавить опыт работы</h3>
+          <button class="close-modal" onclick="closeModal('experienceModal')">
+            ✕
+          </button>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Должность</label>
+          <input type="text" class="form-input" id="expPosition" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Компания</label>
+          <input type="text" class="form-input" id="expCompany" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Начало</label>
+          <input type="month" class="form-input" id="expStart" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Окончание</label>
+          <input type="month" class="form-input" id="expEnd" />
+          <label style="margin-top: 0.5rem">
+            <input type="checkbox" id="expCurrent" onchange="toggleExpEnd()" />
+            По настоящее время
+          </label>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Описание</label>
+          <textarea
+            class="form-textarea"
+            id="expDescription"
+            rows="4"
+          ></textarea>
+        </div>
+        <button class="add-btn" onclick="addExperience()">Добавить</button>
+      </div>
+    </div>
+
+    <!-- Education Modal -->
+    <div id="educationModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title">Добавить образование</h3>
+          <button class="close-modal" onclick="closeModal('educationModal')">
+            ✕
+          </button>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Учебное заведение</label>
+          <input type="text" class="form-input" id="eduSchool" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Специальность</label>
+          <input type="text" class="form-input" id="eduDegree" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Начало</label>
+          <input
+            type="number"
+            class="form-input"
+            id="eduStart"
+            min="1950"
+            max="2030"
+          />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Окончание</label>
+          <input
+            type="number"
+            class="form-input"
+            id="eduEnd"
+            min="1950"
+            max="2030"
+          />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Описание</label>
+          <textarea
+            class="form-textarea"
+            id="eduDescription"
+            rows="3"
+          ></textarea>
+        </div>
+        <button class="add-btn" onclick="addEducation()">Добавить</button>
+      </div>
+    </div>
+
+    <!-- Skill Modal -->
+    <div id="skillModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title">Добавить навык</h3>
+          <button class="close-modal" onclick="closeModal('skillModal')">
+            ✕
+          </button>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Название навыка</label>
+          <input type="text" class="form-input" id="skillName" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">
+            Уровень владения:
+            <span id="skillLevelValue">50</span>
+            %
+          </label>
+          <input
+            type="range"
+            class="range-input"
+            id="skillLevel"
+            min="0"
+            max="100"
+            value="50"
+            oninput="
+              document.getElementById('skillLevelValue').textContent =
+                this.value
+            "
+          />
+        </div>
+        <button class="add-btn" onclick="addSkill()">Добавить</button>
+      </div>
+    </div>
+
+    <!-- Language Modal -->
+    <div id="languageModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title">Добавить язык</h3>
+          <button class="close-modal" onclick="closeModal('languageModal')">
+            ✕
+          </button>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Язык</label>
+          <input type="text" class="form-input" id="langName" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Уровень</label>
+          <select class="form-select" id="langLevel">
+            <option value="A1">A1 - Начальный</option>
+            <option value="A2">A2 - Элементарный</option>
+            <option value="B1">B1 - Средний</option>
+            <option value="B2">B2 - Выше среднего</option>
+            <option value="C1">C1 - Продвинутый</option>
+            <option value="C2">C2 - Профессиональный</option>
+            <option value="Native">Родной</option>
+          </select>
+        </div>
+        <button class="add-btn" onclick="addLanguage()">Добавить</button>
+      </div>
+    </div>
+
+    <!-- Project Modal -->
+    <div id="projectModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title">Добавить проект</h3>
+          <button class="close-modal" onclick="closeModal('projectModal')">
+            ✕
+          </button>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Название проекта</label>
+          <input type="text" class="form-input" id="projectName" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Ссылка</label>
+          <input type="url" class="form-input" id="projectUrl" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Описание</label>
+          <textarea
+            class="form-textarea"
+            id="projectDescription"
+            rows="4"
+          ></textarea>
+        </div>
+        <button class="add-btn" onclick="addProject()">Добавить</button>
+      </div>
+    </div>
+
+    <!-- Tips Modal -->
+    <div id="tipsModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title">💡 Советы по созданию резюме</h3>
+          <button class="close-modal" onclick="closeModal('tipsModal')">
+            ✕
+          </button>
+        </div>
+        <ul class="tips-list">
+          <li>
+            <strong>Будьте конкретны:</strong>
+            Используйте цифры и факты (увеличил продажи на 30%, управлял
+            командой из 10 человек)
+          </li>
+          <li>
+            <strong>Используйте глаголы действия:</strong>
+            Разработал, внедрил, оптимизировал, руководил
+          </li>
+          <li>
+            <strong>Адаптируйте резюме:</strong>
+            Настраивайте под каждую вакансию, используя ключевые слова из
+            описания
+          </li>
+          <li>
+            <strong>Краткость:</strong>
+            Оптимальная длина - 1-2 страницы
+          </li>
+          <li>
+            <strong>Проверяйте орфографию:</strong>
+            Ошибки создают плохое впечатление
+          </li>
+          <li>
+            <strong>Актуальность:</strong>
+            Указывайте только релевантный опыт
+          </li>
+          <li>
+            <strong>Достижения > Обязанности:</strong>
+            Фокусируйтесь на результатах, а не на списке обязанностей
+          </li>
+          <li>
+            <strong>Формат:</strong>
+            Используйте единый стиль и форматирование
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- History Modal -->
+    <div id="historyModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title">⏱️ История версий</h3>
+          <button class="close-modal" onclick="closeModal('historyModal')">
+            ✕
+          </button>
+        </div>
+        <div id="historyList"></div>
+      </div>
+    </div>
+
+    <!-- Saved Resumes Modal -->
+    <div id="savedResumesModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title">💾 Сохраненные резюме</h3>
+          <button class="close-modal" onclick="closeModal('savedResumesModal')">
+            ✕
+          </button>
+        </div>
+        <div id="savedResumesList"></div>
+      </div>
+    </div>
+
+    <!-- Notification -->
+    <div id="notification" class="notification"></div>
+
+    <script src="main.js"></script>
+  </body>
+</html>
