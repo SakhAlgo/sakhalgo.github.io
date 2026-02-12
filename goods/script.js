@@ -1,8 +1,8 @@
 // Sample initial data
 let goods = [
-  { id: 1, name: "Laptop", price: 999.99, stock: 10 },
-  { id: 2, name: "Mouse", price: 29.99, stock: 50 },
-  { id: 3, name: "Keyboard", price: 79.99, stock: 30 }
+  { id: 1, name: "Ноутбук", price: 999.99, stock: 10 },
+  { id: 2, name: "Мышь", price: 29.99, stock: 50 },
+  { id: 3, name: "Клавиатура", price: 79.99, stock: 30 }
 ];
 
 let basket = [];
@@ -39,12 +39,12 @@ function renderGoodsList(filteredGoods = null) {
     const row = document.createElement('tr');
     row.innerHTML = `
       <td>${good.name}</td>
-      <td>$${good.price.toFixed(2)}</td>
+      <td>${good.price.toFixed(2)} руб.</td>
       <td>${good.stock}</td>
       <td>
         <div class="action-buttons">
-          <button class="action-btn btn-success" onclick="addToBasket(${good.id})">Add to Basket</button>
-          <button class="action-btn btn-danger" onclick="deleteGood(${good.id})">Delete</button>
+          <button class="action-btn btn-success" onclick="addToBasket(${good.id})">Добавить в корзину</button>
+          <button class="action-btn btn-danger" onclick="deleteGood(${good.id})">Удалить</button>
         </div>
       </td>
     `;
@@ -59,18 +59,18 @@ function renderBasket() {
   basket.forEach(item => {
     const product = goods.find(g => g.id === item.productId);
     if (!product) return;
-    
+
     const itemTotal = calculateItemTotal(product.price, item.quantity, item.discount);
     const row = document.createElement('tr');
     row.innerHTML = `
       <td>${product.name}</td>
-      <td>$${product.price.toFixed(2)}</td>
+      <td>${product.price.toFixed(2)} руб.</td>
       <td>${item.quantity}</td>
       <td><input type="number" class="discount-input" value="${item.discount}" min="0" max="100" onchange="updateDiscount(${item.productId}, this.value)" /></td>
-      <td>$${itemTotal.toFixed(2)}</td>
+      <td>${itemTotal.toFixed(2)} руб.</td>
       <td>
         <div class="action-buttons">
-          <button class="action-btn btn-danger" onclick="removeFromBasket(${item.productId})">Remove</button>
+          <button class="action-btn btn-danger" onclick="removeFromBasket(${item.productId})">Удалить</button>
         </div>
       </td>
     `;
@@ -87,7 +87,7 @@ function addNewProduct() {
   const stock = parseInt(productStock.value);
   
   if (!name || isNaN(price) || isNaN(stock) || price <= 0 || stock < 0) {
-    alert('Please fill all fields with valid values');
+    alert('Пожалуйста, заполните все поля допустимыми значениями');
     return;
   }
   
@@ -115,7 +115,7 @@ function addToBasket(productId) {
   
   // Check if product is in stock
   if (product.stock <= 0) {
-    alert('This product is out of stock!');
+    alert('Этого товара нет в наличии!');
     return;
   }
   
@@ -123,7 +123,7 @@ function addToBasket(productId) {
   const existingItem = basket.find(item => item.productId === productId);
   if (existingItem) {
     if (product.stock <= existingItem.quantity) {
-      alert('Not enough stock available!');
+      alert('Недостаточно товара на складе!');
       return;
     }
     existingItem.quantity++;
@@ -172,14 +172,14 @@ function updateDiscount(productId, discountValue) {
 
 // Delete good
 function deleteGood(productId) {
-  if (confirm('Are you sure you want to delete this product?')) {
+  if (confirm('Вы уверены, что хотите удалить этот товар?')) {
     // Check if product is in basket
     const basketIndex = basket.findIndex(item => item.productId === productId);
     if (basketIndex !== -1) {
-      alert('Cannot delete product that is in the basket. Please remove it from basket first.');
+      alert('Невозможно удалить товар, который находится в корзине. Пожалуйста, сначала удалите его из корзины.');
       return;
     }
-    
+
     goods = goods.filter(g => g.id !== productId);
     renderGoodsList();
     filterGoods(); // Reapply filter if there was one

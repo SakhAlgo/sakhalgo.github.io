@@ -1,12 +1,25 @@
+:root {
+  --bg-color: #ffffff;
+  --text-color: #000000;
+  --primary-color: #3498db;
+}
+[data-theme="dark"] {
+  --bg-color: #1a1a1a;
+  --text-color: #ffffff;
+  --primary-color: #2980b9;
+}
 body {
   margin: 0;
   padding: 20px;
 
   font-family: sans-serif;
   font-size: 12px;
+  background-color: var(--bg-color);
+  color: var(--text-color);
 }
 
-button, recipe_name {
+button,
+recipe_name {
   cursor: pointer;
 }
 a {
@@ -33,12 +46,14 @@ select {
   outline: none;
   background-color: #eee;
 }
-.fsize button, #copy_btn {
+.fsize button,
+#copy_btn {
   width: 35px;
   height: 35px;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 5px;
 }
 .instruction {
   margin-bottom: 10px;
@@ -58,4 +73,41 @@ select {
   background-color: #6fb9fe;
   color: #fff;
   margin: 10px;
+  transition: all 0.3s ease;
 }
+.add_btn:hover,
+.result_btn:hover {
+  transform: scale(1.1);
+  transition: all 0.3s ease;
+}
+.space_beetween {
+  justify-content: space-between;
+}
+.remove_btn {
+  padding: 5px 8px;
+  background-color: #f99;
+  font-weight: bold;
+  font-size: 12px;
+}
+#copy_btn:hover {
+  transition: 0.3s ease;
+  transform: scale(1.05);
+}
+#btn-light {
+  display: none;
+  transition: all 0.3s ease;
+}
+#decreaseBtn:hover,
+#increaseBtn:hover,
+#btn-dark {
+  transition: all 0.3s ease;
+}
+
+#decreaseBtn:hover,
+#increaseBtn:hover,
+#btn-light:hover,
+#btn-dark:hover {
+  transform: scale(1.1);
+  transition: all 0.3s ease;
+}
+
