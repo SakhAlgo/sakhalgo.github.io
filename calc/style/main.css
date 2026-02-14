@@ -47,7 +47,7 @@ select {
   background-color: #eee;
 }
 .fsize button,
-#copy_btn {
+#copy_btn, #remove_btn {
   width: 35px;
   height: 35px;
   display: flex;
@@ -111,3 +111,43 @@ select {
   transition: all 0.3s ease;
 }
 
+.btn-box{
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  gap: 15px;
+}
+
+/* Стили для закрепленных рецептов */
+.pinned-recipe-fieldset {
+  margin-top: 15px;
+}
+
+.pinned-recipe-content {
+  margin-bottom: 10px;
+}
+
+.copy_btn_pinned,
+.remove_btn_pinned {
+  width: 35px;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #eee;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.copy_btn_pinned:hover {
+  transform: scale(1.1);
+  background-color: #6fb9fe;
+  color: #fff;
+}
+
+.remove_btn_pinned:hover {
+  transform: scale(1.1);
+  background-color: #f99;
+}
