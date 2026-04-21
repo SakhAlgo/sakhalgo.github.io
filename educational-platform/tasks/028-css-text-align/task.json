@@ -1,0 +1,13 @@
+{
+    "title": "Выравнивание текста",
+    "description": "Выровняйте текст по центру с помощью CSS свойства text-align.",
+    "requirements": [
+        "Используйте свойство text-align",
+        "Значение должно быть center"
+    ],
+    "sampleFiles": {
+        "html": "sample.html",
+        "css": "sample.css",
+        "js": "sample.js"
+    }
+}

@@ -1,0 +1,13 @@
+{
+    "title": "Жирный текст",
+    "description": "Сделайте текст жирным с помощью тега <strong> или <b>.",
+    "requirements": [
+        "Используйте тег strong или b",
+        "Добавьте текст внутри тега"
+    ],
+    "sampleFiles": {
+        "html": "sample.html",
+        "css": "sample.css",
+        "js": "sample.js"
+    }
+}

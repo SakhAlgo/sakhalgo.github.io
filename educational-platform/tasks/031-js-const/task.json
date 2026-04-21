@@ -1,0 +1,13 @@
+{
+    "title": "Константа",
+    "description": "Объявите константу с помощью ключевого слова const.",
+    "requirements": [
+        "Используйте ключевое слово const",
+        "Присвойте константе значение"
+    ],
+    "sampleFiles": {
+        "html": "sample.html",
+        "css": "sample.css",
+        "js": "sample.js"
+    }
+}

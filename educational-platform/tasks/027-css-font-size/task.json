@@ -1,0 +1,13 @@
+{
+    "title": "Размер шрифта",
+    "description": "Измените размер шрифта с помощью CSS свойства font-size.",
+    "requirements": [
+        "Используйте свойство font-size",
+        "Укажите размер в px, em или rem"
+    ],
+    "sampleFiles": {
+        "html": "sample.html",
+        "css": "sample.css",
+        "js": "sample.js"
+    }
+}

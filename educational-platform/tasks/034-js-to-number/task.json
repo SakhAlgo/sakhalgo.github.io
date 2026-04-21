@@ -1,0 +1,13 @@
+{
+    "title": "Преобразование в число",
+    "description": "Преобразуйте строку в число с помощью функции parseInt().",
+    "requirements": [
+        "Используйте parseInt()",
+        "Передайте строку в качестве аргумента"
+    ],
+    "sampleFiles": {
+        "html": "sample.html",
+        "css": "sample.css",
+        "js": "sample.js"
+    }
+}

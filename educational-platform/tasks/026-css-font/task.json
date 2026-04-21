@@ -1,0 +1,13 @@
+{
+    "title": "Шрифт текста",
+    "description": "Измените шрифт элемента с помощью CSS свойства font-family.",
+    "requirements": [
+        "Используйте свойство font-family",
+        "Примените к любому элементу"
+    ],
+    "sampleFiles": {
+        "html": "sample.html",
+        "css": "sample.css",
+        "js": "sample.js"
+    }
+}

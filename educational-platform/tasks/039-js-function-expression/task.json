@@ -1,0 +1,13 @@
+{
+    "title": "Функция выражение",
+    "description": "Создайте функцию с помощью function expression.",
+    "requirements": [
+        "Присвойте функцию переменной",
+        "Используйте function expression"
+    ],
+    "sampleFiles": {
+        "html": "sample.html",
+        "css": "sample.css",
+        "js": "sample.js"
+    }
+}

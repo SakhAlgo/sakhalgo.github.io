@@ -1,0 +1,13 @@
+{
+    "title": "Шаблонные строки",
+    "description": "Используйте шаблонные строки (template literals) с обратными кавычками.",
+    "requirements": [
+        "Используйте обратные кавычки ``",
+        "Вставьте переменную через ${}"
+    ],
+    "sampleFiles": {
+        "html": "sample.html",
+        "css": "sample.css",
+        "js": "sample.js"
+    }
+}

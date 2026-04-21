@@ -1,0 +1,13 @@
+{
+    "title": "Курсив",
+    "description": "Сделайте текст курсивным с помощью тега <em> или <i>.",
+    "requirements": [
+        "Используйте тег em или i",
+        "Добавьте текст внутри тега"
+    ],
+    "sampleFiles": {
+        "html": "sample.html",
+        "css": "sample.css",
+        "js": "sample.js"
+    }
+}

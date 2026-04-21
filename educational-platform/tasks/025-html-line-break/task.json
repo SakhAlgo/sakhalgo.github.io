@@ -1,0 +1,13 @@
+{
+    "title": "Разрыв строки",
+    "description": "Создайте разрыв строки с помощью тега <br>.",
+    "requirements": [
+        "Используйте тег br",
+        "Разделите текст на две строки"
+    ],
+    "sampleFiles": {
+        "html": "sample.html",
+        "css": "sample.css",
+        "js": "sample.js"
+    }
+}

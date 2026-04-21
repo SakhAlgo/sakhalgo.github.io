@@ -1,0 +1,13 @@
+{
+    "title": "Преобразование в строку",
+    "description": "Преобразуйте число в строку с помощью метода toString().",
+    "requirements": [
+        "Объявите числовую переменную",
+        "Используйте метод toString()"
+    ],
+    "sampleFiles": {
+        "html": "sample.html",
+        "css": "sample.css",
+        "js": "sample.js"
+    }
+}

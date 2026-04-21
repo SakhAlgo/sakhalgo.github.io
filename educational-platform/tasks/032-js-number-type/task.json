@@ -1,0 +1,13 @@
+{
+    "title": "Тип данных number",
+    "description": "Используйте оператор typeof для проверки типа числовой переменной.",
+    "requirements": [
+        "Объявите числовую переменную",
+        "Используйте typeof"
+    ],
+    "sampleFiles": {
+        "html": "sample.html",
+        "css": "sample.css",
+        "js": "sample.js"
+    }
+}
