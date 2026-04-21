@@ -1,0 +1,18 @@
+{
+  "id": "027",
+  "title": "Размер шрифта",
+  "difficulty": "easy",
+  "points": 50,
+  "passThreshold": 70,
+  "tags": ["css"],
+  "timeLimit": 10,
+  "description": "Добавьте CSS свойство: font-size: 16px",
+  "requirements": [
+    "Использовать свойство CSS"
+  ],
+  "sampleFiles": {
+    "html": "sample.html",
+    "css": "sample.css",
+    "js": "sample.js"
+  }
+}

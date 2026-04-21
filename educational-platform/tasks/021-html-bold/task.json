@@ -1,0 +1,18 @@
+{
+  "id": "021",
+  "title": "Жирный текст",
+  "difficulty": "easy",
+  "points": 50,
+  "passThreshold": 70,
+  "tags": ["html", "strong"],
+  "timeLimit": 10,
+  "description": "Создайте элемент с использованием тега <strong>",
+  "requirements": [
+    "Использовать тег <strong>"
+  ],
+  "sampleFiles": {
+    "html": "sample.html",
+    "css": "sample.css",
+    "js": "sample.js"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "id": "026",
+  "title": "Шрифт текста",
+  "difficulty": "easy",
+  "points": 50,
+  "passThreshold": 70,
+  "tags": ["css"],
+  "timeLimit": 10,
+  "description": "Добавьте CSS свойство: font-family: Arial",
+  "requirements": [
+    "Использовать свойство CSS"
+  ],
+  "sampleFiles": {
+    "html": "sample.html",
+    "css": "sample.css",
+    "js": "sample.js"
+  }
+}

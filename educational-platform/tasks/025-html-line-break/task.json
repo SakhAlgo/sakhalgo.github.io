@@ -1,0 +1,18 @@
+{
+  "id": "025",
+  "title": "Разрыв строки",
+  "difficulty": "easy",
+  "points": 50,
+  "passThreshold": 70,
+  "tags": ["html", "br"],
+  "timeLimit": 10,
+  "description": "Создайте элемент с использованием тега <br>",
+  "requirements": [
+    "Использовать тег <br>"
+  ],
+  "sampleFiles": {
+    "html": "sample.html",
+    "css": "sample.css",
+    "js": "sample.js"
+  }
+}

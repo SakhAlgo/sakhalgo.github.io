@@ -1,0 +1,18 @@
+{
+  "id": "030",
+  "title": "Тень блока",
+  "difficulty": "easy",
+  "points": 50,
+  "passThreshold": 70,
+  "tags": ["css"],
+  "timeLimit": 10,
+  "description": "Добавьте CSS свойство: box-shadow: 2px 2px 5px #000",
+  "requirements": [
+    "Использовать свойство CSS"
+  ],
+  "sampleFiles": {
+    "html": "sample.html",
+    "css": "sample.css",
+    "js": "sample.js"
+  }
+}
