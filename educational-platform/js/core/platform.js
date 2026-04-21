@@ -97,6 +97,12 @@ export class EducationalPlatform {
 
     this.editor.setAll(userCode.html, userCode.css, userCode.js);
     this.editor.switchTab("html"); // Принудительно переключаем на HTML
+
+    // Очистить превью если нет сохранённого кода (первое открытие)
+    if (!savedCode) {
+      this.preview.clearUser();
+    }
+
     this._renderSample();
     this._updateTaskHeader(taskInfo, config);
     this._markActiveTask(taskId);
