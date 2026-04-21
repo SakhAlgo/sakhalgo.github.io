@@ -1,251 +1,307 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>EduCode — Образовательная платформа</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/common.css">
-</head>
-<body>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Syne:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/common.css" />
+  </head>
+  <body>
     <div class="app" id="app">
-
-        <!-- ═══ БОКОВАЯ ПАНЕЛЬ ═══ -->
-        <aside class="sidebar" id="sidebar">
-            <div class="sidebar-header">
-                <div class="logo">
-                    <span class="logo-icon">⟨/⟩</span>
-                    <span class="logo-text">EduCode</span>
-                </div>
-                <button class="sidebar-toggle" id="sidebarToggle" title="Свернуть панель">‹</button>
-            </div>
-
-            <!-- Прогресс -->
-            <div class="progress-section">
-                <div class="progress-label">
-                    <span>Прогресс</span>
-                    <span id="progressText">0 / 3</span>
-                </div>
-                <div class="progress-track">
-                    <div class="progress-fill" id="globalProgress"></div>
-                </div>
-                <div class="progress-stats">
-                    <span class="stat"><span id="statPoints">0</span> очков</span>
-                    <span class="stat"><span id="statPercent">0</span>%</span>
-                </div>
-            </div>
-
-            <!-- Фильтры -->
-            <div class="filter-bar">
-                <button class="filter-btn active" data-filter="all">Все</button>
-                <button class="filter-btn" data-filter="course-html-css-basics">HTML & CSS</button>
-                <button class="filter-btn" data-filter="course-js-basics">JS</button>
-            </div>
-
-            <!-- Список курсов и заданий -->
-            <nav class="task-list" id="taskList">
-                <div class="task-list-loading">
-                    <div class="spinner"></div>
-                    <span>Загрузка заданий...</span>
-                </div>
-            </nav>
-
-            <!-- Нижняя панель -->
-            <div class="sidebar-footer">
-                <button class="btn-ghost" id="exportBtn" title="Экспорт прогресса">
-                    <span>↓</span> Экспорт
-                </button>
-                <button class="btn-ghost" id="resetBtn" title="Сбросить прогресс">
-                    <span>↺</span> Сброс
-                </button>
-            </div>
-        </aside>
-
-        <!-- ═══ ОСНОВНАЯ ОБЛАСТЬ ═══ -->
-        <main class="main-content" id="mainContent">
-
-            <!-- Заголовок задания -->
-            <header class="task-header" id="taskHeader">
-                <div class="task-header-inner">
-                    <div class="task-meta">
-                        <span class="task-id-badge" id="taskIdBadge">#001</span>
-                        <div class="task-title-wrap">
-                            <h1 class="task-title" id="taskTitle">Выберите задание</h1>
-                            <div class="task-tags" id="taskTags"></div>
-                        </div>
-                    </div>
-                    <div class="task-controls">
-                        <div class="task-score" id="taskScore" style="display:none">
-                            <span class="score-label">Счёт</span>
-                            <span class="score-value" id="scoreValue">0%</span>
-                        </div>
-                        <button class="btn-icon" id="infoToggle" title="Описание задания">?</button>
-                        <button class="btn-icon" id="sampleToggle" title="Показать эталон">👁</button>
-                    </div>
-                </div>
-
-                <!-- Описание задания (раскрываемое) -->
-                <div class="task-description" id="taskDescription" style="display:none">
-                    <div class="desc-requirements" id="taskRequirements"></div>
-                </div>
-            </header>
-
-            <!-- Рабочая область -->
-            <div class="workspace" id="workspace">
-
-                <!-- ═══ РЕДАКТОР ═══ -->
-                <section class="editor-section">
-                    <div class="editor-toolbar">
-                        <div class="tabs" id="editorTabs">
-                            <button class="tab-btn active" data-tab="html">
-                                <span class="tab-dot html-dot"></span>HTML
-                            </button>
-                            <button class="tab-btn" data-tab="css">
-                                <span class="tab-dot css-dot"></span>CSS
-                            </button>
-                            <button class="tab-btn" data-tab="js">
-                                <span class="tab-dot js-dot"></span>JS
-                            </button>
-                        </div>
-                        <div class="editor-actions">
-                            <button class="btn-sm" id="formatBtn" title="Форматировать код">{ }</button>
-                            <button class="btn-sm" id="clearBtn" title="Очистить">✕</button>
-                            <button class="btn-sm" id="resetCodeBtn" title="Сбросить к шаблону">↺</button>
-                        </div>
-                    </div>
-
-                    <div class="editor-wrap">
-                        <div class="line-numbers" id="lineNumbers"></div>
-                        <textarea
-                            id="htmlEditor"
-                            class="code-editor active"
-                            spellcheck="false"
-                            autocorrect="off"
-                            autocapitalize="off"
-                            data-lang="html"
-                            placeholder="<!-- Введите HTML код здесь -->"></textarea>
-                        <textarea
-                            id="cssEditor"
-                            class="code-editor"
-                            spellcheck="false"
-                            autocorrect="off"
-                            autocapitalize="off"
-                            data-lang="css"
-                            placeholder="/* Введите CSS стили здесь */"></textarea>
-                        <textarea
-                            id="jsEditor"
-                            class="code-editor"
-                            spellcheck="false"
-                            autocorrect="off"
-                            autocapitalize="off"
-                            data-lang="js"
-                            placeholder="// Введите JavaScript код здесь"></textarea>
-                    </div>
-
-                    <!-- Панель действий -->
-                    <div class="action-bar">
-                        <div class="action-left">
-                            <button class="btn-run" id="runBtn">
-                                <span>▶</span> Запустить
-                            </button>
-                            <button class="btn-check" id="checkBtn">
-                                <span>✓</span> Проверить
-                            </button>
-                        </div>
-                        <div class="status-msg" id="statusMsg"></div>
-                        <div class="action-right">
-                            <label class="auto-run-toggle">
-                                <input type="checkbox" id="autoRun"> Авто-запуск
-                            </label>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- ═══ ПРЕВЬЮ ═══ -->
-                <section class="preview-section" id="previewSection">
-                    <div class="preview-grid">
-                        <!-- Эталон -->
-                        <div class="preview-panel" id="samplePanel">
-                            <div class="panel-header">
-                                <span class="panel-label">
-                                    <span class="panel-indicator sample-ind"></span>
-                                    Эталон
-                                </span>
-                                <button class="btn-sm" id="fullscreenSample">⛶</button>
-                            </div>
-                            <iframe id="sampleFrame" sandbox="allow-scripts"></iframe>
-                        </div>
-
-                        <!-- Результат -->
-                        <div class="preview-panel">
-                            <div class="panel-header">
-                                <span class="panel-label">
-                                    <span class="panel-indicator user-ind"></span>
-                                    Ваш результат
-                                </span>
-                                <button class="btn-sm" id="fullscreenUser">⛶</button>
-                            </div>
-                            <iframe id="userFrame" sandbox="allow-scripts"></iframe>
-                        </div>
-                    </div>
-
-                    <!-- Результаты проверки -->
-                    <div class="check-results" id="checkResults" style="display:none">
-                        <div class="results-header">
-                            <span class="results-title">Результаты проверки</span>
-                            <button class="btn-sm" id="closeResults">✕</button>
-                        </div>
-                        <div class="results-body" id="resultsBody"></div>
-                    </div>
-                </section>
-            </div>
-        </main>
-
-        <!-- Экран приветствия -->
-        <div class="welcome-screen" id="welcomeScreen">
-            <div class="welcome-content">
-                <div class="welcome-logo">⟨/⟩</div>
-                <h2>Добро пожаловать в EduCode</h2>
-                <p>Выберите задание из списка слева, чтобы начать практику</p>
-                <div class="welcome-features">
-                    <div class="feature">
-                        <span>🖥️</span>
-                        <span>Редактор с тремя вкладками</span>
-                    </div>
-                    <div class="feature">
-                        <span>👁️</span>
-                        <span>Сравнение с эталоном</span>
-                    </div>
-                    <div class="feature">
-                        <span>✅</span>
-                        <span>Автоматическая проверка</span>
-                    </div>
-                    <div class="feature">
-                        <span>💾</span>
-                        <span>Сохранение прогресса</span>
-                    </div>
-                </div>
-            </div>
+      <!-- ═══ БОКОВАЯ ПАНЕЛЬ ═══ -->
+      <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+          <div class="logo">
+            <span class="logo-icon">⟨/⟩</span>
+            <span class="logo-text">EduCode</span>
+          </div>
+          <button
+            class="sidebar-toggle"
+            id="sidebarToggle"
+            title="Свернуть панель"
+          >
+            ‹
+          </button>
         </div>
 
+        <!-- Прогресс -->
+        <div class="progress-section">
+          <div class="progress-label">
+            <span>Прогресс</span>
+            <span id="progressText">0 / 3</span>
+          </div>
+          <div class="progress-track">
+            <div class="progress-fill" id="globalProgress"></div>
+          </div>
+          <div class="progress-stats">
+            <span class="stat">
+              <span id="statPoints">0</span>
+              очков
+            </span>
+            <span class="stat">
+              <span id="statPercent">0</span>
+              %
+            </span>
+          </div>
+        </div>
+
+        <!-- Фильтры -->
+        <div class="filter-bar">
+          <button class="filter-btn active" data-filter="all">Все</button>
+          <button class="filter-btn" data-filter="course-html-css-basics">
+            HTML & CSS
+          </button>
+          <button class="filter-btn" data-filter="course-js-basics">JS</button>
+        </div>
+
+        <!-- Список курсов и заданий -->
+        <nav class="task-list" id="taskList">
+          <div class="task-list-loading">
+            <div class="spinner"></div>
+            <span>Загрузка заданий...</span>
+          </div>
+        </nav>
+
+        <!-- Нижняя панель -->
+        <div class="sidebar-footer">
+          <button class="btn-ghost" id="exportBtn" title="Экспорт прогресса">
+            <span>↓</span>
+            Экспорт
+          </button>
+          <button class="btn-ghost" id="resetBtn" title="Сбросить прогресс">
+            <span>↺</span>
+            Сброс
+          </button>
+        </div>
+      </aside>
+
+      <!-- ═══ ОСНОВНАЯ ОБЛАСТЬ ═══ -->
+      <main class="main-content" id="mainContent">
+        <!-- Заголовок задания -->
+        <header class="task-header" id="taskHeader">
+          <div class="task-header-inner">
+            <div class="task-meta">
+              <span class="task-id-badge" id="taskIdBadge">#001</span>
+              <div class="task-title-wrap">
+                <h1 class="task-title" id="taskTitle">Выберите задание</h1>
+                <div class="task-tags" id="taskTags"></div>
+              </div>
+            </div>
+            <div class="task-controls">
+              <div class="task-score" id="taskScore" style="display: block">
+                <span class="score-label">Счёт</span>
+                <span class="score-value" id="scoreValue">0%</span>
+              </div>
+              <button class="btn-icon" id="infoToggle" title="Описание задания">
+                ?
+              </button>
+              <button
+                class="btn-icon"
+                id="sampleToggle"
+                title="Показать эталон"
+              >
+                👁
+              </button>
+            </div>
+          </div>
+
+          <!-- Описание задания (раскрываемое) -->
+          <div
+            class="task-description"
+            id="taskDescription"
+            style="display: none"
+          >
+            <div class="desc-requirements" id="taskRequirements"></div>
+          </div>
+        </header>
+
+        <!-- Рабочая область -->
+        <div class="workspace" id="workspace">
+          <!-- ═══ РЕДАКТОР ═══ -->
+          <section class="editor-section">
+            <div class="editor-toolbar">
+              <div class="tabs" id="editorTabs">
+                <button class="tab-btn active" data-tab="html">
+                  <span class="tab-dot html-dot"></span>
+                  HTML
+                </button>
+                <button class="tab-btn" data-tab="css">
+                  <span class="tab-dot css-dot"></span>
+                  CSS
+                </button>
+                <button class="tab-btn" data-tab="js">
+                  <span class="tab-dot js-dot"></span>
+                  JS
+                </button>
+              </div>
+              <div class="editor-actions">
+                <button class="btn-sm" id="formatBtn" title="Форматировать код">
+                  { }
+                </button>
+                <button class="btn-sm" id="clearBtn" title="Очистить">✕</button>
+                <button
+                  class="btn-sm"
+                  id="resetCodeBtn"
+                  title="Сбросить к шаблону"
+                >
+                  ↺
+                </button>
+              </div>
+            </div>
+
+            <div class="editor-wrap">
+              <div class="line-numbers" id="lineNumbers"></div>
+              <textarea
+                id="htmlEditor"
+                class="code-editor active"
+                spellcheck="false"
+                autocorrect="off"
+                autocapitalize="off"
+                data-lang="html"
+                placeholder="<!-- Введите HTML код здесь -->"
+              >
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Document</title>
+</head>
+<body>
+<!-- Введите html код здесь -->
+</body>
+</html></textarea
+              >
+              <textarea
+                id="cssEditor"
+                class="code-editor"
+                spellcheck="false"
+                autocorrect="off"
+                autocapitalize="off"
+                data-lang="css"
+                placeholder="/* Введите CSS стили здесь */"
+              ></textarea>
+              <textarea
+                id="jsEditor"
+                class="code-editor"
+                spellcheck="false"
+                autocorrect="off"
+                autocapitalize="off"
+                data-lang="js"
+                placeholder="// Введите JavaScript код здесь"
+              ></textarea>
+            </div>
+
+            <!-- Панель действий -->
+            <div class="action-bar">
+              <div class="action-left">
+                <button class="btn-run" id="runBtn">
+                  <span>▶</span>
+                  Запустить
+                </button>
+                <button class="btn-check" id="checkBtn">
+                  <span>✓</span>
+                  Проверить
+                </button>
+              </div>
+              <div class="status-msg" id="statusMsg"></div>
+              <div class="action-right">
+                <label class="auto-run-toggle">
+                  <input type="checkbox" id="autoRun" />
+                  Авто-запуск
+                </label>
+              </div>
+            </div>
+          </section>
+
+          <!-- ═══ ПРЕВЬЮ ═══ -->
+          <section class="preview-section" id="previewSection">
+            <div class="preview-grid">
+              <!-- Эталон -->
+              <div class="preview-panel" id="samplePanel">
+                <div class="panel-header">
+                  <span class="panel-label">
+                    <span class="panel-indicator sample-ind"></span>
+                    Эталон
+                  </span>
+                  <button class="btn-sm" id="fullscreenSample">⛶</button>
+                </div>
+                <iframe id="sampleFrame" sandbox="allow-scripts"></iframe>
+              </div>
+
+              <!-- Результат -->
+              <div class="preview-panel">
+                <div class="panel-header">
+                  <span class="panel-label">
+                    <span class="panel-indicator user-ind"></span>
+                    Ваш результат
+                  </span>
+                  <button class="btn-sm" id="fullscreenUser">⛶</button>
+                </div>
+                <iframe id="userFrame" sandbox="allow-scripts"></iframe>
+              </div>
+            </div>
+
+            <!-- Результаты проверки -->
+            <div class="check-results" id="checkResults" style="display: none">
+              <div class="results-header">
+                <span class="results-title">Результаты проверки</span>
+                <button class="btn-sm" id="closeResults">✕</button>
+              </div>
+              <div class="results-body" id="resultsBody"></div>
+            </div>
+          </section>
+        </div>
+      </main>
+
+      <!-- Экран приветствия -->
+      <div class="welcome-screen" id="welcomeScreen">
+        <div class="welcome-content">
+          <div class="welcome-logo">⟨/⟩</div>
+          <h2>Добро пожаловать в EduCode</h2>
+          <p>Выберите задание из списка слева, чтобы начать практику</p>
+          <div class="welcome-features">
+            <div class="feature">
+              <span>🖥️</span>
+              <span>Редактор с тремя вкладками</span>
+            </div>
+            <div class="feature">
+              <span>👁️</span>
+              <span>Сравнение с эталоном</span>
+            </div>
+            <div class="feature">
+              <span>✅</span>
+              <span>Автоматическая проверка</span>
+            </div>
+            <div class="feature">
+              <span>💾</span>
+              <span>Сохранение прогресса</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- Модальное окно подтверждения -->
-    <div class="modal-overlay" id="modalOverlay" style="display:none">
-        <div class="modal">
-            <h3 id="modalTitle">Подтверждение</h3>
-            <p id="modalText"></p>
-            <div class="modal-actions">
-                <button class="btn-ghost" id="modalCancel">Отмена</button>
-                <button class="btn-danger" id="modalConfirm">Подтвердить</button>
-            </div>
+    <div class="modal-overlay" id="modalOverlay" style="display: none">
+      <div class="modal">
+        <h3 id="modalTitle">Подтверждение</h3>
+        <p id="modalText"></p>
+        <div class="modal-actions">
+          <button class="btn-ghost" id="modalCancel">Отмена</button>
+          <button class="btn-danger" id="modalConfirm">Подтвердить</button>
         </div>
+      </div>
     </div>
 
     <!-- Toast уведомления -->
     <div class="toast-container" id="toastContainer"></div>
 
     <script type="module" src="js/app.js"></script>
-</body>
+  </body>
 </html>

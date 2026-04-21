@@ -96,6 +96,7 @@ export class EducationalPlatform {
     };
 
     this.editor.setAll(userCode.html, userCode.css, userCode.js);
+    this.editor.switchTab("html"); // Принудительно переключаем на HTML
     this._renderSample();
     this._updateTaskHeader(taskInfo, config);
     this._markActiveTask(taskId);
@@ -123,25 +124,51 @@ export class EducationalPlatform {
   }
 
   _getStarterCode(taskId, config) {
+    // Базовый HTML шаблон для всех заданий
+    const baseHtmlTemplate = `<!doctype html>
+<html lang="en">
+  <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  </head>
+    <body>
+      <!-- Введите html код здесь -->
+      
+    </body>
+</html>`;
+
     // Шаблоны-заглушки для каждого задания
     const starters = {
       "001": {
-        html: `<div class="profile-card">\n  <!-- Ваша карточка здесь -->\n</div>`,
+        html: baseHtmlTemplate,
         css: `body {\n  display: flex;\n  /* Центрирование */\n}\n\n.profile-card {\n  /* Стили карточки */\n}`,
         js: ``,
       },
       "002": {
-        html: `<div class="calculator">\n  <div id="display">0</div>\n  <!-- Кнопки -->\n</div>`,
+        html: baseHtmlTemplate,
         css: `.calculator {\n  /* Стили калькулятора */\n}`,
         js: `// Логика калькулятора\n`,
       },
       "003": {
-        html: `<button class="btn">Нажми меня!</button>`,
+        html: baseHtmlTemplate,
         css: `body {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  height: 100vh;\n}\n\n.btn {\n  /* Стили кнопки */\n  cursor: pointer;\n  transition: all 0.3s ease;\n}\n\n.btn:hover {\n  /* Hover-состояние */\n}`,
         js: ``,
       },
     };
-    return starters[taskId] || { html: "", css: "", js: "" };
+
+    // Возвращаем шаблон для конкретного задания или базовый шаблон
+    const starter = starters[taskId];
+    if (starter) {
+      return starter;
+    }
+
+    // Для всех остальных заданий возвращаем базовый HTML шаблон
+    return {
+      html: baseHtmlTemplate,
+      css: "",
+      js: "",
+    };
   }
 
   /* ══════════════════════════════════════════

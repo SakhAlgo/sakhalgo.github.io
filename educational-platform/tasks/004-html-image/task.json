@@ -6,11 +6,15 @@
   "passThreshold": 70,
   "tags": ["html", "img"],
   "timeLimit": 10,
-  "description": "Добавьте изображение с src='image.jpg' и alt='Картинка'",
+  "description": "Добавьте изображение космоса",
   "requirements": [
     "Использовать тег <img>",
-    "Атрибут src='image.jpg'",
-    "Атрибут alt='Картинка'"
+    "Атрибут src='https://1avatara.ru/pic/space/space021.jpg'",
+    "Атрибут alt='Космос'"
   ],
-  "sampleFiles": {"html": "sample.html", "css": "sample.css", "js": "sample.js"}
+  "sampleFiles": {
+    "html": "sample.html",
+    "css": "sample.css",
+    "js": "sample.js"
+  }
 }
