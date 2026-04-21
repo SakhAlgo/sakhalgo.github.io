@@ -64,8 +64,8 @@ describe('coursesManifest', () => {
 });
 
 describe('tasksManifest', () => {
-  test('должен содержать 20 задач', () => {
-    expect(tasksManifest.length).toBe(20);
+  test('должен содержать 40 задач', () => {
+    expect(tasksManifest.length).toBe(40);
   });
 
   test('задачи 001-005 относятся к курсу html-css-basics и модулю html-tags', () => {
