@@ -108,6 +108,8 @@ export const tasksManifest = [
   // ========== HTML & CSS: HTML теги (001-005) ==========
   {
     id: "001",
+    topic: "headings",
+    topicOrder: 1,
     courseId: "html-css-basics",
     moduleId: "html-tags",
     title: "Заголовок страницы",
@@ -119,6 +121,7 @@ export const tasksManifest = [
   },
   {
     id: "002",
+    topic: "text-formatting",
     courseId: "html-css-basics",
     moduleId: "html-tags",
     title: "Абзац текста",
@@ -130,6 +133,7 @@ export const tasksManifest = [
   },
   {
     id: "003",
+    topic: "lists",
     courseId: "html-css-basics",
     moduleId: "html-tags",
     title: "Список покупок",
@@ -141,6 +145,7 @@ export const tasksManifest = [
   },
   {
     id: "004",
+    topic: "media",
     courseId: "html-css-basics",
     moduleId: "html-tags",
     title: "Изображение",
@@ -152,6 +157,7 @@ export const tasksManifest = [
   },
   {
     id: "005",
+    topic: "media",
     courseId: "html-css-basics",
     moduleId: "html-tags",
     title: "Ссылка",
@@ -164,6 +170,7 @@ export const tasksManifest = [
   // ========== HTML & CSS: CSS стилизация (006-010) ==========
   {
     id: "006",
+    topic: "css-colors",
     courseId: "html-css-basics",
     moduleId: "css-styling",
     title: "Цвет текста",
@@ -175,6 +182,7 @@ export const tasksManifest = [
   },
   {
     id: "007",
+    topic: "css-colors",
     courseId: "html-css-basics",
     moduleId: "css-styling",
     title: "Фон элемента",
@@ -186,6 +194,7 @@ export const tasksManifest = [
   },
   {
     id: "008",
+    topic: "css-dimensions",
     courseId: "html-css-basics",
     moduleId: "css-styling",
     title: "Размеры и цвет блока",
@@ -197,6 +206,7 @@ export const tasksManifest = [
   },
   {
     id: "009",
+    topic: "css-spacing",
     courseId: "html-css-basics",
     moduleId: "css-styling",
     title: "Отступы",
@@ -208,6 +218,7 @@ export const tasksManifest = [
   },
   {
     id: "010",
+    topic: "css-spacing",
     courseId: "html-css-basics",
     moduleId: "css-styling",
     title: "Граница элемента",
@@ -220,6 +231,7 @@ export const tasksManifest = [
   // ========== JavaScript: Переменные и типы (011-015) ==========
   {
     id: "011",
+    topic: "js-variables",
     courseId: "js-basics",
     moduleId: "js-variables",
     title: "Объявление переменной",
@@ -231,6 +243,7 @@ export const tasksManifest = [
   },
   {
     id: "012",
+    topic: "js-variables",
     courseId: "js-basics",
     moduleId: "js-variables",
     title: "Строковая переменная",
@@ -242,6 +255,7 @@ export const tasksManifest = [
   },
   {
     id: "013",
+    topic: "js-variables",
     courseId: "js-basics",
     moduleId: "js-variables",
     title: "Числовая переменная",
@@ -253,6 +267,7 @@ export const tasksManifest = [
   },
   {
     id: "014",
+    topic: "js-variables",
     courseId: "js-basics",
     moduleId: "js-variables",
     title: "Булево значение",
@@ -264,6 +279,7 @@ export const tasksManifest = [
   },
   {
     id: "015",
+    topic: "js-variables",
     courseId: "js-basics",
     moduleId: "js-variables",
     title: "Конкатенация строк",
@@ -276,6 +292,7 @@ export const tasksManifest = [
   // ========== JavaScript: Функции (016-020) ==========
   {
     id: "016",
+    topic: "js-functions",
     courseId: "js-basics",
     moduleId: "js-functions",
     title: "Простая функция",
@@ -287,6 +304,7 @@ export const tasksManifest = [
   },
   {
     id: "017",
+    topic: "js-functions",
     courseId: "js-basics",
     moduleId: "js-functions",
     title: "Функция с параметром",
@@ -298,6 +316,7 @@ export const tasksManifest = [
   },
   {
     id: "018",
+    topic: "js-functions",
     courseId: "js-basics",
     moduleId: "js-functions",
     title: "Возврат значения",
@@ -309,6 +328,7 @@ export const tasksManifest = [
   },
   {
     id: "019",
+    topic: "js-functions",
     courseId: "js-basics",
     moduleId: "js-functions",
     title: "Стрелочная функция",
@@ -320,6 +340,7 @@ export const tasksManifest = [
   },
   {
     id: "020",
+    topic: "js-functions",
     courseId: "js-basics",
     moduleId: "js-functions",
     title: "Вызов функции",
@@ -332,6 +353,8 @@ export const tasksManifest = [
   // ========== HTML & CSS: HTML теги (021-025) - дополнительные ==========
   {
     id: "021",
+    topic: "headings",
+    topicOrder: 2,
     courseId: "html-css-basics",
     moduleId: "html-tags",
     title: "Заголовок второго уровня",
@@ -343,6 +366,8 @@ export const tasksManifest = [
   },
   {
     id: "022",
+    topic: "text-formatting",
+    topicOrder: 2,
     courseId: "html-css-basics",
     moduleId: "html-tags",
     title: "Жирный текст",
@@ -354,6 +379,8 @@ export const tasksManifest = [
   },
   {
     id: "023",
+    topic: "text-formatting",
+    topicOrder: 3,
     courseId: "html-css-basics",
     moduleId: "html-tags",
     title: "Курсив",
@@ -365,6 +392,8 @@ export const tasksManifest = [
   },
   {
     id: "024",
+    topic: "lists",
+    topicOrder: 2,
     courseId: "html-css-basics",
     moduleId: "html-tags",
     title: "Нумерованный список",
@@ -376,6 +405,8 @@ export const tasksManifest = [
   },
   {
     id: "025",
+    topic: "text-formatting",
+    topicOrder: 4,
     courseId: "html-css-basics",
     moduleId: "html-tags",
     title: "Разрыв строки",
@@ -388,6 +419,8 @@ export const tasksManifest = [
   // ========== HTML & CSS: CSS стилизация (026-030) - дополнительные ==========
   {
     id: "026",
+    topic: "css-font",
+    topicOrder: 1,
     courseId: "html-css-basics",
     moduleId: "css-styling",
     title: "Шрифт текста",
@@ -399,6 +432,8 @@ export const tasksManifest = [
   },
   {
     id: "027",
+    topic: "css-font-size",
+    topicOrder: 1,
     courseId: "html-css-basics",
     moduleId: "css-styling",
     title: "Размер шрифта",
@@ -410,6 +445,8 @@ export const tasksManifest = [
   },
   {
     id: "028",
+    topic: "css-text-align",
+    topicOrder: 1,
     courseId: "html-css-basics",
     moduleId: "css-styling",
     title: "Выравнивание текста",
@@ -421,6 +458,8 @@ export const tasksManifest = [
   },
   {
     id: "029",
+    topic: "css-opacity",
+    topicOrder: 1,
     courseId: "html-css-basics",
     moduleId: "css-styling",
     title: "Прозрачность",
@@ -432,6 +471,8 @@ export const tasksManifest = [
   },
   {
     id: "030",
+    topic: "css-shadow",
+    topicOrder: 1,
     courseId: "html-css-basics",
     moduleId: "css-styling",
     title: "Тень блока",
@@ -444,6 +485,8 @@ export const tasksManifest = [
   // ========== JavaScript: Переменные и типы (031-035) - дополнительные ==========
   {
     id: "031",
+    topic: "js-variables",
+    topicOrder: 6,
     courseId: "js-basics",
     moduleId: "js-variables",
     title: "Константа",
@@ -455,6 +498,8 @@ export const tasksManifest = [
   },
   {
     id: "032",
+    topic: "js-number-type",
+    topicOrder: 7,
     courseId: "js-basics",
     moduleId: "js-variables",
     title: "Тип данных number",
@@ -466,6 +511,8 @@ export const tasksManifest = [
   },
   {
     id: "033",
+    topic: "js-to-string",
+    topicOrder: 8,
     courseId: "js-basics",
     moduleId: "js-variables",
     title: "Преобразование в строку",
@@ -477,6 +524,8 @@ export const tasksManifest = [
   },
   {
     id: "034",
+    topic: "js-to-number",
+    topicOrder: 9,
     courseId: "js-basics",
     moduleId: "js-variables",
     title: "Преобразование в число",
@@ -488,6 +537,8 @@ export const tasksManifest = [
   },
   {
     id: "035",
+    topic: "js-template-string",
+    topicOrder: 10,
     courseId: "js-basics",
     moduleId: "js-variables",
     title: "Шаблонные строки",
@@ -500,6 +551,8 @@ export const tasksManifest = [
   // ========== JavaScript: Функции (036-040) - дополнительные ==========
   {
     id: "036",
+    topic: "js-functions",
+    topicOrder: 6,
     courseId: "js-basics",
     moduleId: "js-functions",
     title: "Функция с двумя параметрами",
@@ -511,6 +564,8 @@ export const tasksManifest = [
   },
   {
     id: "037",
+    topic: "js-functions",
+    topicOrder: 7,
     courseId: "js-basics",
     moduleId: "js-functions",
     title: "Стрелочная функция с параметром",
@@ -522,6 +577,8 @@ export const tasksManifest = [
   },
   {
     id: "038",
+    topic: "js-functions",
+    topicOrder: 8,
     courseId: "js-basics",
     moduleId: "js-functions",
     title: "Функция возвращает сумму",
@@ -533,6 +590,8 @@ export const tasksManifest = [
   },
   {
     id: "039",
+    topic: "js-functions",
+    topicOrder: 9,
     courseId: "js-basics",
     moduleId: "js-functions",
     title: "Функция выражение",
@@ -544,6 +603,8 @@ export const tasksManifest = [
   },
   {
     id: "040",
+    topic: "js-functions",
+    topicOrder: 10,
     courseId: "js-basics",
     moduleId: "js-functions",
     title: "Вложенный вызов функции",

@@ -105,7 +105,6 @@ export class EducationalPlatform {
 
     this._renderSample();
     this._updateTaskHeader(taskInfo, config);
-    this._markActiveTask(taskId);
 
     localStorage.setItem("educode_last_task", taskId);
     this.setStatus("Задание загружено. Ctrl+Enter — запустить", "info");
@@ -159,6 +158,11 @@ export class EducationalPlatform {
       "003": {
         html: baseHtmlTemplate,
         css: `body {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  height: 100vh;\n}\n\n.btn {\n  /* Стили кнопки */\n  cursor: pointer;\n  transition: all 0.3s ease;\n}\n\n.btn:hover {\n  /* Hover-состояние */\n}`,
+        js: ``,
+      },
+      "004": {
+        html: baseHtmlTemplate,
+        css: ``,
         js: ``,
       },
     };
@@ -225,7 +229,6 @@ export class EducationalPlatform {
         this.progress = StorageManager.load();
         this.updateGlobalProgress();
         this.renderTaskList();
-        this._markTaskCompleted(this.currentTask.id);
         this.toast(
           `🎉 Отлично! Задание выполнено! Счёт: ${result.score}%`,
           "success",
@@ -257,108 +260,115 @@ export class EducationalPlatform {
        UI RENDERING
     ══════════════════════════════════════════ */
 
+  _groupTasksByTopic(tasks = this.manifest) {
+    const topics = {};
+    tasks.forEach(task => {
+      if (!topics[task.topic]) {
+        topics[task.topic] = [];
+      }
+      topics[task.topic].push(task);
+    });
+    // Сортируем задачи внутри темы по topicOrder или id
+    Object.keys(topics).forEach(topic => {
+      topics[topic].sort((a, b) => (a.topicOrder || parseInt(a.id)) - (b.topicOrder || parseInt(b.id)));
+    });
+    return topics;
+  }
+
   renderTaskList() {
     const container = document.getElementById("taskList");
     if (!container) return;
 
-    // Фильтрация по курсу или показ всех заданий с группировкой
     let renderedContent = "";
+    let topics = this._groupTasksByTopic();
 
     if (this._filter === "all") {
-      // Показываем все курсы с модулями и заданиями
-      coursesManifest.forEach((course) => {
-        renderedContent += this._renderCourse(course);
+      // Показываем все темы
+      Object.keys(topics).forEach(topic => {
+        renderedContent += this._renderTopic(topic, topics[topic]);
       });
     } else if (this._filter.startsWith("course-")) {
-      // Показываем конкретный курс
+      // Показываем темы из конкретного курса
       const courseId = this._filter.replace("course-", "");
-      const course = coursesManifest.find((c) => c.id === courseId);
+      const course = coursesManifest.find(c => c.id === courseId);
       if (course) {
-        renderedContent += this._renderCourse(course);
+        const courseTaskIds = new Set(course.modules.flatMap((module) => module.tasks));
+        const courseTasks = this.manifest.filter((task) => courseTaskIds.has(task.id));
+        topics = this._groupTasksByTopic(courseTasks);
+
+        Object.keys(topics).forEach(topic => {
+          renderedContent += this._renderTopic(topic, topics[topic]);
+        });
       }
     }
 
-    container.innerHTML =
-      renderedContent ||
-      '<div class="task-list-loading"><span>Нет заданий</span></div>';
+    container.innerHTML = renderedContent || '<div class="task-list-loading"><span>Нет заданий</span></div>';
 
     // Навешиваем обработчики кликов
-    container.querySelectorAll(".task-item").forEach((el) => {
+    container.querySelectorAll(".task-card").forEach((el) => {
       const handler = () => this.loadTask(el.dataset.id);
       el.addEventListener("click", handler);
       el.addEventListener("keydown", (e) => e.key === "Enter" && handler());
     });
   }
 
-  _renderCourse(course) {
-    const completedInCourse = course.modules
-      .flatMap((m) => m.tasks)
-      .filter((taskId) => this.progress[taskId]?.completed).length;
-    const totalInCourse = course.modules.flatMap((m) => m.tasks).length;
+  _renderTopic(topic, tasks) {
+    const completedInTopic = tasks.filter(t => this.progress[t.id]?.completed).length;
+    const totalInTopic = tasks.length;
+    const isActiveTopic = tasks.some(t => this.currentTask?.id === t.id);
 
     let html = `
-            <div class="course-section">
-                <div class="course-header">
-                    <div class="course-title">
-                        <span class="course-icon">${course.icon}</span>
-                        <span>${course.title}</span>
-                    </div>
-                    <div class="course-progress">
-                        <span class="course-progress-text">${completedInCourse}/${totalInCourse}</span>
-                    </div>
-                </div>
-                <p class="course-description">${course.description}</p>
-        `;
+      <div class="topic-section ${isActiveTopic ? 'active' : ''}">
+        <div class="topic-header">
+          <span class="topic-title">${this._formatTopicTitle(topic)}</span>
+          <span class="topic-count">${completedInTopic}/${totalInTopic}</span>
+        </div>
+        <div class="topic-tasks">
+    `;
 
-    course.modules.forEach((module) => {
-      html += this._renderModule(module, course.id);
-    });
-
-    html += "</div>";
-    return html;
-  }
-
-  _renderModule(module, courseId) {
-    const moduleTasks = module.tasks
-      .map((taskId) => this.manifest.find((t) => t.id === taskId))
-      .filter(Boolean);
-
-    const completedInModule = moduleTasks.filter(
-      (t) => this.progress[t.id]?.completed,
-    ).length;
-    const totalInModule = moduleTasks.length;
-
-    let html = `
-            <div class="module-section">
-                <div class="module-header">
-                    <span class="module-title">${module.title}</span>
-                    <span class="module-count">${completedInModule}/${totalInModule}</span>
-                </div>
-                <p class="module-description">${module.description}</p>
-                <div class="module-tasks">
-        `;
-
-    moduleTasks.forEach((task, index) => {
+    tasks.forEach(task => {
       const prog = this.progress[task.id];
       const isCompleted = prog?.completed;
       const isActive = this.currentTask?.id === task.id;
       const diffInfo = DIFFICULTY_MAP[task.difficulty] || DIFFICULTY_MAP.easy;
-      const taskNumber = index + 1; // Порядковый номер в модуле
 
       html += `
-                <div class="task-item ${isCompleted ? "completed" : ""} ${isActive ? "active" : ""}"
-                     data-id="${task.id}" role="button" tabindex="0">
-                    <span class="task-item-num">${taskNumber}</span>
-                    <div class="task-item-info">
-                        <div class="task-item-title">${task.title}</div>
-                        <div class="task-item-diff" style="color:${diffInfo.color}">${diffInfo.stars}</div>
-                    </div>
-                </div>
-            `;
+        <div class="task-card ${isCompleted ? 'completed' : ''} ${isActive ? 'active' : ''}"
+             data-id="${task.id}" role="button" tabindex="0">
+          <div class="task-card-inner">
+            <div class="task-card-mark">?</div>
+          </div>
+        </div>
+      `;
     });
 
     html += "</div></div>";
     return html;
+  }
+
+  _formatTopicTitle(topic) {
+    // Преобразуем topic в читаемый заголовок
+    const titles = {
+      'headings': 'Заголовки страницы',
+      'text-formatting': 'Форматирование текста',
+      'lists': 'Списки',
+      'media': 'Медиа элементы',
+      'css-colors': 'Цвета в CSS',
+      'css-dimensions': 'Размеры элементов',
+      'css-spacing': 'Отступы и границы',
+      'css-font': 'Шрифты',
+      'css-font-size': 'Размер шрифта',
+      'css-text-align': 'Выравнивание текста',
+      'css-opacity': 'Прозрачность',
+      'css-shadow': 'Тень блока',
+      'js-variables': 'Переменные и типы',
+      'js-number-type': 'Тип number',
+      'js-to-string': 'Преобразование в строку',
+      'js-to-number': 'Преобразование в число',
+      'js-template-string': 'Шаблонные строки',
+      'js-functions': 'Функции',
+    };
+    return titles[topic] || topic.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
   }
 
   updateGlobalProgress() {
