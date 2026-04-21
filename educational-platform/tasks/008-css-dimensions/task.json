@@ -1,15 +1,16 @@
 {
   "id": "008",
-  "title": "Размеры блока",
+  "title": "Размеры и цвет блока",
   "difficulty": "easy",
   "points": 50,
   "passThreshold": 70,
-  "tags": ["css", "width", "height"],
+  "tags": ["css", "width", "height", "background-color"],
   "timeLimit": 10,
-  "description": "Задайте размеры для элемента с классом 'box'",
+  "description": "Задайте размеры и синий фон для элемента с классом 'box'",
   "requirements": [
     "Использовать свойство width: 100px",
-    "Использовать свойство height: 50px"
+    "Использовать свойство height: 50px",
+    "Использовать свойство background-color: blue"
   ],
   "sampleFiles": {
     "html": "sample.html",
