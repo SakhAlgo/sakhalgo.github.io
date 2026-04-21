@@ -1,4 +1,4 @@
-import { tasksManifest, DIFFICULTY_MAP } from '../tasks/task-manifest.js';
+import { tasksManifest, coursesManifest, DIFFICULTY_MAP } from '../tasks/task-manifest.js';
 import { StorageManager }               from './storage.js';
 import { PreviewManager }               from './preview.js';
 import { EditorManager }                from './editor.js';
@@ -198,31 +198,98 @@ export class EducationalPlatform {
         const container = document.getElementById('taskList');
         if (!container) return;
 
-        const filtered = this._filter === 'all'
-            ? this.manifest
-            : this.manifest.filter(t => t.difficulty === this._filter);
+        // Фильтрация по курсу или показ всех заданий с группировкой
+        let renderedContent = '';
 
-        container.innerHTML = filtered.map(task => {
-            const prog = this.progress[task.id];
-            const isCompleted = prog?.completed;
-            const isActive    = this.currentTask?.id === task.id;
-            const diffInfo    = DIFFICULTY_MAP[task.difficulty] || DIFFICULTY_MAP.easy;
+        if (this._filter === 'all') {
+            // Показываем все курсы с модулями и заданиями
+            coursesManifest.forEach(course => {
+                renderedContent += this._renderCourse(course);
+            });
+        } else if (this._filter.startsWith('course-')) {
+            // Показываем конкретный курс
+            const courseId = this._filter.replace('course-', '');
+            const course = coursesManifest.find(c => c.id === courseId);
+            if (course) {
+                renderedContent += this._renderCourse(course);
+            }
+        }
 
-            return `<div class="task-item ${isCompleted ? 'completed' : ''} ${isActive ? 'active' : ''}"
-                         data-id="${task.id}" role="button" tabindex="0">
-                <span class="task-item-num">#${task.id}</span>
-                <div class="task-item-info">
-                    <div class="task-item-title">${task.title}</div>
-                    <div class="task-item-diff" style="color:${diffInfo.color}">${diffInfo.stars} ${diffInfo.label}</div>
-                </div>
-            </div>`;
-        }).join('');
+        container.innerHTML = renderedContent || '<div class="task-list-loading"><span>Нет заданий</span></div>';
 
+        // Навешиваем обработчики кликов
         container.querySelectorAll('.task-item').forEach(el => {
             const handler = () => this.loadTask(el.dataset.id);
             el.addEventListener('click', handler);
             el.addEventListener('keydown', e => e.key === 'Enter' && handler());
         });
+    }
+
+    _renderCourse(course) {
+        const completedInCourse = course.modules.flatMap(m => m.tasks)
+            .filter(taskId => this.progress[taskId]?.completed).length;
+        const totalInCourse = course.modules.flatMap(m => m.tasks).length;
+
+        let html = `
+            <div class="course-section">
+                <div class="course-header">
+                    <div class="course-title">
+                        <span class="course-icon">${course.icon}</span>
+                        <span>${course.title}</span>
+                    </div>
+                    <div class="course-progress">
+                        <span class="course-progress-text">${completedInCourse}/${totalInCourse}</span>
+                    </div>
+                </div>
+                <p class="course-description">${course.description}</p>
+        `;
+
+        course.modules.forEach(module => {
+            html += this._renderModule(module, course.id);
+        });
+
+        html += '</div>';
+        return html;
+    }
+
+    _renderModule(module, courseId) {
+        const moduleTasks = module.tasks.map(taskId => 
+            this.manifest.find(t => t.id === taskId)
+        ).filter(Boolean);
+
+        const completedInModule = moduleTasks.filter(t => this.progress[t.id]?.completed).length;
+        const totalInModule = moduleTasks.length;
+
+        let html = `
+            <div class="module-section">
+                <div class="module-header">
+                    <span class="module-title">${module.title}</span>
+                    <span class="module-count">${completedInModule}/${totalInModule}</span>
+                </div>
+                <p class="module-description">${module.description}</p>
+                <div class="module-tasks">
+        `;
+
+        moduleTasks.forEach(task => {
+            const prog = this.progress[task.id];
+            const isCompleted = prog?.completed;
+            const isActive = this.currentTask?.id === task.id;
+            const diffInfo = DIFFICULTY_MAP[task.difficulty] || DIFFICULTY_MAP.easy;
+
+            html += `
+                <div class="task-item ${isCompleted ? 'completed' : ''} ${isActive ? 'active' : ''}"
+                     data-id="${task.id}" role="button" tabindex="0">
+                    <span class="task-item-num">#${task.id}</span>
+                    <div class="task-item-info">
+                        <div class="task-item-title">${task.title}</div>
+                        <div class="task-item-diff" style="color:${diffInfo.color}">${diffInfo.stars}</div>
+                    </div>
+                </div>
+            `;
+        });
+
+        html += '</div></div>';
+        return html;
     }
 
     updateGlobalProgress() {

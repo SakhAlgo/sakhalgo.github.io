@@ -1,0 +1,16 @@
+{
+  "id": "004",
+  "title": "Изображение",
+  "difficulty": "easy",
+  "points": 50,
+  "passThreshold": 70,
+  "tags": ["html", "img"],
+  "timeLimit": 10,
+  "description": "Добавьте изображение с src='image.jpg' и alt='Картинка'",
+  "requirements": [
+    "Использовать тег <img>",
+    "Атрибут src='image.jpg'",
+    "Атрибут alt='Картинка'"
+  ],
+  "sampleFiles": {"html": "sample.html", "css": "sample.css", "js": "sample.js"}
+}

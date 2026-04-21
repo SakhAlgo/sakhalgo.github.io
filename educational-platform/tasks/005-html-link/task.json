@@ -1,0 +1,16 @@
+{
+  "id": "005",
+  "title": "Ссылка",
+  "difficulty": "easy",
+  "points": 50,
+  "passThreshold": 70,
+  "tags": ["html", "a"],
+  "timeLimit": 10,
+  "description": "Создайте ссылку на 'https://example.com' с текстом 'Перейти'",
+  "requirements": [
+    "Использовать тег <a>",
+    "Атрибут href='https://example.com'",
+    "Текст ссылки: 'Перейти'"
+  ],
+  "sampleFiles": {"html": "sample.html", "css": "sample.css", "js": "sample.js"}
+}

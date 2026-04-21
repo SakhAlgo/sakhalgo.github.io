@@ -1,0 +1,20 @@
+{
+  "id": "012",
+  "title": "Строковая переменная",
+  "difficulty": "easy",
+  "points": 50,
+  "passThreshold": 70,
+  "tags": ["js", "string"],
+  "timeLimit": 10,
+  "description": "Создайте строковую переменную 'greeting' со значением 'Привет, мир!'",
+  "requirements": [
+    "Использовать const",
+    "Переменная должна называться 'greeting'",
+    "Значение: 'Привет, мир!'"
+  ],
+  "sampleFiles": {
+    "html": "sample.html",
+    "css": "sample.css",
+    "js": "sample.js"
+  }
+}

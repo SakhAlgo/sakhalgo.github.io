@@ -1,0 +1,20 @@
+{
+  "id": "014",
+  "title": "Булево значение",
+  "difficulty": "easy",
+  "points": 50,
+  "passThreshold": 70,
+  "tags": ["js", "boolean"],
+  "timeLimit": 10,
+  "description": "Создайте булеву переменную 'isReady' со значением true",
+  "requirements": [
+    "Использовать const",
+    "Переменная должна называться 'isReady'",
+    "Значение: true"
+  ],
+  "sampleFiles": {
+    "html": "sample.html",
+    "css": "sample.css",
+    "js": "sample.js"
+  }
+}

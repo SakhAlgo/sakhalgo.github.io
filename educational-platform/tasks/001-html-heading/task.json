@@ -1,0 +1,19 @@
+{
+  "id": "001",
+  "title": "Заголовок страницы",
+  "difficulty": "easy",
+  "points": 50,
+  "passThreshold": 70,
+  "tags": ["html", "h1"],
+  "timeLimit": 10,
+  "description": "Создайте заголовок первого уровня с текстом 'Привет, мир!'",
+  "requirements": [
+    "Использовать тег <h1>",
+    "Текст внутри тега: 'Привет, мир!'"
+  ],
+  "sampleFiles": {
+    "html": "sample.html",
+    "css": "sample.css",
+    "js": "sample.js"
+  }
+}

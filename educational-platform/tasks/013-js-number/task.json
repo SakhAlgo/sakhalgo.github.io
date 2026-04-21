@@ -1,0 +1,20 @@
+{
+  "id": "013",
+  "title": "Числовая переменная",
+  "difficulty": "easy",
+  "points": 50,
+  "passThreshold": 70,
+  "tags": ["js", "number"],
+  "timeLimit": 10,
+  "description": "Создайте числовую переменную 'age' со значением 25",
+  "requirements": [
+    "Использовать const",
+    "Переменная должна называться 'age'",
+    "Значение: 25"
+  ],
+  "sampleFiles": {
+    "html": "sample.html",
+    "css": "sample.css",
+    "js": "sample.js"
+  }
+}
