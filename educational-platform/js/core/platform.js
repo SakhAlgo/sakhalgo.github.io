@@ -503,8 +503,14 @@ export class EducationalPlatform {
     // Sample toggle
     document.getElementById("sampleToggle")?.addEventListener("click", () => {
       const panel = document.getElementById("samplePanel");
-      if (panel) panel.style.display = panel.style.display === "none" ? "" : "";
-      this._renderSample();
+      if (!panel) return;
+
+      const isHidden = panel.style.display === "none";
+      panel.style.display = isHidden ? "flex" : "none";
+
+      if (isHidden) {
+        this._renderSample();
+      }
     });
 
     // Fullscreen
