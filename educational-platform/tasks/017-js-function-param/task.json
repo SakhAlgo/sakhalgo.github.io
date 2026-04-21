@@ -1,0 +1,20 @@
+{
+  "id": "017",
+  "title": "Функция с параметром",
+  "difficulty": "easy",
+  "points": 50,
+  "passThreshold": 70,
+  "tags": ["js", "function", "parameter"],
+  "timeLimit": 10,
+  "description": "Создайте функцию greet(name), которая принимает имя и выводит приветствие",
+  "requirements": [
+    "Функция должна называться greet",
+    "Функция должна принимать параметр name",
+    "Вывод: 'Hello, ' + name"
+  ],
+  "sampleFiles": {
+    "html": "sample.html",
+    "css": "sample.css",
+    "js": "sample.js"
+  }
+}

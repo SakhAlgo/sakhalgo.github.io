@@ -1,0 +1,19 @@
+{
+  "id": "006",
+  "title": "Изменение цвета текста",
+  "difficulty": "easy",
+  "points": 50,
+  "passThreshold": 70,
+  "tags": ["css", "color"],
+  "timeLimit": 10,
+  "description": "Задайте цвет текста для элемента с классом 'text'",
+  "requirements": [
+    "Использовать свойство color",
+    "Установить цвет: blue"
+  ],
+  "sampleFiles": {
+    "html": "sample.html",
+    "css": "sample.css",
+    "js": "sample.js"
+  }
+}

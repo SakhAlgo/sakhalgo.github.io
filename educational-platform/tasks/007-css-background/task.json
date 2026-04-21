@@ -1,0 +1,19 @@
+{
+  "id": "007",
+  "title": "Фон элемента",
+  "difficulty": "easy",
+  "points": 50,
+  "passThreshold": 70,
+  "tags": ["css", "background"],
+  "timeLimit": 10,
+  "description": "Задайте фон для элемента с классом 'box'",
+  "requirements": [
+    "Использовать свойство background-color",
+    "Установить цвет фона: yellow"
+  ],
+  "sampleFiles": {
+    "html": "sample.html",
+    "css": "sample.css",
+    "js": "sample.js"
+  }
+}

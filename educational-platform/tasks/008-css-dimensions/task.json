@@ -1,0 +1,19 @@
+{
+  "id": "008",
+  "title": "Размеры блока",
+  "difficulty": "easy",
+  "points": 50,
+  "passThreshold": 70,
+  "tags": ["css", "width", "height"],
+  "timeLimit": 10,
+  "description": "Задайте размеры для элемента с классом 'box'",
+  "requirements": [
+    "Использовать свойство width: 100px",
+    "Использовать свойство height: 50px"
+  ],
+  "sampleFiles": {
+    "html": "sample.html",
+    "css": "sample.css",
+    "js": "sample.js"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "id": "011",
+  "title": "Объявление переменной",
+  "difficulty": "easy",
+  "points": 50,
+  "passThreshold": 70,
+  "tags": ["js", "let", "const"],
+  "timeLimit": 10,
+  "description": "Объявите переменную с именем 'name' и значением 'JavaScript'",
+  "requirements": [
+    "Использовать let или const",
+    "Переменная должна называться 'name'",
+    "Значение: 'JavaScript'"
+  ],
+  "sampleFiles": {
+    "html": "sample.html",
+    "css": "sample.css",
+    "js": "sample.js"
+  }
+}

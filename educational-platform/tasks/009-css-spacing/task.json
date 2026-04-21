@@ -1,0 +1,19 @@
+{
+  "id": "009",
+  "title": "Отступы",
+  "difficulty": "easy",
+  "points": 50,
+  "passThreshold": 70,
+  "tags": ["css", "margin", "padding"],
+  "timeLimit": 10,
+  "description": "Задайте отступы для элемента с классом 'box'",
+  "requirements": [
+    "Использовать свойство padding: 20px",
+    "Использовать свойство margin: 10px"
+  ],
+  "sampleFiles": {
+    "html": "sample.html",
+    "css": "sample.css",
+    "js": "sample.js"
+  }
+}

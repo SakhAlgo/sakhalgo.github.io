@@ -1,0 +1,20 @@
+{
+  "id": "019",
+  "title": "Стрелочная функция",
+  "difficulty": "easy",
+  "points": 50,
+  "passThreshold": 70,
+  "tags": ["js", "arrow"],
+  "timeLimit": 10,
+  "description": "Создайте стрелочную функцию square, которая возвращает квадрат числа",
+  "requirements": [
+    "Использовать стрелочную функцию",
+    "Функция должна называться square",
+    "Возвращать x * x"
+  ],
+  "sampleFiles": {
+    "html": "sample.html",
+    "css": "sample.css",
+    "js": "sample.js"
+  }
+}

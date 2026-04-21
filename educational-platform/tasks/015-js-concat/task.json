@@ -1,0 +1,20 @@
+{
+  "id": "015",
+  "title": "Конкатенация строк",
+  "difficulty": "easy",
+  "points": 50,
+  "passThreshold": 70,
+  "tags": ["js", "string", "concat"],
+  "timeLimit": 10,
+  "description": "Объедините две строки: firstName и lastName в fullName",
+  "requirements": [
+    "Создать переменную firstName = 'John'",
+    "Создать переменную lastName = 'Doe'",
+    "Создать переменную fullName через конкатенацию"
+  ],
+  "sampleFiles": {
+    "html": "sample.html",
+    "css": "sample.css",
+    "js": "sample.js"
+  }
+}

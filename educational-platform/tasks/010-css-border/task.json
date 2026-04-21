@@ -1,0 +1,18 @@
+{
+  "id": "010",
+  "title": "Граница элемента",
+  "difficulty": "easy",
+  "points": 50,
+  "passThreshold": 70,
+  "tags": ["css", "border"],
+  "timeLimit": 10,
+  "description": "Задайте границу для элемента с классом 'box'",
+  "requirements": [
+    "Использовать свойство border: 2px solid red"
+  ],
+  "sampleFiles": {
+    "html": "sample.html",
+    "css": "sample.css",
+    "js": "sample.js"
+  }
+}

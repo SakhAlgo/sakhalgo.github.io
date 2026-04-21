@@ -1,0 +1,20 @@
+{
+  "id": "020",
+  "title": "Вызов функции",
+  "difficulty": "easy",
+  "points": 50,
+  "passThreshold": 70,
+  "tags": ["js", "function", "call"],
+  "timeLimit": 10,
+  "description": "Создайте функцию и вызовите её",
+  "requirements": [
+    "Создать функцию start",
+    "Вызвать функцию start",
+    "Вывод: 'Started'"
+  ],
+  "sampleFiles": {
+    "html": "sample.html",
+    "css": "sample.css",
+    "js": "sample.js"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "id": "016",
+  "title": "Простая функция",
+  "difficulty": "easy",
+  "points": 50,
+  "passThreshold": 70,
+  "tags": ["js", "function"],
+  "timeLimit": 10,
+  "description": "Создайте функцию sayHello, которая выводит 'Hello' в консоль",
+  "requirements": [
+    "Функция должна называться sayHello",
+    "Функция должна использовать console.log",
+    "Вывод: 'Hello'"
+  ],
+  "sampleFiles": {
+    "html": "sample.html",
+    "css": "sample.css",
+    "js": "sample.js"
+  }
+}
