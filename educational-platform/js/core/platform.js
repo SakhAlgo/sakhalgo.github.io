@@ -332,16 +332,17 @@ export class EducationalPlatform {
                 <div class="module-tasks">
         `;
 
-    moduleTasks.forEach((task) => {
+    moduleTasks.forEach((task, index) => {
       const prog = this.progress[task.id];
       const isCompleted = prog?.completed;
       const isActive = this.currentTask?.id === task.id;
       const diffInfo = DIFFICULTY_MAP[task.difficulty] || DIFFICULTY_MAP.easy;
+      const taskNumber = index + 1; // Порядковый номер в модуле
 
       html += `
                 <div class="task-item ${isCompleted ? "completed" : ""} ${isActive ? "active" : ""}"
                      data-id="${task.id}" role="button" tabindex="0">
-                    <span class="task-item-num">#${task.id}</span>
+                    <span class="task-item-num">${taskNumber}</span>
                     <div class="task-item-info">
                         <div class="task-item-title">${task.title}</div>
                         <div class="task-item-diff" style="color:${diffInfo.color}">${diffInfo.stars}</div>
