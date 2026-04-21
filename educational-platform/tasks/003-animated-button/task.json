@@ -1,0 +1,25 @@
+{
+  "id": "003",
+  "title": "Анимированная кнопка",
+  "difficulty": "medium",
+  "points": 200,
+  "passThreshold": 70,
+  "tags": ["css", "animation", "transitions", "hover"],
+  "timeLimit": 20,
+  "description": "Создайте стильную кнопку с плавными CSS-анимациями и эффектами при взаимодействии",
+  "requirements": [
+    "Элемент кнопки с текстом",
+    "CSS-переход (transition) на основное состояние",
+    "Изменение стиля при наведении (:hover)",
+    "CSS-анимация через @keyframes или animation",
+    "Использование transform (scale, translate и т.д.)",
+    "Стиль для :active или :focus",
+    "Базовые стили: padding, border-radius, cursor: pointer",
+    "Кнопка центрирована на странице"
+  ],
+  "sampleFiles": {
+    "html": "sample.html",
+    "css": "sample.css",
+    "js": "sample.js"
+  }
+}

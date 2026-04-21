@@ -1,0 +1,23 @@
+{
+  "id": "001",
+  "title": "Профильная карточка пользователя",
+  "difficulty": "easy",
+  "points": 100,
+  "passThreshold": 70,
+  "tags": ["html", "css", "flexbox"],
+  "timeLimit": 30,
+  "description": "Создайте профильную карточку с аватаром, именем, профессией и кнопкой подписки",
+  "requirements": [
+    "Класс .profile-card на контейнере карточки",
+    "Имя 'Алексей Иванов' в теге h2",
+    "Профессия 'Frontend-разработчик' в .job",
+    "Кнопка 'Подписаться' с классом .btn",
+    "Flex-центрирование карточки на странице",
+    "Тень (box-shadow) и скругление (border-radius)"
+  ],
+  "sampleFiles": {
+    "html": "sample.html",
+    "css": "sample.css",
+    "js": "sample.js"
+  }
+}

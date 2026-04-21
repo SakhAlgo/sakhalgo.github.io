@@ -1,0 +1,17 @@
+{
+  "platform": {
+    "name": "EdCode",
+    "version": "2.0.0",
+    "language": "ru"
+  },
+  "defaults": {
+    "passThreshold": 70,
+    "autoSave": true,
+    "autoRunDelay": 800
+  },
+  "features": {
+    "exportProgress": true,
+    "darkMode": true,
+    "keyboardShortcuts": true
+  }
+}
