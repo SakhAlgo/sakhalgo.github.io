@@ -1,0 +1,18 @@
+{
+  "id": "037",
+  "title": "Стрелочная функция с параметром",
+  "difficulty": "easy",
+  "points": 50,
+  "passThreshold": 70,
+  "tags": ["js"],
+  "timeLimit": 10,
+  "description": "Напишите JavaScript код: const fn = (x) => x * 2;",
+  "requirements": [
+    "Использовать JavaScript синтаксис"
+  ],
+  "sampleFiles": {
+    "html": "sample.html",
+    "css": "sample.css",
+    "js": "sample.js"
+  }
+}

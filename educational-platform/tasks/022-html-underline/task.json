@@ -1,0 +1,18 @@
+{
+  "id": "022",
+  "title": "Подчеркнутый текст",
+  "difficulty": "easy",
+  "points": 50,
+  "passThreshold": 70,
+  "tags": ["html", "u"],
+  "timeLimit": 10,
+  "description": "Создайте элемент с использованием тега <u>",
+  "requirements": [
+    "Использовать тег <u>"
+  ],
+  "sampleFiles": {
+    "html": "sample.html",
+    "css": "sample.css",
+    "js": "sample.js"
+  }
+}

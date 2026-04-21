@@ -1,0 +1,18 @@
+{
+  "id": "036",
+  "title": "Функция с двумя параметрами",
+  "difficulty": "easy",
+  "points": 50,
+  "passThreshold": 70,
+  "tags": ["js"],
+  "timeLimit": 10,
+  "description": "Напишите JavaScript код: function add(a, b) {}",
+  "requirements": [
+    "Использовать JavaScript синтаксис"
+  ],
+  "sampleFiles": {
+    "html": "sample.html",
+    "css": "sample.css",
+    "js": "sample.js"
+  }
+}

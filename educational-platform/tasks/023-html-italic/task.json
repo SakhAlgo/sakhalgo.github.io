@@ -1,0 +1,18 @@
+{
+  "id": "023",
+  "title": "Курсив",
+  "difficulty": "easy",
+  "points": 50,
+  "passThreshold": 70,
+  "tags": ["html", "em"],
+  "timeLimit": 10,
+  "description": "Создайте элемент с использованием тега <em>",
+  "requirements": [
+    "Использовать тег <em>"
+  ],
+  "sampleFiles": {
+    "html": "sample.html",
+    "css": "sample.css",
+    "js": "sample.js"
+  }
+}
