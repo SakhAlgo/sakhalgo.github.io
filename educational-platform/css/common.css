@@ -497,6 +497,11 @@ iframe {
   color: var(--text-primary);
 }
 
+.task-id-suffix {
+  opacity: 0.5;
+  font-weight: 400;
+}
+
 .task-tags {
   display: flex;
   gap: 4px;

@@ -390,7 +390,8 @@ export class EducationalPlatform {
     const score = document.getElementById("taskScore");
 
     if (badge) badge.textContent = `#${taskInfo.id}`;
-    if (title) title.textContent = config.title || taskInfo.title;
+    if (title)
+      title.innerHTML = `${config.title || taskInfo.title} <span class="task-id-suffix">(#${taskInfo.id})</span>`;
     if (tags)
       tags.innerHTML = (taskInfo.tags || [])
         .map((t) => `<span class="tag">${t}</span>`)
@@ -494,15 +495,6 @@ export class EducationalPlatform {
     document
       .getElementById("checkBtn")
       ?.addEventListener("click", () => this.checkSolution());
-
-    // Auto-run
-    document.getElementById("autoRun")?.addEventListener("change", (e) => {
-      if (e.target.checked) {
-        this.editor.onChange(({ html, css, js }) => {
-          this.preview.renderUserDebounced(html, css, js);
-        });
-      }
-    });
 
     // Editor actions
     document
