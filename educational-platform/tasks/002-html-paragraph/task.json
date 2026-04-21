@@ -1,0 +1,15 @@
+{
+  "id": "002",
+  "title": "Абзац текста",
+  "difficulty": "easy",
+  "points": 50,
+  "passThreshold": 70,
+  "tags": ["html", "p"],
+  "timeLimit": 10,
+  "description": "Создайте абзац с текстом 'Это мой первый абзац.'",
+  "requirements": [
+    "Использовать тег <p>",
+    "Текст внутри: 'Это мой первый абзац.'"
+  ],
+  "sampleFiles": {"html": "sample.html", "css": "sample.css", "js": "sample.js"}
+}

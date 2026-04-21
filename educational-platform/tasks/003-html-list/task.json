@@ -1,0 +1,16 @@
+{
+  "id": "003",
+  "title": "Список покупок",
+  "difficulty": "easy",
+  "points": 50,
+  "passThreshold": 70,
+  "tags": ["html", "ul", "li"],
+  "timeLimit": 15,
+  "description": "Создайте маркированный список из 3 элементов: 'Молоко', 'Хлеб', 'Яйца'",
+  "requirements": [
+    "Использовать тег <ul>",
+    "Три элемента <li>",
+    "Тексты: 'Молоко', 'Хлеб', 'Яйца'"
+  ],
+  "sampleFiles": {"html": "sample.html", "css": "sample.css", "js": "sample.js"}
+}
