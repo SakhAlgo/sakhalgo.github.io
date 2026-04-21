@@ -17,7 +17,8 @@ export class EducationalPlatform {
     this.currentTask = null;
     this.editor = new EditorManager();
     this.preview = new PreviewManager("sampleFrame", "userFrame");
-    this._filter = "all";
+    this._filter = "";
+    this._welcomeTimeout = null;
   }
 
   /* ══════════════════════════════════════════
@@ -25,10 +26,17 @@ export class EducationalPlatform {
     ══════════════════════════════════════════ */
 
   async init() {
+    this._filter = localStorage.getItem("educode_selected_course") || "";
+    this._renderCourseSelect();
     this.renderTaskList();
     this.updateGlobalProgress();
     this.bindUI();
     this.preview.clearUser();
+
+    if (this._filter) {
+      const welcomeScreen = document.getElementById("welcomeScreen");
+      if (welcomeScreen) welcomeScreen.classList.add("hidden");
+    }
 
     // Восстановить последнее задание или загрузить первое
     const lastId = localStorage.getItem("educode_last_task");
@@ -51,9 +59,14 @@ export class EducationalPlatform {
     const taskInfo = this.manifest.find((t) => t.id === taskId);
     if (!taskInfo) return;
 
-    // Скрыть приветственный экран
+    // Скрыть приветственный экран через 3 секунды
     const welcomeScreen = document.getElementById("welcomeScreen");
-    if (welcomeScreen) welcomeScreen.classList.add("hidden");
+    if (welcomeScreen && !welcomeScreen.classList.contains("hidden")) {
+      clearTimeout(this._welcomeTimeout);
+      this._welcomeTimeout = setTimeout(() => {
+        welcomeScreen.classList.add("hidden");
+      }, 3000);
+    }
 
     // Загрузить конфиг
     let config = {};
@@ -147,17 +160,17 @@ export class EducationalPlatform {
     const starters = {
       "001": {
         html: baseHtmlTemplate,
-        css: `body {\n  display: flex;\n  /* Центрирование */\n}\n\n.profile-card {\n  /* Стили карточки */\n}`,
+        css: ``,
         js: ``,
       },
       "002": {
         html: baseHtmlTemplate,
-        css: `.calculator {\n  /* Стили калькулятора */\n}`,
-        js: `// Логика калькулятора\n`,
+        css: ``,
+        js: ``,
       },
       "003": {
         html: baseHtmlTemplate,
-        css: `body {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  height: 100vh;\n}\n\n.btn {\n  /* Стили кнопки */\n  cursor: pointer;\n  transition: all 0.3s ease;\n}\n\n.btn:hover {\n  /* Hover-состояние */\n}`,
+        css: ``,
         js: ``,
       },
       "004": {
@@ -262,15 +275,18 @@ export class EducationalPlatform {
 
   _groupTasksByTopic(tasks = this.manifest) {
     const topics = {};
-    tasks.forEach(task => {
+    tasks.forEach((task) => {
       if (!topics[task.topic]) {
         topics[task.topic] = [];
       }
       topics[task.topic].push(task);
     });
     // Сортируем задачи внутри темы по topicOrder или id
-    Object.keys(topics).forEach(topic => {
-      topics[topic].sort((a, b) => (a.topicOrder || parseInt(a.id)) - (b.topicOrder || parseInt(b.id)));
+    Object.keys(topics).forEach((topic) => {
+      topics[topic].sort(
+        (a, b) =>
+          (a.topicOrder || parseInt(a.id)) - (b.topicOrder || parseInt(b.id)),
+      );
     });
     return topics;
   }
@@ -282,27 +298,34 @@ export class EducationalPlatform {
     let renderedContent = "";
     let topics = this._groupTasksByTopic();
 
-    if (this._filter === "all") {
-      // Показываем все темы
-      Object.keys(topics).forEach(topic => {
-        renderedContent += this._renderTopic(topic, topics[topic]);
-      });
-    } else if (this._filter.startsWith("course-")) {
+    if (!this._filter || !this._filter.startsWith("course-")) {
+      container.innerHTML =
+        '<div class="task-list-loading"><span>Выберите курс, чтобы увидеть задания</span></div>';
+      return;
+    }
+
+    if (this._filter.startsWith("course-")) {
       // Показываем темы из конкретного курса
       const courseId = this._filter.replace("course-", "");
-      const course = coursesManifest.find(c => c.id === courseId);
+      const course = coursesManifest.find((c) => c.id === courseId);
       if (course) {
-        const courseTaskIds = new Set(course.modules.flatMap((module) => module.tasks));
-        const courseTasks = this.manifest.filter((task) => courseTaskIds.has(task.id));
+        const courseTaskIds = new Set(
+          course.modules.flatMap((module) => module.tasks),
+        );
+        const courseTasks = this.manifest.filter((task) =>
+          courseTaskIds.has(task.id),
+        );
         topics = this._groupTasksByTopic(courseTasks);
 
-        Object.keys(topics).forEach(topic => {
+        Object.keys(topics).forEach((topic) => {
           renderedContent += this._renderTopic(topic, topics[topic]);
         });
       }
     }
 
-    container.innerHTML = renderedContent || '<div class="task-list-loading"><span>Нет заданий</span></div>';
+    container.innerHTML =
+      renderedContent ||
+      '<div class="task-list-loading"><span>Нет заданий</span></div>';
 
     // Навешиваем обработчики кликов
     container.querySelectorAll(".task-card").forEach((el) => {
@@ -312,13 +335,31 @@ export class EducationalPlatform {
     });
   }
 
+  _renderCourseSelect() {
+    const select = document.getElementById("courseSelect");
+    if (!select) return;
+
+    select.innerHTML = `
+      <option value="">Выберите курс</option>
+      ${coursesManifest
+        .map(
+          (course) =>
+            `<option value="course-${course.id}">${course.title}</option>`,
+        )
+        .join("")}
+    `;
+    select.value = this._filter;
+  }
+
   _renderTopic(topic, tasks) {
-    const completedInTopic = tasks.filter(t => this.progress[t.id]?.completed).length;
+    const completedInTopic = tasks.filter(
+      (t) => this.progress[t.id]?.completed,
+    ).length;
     const totalInTopic = tasks.length;
-    const isActiveTopic = tasks.some(t => this.currentTask?.id === t.id);
+    const isActiveTopic = tasks.some((t) => this.currentTask?.id === t.id);
 
     let html = `
-      <div class="topic-section ${isActiveTopic ? 'active' : ''}">
+      <div class="topic-section ${isActiveTopic ? "active" : ""}">
         <div class="topic-header">
           <span class="topic-title">${this._formatTopicTitle(topic)}</span>
           <span class="topic-count">${completedInTopic}/${totalInTopic}</span>
@@ -326,14 +367,14 @@ export class EducationalPlatform {
         <div class="topic-tasks">
     `;
 
-    tasks.forEach(task => {
+    tasks.forEach((task) => {
       const prog = this.progress[task.id];
       const isCompleted = prog?.completed;
       const isActive = this.currentTask?.id === task.id;
       const diffInfo = DIFFICULTY_MAP[task.difficulty] || DIFFICULTY_MAP.easy;
 
       html += `
-        <div class="task-card ${isCompleted ? 'completed' : ''} ${isActive ? 'active' : ''}"
+        <div class="task-card ${isCompleted ? "completed" : ""} ${isActive ? "active" : ""}"
              data-id="${task.id}" role="button" tabindex="0">
           <div class="task-card-inner">
             <div class="task-card-mark">?</div>
@@ -349,30 +390,33 @@ export class EducationalPlatform {
   _formatTopicTitle(topic) {
     // Преобразуем topic в читаемый заголовок
     const titles = {
-      'headings': 'Заголовки страницы',
-      'text-formatting': 'Форматирование текста',
-      'lists': 'Списки',
-      'media': 'Медиа элементы',
-      'css-colors': 'Цвета в CSS',
-      'css-dimensions': 'Размеры элементов',
-      'css-spacing': 'Отступы и границы',
-      'css-font': 'Шрифты',
-      'css-font-size': 'Размер шрифта',
-      'css-text-align': 'Выравнивание текста',
-      'css-opacity': 'Прозрачность',
-      'css-shadow': 'Тень блока',
-      'js-variables': 'Переменные и типы',
-      'js-number-type': 'Тип number',
-      'js-to-string': 'Преобразование в строку',
-      'js-to-number': 'Преобразование в число',
-      'js-template-string': 'Шаблонные строки',
-      'js-functions': 'Функции',
+      headings: "Заголовки страницы",
+      "text-formatting": "Форматирование текста",
+      lists: "Списки",
+      media: "Медиа элементы",
+      "css-colors": "Цвета в CSS",
+      "css-dimensions": "Размеры элементов",
+      "css-spacing": "Отступы и границы",
+      "css-font": "Шрифты",
+      "css-font-size": "Размер шрифта",
+      "css-text-align": "Выравнивание текста",
+      "css-opacity": "Прозрачность",
+      "css-shadow": "Тень блока",
+      "js-variables": "Переменные и типы",
+      "js-number-type": "Тип number",
+      "js-to-string": "Преобразование в строку",
+      "js-to-number": "Преобразование в число",
+      "js-template-string": "Шаблонные строки",
+      "js-functions": "Функции",
     };
-    return titles[topic] || topic.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+    return (
+      titles[topic] ||
+      topic.replace(/-/g, " ").replace(/\b\w/g, (l) => l.toUpperCase())
+    );
   }
 
   updateGlobalProgress() {
-    const stats = StorageManager.getOverallStats(this.manifest.length);
+    const stats = this._getSelectedCourseProgress();
     const fill = document.getElementById("globalProgress");
     const text = document.getElementById("progressText");
     const statP = document.getElementById("statPercent");
@@ -382,14 +426,42 @@ export class EducationalPlatform {
     if (text) text.textContent = `${stats.completed} / ${stats.total}`;
     if (statP) statP.textContent = stats.percent;
     if (statPts) {
-      const pts = Object.values(this.progress)
-        .filter((p) => p.completed)
-        .reduce((sum, p) => {
-          const task = this.manifest.find((t) => this.progress[t.id] === p);
-          return sum + (task?.points || 0);
-        }, 0);
-      statPts.textContent = pts;
+      statPts.textContent = stats.points;
     }
+  }
+
+  _getSelectedCourseProgress() {
+    if (!this._filter || !this._filter.startsWith("course-")) {
+      return { completed: 0, total: 0, percent: 0, avgScore: 0, points: 0 };
+    }
+
+    const courseId = this._filter.replace("course-", "");
+    const course = coursesManifest.find((c) => c.id === courseId);
+    if (!course) {
+      return { completed: 0, total: 0, percent: 0, avgScore: 0, points: 0 };
+    }
+
+    const taskIds = new Set(course.modules.flatMap((module) => module.tasks));
+    const progressData = this.progress;
+    const completedTasks = Array.from(taskIds).filter(
+      (taskId) => progressData[taskId]?.completed,
+    );
+
+    const completed = completedTasks.length;
+    const total = taskIds.size;
+    const percent = total > 0 ? Math.round((completed / total) * 100) : 0;
+    const points = completedTasks.reduce((sum, taskId) => {
+      const task = this.manifest.find((t) => t.id === taskId);
+      return sum + (task?.points || 0);
+    }, 0);
+
+    return {
+      completed,
+      total,
+      percent,
+      avgScore: 0,
+      points,
+    };
   }
 
   _updateTaskHeader(taskInfo, config) {
@@ -400,8 +472,7 @@ export class EducationalPlatform {
     const score = document.getElementById("taskScore");
 
     if (badge) badge.textContent = `#${taskInfo.id}`;
-    if (title)
-      title.innerHTML = `${config.title || taskInfo.title} <span class="task-id-suffix">(#${taskInfo.id})</span>`;
+    if (title) title.innerHTML = `${config.title || taskInfo.title}`;
     if (tags)
       tags.innerHTML = (taskInfo.tags || [])
         .map((t) => `<span class="tag">${t}</span>`)
@@ -570,17 +641,24 @@ export class EducationalPlatform {
       document.getElementById("checkResults").style.display = "none";
     });
 
-    // Filters
-    document.querySelectorAll(".filter-btn").forEach((btn) => {
-      btn.addEventListener("click", () => {
-        document
-          .querySelectorAll(".filter-btn")
-          .forEach((b) => b.classList.remove("active"));
-        btn.classList.add("active");
-        this._filter = btn.dataset.filter;
+    // Course selector
+    document
+      .getElementById("courseSelect")
+      ?.addEventListener("change", (event) => {
+        const value = event.target.value;
+        const welcomeScreen = document.getElementById("welcomeScreen");
+        if (value) {
+          this._filter = value;
+          localStorage.setItem("educode_selected_course", value);
+          if (welcomeScreen) welcomeScreen.classList.add("hidden");
+        } else {
+          this._filter = "";
+          localStorage.removeItem("educode_selected_course");
+          if (welcomeScreen) welcomeScreen.classList.remove("hidden");
+        }
         this.renderTaskList();
+        this.updateGlobalProgress();
       });
-    });
 
     // Sidebar toggle
     document.getElementById("sidebarToggle")?.addEventListener("click", () => {
