@@ -1,19 +1,19 @@
 {
-    "id": "041",
-    "title": "Выравнивание текста влево",
-    "difficulty": "easy",
-    "points": 50,
-    "passThreshold": 70,
-    "tags": ["css", "text-align", "left"],
-    "timeLimit": 10,
-    "description": "Выровняйте текст по левому краю с помощью CSS свойства text-align.",
-    "requirements": [
-        "Использовать свойство text-align",
-        "Значение должно быть left"
-    ],
-    "sampleFiles": {
-        "html": "sample.html",
-        "css": "sample.css",
-        "js": "sample.js"
-    }
+  "id": "041",
+  "title": "Выравнивание текста влево",
+  "difficulty": "easy",
+  "points": 50,
+  "passThreshold": 70,
+  "tags": ["css", "text-align", "left"],
+  "timeLimit": 10,
+  "description": "Выровняйте текст по левому краю с помощью CSS свойства text-align.",
+  "requirements": [
+    "Использовать свойство text-align",
+    "Значение должно быть left"
+  ],
+  "sampleFiles": {
+    "html": "sample.html",
+    "css": "sample.css",
+    "js": "sample.js"
+  }
 }

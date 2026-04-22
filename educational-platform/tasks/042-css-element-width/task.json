@@ -1,19 +1,16 @@
 {
-    "id": "042",
-    "title": "Ширина элемента",
-    "difficulty": "easy",
-    "points": 50,
-    "passThreshold": 70,
-    "tags": ["css", "width", "dimensions"],
-    "timeLimit": 10,
-    "description": "Установите ширину элемента в 200 пиксели с помощью CSS свойства width.",
-    "requirements": [
-        "Использовать свойство width",
-        "Значение должно быть 200px"
-    ],
-    "sampleFiles": {
-        "html": "sample.html",
-        "css": "sample.css",
-        "js": "sample.js"
-    }
+  "id": "042",
+  "title": "Ширина элемента",
+  "difficulty": "easy",
+  "points": 50,
+  "passThreshold": 70,
+  "tags": ["css", "width", "dimensions"],
+  "timeLimit": 10,
+  "description": "Установите ширину элемента в 200 пиксели с помощью CSS свойства width.",
+  "requirements": ["Использовать свойство width", "Значение должно быть 200px"],
+  "sampleFiles": {
+    "html": "sample.html",
+    "css": "sample.css",
+    "js": "sample.js"
+  }
 }
