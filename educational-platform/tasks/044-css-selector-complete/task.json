@@ -1,0 +1,18 @@
+{
+  "id": "044",
+  "title": "Дописать селектор класса",
+  "difficulty": "easy",
+  "points": 50,
+  "passThreshold": 70,
+  "tags": ["css", "selectors", "class"],
+  "timeLimit": 10,
+  "description": "В CSS-правиле отсутствует селектор. Дополните селектор для выбора класса button. Вместо пропуска напишите правильный селектор класса.",
+  "requirements": [
+    "Дописать селектор .button",
+    "Оставить свойства стилей неизменными"
+  ],
+  "sampleFiles": {
+    "html": "sample.html",
+    "css": "sample.css"
+  }
+}

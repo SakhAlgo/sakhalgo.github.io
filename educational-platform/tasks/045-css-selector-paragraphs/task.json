@@ -1,0 +1,18 @@
+{
+  "id": "045",
+  "title": "Селектор для всех абзацев",
+  "difficulty": "easy",
+  "points": 50,
+  "passThreshold": 70,
+  "tags": ["css", "selectors", "elements"],
+  "timeLimit": 10,
+  "description": "Напишите селектор для выбора всех элементов абзаца (теги p) на странице. Селектор тега — это просто название тега без точки и без решётки.",
+  "requirements": [
+    "Написать селектор p",
+    "Оставить свойства стилей неизменными"
+  ],
+  "sampleFiles": {
+    "html": "sample.html",
+    "css": "sample.css"
+  }
+}

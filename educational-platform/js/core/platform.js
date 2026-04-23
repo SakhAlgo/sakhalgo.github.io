@@ -178,6 +178,80 @@ export class EducationalPlatform {
         css: ``,
         js: ``,
       },
+      "043": {
+        html: `<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Исправить селектор</title>
+</head>
+<body>
+  <p class="highlight">Текст с классом highlight</p>
+  <p>Обычный текст</p>
+  <span class="highlight">Это тоже highlight</span>
+</body>
+</html>`,
+        css: `/* Задача: Исправить селектор для класса highlight
+   Текущий селектор неправильный (без точки)
+   Исправьте его на правильный */
+
+highlight {
+  color: #d29922;
+  font-weight: bold;
+}`,
+        js: ``,
+      },
+      "044": {
+        html: `<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Дописать селектор</title>
+</head>
+<body>
+  <button class="button">Нажми меня</button><br><br>
+  <a class="button">Ссылка как кнопка</a><br><br>
+  <button>Обычная кнопка</button><br>
+</body>
+</html>`,
+        css: `/* Задача: Дописать селектор для класса button
+   Нужно выбрать все элементы с классом button
+   Дополните селектор */
+
+ {
+  background: #3fb950;
+  color: white;
+  padding: 10px 15px;
+  margin: 5px;
+}`,
+        js: ``,
+      },
+      "045": {
+        html: `<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Выбрать селектор</title>
+</head>
+<body>
+  <p>Первый абзац текста</p>
+  <p>Второй абзац текста</p>
+  <div>Это не абзац</div>
+  <p>Третий абзац текста</p>
+</body>
+</html>`,
+        css: `/* Задача: Выбрать все абзацы (теги p) на странице
+   Напишите селектор для всех элементов p */
+
+ {
+  line-height: 1.6;
+  color: #333;
+}`,
+        js: ``,
+      },
     };
 
     // Возвращаем шаблон для конкретного задания или базовый шаблон
@@ -390,10 +464,10 @@ export class EducationalPlatform {
   _formatTopicTitle(topic) {
     // Преобразуем topic в читаемый заголовок
     const titles = {
-      headings: "Заголовки страницы",
+      "headings": "Заголовки страницы",
       "text-formatting": "Форматирование текста",
-      lists: "Списки",
-      media: "Медиа элементы",
+      "lists": "Списки",
+      "media": "Медиа элементы",
       "css-colors": "Цвета в CSS",
       "css-dimensions": "Размеры элементов",
       "css-spacing": "Отступы и границы",
@@ -402,6 +476,7 @@ export class EducationalPlatform {
       "css-text-align": "Выравнивание текста",
       "css-opacity": "Прозрачность",
       "css-shadow": "Тень блока",
+      "css-selectors": "Селекторы",
       "js-variables": "Переменные и типы",
       "js-number-type": "Тип number",
       "js-to-string": "Преобразование в строку",

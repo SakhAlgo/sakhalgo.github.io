@@ -1,0 +1,18 @@
+{
+  "id": "043",
+  "title": "Исправить селектор класса",
+  "difficulty": "easy",
+  "points": 50,
+  "passThreshold": 70,
+  "tags": ["css", "selectors", "class"],
+  "timeLimit": 10,
+  "description": "В CSS-правиле ошибка в селекторе. Исправьте селектор для выбора класса highlight. Подсказка: селектор класса должен начинаться с точки.",
+  "requirements": [
+    "Исправить селектор на .highlight",
+    "Оставить свойства цвета и жирности неизменными"
+  ],
+  "sampleFiles": {
+    "html": "sample.html",
+    "css": "sample.css"
+  }
+}
