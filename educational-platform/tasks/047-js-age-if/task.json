@@ -1,0 +1,23 @@
+{
+  "id": "047",
+  "title": "Определение возраста (if/else if)",
+  "difficulty": "easy",
+  "points": 50,
+  "passThreshold": 70,
+  "tags": ["js", "if", "else if", "conditional"],
+  "timeLimit": 10,
+  "description": "Напишите функцию ageCategory, которая принимает возраст и возвращает 'child' (0-12), 'teen' (13-17), 'adult' (18-64) или 'senior' (65+)",
+  "requirements": [
+    "Функция должна называться ageCategory",
+    "Использовать if/else if/else",
+    "Возвращать 'child' для возраста от 0 до 12",
+    "Возвращать 'teen' для возраста от 13 до 17",
+    "Возвращать 'adult' для возраста от 18 до 64",
+    "Возвращать 'senior' для возраста 65+"
+  ],
+  "sampleFiles": {
+    "html": "sample.html",
+    "css": "sample.css",
+    "js": "sample.js"
+  }
+}

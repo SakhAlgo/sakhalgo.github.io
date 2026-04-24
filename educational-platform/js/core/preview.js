@@ -111,7 +111,7 @@ export class PreviewManager {
                 <span>${title}</span>
                 <button class="btn-sm" id="closeFullscreen">✕ Закрыть</button>
             </div>
-            <iframe id="fullFrame" style="flex:1;width:100%;background:#0d1117;border:none;" sandbox="allow-scripts"></iframe>
+            <iframe id="fullFrame" style="flex:1;width:100%;background:#0d1117;border:none;" sandbox="allow-scripts allow-modals"></iframe>
         `;
     document.body.appendChild(overlay);
 

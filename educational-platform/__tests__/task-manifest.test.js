@@ -40,7 +40,7 @@ describe("coursesManifest", () => {
     const course = coursesManifest.find((c) => c.id === "js-basics");
     expect(course).toBeDefined();
     expect(course.title).toBe("Основы JavaScript");
-    expect(course.modules.length).toBe(2);
+    expect(course.modules.length).toBe(3);
   });
 
   test("модули первого курса должны содержать html-tags и css-styling", () => {
@@ -50,11 +50,12 @@ describe("coursesManifest", () => {
     expect(moduleIds).toContain("css-styling");
   });
 
-  test("модули второго курса должны содержать js-variables и js-functions", () => {
+  test("модули второго курса должны содержать js-variables, js-functions и js-conditionals", () => {
     const course = coursesManifest.find((c) => c.id === "js-basics");
     const moduleIds = course.modules.map((m) => m.id);
     expect(moduleIds).toContain("js-variables");
     expect(moduleIds).toContain("js-functions");
+    expect(moduleIds).toContain("js-conditionals");
   });
 
   test("каждый модуль должен иметь массив tasks", () => {
@@ -68,8 +69,8 @@ describe("coursesManifest", () => {
 });
 
 describe("tasksManifest", () => {
-  test("должен содержать 45 задач", () => {
-    expect(tasksManifest.length).toBe(45);
+  test("должен содержать 49 задач", () => {
+    expect(tasksManifest.length).toBe(49);
   });
 
   test("задачи 001-005 относятся к курсу html-css-basics и модулю html-tags", () => {
