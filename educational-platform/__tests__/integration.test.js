@@ -4,8 +4,8 @@
 
 import { describe, test, expect } from "@jest/globals";
 import { tasksManifest } from "../js/tasks/task-manifest.js";
-import Task041Validator from "../js/tasks/task-041.js";
-import Task042Validator from "../js/tasks/task-042.js";
+import Task041Validator from "../html-css-basics/validators/task-041.js";
+import Task042Validator from "../html-css-basics/validators/task-042.js";
 
 describe("Integration: manifest and validators", () => {
   test("task 041 и 042 существуют в манифесте с валидаторами", () => {

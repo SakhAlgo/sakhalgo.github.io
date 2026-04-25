@@ -2,11 +2,11 @@
  * Тесты для валидаторов задач - проверка корректности работы валидаторов
  */
 import { describe, test, expect } from "@jest/globals";
-import Task001Validator from "../js/tasks/task-001.js";
-import Task011Validator from "../js/tasks/task-011.js";
-import Task016Validator from "../js/tasks/task-016.js";
-import Task041Validator from "../js/tasks/task-041.js";
-import Task042Validator from "../js/tasks/task-042.js";
+import Task001Validator from "../html-css-basics/validators/task-001.js";
+import Task011Validator from "../js-basics/validators/task-011.js";
+import Task016Validator from "../js-basics/validators/task-016.js";
+import Task041Validator from "../html-css-basics/validators/task-041.js";
+import Task042Validator from "../html-css-basics/validators/task-042.js";
 
 describe("Task001Validator (Заголовок страницы)", () => {
   const validator = new Task001Validator();

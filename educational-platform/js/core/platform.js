@@ -55,6 +55,12 @@ export class EducationalPlatform {
        TASK LOADING
     ══════════════════════════════════════════ */
 
+  _getCourseDir(courseId) {
+    return courseId === 'html-css-basics' ? 'html-css-basics' :
+      courseId === 'html-css-basics-2' ? 'html-css-basics-2' :
+      courseId === 'js-basics' ? 'js-basics' : '';
+  }
+
   async loadTask(taskId) {
     const taskInfo = this.manifest.find((t) => t.id === taskId);
     if (!taskInfo) return;
@@ -68,10 +74,13 @@ export class EducationalPlatform {
       }, 3000);
     }
 
+    const courseDir = this._getCourseDir(taskInfo.courseId);
+    const taskUrlPrefix = courseDir ? `${courseDir}/${taskInfo.taskPath}` : taskInfo.taskPath;
+
     // Загрузить конфиг
     let config = {};
     try {
-      const r = await fetch(`${taskInfo.taskPath}task.json`);
+      const r = await fetch(`${taskUrlPrefix}task.json`);
       config = await r.json();
     } catch (e) {
       this.toast("Не удалось загрузить задание", "error");
@@ -81,7 +90,7 @@ export class EducationalPlatform {
     // Загрузить эталонные файлы
     let samples = { html: "", css: "", js: "" };
     try {
-      samples = await this._loadSamples(taskInfo.taskPath, config);
+      samples = await this._loadSamples(taskUrlPrefix, config);
     } catch (e) {
       console.warn("Samples load failed:", e);
     }
@@ -89,7 +98,7 @@ export class EducationalPlatform {
     // Загрузить валидатор
     let ValidatorClass;
     try {
-      const mod = await import(`../tasks/${taskInfo.validator}`);
+      const mod = await import(`../../${courseDir}/validators/${taskInfo.validator}`);
       ValidatorClass = mod.default;
     } catch (e) {
       this.toast("Ошибка загрузки валидатора", "error");

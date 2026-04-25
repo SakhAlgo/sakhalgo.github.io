@@ -254,7 +254,7 @@ export const tasksCourseHtmlCssBasics2 = [
 
 export const courseHtmlCssBasics2 = {
   id: "html-css-basics-2",
-  title: "Основы HTML & CSS Тест &#8545;",
+    title: "Основы HTML & CSS Тест 2",
   description: "Изучите продвинутые теги HTML и стилизацию CSS",
   icon: "🎨",
   modules: [
