@@ -517,6 +517,17 @@ iframe {
 .task-card.active {
   border-color: var(--accent);
   box-shadow: 0 22px 48px rgba(88, 166, 255, 0.24);
+  background: linear-gradient(
+    180deg,
+    rgba(88, 166, 255, 0.18),
+    rgba(88, 166, 255, 0.06)
+  );
+  transform: translateY(-3px);
+}
+
+.task-card.active .task-card-mark {
+  color: var(--accent);
+  text-shadow: 0 0 20px rgba(88, 166, 255, 0.5);
 }
 
 .task-card.completed {

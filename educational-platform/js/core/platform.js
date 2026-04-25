@@ -108,6 +108,7 @@ export class EducationalPlatform {
       passThreshold: config.passThreshold || 70,
     };
 
+    this.renderTaskList();
     this.editor.setAll(userCode.html, userCode.css, userCode.js);
     this.editor.switchTab("html"); // Принудительно переключаем на HTML
 
