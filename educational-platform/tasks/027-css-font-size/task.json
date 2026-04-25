@@ -2,8 +2,9 @@
     "title": "Размер шрифта",
     "description": "Измените размер шрифта с помощью CSS свойства font-size.",
     "requirements": [
+        "Добавьте текст \"Пример\" в HTML",
         "Используйте свойство font-size",
-        "Укажите размер в px, em или rem"
+        "Укажите размер 24px"
     ],
     "sampleFiles": {
         "html": "sample.html",
