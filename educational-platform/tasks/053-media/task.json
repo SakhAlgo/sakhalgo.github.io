@@ -1,0 +1,21 @@
+{
+  "id": "053",
+  "title": "Изображение с атрибутами",
+  "difficulty": "easy",
+  "points": 50,
+  "passThreshold": 70,
+  "tags": ["html", "img"],
+  "timeLimit": 10,
+  "description": "Добавьте изображение с атрибутами alt, width и height",
+  "requirements": [
+    "Использовать тег <img>",
+    "Атрибут alt: 'Пример изображения'",
+    "Атрибут width: '300'",
+    "Атрибут height: '200'"
+  ],
+  "sampleFiles": {
+    "html": "sample.html",
+    "css": "sample.css",
+    "js": "sample.js"
+  }
+}

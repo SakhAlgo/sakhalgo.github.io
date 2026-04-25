@@ -1,0 +1,19 @@
+{
+  "id": "069",
+  "title": "Комбинированный селектор",
+  "difficulty": "easy",
+  "points": 50,
+  "passThreshold": 70,
+  "tags": ["css", "selectors", "descendant"],
+  "timeLimit": 10,
+  "description": "Используйте селектор потомка для стилизации параграфов внутри div",
+  "requirements": [
+    "HTML: <div><p>Текст</p></div>",
+    "CSS: div p { color: green; }"
+  ],
+  "sampleFiles": {
+    "html": "sample.html",
+    "css": "sample.css",
+    "js": "sample.js"
+  }
+}

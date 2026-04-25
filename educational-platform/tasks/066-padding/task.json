@@ -1,0 +1,22 @@
+{
+  "id": "066",
+  "title": "Padding всех сторон",
+  "difficulty": "easy",
+  "points": 50,
+  "passThreshold": 70,
+  "tags": ["css", "padding", "padding-top", "padding-right", "padding-bottom", "padding-left"],
+  "timeLimit": 10,
+  "description": "Установите внутренние отступы со всех сторон для блока",
+  "requirements": [
+    "Использовать тег <div>",
+    "CSS: padding-top: 10px;",
+    "CSS: padding-right: 15px;",
+    "CSS: padding-bottom: 20px;",
+    "CSS: padding-left: 25px;"
+  ],
+  "sampleFiles": {
+    "html": "sample.html",
+    "css": "sample.css",
+    "js": "sample.js"
+  }
+}

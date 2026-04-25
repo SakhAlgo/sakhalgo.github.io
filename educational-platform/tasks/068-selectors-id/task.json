@@ -1,0 +1,19 @@
+{
+  "id": "068",
+  "title": "Селектор ID",
+  "difficulty": "easy",
+  "points": 50,
+  "passThreshold": 70,
+  "tags": ["css", "selectors", "id"],
+  "timeLimit": 10,
+  "description": "Стилизуйте элемент с помощью селектора ID",
+  "requirements": [
+    "HTML: <div id='header'>Заголовок</div>",
+    "CSS: #header { font-size: 24px; }"
+  ],
+  "sampleFiles": {
+    "html": "sample.html",
+    "css": "sample.css",
+    "js": "sample.js"
+  }
+}

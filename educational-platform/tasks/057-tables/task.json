@@ -1,0 +1,20 @@
+{
+  "id": "057",
+  "title": "Простая таблица",
+  "difficulty": "easy",
+  "points": 50,
+  "passThreshold": 70,
+  "tags": ["html", "table", "thead", "tbody"],
+  "timeLimit": 10,
+  "description": "Создайте простую таблицу 2x2 с заголовком",
+  "requirements": [
+    "Использовать теги &lt;table&gt;, &lt;thead&gt;, &lt;tbody&gt;, &lt;tr&gt;, &lt;th&gt;, &lt;td&gt;",
+    "Заголовок таблицы: 'Заголовок 1', 'Заголовок 2'",
+    "Данные: 'Ячейка 1', 'Ячейка 2', 'Ячейка 3', 'Ячейка 4'"
+  ],
+  "sampleFiles": {
+    "html": "sample.html",
+    "css": "sample.css",
+    "js": "sample.js"
+  }
+}

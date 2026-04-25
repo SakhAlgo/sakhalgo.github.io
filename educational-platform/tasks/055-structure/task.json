@@ -1,0 +1,19 @@
+{
+  "id": "055",
+  "title": "Div контейнер",
+  "difficulty": "easy",
+  "points": 50,
+  "passThreshold": 70,
+  "tags": ["html", "div"],
+  "timeLimit": 10,
+  "description": "Создайте div‑контейнер с двумя параграфами внутри",
+  "requirements": [
+    "Использовать тег &lt;div&gt",
+    "Внутри <div> разместить два &lt;p&gt с текстом 'Параграф 1' и 'Параграф 2'"
+  ],
+  "sampleFiles": {
+    "html": "sample.html",
+    "css": "sample.css",
+    "js": "sample.js"
+  }
+}

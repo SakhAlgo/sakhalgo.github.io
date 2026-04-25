@@ -1,0 +1,20 @@
+{
+  "id": "062",
+  "title": "Граница со скруглением",
+  "difficulty": "easy",
+  "points": 50,
+  "passThreshold": 70,
+  "tags": ["css", "border", "border-radius"],
+  "timeLimit": 10,
+  "description": "Создайте блок с границей и скруглением углов",
+  "requirements": [
+    "Использовать тег <div>",
+    "CSS: border: 2px solid black;",
+    "CSS: border-radius: 10px;"
+  ],
+  "sampleFiles": {
+    "html": "sample.html",
+    "css": "sample.css",
+    "js": "sample.js"
+  }
+}

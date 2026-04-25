@@ -1,0 +1,21 @@
+{
+  "id": "054",
+  "title": "Ссылка с title",
+  "difficulty": "easy",
+  "points": 50,
+  "passThreshold": 70,
+  "tags": ["html", "a"],
+  "timeLimit": 10,
+  "description": "Создайте ссылку с атрибутами href и title",
+  "requirements": [
+    "Использовать тег <a>",
+    "Атрибут href: 'https://example.com'",
+    "Атрибут title: 'Перейти на пример'",
+    "Текст ссылки: 'Пример ссылки'"
+  ],
+  "sampleFiles": {
+    "html": "sample.html",
+    "css": "sample.css",
+    "js": "sample.js"
+  }
+}

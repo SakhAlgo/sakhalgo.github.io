@@ -1,0 +1,20 @@
+{
+  "id": "052",
+  "title": "Список с 3 элементами",
+  "difficulty": "easy",
+  "points": 50,
+  "passThreshold": 70,
+  "tags": ["html", "ul", "li"],
+  "timeLimit": 10,
+  "description": "Создайте неупорядоченный список с 3 элементами: 'Яблоко', 'Банан', 'Апельсин'",
+  "requirements": [
+    "Использовать тег <ul>",
+    "Создать 3 элемента списка <li>",
+    "Текст элементов: 'Яблоко', 'Банан', 'Апельсин'"
+  ],
+  "sampleFiles": {
+    "html": "sample.html",
+    "css": "sample.css",
+    "js": "sample.js"
+  }
+}

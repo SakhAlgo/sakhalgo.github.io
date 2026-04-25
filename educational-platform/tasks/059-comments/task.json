@@ -1,0 +1,19 @@
+{
+  "id": "059",
+  "title": "HTML комментарий",
+  "difficulty": "easy",
+  "points": 50,
+  "passThreshold": 70,
+  "tags": ["html", "comment"],
+  "timeLimit": 10,
+  "description": "Создайте HTML‑страницу с комментарием",
+  "requirements": [
+    "Использовать тег комментария <!-- -->",
+    "Текст комментария: 'Это комментарий'"
+  ],
+  "sampleFiles": {
+    "html": "sample.html",
+    "css": "sample.css",
+    "js": "sample.js"
+  }
+}

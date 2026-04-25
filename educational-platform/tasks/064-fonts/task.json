@@ -1,0 +1,20 @@
+{
+  "id": "064",
+  "title": "Шрифт комплексно",
+  "difficulty": "easy",
+  "points": 50,
+  "passThreshold": 70,
+  "tags": ["css", "font-family", "font-size"],
+  "timeLimit": 10,
+  "description": "Задайте тексту шрифт и размер",
+  "requirements": [
+    "Использовать тег <p>",
+    "CSS: font-family: Arial, sans-serif;",
+    "CSS: font-size: 18px;"
+  ],
+  "sampleFiles": {
+    "html": "sample.html",
+    "css": "sample.css",
+    "js": "sample.js"
+  }
+}

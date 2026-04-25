@@ -1,0 +1,19 @@
+{
+  "id": "067",
+  "title": "Селектор класса",
+  "difficulty": "easy",
+  "points": 50,
+  "passThreshold": 70,
+  "tags": ["css", "selectors", "class"],
+  "timeLimit": 10,
+  "description": "Стилизуйте элемент с помощью селектора класса",
+  "requirements": [
+    "HTML: <div class='box'>Текст</div>",
+    "CSS: .box { color: blue; }"
+  ],
+  "sampleFiles": {
+    "html": "sample.html",
+    "css": "sample.css",
+    "js": "sample.js"
+  }
+}

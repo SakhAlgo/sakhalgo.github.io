@@ -1,0 +1,21 @@
+{
+  "id": "061",
+  "title": "Размеры и отступы",
+  "difficulty": "easy",
+  "points": 50,
+  "passThreshold": 70,
+  "tags": ["css", "width", "height", "margin"],
+  "timeLimit": 10,
+  "description": "Задайте блоку ширину, высоту и внешний отступ",
+  "requirements": [
+    "Использовать тег <div>",
+    "CSS: width: 200px;",
+    "CSS: height: 100px;",
+    "CSS: margin: 20px;"
+  ],
+  "sampleFiles": {
+    "html": "sample.html",
+    "css": "sample.css",
+    "js": "sample.js"
+  }
+}

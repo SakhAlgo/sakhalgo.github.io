@@ -1,0 +1,20 @@
+{
+  "id": "060",
+  "title": "Два цвета",
+  "difficulty": "easy",
+  "points": 50,
+  "passThreshold": 70,
+  "tags": ["css", "color", "background-color"],
+  "timeLimit": 10,
+  "description": "Задайте цвет текста и фона для абзаца",
+  "requirements": [
+    "Использовать тег <p>",
+    "CSS: color: red;",
+    "CSS: background-color: yellow;"
+  ],
+  "sampleFiles": {
+    "html": "sample.html",
+    "css": "sample.css",
+    "js": "sample.js"
+  }
+}

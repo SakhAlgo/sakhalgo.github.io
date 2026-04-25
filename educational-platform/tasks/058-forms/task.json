@@ -1,0 +1,20 @@
+{
+  "id": "058",
+  "title": "Форма ввода",
+  "difficulty": "easy",
+  "points": 50,
+  "passThreshold": 70,
+  "tags": ["html", "form", "input"],
+  "timeLimit": 10,
+  "description": "Создайте форму с полем ввода текста",
+  "requirements": [
+    "Использовать тег <form>",
+    "Поле ввода: <input type='text' placeholder='Введите имя'>",
+    "Кнопка отправки: <button>Отправить</button>"
+  ],
+  "sampleFiles": {
+    "html": "sample.html",
+    "css": "sample.css",
+    "js": "sample.js"
+  }
+}
