@@ -42,10 +42,10 @@ describe("coursesManifest", () => {
     expect(course.modules.length).toBe(3);
   });
 
-  test("третий курс - Основы HTML & CSS Тест 2", () => {
+  test("третий курс - Основы HTML & CSS Тест &#8545;", () => {
     const course = coursesManifest.find((c) => c.id === "html-css-basics-2");
     expect(course).toBeDefined();
-    expect(course.title).toBe("Основы HTML & CSS Тест 2");
+    expect(course.title).toBe("Основы HTML & CSS Тест &#8545;");
     expect(course.modules.length).toBe(2);
   });
 

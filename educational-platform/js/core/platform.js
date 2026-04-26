@@ -75,7 +75,7 @@ export class EducationalPlatform {
     }
 
     const courseDir = this._getCourseDir(taskInfo.courseId);
-    const taskUrlPrefix = courseDir ? `${courseDir}/${taskInfo.taskPath}` : taskInfo.taskPath;
+    const taskUrlPrefix = courseDir ? `courses/${courseDir}/${taskInfo.taskPath}` : taskInfo.taskPath;
 
     // Загрузить конфиг
     let config = {};
@@ -98,7 +98,7 @@ export class EducationalPlatform {
     // Загрузить валидатор
     let ValidatorClass;
     try {
-      const mod = await import(`../../${courseDir}/validators/${taskInfo.validator}`);
+      const mod = await import(`../../courses/${courseDir}/validators/${taskInfo.validator}`);
       ValidatorClass = mod.default;
     } catch (e) {
       this.toast("Ошибка загрузки валидатора", "error");
