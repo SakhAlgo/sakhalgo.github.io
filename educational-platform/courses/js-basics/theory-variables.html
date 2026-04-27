@@ -1,0 +1,421 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Теория: Переменные и типы в JavaScript</title>
+    <style>
+      body {
+        font-family: "Syne", sans-serif;
+        line-height: 1.6;
+        color: #c9d1d9;
+        background: #0d1117;
+        padding: 20px;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      h1,
+      h2,
+      h3 {
+        color: #58a6ff;
+        margin-top: 1.5em;
+        margin-bottom: 0.8em;
+      }
+
+      h1 {
+        font-size: 24px;
+        border-bottom: 1px solid #30363d;
+        padding-bottom: 10px;
+      }
+
+      h2 {
+        font-size: 20px;
+        margin-top: 2em;
+      }
+
+      h3 {
+        font-size: 18px;
+        margin-top: 1.5em;
+      }
+
+      code {
+        background: #21262d;
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-family: "JetBrains Mono", monospace;
+        color: #9ecbc6;
+      }
+
+      pre {
+        background: #161b22;
+        padding: 15px;
+        border-radius: 6px;
+        overflow-x: auto;
+        margin: 15px 0;
+        border: 1px solid #30363d;
+      }
+
+      .code-block {
+        background: #161b22;
+        padding: 15px;
+        border-radius: 6px;
+        margin: 15px 0;
+        border: 1px solid #30363d;
+      }
+
+      .code-block pre {
+        margin: 0;
+        background: none;
+        border: none;
+        padding: 0;
+      }
+
+      .important {
+        background: rgba(88, 166, 255, 0.1);
+        padding: 12px;
+        border-radius: 6px;
+        border-left: 3px solid #58a6ff;
+        margin: 15px 0;
+      }
+
+      .tip {
+        background: rgba(63, 185, 80, 0.1);
+        padding: 12px;
+        border-radius: 6px;
+        border-left: 3px solid #3fb950;
+        margin: 15px 0;
+      }
+
+      ul,
+      ol {
+        margin: 10px 0 15px 25px;
+        padding: 0;
+      }
+
+      li {
+        margin: 8px 0;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 15px 0;
+      }
+
+      th,
+      td {
+        padding: 10px;
+        border: 1px solid #30363d;
+        text-align: left;
+      }
+
+      th {
+        background: #161b22;
+        color: #58a6ff;
+      }
+
+      td {
+        background: #0d1117;
+      }
+    </style>
+  </head>
+  <body>
+    <article>
+      <h1>📚 Переменные и типы данных в JavaScript</h1>
+
+      <section>
+        <h2>1. Что такое переменные?</h2>
+        <p>
+          Переменные в JavaScript - это контейнеры для хранения данных. Они
+          позволяют сохранять информацию и использовать её позже в программе.
+        </p>
+
+        <div class="important">
+          <strong>💡 Важно:</strong>
+          JavaScript - это динамически типизированный язык, что означает, что
+          тип переменной определяется автоматически при присвоении значения.
+        </div>
+      </section>
+
+      <section>
+        <h2>2. Объявление переменных</h2>
+
+        <h3>
+          2.1. Ключевое слово
+          <code>let</code>
+        </h3>
+        <p>
+          <code>let</code>
+          используется для объявления переменных, значения которых могут
+          изменяться.
+        </p>
+
+        <div class="code-block">
+          <pre><code>let age = 25;
+age = 26;  // Можно изменить значение
+console.log(age);  // Выведет: 26</code></pre>
+        </div>
+
+        <h3>
+          2.2. Ключевое слово
+          <code>const</code>
+        </h3>
+        <p>
+          <code>const</code>
+          используется для объявления констант - переменных, значения которых
+          нельзя изменять после присвоения.
+        </p>
+
+        <div class="code-block">
+          <pre><code>const PI = 3.14159;
+// PI = 3.14;  // Ошибка! Нельзя изменить константу
+console.log(PI);  // Выведет: 3.14159</code></pre>
+        </div>
+
+        <div class="tip">
+          <strong>🎯 Совет:</strong>
+          Используйте
+          <code>const</code>
+          по умолчанию, и
+          <code>let</code>
+          только когда знаете, что значение будет меняться. Это делает код более
+          предсказуемым.
+        </div>
+      </section>
+
+      <section>
+        <h2>3. Типы данных в JavaScript</h2>
+
+        <h3>3.1. Примитивные типы</h3>
+        <p>
+          Примитивные типы - это простые значения, которые не являются объектами
+          и не имеют методов.
+        </p>
+
+        <table>
+          <tr>
+            <th>Тип</th>
+            <th>Описание</th>
+            <th>Примеры</th>
+          </tr>
+          <tr>
+            <td><code>string</code></td>
+            <td>Текстовые данные</td>
+            <td>
+              <code>"Hello"</code>
+              ,
+              <code>'World'</code>
+              ,
+              <code>`Template ${var}`</code>
+            </td>
+          </tr>
+          <tr>
+            <td><code>number</code></td>
+            <td>Числа (целые и с плавающей точкой)</td>
+            <td>
+              <code>42</code>
+              ,
+              <code>3.14</code>
+              ,
+              <code>-10</code>
+              ,
+              <code>Infinity</code>
+              ,
+              <code>NaN</code>
+            </td>
+          </tr>
+          <tr>
+            <td><code>boolean</code></td>
+            <td>Логические значения</td>
+            <td>
+              <code>true</code>
+              ,
+              <code>false</code>
+            </td>
+          </tr>
+          <tr>
+            <td><code>undefined</code></td>
+            <td>Значение не присвоено</td>
+            <td>
+              <code>let x;</code>
+              (по умолчанию)
+            </td>
+          </tr>
+          <tr>
+            <td><code>null</code></td>
+            <td>Отсутствие значения</td>
+            <td><code>let y = null;</code></td>
+          </tr>
+          <tr>
+            <td><code>symbol</code></td>
+            <td>Уникальные идентификаторы</td>
+            <td><code>Symbol('id')</code></td>
+          </tr>
+          <tr>
+            <td><code>bigint</code></td>
+            <td>Большие целые числа</td>
+            <td><code>123456789012345678901234567890n</code></td>
+          </tr>
+        </table>
+
+        <h3>
+          3.2. Оператор
+          <code>typeof</code>
+        </h3>
+        <p>
+          Оператор
+          <code>typeof</code>
+          возвращает строку, указывающую тип операнда.
+        </p>
+
+        <div class="code-block">
+          <pre><code>console.log(typeof "Hello");      // "string"
+console.log(typeof 42);           // "number"
+console.log(typeof true);         // "boolean"
+console.log(typeof undefined);    // "undefined"
+console.log(typeof null);         // "object" (особенность JS)
+console.log(typeof {name: "John"}); // "object"</code></pre>
+        </div>
+      </section>
+
+      <section>
+        <h2>4. Работа со строками</h2>
+
+        <h3>4.1. Объявление строк</h3>
+        <p>
+          Строки можно создавать с помощью одинарных, двойных кавычек или
+          обратных апострофов (шаблонные строки).
+        </p>
+
+        <div class="code-block">
+          <pre><code>let single = 'Одинарные кавычки';
+let double = "Двойные кавычки";
+let template = `Шаблонные строки`;</code></pre>
+        </div>
+
+        <h3>4.2. Шаблонные строки (Template Literals)</h3>
+        <p>
+          Шаблонные строки позволяют встраивать выражения и использовать
+          многострочный текст.
+        </p>
+
+        <div class="code-block">
+          <pre><code>const name = "JavaScript";
+const age = 25;
+
+const message = `Меня зовут ${name} и мне ${age} лет.`;
+console.log(message);
+// Выведет: "Меня зовут JavaScript и мне 25 лет."
+
+const multiline = `
+  Это
+  многострочная
+  строка
+`;</code></pre>
+        </div>
+      </section>
+
+      <section>
+        <h2>5. Преобразование типов</h2>
+
+        <h3>5.1. В строку</h3>
+        <div class="code-block">
+          <pre><code>const num = 42;
+const str1 = String(num);    // "42"
+const str2 = num.toString(); // "42"
+const str3 = num + "";       // "42"</code></pre>
+        </div>
+
+        <h3>5.2. В число</h3>
+        <div class="code-block">
+          <pre><code>const str = "123";
+const num1 = Number(str);      // 123
+const num2 = parseInt(str);    // 123
+const num3 = parseFloat(str); // 123
+const num4 = +str;            // 123</code></pre>
+        </div>
+
+        <div class="important">
+          <strong>⚠️ Внимание:</strong>
+          Функции
+          <code>parseInt()</code>
+          и
+          <code>parseFloat()</code>
+          пытаются преобразовать строку до первого нечислового символа.
+        </div>
+      </section>
+
+      <section>
+        <h2>6. Практические примеры</h2>
+
+        <h3>6.1. Объявление и использование переменных</h3>
+        <div class="code-block">
+          <pre><code>// Объявляем переменные разных типов
+let userName = "Алиса";
+const userAge = 28;
+let isStudent = true;
+let averageScore = 4.75;
+
+// Используем переменные
+console.log(`Имя: ${userName}`);
+console.log(`Возраст: ${userAge}`);
+console.log(`Студент: ${isStudent ? "Да" : "Нет"}`);
+console.log(`Средний балл: ${averageScore}`);
+
+// Изменяем значение переменной
+userName = "Боб";
+isStudent = false;</code></pre>
+        </div>
+
+        <h3>6.2. Работа с пользовательским вводом</h3>
+        <div class="code-block">
+          <pre><code>// Получаем данные от пользователя
+let firstName = prompt("Введите ваше имя:");
+let birthYear = prompt("Введите год рождения:");
+
+// Преобразуем и вычисляем возраст
+let currentYear = new Date().getFullYear();
+let age = currentYear - Number(birthYear);
+
+// Выводим результат
+alert(`Привет, ${firstName}! Тебе ${age} лет.`);</code></pre>
+        </div>
+      </section>
+
+      <section>
+        <h2>7. Частые ошибки и как их избежать</h2>
+
+        <ul>
+          <li>
+            <strong>Забыли объявить переменную:</strong>
+            Всегда используйте
+            <code>let</code>
+            или
+            <code>const</code>
+            .
+          </li>
+          <li>
+            <strong>Использование необъявленных переменных:</strong>
+          </li>
+          <li>
+            <strong>Путаница с типами:</strong>
+            Используйте
+            <code>typeof</code>
+            для проверки типов.
+          </li>
+          <li>
+            <strong>Изменение констант:</strong>
+            <code>const</code>
+            нельзя изменять после объявления.
+          </li>
+          <li>
+            <strong>Неявное преобразование типов:</strong>
+            Будьте внимательны с операциями, которые автоматически преобразуют
+            типы.
+          </li>
+        </ul>
+      </section>
+    </article>
+  </body>
+</html>

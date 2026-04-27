@@ -436,6 +436,31 @@ iframe {
   margin-bottom: 8px;
 }
 
+.topic-header-right {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.theory-btn {
+  background: none;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-size: 14px;
+  padding: 2px 6px;
+  line-height: 1;
+  transition: all var(--t-fast);
+  opacity: 0.6;
+}
+
+.theory-btn:hover {
+  opacity: 1;
+  background: var(--bg-elevated);
+  border-color: var(--accent);
+  transform: scale(1.1);
+}
+
 .topic-title {
   font-size: 12px;
   font-weight: 700;

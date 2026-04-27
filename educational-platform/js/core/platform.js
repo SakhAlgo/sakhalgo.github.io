@@ -400,9 +400,14 @@ highlight {
           courseTaskIds.has(task.id),
         );
         topics = this._groupTasksByTopic(courseTasks);
+        const courseDir = this._getCourseDir(courseId);
 
         Object.keys(topics).forEach((topic) => {
-          renderedContent += this._renderTopic(topic, topics[topic]);
+          const module = course.modules.find((m) => m.id === topic);
+          const theoryInfo = module?.theoryFile
+            ? { theoryFile: module.theoryFile, courseDir }
+            : null;
+          renderedContent += this._renderTopic(topic, topics[topic], theoryInfo);
         });
       }
     }
@@ -435,7 +440,7 @@ highlight {
     select.value = this._filter;
   }
 
-  _renderTopic(topic, tasks) {
+  _renderTopic(topic, tasks, theoryInfo = null) {
     const completedInTopic = tasks.filter(
       (t) => this.progress[t.id]?.completed,
     ).length;
@@ -446,7 +451,10 @@ highlight {
       <div class="topic-section ${isActiveTopic ? "active" : ""}">
         <div class="topic-header">
           <span class="topic-title">${this._formatTopicTitle(topic)}</span>
-          <span class="topic-count">${completedInTopic}/${totalInTopic}</span>
+          <span class="topic-header-right">
+            ${theoryInfo ? `<button class="theory-btn" data-theory-topic="${topic}" title="Открыть теорию">📖</button>` : ""}
+            <span class="topic-count">${completedInTopic}/${totalInTopic}</span>
+          </span>
         </div>
         <div class="topic-tasks">
     `;
@@ -721,6 +729,15 @@ highlight {
       );
     });
 
+    // Theory buttons
+    document.getElementById("taskList")?.addEventListener("click", (e) => {
+      const btn = e.target.closest(".theory-btn");
+      if (!btn) return;
+      const topic = btn.dataset.theoryTopic;
+      if (!topic) return;
+      this._openTheoryFullscreen(topic);
+    });
+
     // Close results
     document.getElementById("closeResults")?.addEventListener("click", () => {
       document.getElementById("checkResults").style.display = "none";
@@ -813,6 +830,44 @@ highlight {
       toast.classList.add("out");
       setTimeout(() => toast.remove(), 300);
     }, 3000);
+  }
+
+  /**
+   * Открыть теорию в полноэкранном режиме
+   */
+  _openTheoryFullscreen(topic) {
+    const courseId = this._filter.replace("course-", "");
+    const course = coursesManifest.find((c) => c.id === courseId);
+    if (!course) return;
+
+    const module = course.modules.find((m) => m.id === topic);
+    if (!module || !module.theoryFile) return;
+
+    const courseDir = this._getCourseDir(courseId);
+    const theoryPath = `courses/${courseDir}/${module.theoryFile}`;
+
+    const overlay = document.createElement("div");
+    overlay.className = "fullscreen-overlay";
+    overlay.innerHTML = `
+      <div class="fullscreen-header">
+        <span>📖 Теория: ${module.title}</span>
+        <button class="btn-sm" id="closeTheory">✕ Закрыть</button>
+      </div>
+      <iframe src="${theoryPath}" style="flex:1;width:100%;background:#0d1117;border:none;"></iframe>
+    `;
+    document.body.appendChild(overlay);
+
+    overlay.querySelector("#closeTheory").addEventListener("click", () => {
+      overlay.remove();
+    });
+
+    const escHandler = (e) => {
+      if (e.key === "Escape") {
+        overlay.remove();
+        document.removeEventListener("keydown", escHandler);
+      }
+    };
+    document.addEventListener("keydown", escHandler);
   }
 
   showConfirm(title, text, onConfirm) {

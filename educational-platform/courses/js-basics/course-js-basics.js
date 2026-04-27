@@ -313,6 +313,7 @@ export const courseJsBasics = {
       id: "js-variables",
       title: "Переменные и типы",
       description: "Объявление переменных, типы данных",
+      theoryFile: "theory-variables.html",
       tasks: [
         "011",
         "012",
