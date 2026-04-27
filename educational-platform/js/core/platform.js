@@ -850,8 +850,8 @@ highlight {
     overlay.className = "fullscreen-overlay";
     overlay.innerHTML = `
       <div class="fullscreen-header">
-        <span>📖 Теория: ${module.title}</span>
         <button class="btn-sm" id="closeTheory">✕ Закрыть</button>
+        <span>📖 Теория: ${module.title}</span>
       </div>
       <iframe src="${theoryPath}" style="flex:1;width:100%;background:#0d1117;border:none;"></iframe>
     `;

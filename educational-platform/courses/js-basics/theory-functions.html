@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Теория: Функции в JavaScript</title>
+    <style>
+        body {
+            font-family: 'Syne', sans-serif;
+            line-height: 1.6;
+            color: #c9d1d9;
+            background: #0d1117;
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        h1, h2, h3 {
+            color: #58a6ff;
+            margin-top: 1.5em;
+            margin-bottom: 0.8em;
+        }
+
+        h1 {
+            font-size: 24px;
+            border-bottom: 1px solid #30363d;
+            padding-bottom: 10px;
+        }
+
+        h2 {
+            font-size: 20px;
+            margin-top: 2em;
+        }
+
+        h3 {
+            font-size: 18px;
+            margin-top: 1.5em;
+        }
+
+        code {
+            background: #21262d;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'JetBrains Mono', monospace;
+            color: #9ecbc6;
+        }
+
+        pre {
+            background: #161b22;
+            padding: 15px;
+            border-radius: 6px;
+            overflow-x: auto;
+            margin: 15px 0;
+            border: 1px solid #30363d;
+        }
+
+        .code-block {
+            background: #161b22;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 15px 0;
+            border: 1px solid #30363d;
+        }
+
+        .code-block pre {
+            margin: 0;
+            background: none;
+            border: none;
+            padding: 0;
+        }
+
+        .important {
+            background: rgba(88, 166, 255, 0.1);
+            padding: 12px;
+            border-radius: 6px;
+            border-left: 3px solid #58a6ff;
+            margin: 15px 0;
+        }
+
+        .tip {
+            background: rgba(63, 185, 80, 0.1);
+            padding: 12px;
+            border-radius: 6px;
+            border-left: 3px solid #3fb950;
+            margin: 15px 0;
+        }
+
+        .warning {
+            background: rgba(210, 153, 34, 0.1);
+            padding: 12px;
+            border-radius: 6px;
+            border-left: 3px solid #d29922;
+            margin: 15px 0;
+        }
+
+        ul, ol {
+            margin: 10px 0 15px 25px;
+            padding: 0;
+        }
+
+        li {
+            margin: 8px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+
+        th, td {
+            padding: 10px;
+            border: 1px solid #30363d;
+            text-align: left;
+        }
+
+        th {
+            background: #161b22;
+            color: #58a6ff;
+        }
+
+        td {
+            background: #0d1117;
+        }
+    </style>
+</head>
+<body>
+    <article>
+        <h1>📚 Функции в JavaScript</h1>
+
+        <section>
+            <h2>1. Что такое функция?</h2>
+            <p>Функция — это блок кода, который можно определить один раз и выполнять (вызывать) многократно. Функции помогают избегать повторения кода и делают программу более структурированной.</p>
+
+            <div class="important">
+                <strong>💡 Важно:</strong> Функции — это один из основных строительных блоков JavaScript. Они позволяют организовать код в логические блоки и переиспользовать его.
+            </div>
+        </section>
+
+        <section>
+            <h2>2. Объявление функции</h2>
+
+            <h3>2.1. Function Declaration (объявление функции)</h3>
+            <p>Классический способ объявления функции с помощью ключевого слова <code>function</code>.</p>
+
+            <div class="code-block">
+                <pre><code>function greet() {
+    console.log("Привет, мир!");
+}
+
+// Вызов функции
+greet();  // Выведет: "Привет, мир!"</code></pre>
+            </div>
+
+            <div class="tip">
+                <strong>🎯 Особенность:</strong> Function Declaration можно вызывать до их объявления в коде. Это называется "hoisting" (поднятие).
+            </div>
+
+            <h3>2.2. Function Expression (функциональное выражение)</h3>
+            <p>Функцию можно сохранить в переменную. Такая функция создаётся в момент выполнения кода.</p>
+
+            <div class="code-block">
+                <pre><code>const greet = function() {
+    console.log("Привет, мир!");
+};
+
+greet();  // Выведет: "Привет, мир!"
+
+// Нельзя вызвать до объявления!
+// greet(); // Ошибка, если вызвать раньше</code></pre>
+            </div>
+        </section>
+
+        <section>
+            <h2>3. Параметры и аргументы</h2>
+            <p>Функции могут принимать <strong>параметры</strong> — переменные, которые получают значения при вызове функции. Эти значения называются <strong>аргументами</strong>.</p>
+
+            <div class="code-block">
+                <pre><code>// Функция с одним параметром
+function greet(name) {
+    console.log("Привет, " + name + "!");
+}
+
+greet("Алиса");  // Выведет: "Привет, Алиса!"
+greet("Боб");    // Выведет: "Привет, Боб!"
+
+// Функция с двумя параметрами
+function sum(a, b) {
+    console.log(a + b);
+}
+
+sum(3, 5);  // Выведет: 8
+sum(10, 20); // Выведет: 30</code></pre>
+            </div>
+
+            <div class="warning">
+                <strong>⚠️ Важно:</strong> Если не передать аргумент для параметра, его значение будет <code>undefined</code>.
+            </div>
+        </section>
+
+        <section>
+            <h2>4. Возврат значения (return)</h2>
+            <p>Функция может возвращать результат своей работы с помощью ключевого слова <code>return</code>.</p>
+
+            <div class="code-block">
+                <pre><code>function sum(a, b) {
+    return a + b;
+}
+
+const result = sum(3, 5);
+console.log(result);  // Выведет: 8
+
+console.log(sum(10, 20));  // Выведет: 30</code></pre>
+            </div>
+
+            <div class="important">
+                <strong>💡 Важно:</strong> После выполнения <code>return</code> функция немедленно завершает свою работу. Код после <code>return</code> не выполняется. Если <code>return</code> не указан, функция возвращает <code>undefined</code>.
+            </div>
+
+            <div class="code-block">
+                <pre><code>function checkAge(age) {
+    if (age >= 18) {
+        return "Доступ разрешён";
+    }
+    return "Доступ запрещён";
+    // console.log("Этот код никогда не выполнится");
+}
+
+console.log(checkAge(20));  // Выведет: "Доступ разрешён"
+console.log(checkAge(15));  // Выведет: "Доступ запрещён"</code></pre>
+            </div>
+        </section>
+
+        <section>
+            <h2>5. Стрелочные функции (Arrow Functions)</h2>
+            <p>Стрелочные функции — это более короткая форма записи функций, добавленная в современном JavaScript (ES6).</p>
+
+            <div class="code-block">
+                <pre><code>// Обычная функция
+function add(a, b) {
+    return a + b;
+}
+
+// Стрелочная функция
+const add = (a, b) => {
+    return a + b;
+};
+
+// Если тело функции состоит из одного выражения,
+// можно сократить ещё больше:
+const add = (a, b) => a + b;
+
+const result = add(3, 5);
+console.log(result);  // Выведет: 8</code></pre>
+            </div>
+
+            <h3>5.1. Стрелочная функция с одним параметром</h3>
+            <p>Если у стрелочной функции только один параметр, круглые скобки можно опустить.</p>
+
+            <div class="code-block">
+                <pre><code>// Обычная функция
+function double(x) {
+    return x * 2;
+}
+
+// Стрелочная функция с одним параметром (можно без скобок)
+const double = x => x * 2;
+
+console.log(double(5));  // Выведет: 10</code></pre>
+            </div>
+
+            <div class="tip">
+                <strong>🎯 Совет:</strong> Стрелочные функции особенно удобны для коротких однострочных операций. Для сложных функций лучше использовать обычный синтаксис для лучшей читаемости.
+            </div>
+        </section>
+
+        <section>
+            <h2>6. Вложенные вызовы функций</h2>
+            <p>Функции можно вызывать внутри других функций, передавая результат одной функции как аргумент другой.</p>
+
+            <div class="code-block">
+                <pre><code>function double(x) {
+    return x * 2;
+}
+
+function addFive(x) {
+    return x + 5;
+}
+
+// Вложенный вызов: сначала double, потом addFive
+const result = addFive(double(10));
+console.log(result);  // Выведет: 25 (10 * 2 + 5)
+
+// Можно записать поэтапно:
+const doubled = double(10);  // 20
+const final = addFive(doubled); // 25
+console.log(final);  // Выведет: 25</code></pre>
+            </div>
+
+            <div class="code-block">
+                <pre><code>// Функция форматирования
+function formatName(name) {
+    return name.trim().toUpperCase();
+}
+
+// Функция приветствия
+function greetUser(name) {
+    const formatted = formatName(name);
+    return "Привет, " + formatted + "!";
+}
+
+console.log(greetUser("  алиса  "));  // Выведет: "Привет, АЛИСА!"</code></pre>
+            </div>
+        </section>
+
+        <section>
+            <h2>7. Сравнение: разные способы создания функций</h2>
+
+            <table>
+                <tr>
+                    <th>Способ</th>
+                    <th>Синтаксис</th>
+                    <th>Hoisting</th>
+                    <th>Когда использовать</th>
+                </tr>
+                <tr>
+                    <td>Function Declaration</td>
+                    <td><code>function f() {}</code></td>
+                    <td>Да</td>
+                    <td>Для основных функций в коде</td>
+                </tr>
+                <tr>
+                    <td>Function Expression</td>
+                    <td><code>const f = function() {}</code></td>
+                    <td>Нет</td>
+                    <td>Для колбэков и условного создания</td>
+                </tr>
+                <tr>
+                    <td>Arrow Function</td>
+                    <td><code>const f = () => {}</code></td>
+                    <td>Нет</td>
+                    <td>Для коротких функций, особенно в колбэках</td>
+                </tr>
+            </table>
+        </section>
+
+        <section>
+            <h2>8. Практические примеры</h2>
+
+            <h3>8.1. Функция для расчёта скидки</h3>
+            <div class="code-block">
+                <pre><code>function calculateDiscount(price, discountPercent) {
+    const discount = price * discountPercent / 100;
+    return price - discount;
+}
+
+const finalPrice = calculateDiscount(1000, 20);
+console.log(finalPrice);  // Выведет: 800</code></pre>
+            </div>
+
+            <h3>8.2. Функция для проверки чётности</h3>
+            <div class="code-block">
+                <pre><code>function isEven(number) {
+    return number % 2 === 0;
+}
+
+console.log(isEven(4));  // Выведет: true
+console.log(isEven(7));  // Выведет: false</code></pre>
+            </div>
+
+            <h3>8.3. Комбинация функций</h3>
+            <div class="code-block">
+                <pre><code>function celsiusToFahrenheit(celsius) {
+    return celsius * 9/5 + 32;
+}
+
+function fahrenheitToCelsius(fahrenheit) {
+    return (fahrenheit - 32) * 5/9;
+}
+
+console.log(celsiusToFahrenheit(0));   // Выведет: 32
+console.log(celsiusToFahrenheit(100)); // Выведет: 212
+console.log(fahrenheitToCelsius(32));  // Выведет: 0</code></pre>
+            </div>
+        </section>
+
+        <section>
+            <h2>9. Частые ошибки</h2>
+
+            <ul>
+                <li><strong>Забыли вызвать функцию:</strong> <code>console.log(greet)</code> выведет саму функцию, а не результат. Нужно: <code>console.log(greet())</code></li>
+                <li><strong>Забыли return:</strong> Если не указать <code>return</code>, функция вернёт <code>undefined</code></li>
+                <li><strong>Путаница между параметрами и аргументами:</strong> Параметры — в объявлении, аргументы — при вызове</li>
+                <li><strong>Изменение параметров внутри функции:</strong> Примитивные типы передаются по значению</li>
+                <li><strong>Слишком сложные функции:</strong> Лучше разбивать на маленькие функции</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>10. Задания для практики</h2>
+            <p>Попробуйте выполнить эти задания, чтобы закрепить материал:</p>
+
+            <ol>
+                <li>Напишите функцию, которая принимает два числа и возвращает их произведение</li>
+                <li>Создайте стрелочную функцию для вычисления квадрата числа</li>
+                <li>Напишите функцию, которая проверяет, является ли число положительным</li>
+                <li>Создайте функцию с двумя параметрами и используйте её в другой функции</li>
+                <li>Напишите функцию, которая преобразует имя в заглавные буквы и добавляет приветствие</li>
+            </ol>
+        </section>
+    </article>
+</body>
+</html>

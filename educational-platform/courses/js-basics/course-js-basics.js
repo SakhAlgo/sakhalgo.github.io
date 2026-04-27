@@ -331,6 +331,7 @@ export const courseJsBasics = {
       id: "js-functions",
       title: "Функции",
       description: "Создание и вызов функций",
+      theoryFile: "theory-functions.html",
       tasks: [
         "016",
         "017",
