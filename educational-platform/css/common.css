@@ -529,7 +529,6 @@ iframe {
 .task-card.active .task-card-mark {
   color: var(--accent);
   text-shadow: 0 0 20px rgba(88, 166, 255, 0.5);
-
 }
 
 .task-card.completed {
@@ -1368,7 +1367,7 @@ iframe {
 /* ─── Toast ─────────────────────────────────────────── */
 .toast-container {
   position: fixed;
-  bottom: 20px;
+  bottom: 200px;
   right: 20px;
   z-index: 200;
   display: flex;

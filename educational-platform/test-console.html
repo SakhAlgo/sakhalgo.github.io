@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Console Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #0d1117;
+            color: #c9d1d9;
+            padding: 20px;
+        }
+        .console-log {
+            margin: 2px 0;
+            padding: 2px 0;
+        }
+        .console-error {
+            color: #f85149;
+        }
+        .console-warn {
+            color: #ffa657;
+        }
+        .console-info {
+            color: #79c0ff;
+        }
+    </style>
+</head>
+<body>
+    <h1>Console Interception Test</h1>
+    <div id="consoleOutput"></div>
+
+    <script>
+        // Перехватываем консольные методы
+        const originalConsole = {
+            log: console.log,
+            error: console.error,
+            warn: console.warn,
+            info: console.info
+        };
+
+        const consoleOutput = document.getElementById('consoleOutput');
+
+        function addConsoleMessage(type, ...args) {
+            const message = args.map(arg => {
+                if (arg === null) return 'null';
+                if (arg === undefined) return 'undefined';
+                if (typeof arg === 'object') {
+                    try { return JSON.stringify(arg); } catch { return '[Object]'; }
+                }
+                return String(arg);
+            }).join(' ');
+
+            const messageElement = document.createElement('div');
+            messageElement.className = 'console-log console-' + type;
+            messageElement.textContent = message;
+            consoleOutput.appendChild(messageElement);
+
+            // Прокрутка вниз
+            consoleOutput.scrollTop = consoleOutput.scrollHeight;
+        }
+
+        console.log = function(...args) {
+            addConsoleMessage('log', ...args);
+            originalConsole.log.apply(console, args);
+        };
+
+        console.error = function(...args) {
+            addConsoleMessage('error', ...args);
+            originalConsole.error.apply(console, args);
+        };
+
+        console.warn = function(...args) {
+            addConsoleMessage('warn', ...args);
+            originalConsole.warn.apply(console, args);
+        };
+
+        console.info = function(...args) {
+            addConsoleMessage('info', ...args);
+            originalConsole.info.apply(console, args);
+        };
+
+        // Test different console methods
+        console.log("This is a log message");
+        console.error("This is an error message");
+        console.warn("This is a warning message");
+        console.info("This is an info message");
+
+        // Test with different data types
+        console.log("Number:", 42);
+        console.log("String:", "Hello World");
+        console.log("Object:", {name: "Test", value: 123});
+        console.log("Array:", [1, 2, 3]);
+        console.log("Boolean:", true);
+        console.log("Null:", null);
+        console.log("Undefined:", undefined);
+    </script>
+</body>
+</html>

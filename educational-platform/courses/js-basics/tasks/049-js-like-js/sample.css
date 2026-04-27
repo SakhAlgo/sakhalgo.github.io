@@ -1,6 +1,5 @@
-#askBtn {
+#output {
   font-family: monospace;
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
+  padding: 10px;
+  color: #58a6ff;
 }
