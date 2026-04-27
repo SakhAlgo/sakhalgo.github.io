@@ -10,7 +10,8 @@
   "requirements": [
     "Создать переменную firstName = 'John'",
     "Создать переменную lastName = 'Doe'",
-    "Создать переменную fullName через конкатенацию"
+    "Создать переменную fullName через конкатенацию",
+    "Вывести значение переменной fullName в консоль с помощью console.log()"
   ],
   "sampleFiles": {
     "html": "sample.html",

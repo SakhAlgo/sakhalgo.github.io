@@ -22,7 +22,16 @@ export default class Task035Validator {
             passed: hasInterpolation,
             hint: 'Вставьте переменную через ${variable}'
         });
-        if (hasInterpolation) score += 50;
+        if (hasInterpolation) score += 30;
+
+        // Проверка 3: вывод в консоль
+        const hasConsoleLog = /console\.log\s*\(/.test(js);
+        checks.push({
+            label: 'Вывод в консоль',
+            passed: hasConsoleLog,
+            hint: 'Используйте console.log() для вывода шаблонной строки'
+        });
+        if (hasConsoleLog) score += 20;
 
         return {
             passed: score >= (config.passThreshold || 70),

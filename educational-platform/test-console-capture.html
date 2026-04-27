@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Test Console Capture</title>
+<style>
+  * { box-sizing: border-box; }
+  html { background: #0d1117; }
+  body { 
+    margin: 0; 
+    padding: 16px; 
+    background: #0d1117; 
+    color: #c9d1d9; 
+    font-family: system-ui, -apple-system, sans-serif;
+    line-height: 1.5;
+  }
+</style>
+</head>
+<body>
+  <button id="testBtn">Тест console.log</button>
+  
+  <script>
+    // Инициализация контейнера вывода
+    (function() {
+      var resultContainer = document.getElementById('console-output-container');
+      if (!resultContainer) {
+        var header = document.createElement('div');
+        header.style.cssText = 'background:#0d1117;padding:16px 16px 0 16px;';
+        header.innerHTML = '<h2 style="margin:0 0 8px 0;color:#c9d1d9;font-family:system-ui,sans-serif;font-size:18px;">Ваш результат</h2>';
+        
+        var wrapper = document.createElement('div');
+        wrapper.style.cssText = 'background:#0d1117;padding:16px;min-height:100px;';
+        
+        resultContainer = document.createElement('div');
+        resultContainer.id = 'console-output-container';
+        resultContainer.style.cssText = 'background: #0d1117; font-family: monospace; font-size: 14px; line-height: 1.5; color: #c9d1d9; padding: 8px; margin: 0;';
+        
+        resultContainer.textContent = '';
+        
+        wrapper.appendChild(resultContainer);
+        document.body.insertBefore(wrapper, document.body.firstChild);
+        document.body.insertBefore(header, document.body.firstChild);
+      }
+    })();
+    
+    // Перехватываем console.log
+    var originalLog = console.log;
+    console.log = function() {
+      var message = Array.prototype.map.call(arguments, function(arg) {
+        if (typeof arg === 'object') {
+          try {
+            return JSON.stringify(arg);
+          } catch(e) {
+            return String(arg);
+          }
+        }
+        return String(arg);
+      }).join(' ');
+      
+      var resultContainer = document.getElementById('console-output-container');
+      if (resultContainer) {
+        resultContainer.textContent = message;
+      }
+    };
+    
+    document.getElementById('testBtn').addEventListener('click', function() {
+      console.log("Привет, мир!");
+    });
+  </script>
+</body>
+</html>

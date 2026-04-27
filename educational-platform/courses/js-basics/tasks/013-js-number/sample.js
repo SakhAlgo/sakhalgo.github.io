@@ -1,2 +1,3 @@
 const age = 25;
-document.getElementById('output').textContent = 'Мне ' + age + ' лет';
+console.log(age);
+document.getElementById('output').textContent = age;

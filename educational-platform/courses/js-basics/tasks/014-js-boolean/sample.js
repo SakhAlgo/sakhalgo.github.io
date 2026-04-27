@@ -1,2 +1,3 @@
 const isReady = true;
-document.getElementById('output').textContent = isReady ? 'Готов!' : 'Не готов';
+console.log(isReady);
+document.getElementById('output').textContent = 'true';

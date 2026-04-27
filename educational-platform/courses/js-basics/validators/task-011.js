@@ -4,10 +4,13 @@ export default class Task011Validator {
         let score = 0;
         const hasLet = /(let|const)\s+/.test(js);
         checks.push({ label: 'Объявление переменной (let/const)', passed: hasLet, hint: 'Используйте let или const' });
-        if (hasLet) score += 50;
+        if (hasLet) score += 30;
         const hasName = /\bname\b\s*=/.test(js);
         checks.push({ label: 'Переменная name', passed: hasName, hint: 'Объявите переменную name' });
-        if (hasName) score += 50;
+        if (hasName) score += 30;
+        const hasConsoleLog = /console\.log\s*\(/.test(js);
+        checks.push({ label: 'Вывод в консоль', passed: hasConsoleLog, hint: 'Используйте console.log() для вывода значения' });
+        if (hasConsoleLog) score += 40;
         return { passed: score >= (config.passThreshold || 70), score, checks };
     }
 }

@@ -10,7 +10,8 @@
   "requirements": [
     "Использовать const",
     "Переменная должна называться 'isReady'",
-    "Значение: true"
+    "Значение: true",
+    "Вывести значение переменной в консоль с помощью console.log()"
   ],
   "sampleFiles": {
     "html": "sample.html",

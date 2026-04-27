@@ -66,7 +66,7 @@ describe("Task011Validator (Объявление переменной)", () => {
   const validator = new Task011Validator();
 
   test("должен пройти с правильным JS (let name)", async () => {
-    const js = 'let name = "John";';
+    const js = 'let name = "John";\nconsole.log(name);';
     const result = await validator.validate(
       "",
       "",
@@ -79,7 +79,7 @@ describe("Task011Validator (Объявление переменной)", () => {
     expect(result.score).toBe(100);
   });
 
-  test("должен вернуть 50 баллов если только let без name", async () => {
+  test("должен вернуть 30 баллов если только let без name", async () => {
     const js = 'let x = "John";';
     const result = await validator.validate(
       "",
@@ -90,10 +90,10 @@ describe("Task011Validator (Объявление переменной)", () => {
     );
 
     expect(result.passed).toBe(false);
-    expect(result.score).toBe(50);
+    expect(result.score).toBe(30);
   });
 
-  test("должен вернуть 50 баллов если есть name но без let", async () => {
+  test("должен вернуть 30 баллов если есть name но без let", async () => {
     const js = 'name = "John";';
     const result = await validator.validate(
       "",
@@ -104,7 +104,7 @@ describe("Task011Validator (Объявление переменной)", () => {
     );
 
     expect(result.passed).toBe(false);
-    expect(result.score).toBe(50);
+    expect(result.score).toBe(30);
   });
 });
 

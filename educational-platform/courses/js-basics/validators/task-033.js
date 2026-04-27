@@ -22,7 +22,16 @@ export default class Task033Validator {
             passed: hasNumber,
             hint: 'Объявите переменную с числовым значением'
         });
-        if (hasNumber) score += 50;
+        if (hasNumber) score += 30;
+
+        // Проверка 3: вывод в консоль
+        const hasConsoleLog = /console\.log\s*\(/.test(js);
+        checks.push({
+            label: 'Вывод в консоль',
+            passed: hasConsoleLog,
+            hint: 'Используйте console.log() для вывода результата преобразования'
+        });
+        if (hasConsoleLog) score += 20;
 
         return {
             passed: score >= (config.passThreshold || 70),

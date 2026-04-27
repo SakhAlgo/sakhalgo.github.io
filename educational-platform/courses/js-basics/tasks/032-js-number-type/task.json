@@ -1,10 +1,11 @@
 {
     "title": "Тип данных number",
     "description": "Используйте оператор typeof для проверки типа числовой переменной.",
-    "requirements": [
-        "Объявите числовую переменную",
-        "Используйте typeof"
-    ],
+  "requirements": [
+      "Объявите числовую переменную",
+      "Используйте typeof",
+      "Вывести результат typeof в модальное окно с помощью alert()"
+  ],
     "sampleFiles": {
         "html": "sample.html",
         "css": "sample.css",

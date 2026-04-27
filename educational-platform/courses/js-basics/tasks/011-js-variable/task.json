@@ -10,7 +10,8 @@
   "requirements": [
     "Использовать let или const",
     "Переменная должна называться 'name'",
-    "Значение: 'JavaScript'"
+    "Значение: 'JavaScript'",
+    "Вывести значение переменной в консоль с помощью console.log()"
   ],
   "sampleFiles": {
     "html": "sample.html",

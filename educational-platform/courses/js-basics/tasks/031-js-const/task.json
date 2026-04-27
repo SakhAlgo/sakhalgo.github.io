@@ -1,13 +1,14 @@
 {
-    "title": "Константа",
-    "description": "Объявите константу с помощью ключевого слова const.",
-    "requirements": [
-        "Используйте ключевое слово const",
-        "Присвойте константе значение"
-    ],
-    "sampleFiles": {
-        "html": "sample.html",
-        "css": "sample.css",
-        "js": "sample.js"
-    }
+  "title": "Константа",
+  "description": "Объявите константу с помощью ключевого слова const.",
+  "requirements": [
+    "Используйте ключевое слово const",
+    "Присвойте константе PI = 3.14159",
+    "Вывести значение константы PI в модальное окно с помощью alert()"
+  ],
+  "sampleFiles": {
+    "html": "sample.html",
+    "css": "sample.css",
+    "js": "sample.js"
+  }
 }
