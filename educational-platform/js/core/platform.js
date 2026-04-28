@@ -491,6 +491,11 @@ highlight {
       "headings": "Заголовки страницы",
       "text-formatting": "Форматирование текста",
       "lists": "Списки",
+      "borders": "Границы",
+      "forms": "Формы",
+      "comments": "Комментарии",
+      "structure": "Группировка элементов",
+      "tables": "Таблицы",
       "media": "Медиа элементы",
       "css-colors": "Цвета в CSS",
       "css-dimensions": "Размеры элементов",
@@ -507,6 +512,7 @@ highlight {
       "js-to-number": "Преобразование в число",
       "js-template-string": "Шаблонные строки",
       "js-functions": "Функции",
+      "js-conditionals": "Ветвление",
     };
     return (
       titles[topic] ||

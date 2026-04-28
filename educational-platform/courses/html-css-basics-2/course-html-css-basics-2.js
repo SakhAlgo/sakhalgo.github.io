@@ -130,7 +130,7 @@ export const tasksCourseHtmlCssBasics2 = [
   // ========== HTML & CSS: CSS стилизация (060-069) ==========
   {
     id: "060",
-    topic: "colors",
+    topic: "css-colors",
     courseId: "html-css-basics-2",
     moduleId: "css-styling",
     title: "Два цвета",
@@ -142,7 +142,7 @@ export const tasksCourseHtmlCssBasics2 = [
   },
   {
     id: "061",
-    topic: "dimensions",
+    topic: "css-dimensions",
     courseId: "html-css-basics-2",
     moduleId: "css-styling",
     title: "Размеры и отступы",
@@ -166,7 +166,7 @@ export const tasksCourseHtmlCssBasics2 = [
   },
   {
     id: "063",
-    topic: "shadows",
+    topic: "css-shadow",
     courseId: "html-css-basics-2",
     moduleId: "css-styling",
     title: "Тень и прозрачность",
@@ -178,7 +178,7 @@ export const tasksCourseHtmlCssBasics2 = [
   },
   {
     id: "064",
-    topic: "fonts",
+    topic: "css-font",
     courseId: "html-css-basics-2",
     moduleId: "css-styling",
     title: "Шрифт комплексно",
@@ -190,7 +190,7 @@ export const tasksCourseHtmlCssBasics2 = [
   },
   {
     id: "065",
-    topic: "text",
+    topic: "css-text-align",
     courseId: "html-css-basics-2",
     moduleId: "css-styling",
     title: "Текст оформление",
@@ -202,7 +202,7 @@ export const tasksCourseHtmlCssBasics2 = [
   },
   {
     id: "066",
-    topic: "padding",
+    topic: "css-spacing",
     courseId: "html-css-basics-2",
     moduleId: "css-styling",
     title: "Padding всех сторон",
@@ -214,7 +214,7 @@ export const tasksCourseHtmlCssBasics2 = [
   },
   {
     id: "067",
-    topic: "selectors",
+    topic: "css-selectors",
     courseId: "html-css-basics-2",
     moduleId: "css-styling",
     title: "Селектор класса",
@@ -226,7 +226,7 @@ export const tasksCourseHtmlCssBasics2 = [
   },
   {
     id: "068",
-    topic: "selectors",
+    topic: "css-selectors",
     courseId: "html-css-basics-2",
     moduleId: "css-styling",
     title: "Селектор ID",
@@ -238,7 +238,7 @@ export const tasksCourseHtmlCssBasics2 = [
   },
   {
     id: "069",
-    topic: "selectors",
+    topic: "css-selectors",
     courseId: "html-css-basics-2",
     moduleId: "css-styling",
     title: "Комбинированный селектор",
