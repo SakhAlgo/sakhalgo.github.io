@@ -349,6 +349,7 @@ export const courseJsBasics = {
       id: "js-conditionals",
       title: "Ветвления",
       description: "Условные операторы if/else",
+      theoryFile: "theory-conditionals.html",
       tasks: [
         "046",
         "047",

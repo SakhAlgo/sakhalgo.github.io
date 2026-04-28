@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Теория: Ветвления в JavaScript</title>
+    <style>
+        body { font-family: 'Syne', sans-serif; line-height: 1.6; color: #c9d1d9; background: #0d1117; padding: 20px; max-width: 800px; margin: 0 auto; }
+        h1, h2, h3 { color: #58a6ff; margin-top: 1.5em; margin-bottom: 0.8em; }
+        h1 { font-size: 24px; border-bottom: 1px solid #30363d; padding-bottom: 10px; }
+        h2 { font-size: 20px; margin-top: 2em; }
+        h3 { font-size: 18px; margin-top: 1.5em; }
+        code { background: #21262d; padding: 2px 6px; border-radius: 4px; font-family: 'JetBrains Mono', monospace; color: #9ecbc6; }
+        pre { background: #161b22; padding: 15px; border-radius: 6px; overflow-x: auto; margin: 15px 0; border: 1px solid #30363d; }
+        .code-block { background: #161b22; padding: 15px; border-radius: 6px; margin: 15px 0; border: 1px solid #30363d; }
+        .code-block pre { margin: 0; background: none; border: none; padding: 0; }
+        .important { background: rgba(88,166,255,0.1); padding: 12px; border-radius: 6px; border-left: 3px solid #58a6ff; margin: 15px 0; }
+        .tip { background: rgba(63,185,80,0.1); padding: 12px; border-radius: 6px; border-left: 3px solid #3fb950; margin: 15px 0; }
+        ul, ol { margin: 10px 0 15px 25px; padding: 0; }
+        li { margin: 8px 0; }
+        table { width: 100%; border-collapse: collapse; margin: 15px 0; }
+        th, td { padding: 10px; border: 1px solid #30363d; text-align: left; }
+        th { background: #161b22; color: #58a6ff; }
+        td { background: #0d1117; }
+    </style>
+</head>
+<body>
+    <article>
+        <h1>&#x1F500; Ветвления в JavaScript</h1>
+        <section>
+            <h2>1. Что такое ветвления?</h2>
+            <p>Ветвления позволяют выполнять разные блоки кода в зависимости от условий. Это основа принятия решений в программировании.</p>
+            <div class="important">
+                <strong>&#x1F4A1; Важно:</strong> Условия всегда возвращают <code>true</code> (истина) или <code>false</code> (ложь).
+            </div>
+        </section>
+        <section>
+            <h2>2. if (простое условие)</h2>
+            <p>Конструкция <code>if</code> выполняет блок кода, если условие истинно.</p>
+            <div class="code-block">
+                <pre><code>let age = 18;
+
+if (age >= 18) {
+    console.log("Вы совершеннолетний");
+}</code></pre>
+            </div>
+            <h3>Операторы сравнения</h3>
+            <table>
+                <tr><th>Оператор</th><th>Описание</th><th>Пример</th></tr>
+                <tr><td><code>===</code></td><td>Строгое равенство</td><td><code>5 === "5" // false</code></td></tr>
+                <tr><td><code>!==</code></td><td>Строгое неравенство</td><td><code>5 !== "5" // true</code></td></tr>
+                <tr><td><code>></code></td><td>Больше</td><td><code>10 > 5 // true</code></td></tr>
+                <tr><td><code><</code></td><td>Меньше</td><td><code>10 < 5 // false</code></td></tr>
+                <tr><td><code>>=</code></td><td>Больше или равно</td><td><code>5 >= 5 // true</code></td></tr>
+                <tr><td><code><=</code></td><td>Меньше или равно</td><td><code>4 <= 5 // true</code></td></tr>
+            </table>
+        </section>
+        <section>
+            <h2>3. if...else (условие с альтернативой)</h2>
+            <p>Конструкция <code>if...else</code> выполняет один блок кода, если условие истинно, и другой блок, если ложно.</p>
+            <div class="code-block">
+                <pre><code>let age = 16;
+
+if (age >= 18) {
+    console.log("Доступ разрешён");
+} else {
+    console.log("Доступ запрещён");
+}
+
+// Выведет: "Доступ запрещён"</code></pre>
+            </div>
+        </section>
+        <section>
+            <h2>4. if...else if...else (несколько условий)</h2>
+            <p>Позволяет проверить несколько условий последовательно.</p>
+            <div class="code-block">
+                <pre><code>let score = 85;
+
+if (score >= 90) {
+    console.log("Оценка: Отлично");
+} else if (score >= 75) {
+    console.log("Оценка: Хорошо");
+} else if (score >= 50) {
+    console.log("Оценка: Удовлетворительно");
+} else {
+    console.log("Оценка: Неудовлетворительно");
+}
+
+// Выведет: "Оценка: Хорошо"</code></pre>
+            </div>
+        </section>
+        <section>
+            <h2>5. Вложенные if</h2>
+            <p>Один <code>if</code> может находиться внутри другого.</p>
+            <div class="code-block">
+                <pre><code>let age = 20;
+let hasLicense = true;
+
+if (age >= 18) {
+    console.log("Вы совершеннолетний");
+    if (hasLicense) {
+        console.log("И у вас есть права!");
+    } else {
+        console.log("Но у вас нет прав");
+    }
+}</code></pre>
+            </div>
+        </section>
+        <section>
+            <h2>6. Логические операторы</h2>
+            <h3>&& (И) &mdash; оба условия истинны</h3>
+            <div class="code-block">
+                <pre><code>if (age >= 18 && hasTicket) {
+    console.log("Можете войти");
+}</code></pre>
+            </div>
+            <h3>|| (ИЛИ) &mdash; хотя бы одно истинно</h3>
+            <div class="code-block">
+                <pre><code>if (isAdmin || isModerator) {
+    console.log("Доступ есть");
+}</code></pre>
+            </div>
+            <h3>! (НЕ) &mdash; инвертирует условие</h3>
+            <div class="code-block">
+                <pre><code>if (!isLoggedIn) {
+    console.log("Войдите в систему");
+}</code></pre>
+            </div>
+        </section>
+        <section>
+            <h2>7. prompt() и confirm()</h2>
+            <h3>prompt() &mdash; запрос ввода</h3>
+            <p><code>prompt()</code> показывает диалоговое окно с полем для ввода и возвращает строку.</p>
+            <div class="code-block">
+                <pre><code>let name = prompt("Как вас зовут?");
+if (name) {
+    console.log("Привет, " + name + "!");
+}</code></pre>
+            </div>
+            <h3>confirm() &mdash; запрос подтверждения</h3>
+            <p><code>confirm()</code> возвращает <code>true</code> (OK) или <code>false</code> (Отмена).</p>
+            <div class="code-block">
+                <pre><code>let likesJs = confirm("Вам нравится JavaScript?");
+if (likesJs) {
+    alert("JS - это круто!");
+} else {
+    alert("Попробуйте ещё!");
+}</code></pre>
+            </div>
+            <div class="tip">
+                <strong>&#x1F3AF; Совет:</strong> <code>prompt()</code> всегда возвращает строку. Для числа используйте <code>Number(prompt(...))</code>.
+            </div>
+        </section>
+    </article>
+</body>
+</html>

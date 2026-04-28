@@ -325,6 +325,7 @@ export const courseHtmlCssBasics = {
       id: "html-tags",
       title: "HTML теги",
       description: "Основные теги HTML",
+      theoryFile: "theory-html-tags.html",
       tasks: [
         "001",
         "002",
@@ -342,6 +343,7 @@ export const courseHtmlCssBasics = {
       id: "css-styling",
       title: "CSS стилизация",
       description: "Базовая стилизация элементов",
+      theoryFile: "theory-css-styling.html",
       tasks: [
         "006",
         "007",

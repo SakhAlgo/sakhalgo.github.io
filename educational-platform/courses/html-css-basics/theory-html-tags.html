@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Теория: HTML теги</title>
+    <style>
+        body { font-family: 'Syne', sans-serif; line-height: 1.6; color: #c9d1d9; background: #0d1117; padding: 20px; max-width: 800px; margin: 0 auto; }
+        h1, h2, h3 { color: #58a6ff; margin-top: 1.5em; margin-bottom: 0.8em; }
+        h1 { font-size: 24px; border-bottom: 1px solid #30363d; padding-bottom: 10px; }
+        h2 { font-size: 20px; margin-top: 2em; }
+        h3 { font-size: 18px; margin-top: 1.5em; }
+        code { background: #21262d; padding: 2px 6px; border-radius: 4px; font-family: 'JetBrains Mono', monospace; color: #9ecbc6; }
+        pre { background: #161b22; padding: 15px; border-radius: 6px; overflow-x: auto; margin: 15px 0; border: 1px solid #30363d; }
+        .code-block { background: #161b22; padding: 15px; border-radius: 6px; margin: 15px 0; border: 1px solid #30363d; }
+        .code-block pre { margin: 0; background: none; border: none; padding: 0; }
+        .important { background: rgba(88,166,255,0.1); padding: 12px; border-radius: 6px; border-left: 3px solid #58a6ff; margin: 15px 0; }
+        .tip { background: rgba(63,185,80,0.1); padding: 12px; border-radius: 6px; border-left: 3px solid #3fb950; margin: 15px 0; }
+        ul, ol { margin: 10px 0 15px 25px; padding: 0; }
+        li { margin: 8px 0; }
+        table { width: 100%; border-collapse: collapse; margin: 15px 0; }
+        th, td { padding: 10px; border: 1px solid #30363d; text-align: left; }
+        th { background: #161b22; color: #58a6ff; }
+        td { background: #0d1117; }
+    </style>
+</head>
+<body>
+    <article>
+        <h1>📚 HTML теги</h1>
+        <section>
+            <h2>1. Что такое HTML?</h2>
+            <p>HTML (HyperText Markup Language) — язык разметки для веб-страниц. Страница состоит из <strong>тегов</strong> — команд, которые говорят браузеру, как отображать содержимое.</p>
+            <div class="code-block"><pre><code>&lt;тег&gt;содержимое&lt;/тег&gt;</code></pre></div>
+            <p>Большинство тегов парные: открывающий <code>&lt;тег&gt;</code> и закрывающий <code>&lt;/тег&gt;</code>.</p>
+        </section>
+        <section>
+            <h2>2. Заголовки (h1-h6)</h2>
+            <p>Заголовки создают иерархию текста. <code>&lt;h1&gt;</code> — самый важный, <code>&lt;h6&gt;</code> — наименее важный.</p>
+            <div class="code-block"><pre><code>&lt;h1&gt;Главный заголовок&lt;/h1&gt;
+&lt;h2&gt;Заголовок раздела&lt;/h2&gt;
+&lt;h3&gt;Подзаголовок&lt;/h3&gt;</code></pre></div>
+            <div class="important"><strong>💡 Важно:</strong> На странице должен быть только один <code>&lt;h1&gt;</code>. Заголовки должны идти по порядку, без пропусков.</div>
+        </section>
+        <section>
+            <h2>3. Абзац (&lt;p&gt;)</h2>
+            <p>Тег <code>&lt;p&gt;</code> создаёт абзац текста. Браузер добавляет отступы между абзацами.</p>
+            <div class="code-block"><pre><code>&lt;p&gt;Это первый абзац.&lt;/p&gt;
+&lt;p&gt;А это второй абзац.&lt;/p&gt;</code></pre></div>
+        </section>
+        <section>
+            <h2>4. Форматирование текста</h2>
+            <h3>&lt;strong&gt; и &lt;b&gt; — жирный текст</h3>
+            <div class="code-block"><pre><code>&lt;strong&gt;Важный жирный текст&lt;/strong&gt;
+&lt;b&gt;Просто жирный текст&lt;/b&gt;</code></pre></div>
+            <h3>&lt;em&gt; и &lt;i&gt; — курсив</h3>
+            <div class="code-block"><pre><code>&lt;em&gt;Важный текст курсивом&lt;/em&gt;
+&lt;i&gt;Просто курсив&lt;/i&gt;</code></pre></div>
+            <h3>&lt;br&gt; — разрыв строки</h3>
+            <p>Тег <code>&lt;br&gt;</code> переносит текст на новую строку. Это одиночный тег (без закрытия).</p>
+            <div class="code-block"><pre><code>&lt;p&gt;Строка 1&lt;br&gt;Строка 2&lt;/p&gt;</code></pre></div>
+        </section>
+        <section>
+            <h2>5. Списки</h2>
+            <h3>Маркированный (&lt;ul&gt;)</h3>
+            <div class="code-block"><pre><code>&lt;ul&gt;
+  &lt;li&gt;Пункт 1&lt;/li&gt;
+  &lt;li&gt;Пункт 2&lt;/li&gt;
+&lt;/ul&gt;</code></pre></div>
+            <h3>Нумерованный (&lt;ol&gt;)</h3>
+            <div class="code-block"><pre><code>&lt;ol&gt;
+  &lt;li&gt;Первый шаг&lt;/li&gt;
+  &lt;li&gt;Второй шаг&lt;/li&gt;
+&lt;/ol&gt;</code></pre></div>
+        </section>
+        <section>
+            <h2>6. Изображения (&lt;img&gt;)</h2>
+            <p>Тег <code>&lt;img&gt;</code> вставляет изображение. Атрибуты: <code>src</code> (путь) и <code>alt</code> (альтернативный текст).</p>
+            <div class="code-block"><pre><code>&lt;img src="cat.jpg" alt="Милый кот"&gt;</code></pre></div>
+        </section>
+        <section>
+            <h2>7. Ссылки (&lt;a&gt;)</h2>
+            <p>Тег <code>&lt;a&gt;</code> создаёт гиперссылку. Атрибут <code>href</code> указывает адрес.</p>
+            <div class="code-block"><pre><code>&lt;a href="https://example.com"&gt;Нажми меня&lt;/a&gt;</code></pre></div>
+        </section>
+        <section>
+            <h2>8. Шпаргалка тегов</h2>
+            <table>
+                <tr><th>Тег</th><th>Описание</th></tr>
+                <tr><td><code>&lt;h1&gt;...&lt;h6&gt;</code></td><td>Заголовки</td></tr>
+                <tr><td><code>&lt;p&gt;</code></td><td>Абзац</td></tr>
+                <tr><td><code>&lt;strong&gt;</code></td><td>Жирный (важный)</td></tr>
+                <tr><td><code>&lt;b&gt;</code></td><td>Жирный</td></tr>
+                <tr><td><code>&lt;em&gt;</code></td><td>Курсив (важный)</td></tr>
+                <tr><td><code>&lt;i&gt;</code></td><td>Курсив</td></tr>
+                <tr><td><code>&lt;br&gt;</code></td><td>Разрыв строки</td></tr>
+                <tr><td><code>&lt;ul&gt;</code></td><td>Маркированный список</td></tr>
+                <tr><td><code>&lt;ol&gt;</code></td><td>Нумерованный список</td></tr>
+                <tr><td><code>&lt;li&gt;</code></td><td>Элемент списка</td></tr>
+                <tr><td><code>&lt;img&gt;</code></td><td>Изображение</td></tr>
+                <tr><td><code>&lt;a&gt;</code></td><td>Ссылка</td></tr>
+            </table>
+        </section>
+    </article>
+</body>
+</html>

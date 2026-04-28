@@ -403,7 +403,13 @@ highlight {
         const courseDir = this._getCourseDir(courseId);
 
         Object.keys(topics).forEach((topic) => {
-          const module = course.modules.find((m) => m.id === topic);
+          // Ищем модуль, в котором есть задача с данным топиком
+          const module = course.modules.find((m) =>
+            m.tasks.some((taskId) => {
+              const task = this.manifest.find((t) => t.id === taskId);
+              return task && task.topic === topic;
+            }),
+          );
           const theoryInfo = module?.theoryFile
             ? { theoryFile: module.theoryFile, courseDir }
             : null;
@@ -840,7 +846,13 @@ highlight {
     const course = coursesManifest.find((c) => c.id === courseId);
     if (!course) return;
 
-    const module = course.modules.find((m) => m.id === topic);
+    // Ищем модуль, в котором есть задача с данным топиком
+    const module = course.modules.find((m) =>
+      m.tasks.some((taskId) => {
+        const task = this.manifest.find((t) => t.id === taskId);
+        return task && task.topic === topic;
+      }),
+    );
     if (!module || !module.theoryFile) return;
 
     const courseDir = this._getCourseDir(courseId);
