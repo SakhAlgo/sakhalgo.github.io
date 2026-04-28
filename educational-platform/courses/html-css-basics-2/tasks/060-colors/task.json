@@ -8,9 +8,9 @@
   "timeLimit": 10,
   "description": "Задайте цвет текста и фона для абзаца",
   "requirements": [
-    "Использовать тег <p>",
-    "CSS: color: red;",
-    "CSS: background-color: yellow;"
+    "Использовать тег p",
+    "CSS: <code>color: red;</code>",
+    "CSS: <code>background-color: yellow;</code>"
   ],
   "sampleFiles": {
     "html": "sample.html",

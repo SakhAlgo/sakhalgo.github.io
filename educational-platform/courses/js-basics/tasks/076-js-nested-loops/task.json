@@ -1,0 +1,21 @@
+{
+  "id": "076",
+  "title": "Вложенные циклы",
+  "description": "Напишите вложенные циклы для вывода таблицы умножения 3x3. Формат: 1x1=1 1x2=2 ...",
+  "requirements": [
+    "Создайте внешний цикл for (let i = 1; i <= 3; i++)",
+    "Внутри создайте вложенный цикл for (let j = 1; j <= 3; j++)",
+    "Вычислите произведение i * j внутри вложенного цикла",
+    "Формируйте строку в переменной row: i + 'x' + j + '=' + (i * j)",
+    "Добавьте row к textContent элемента #output во внешнем цикле",
+    "Используйте document.getElementById('output').textContent"
+  ],
+  "difficulty": "medium",
+  "points": 75,
+  "tags": ["js", "loop", "nested-loops"],
+  "sample": {
+    "html": "sample.html",
+    "css": "sample.css",
+    "js": "sample.js"
+  }
+}

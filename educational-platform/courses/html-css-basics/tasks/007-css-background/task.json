@@ -8,8 +8,8 @@
   "timeLimit": 10,
   "description": "Задайте фон для элемента с классом 'box'",
   "requirements": [
-    "Использовать свойство background-color",
-    "Установить цвет фона: yellow"
+    "Использовать свойство <code>background-color</code>",
+    "Установить цвет фона: <code>yellow</code>"
   ],
   "sampleFiles": {
     "html": "sample.html",

@@ -1,0 +1,19 @@
+{
+  "id": "075",
+  "title": "Фильтр с continue",
+  "description": "Выведите только чётные числа от 1 до 10 через continue. Нечётные числа пропускайте",
+  "requirements": [
+    "Создайте цикл for (let i = 1; i <= 10; i++)",
+    "Внутри цикла проверьте: if (i % 2 !== 0) { continue; } — пропустите нечётные числа",
+    "Чётные числа добавляйте к textContent элемента #output",
+    "Используйте document.getElementById('output').textContent"
+  ],
+  "difficulty": "medium",
+  "points": 75,
+  "tags": ["js", "loop", "continue"],
+  "sample": {
+    "html": "sample.html",
+    "css": "sample.css",
+    "js": "sample.js"
+  }
+}

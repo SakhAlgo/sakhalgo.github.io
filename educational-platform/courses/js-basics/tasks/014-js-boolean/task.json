@@ -8,10 +8,10 @@
   "timeLimit": 10,
   "description": "Создайте булеву переменную 'isReady' со значением true",
   "requirements": [
-    "Использовать const",
-    "Переменная должна называться 'isReady'",
+    "Использовать <code>const",
+    "Переменная должна называться <code>isReady</code>",
     "Значение: true",
-    "Вывести значение переменной в консоль с помощью console.log()"
+    "Вывести значение переменной в консоль с помощью <code>console.log()"
   ],
   "sampleFiles": {
     "html": "sample.html",

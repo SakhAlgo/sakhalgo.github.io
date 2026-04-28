@@ -9,9 +9,9 @@ export default class Task024Validator {
         // Проверка 1: наличие тега ol
         const hasOl = /<ol[^>]*>.*?<\/ol>/is.test(html);
         checks.push({
-            label: 'Тег <ol> присутствует',
+            label: 'Тег ol присутствует',
             passed: hasOl,
-            hint: 'Добавьте тег <ol> с закрывающим тегом </ol>'
+            hint: 'Добавьте тег ol с закрывающим тегом /ol'
         });
         if (hasOl) score += 30;
 
@@ -19,16 +19,16 @@ export default class Task024Validator {
         const liMatches = html.match(/<li[^>]*>.*?<\/li>/gi) || [];
         const hasLi = liMatches.length >= 3;
         checks.push({
-            label: 'Минимум 3 элемента <li>',
+            label: 'Минимум 3 элемента li',
             passed: hasLi,
-            hint: `Добавьте минимум 3 элемента <li> (найдено: ${liMatches.length})`
+            hint: `Добавьте минимум 3 элемента li (найдено: ${liMatches.length})`
         });
         if (hasLi) score += 40;
 
         // Проверка 3: текст внутри li
         const hasTextInLi = /<li[^>]*>[^<]+<\/li>/i.test(html);
         checks.push({
-            label: 'Текст внутри элементов <li>',
+            label: 'Текст внутри элементов li',
             passed: hasTextInLi,
             hint: 'Добавьте текст внутри каждого элемента li'
         });

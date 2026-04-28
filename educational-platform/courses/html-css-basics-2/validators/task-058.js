@@ -9,27 +9,27 @@ export default class Task058Validator {
         // Проверка 1: наличие тега form
         const hasForm = /<form[^>]*>.*?<\/form>/is.test(html);
         checks.push({
-            label: 'Тег <form> присутствует',
+            label: 'Тег form присутствует',
             passed: hasForm,
-            hint: 'Добавьте тег <form>'
+            hint: 'Добавьте тег form'
         });
         if (hasForm) score += 25;
 
         // Проверка 2: input type="text"
         const hasInput = /<input[^>]*type\s*=\s*"text"[^>]*>/i.test(html);
         checks.push({
-            label: 'Поле ввода <input type="text"> присутствует',
+            label: 'Поле ввода input type="text" присутствует',
             passed: hasInput,
-            hint: 'Добавьте <input type="text"> внутри формы'
+            hint: 'Добавьте input type="text" внутри формы'
         });
         if (hasInput) score += 25;
 
         // Проверка 3: наличие кнопки
         const hasButton = /<button[^>]*>.*?<\/button>/i.test(html);
         checks.push({
-            label: 'Кнопка <button> присутствует',
+            label: 'Кнопка button присутствует',
             passed: hasButton,
-            hint: 'Добавьте тег <button>'
+            hint: 'Добавьте тег button'
         });
         if (hasButton) score += 25;
 

@@ -1,0 +1,21 @@
+{
+  "id": "079",
+  "title": "Факториал через цикл",
+  "description": "Напишите функцию factorial(n), которая вычисляет факториал числа n (n! = 1*2*3*...*n). Пример: factorial(5) = 120",
+  "requirements": [
+    "Объявите функцию function factorial(n) { ... }",
+    "Создайте переменную let result = 1 для накопления результата",
+    "Внутри функции добавьте цикл for (let i = 2; i <= n; i++)",
+    "В цикле умножайте: result *= i",
+    "Функция должна возвращать result: return result",
+    "Вызовите factorial(5) и выведите результат в #output"
+  ],
+  "difficulty": "hard",
+  "points": 125,
+  "tags": ["js", "loop", "factorial", "function"],
+  "sample": {
+    "html": "sample.html",
+    "css": "sample.css",
+    "js": "sample.js"
+  }
+}

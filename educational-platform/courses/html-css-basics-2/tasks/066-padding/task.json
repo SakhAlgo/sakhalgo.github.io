@@ -8,11 +8,11 @@
   "timeLimit": 10,
   "description": "Установите внутренние отступы со всех сторон для блока",
   "requirements": [
-    "Использовать тег <div>",
-    "CSS: padding-top: 10px;",
-    "CSS: padding-right: 15px;",
-    "CSS: padding-bottom: 20px;",
-    "CSS: padding-left: 25px;"
+    "Использовать тег div",
+    "CSS: <code>padding-top: 10px;</code>",
+    "CSS: <code>padding-right: 15px;</code>",
+    "CSS: <code>padding-bottom: 20px;</code>",
+    "CSS: <code>padding-left: 25px;</code>"
   ],
   "sampleFiles": {
     "html": "sample.html",

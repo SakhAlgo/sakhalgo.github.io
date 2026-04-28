@@ -9,9 +9,9 @@ export default class Task067Validator {
         // Проверка 1: наличие div с классом box
         const hasBoxClass = /<div[^>]*class\s*=\s*["']box["'][^>]*>/i.test(html);
         checks.push({
-            label: 'Тег <div class="box"> присутствует',
+            label: 'Тег div class="box" присутствует',
             passed: hasBoxClass,
-            hint: 'Добавьте <div class="box">'
+            hint: 'Добавьте div class="box"'
         });
         if (hasBoxClass) score += 40;
 

@@ -513,6 +513,7 @@ highlight {
       "js-template-string": "Шаблонные строки",
       "js-functions": "Функции",
       "js-conditionals": "Ветвление",
+      "js-loops": "Циклы",
     };
     return (
       titles[topic] ||

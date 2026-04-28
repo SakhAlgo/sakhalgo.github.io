@@ -39,7 +39,7 @@ describe("coursesManifest", () => {
     const course = coursesManifest.find((c) => c.id === "js-basics");
     expect(course).toBeDefined();
     expect(course.title).toBe("Основы JavaScript");
-    expect(course.modules.length).toBe(3);
+    expect(course.modules.length).toBe(4);
   });
 
   test("третий курс - Основы HTML & CSS Тест &#8545;", () => {
@@ -56,12 +56,13 @@ describe("coursesManifest", () => {
     expect(moduleIds).toContain("css-styling");
   });
 
-  test("модули второго курса должны содержать js-variables, js-functions и js-conditionals", () => {
+  test("модули второго курса должны содержать js-variables, js-functions, js-conditionals и js-loops", () => {
     const course = coursesManifest.find((c) => c.id === "js-basics");
     const moduleIds = course.modules.map((m) => m.id);
     expect(moduleIds).toContain("js-variables");
     expect(moduleIds).toContain("js-functions");
     expect(moduleIds).toContain("js-conditionals");
+    expect(moduleIds).toContain("js-loops");
   });
 
   test("модули третьего курса должны содержать html-tags и css-styling", () => {
@@ -82,8 +83,8 @@ describe("coursesManifest", () => {
 });
 
 describe("tasksManifest", () => {
-  test("должен содержать 69 задач", () => {
-    expect(tasksManifest.length).toBe(69);
+  test("должен содержать 79 задач", () => {
+    expect(tasksManifest.length).toBe(79);
   });
 
   test("задачи 001-005 относятся к курсу html-css-basics и модулю html-tags", () => {
@@ -160,9 +161,18 @@ describe("tasksManifest", () => {
     });
   });
 
-  test("все задачи имеют сложность easy", () => {
+  test("задачи 001-069 имеют сложность easy, а 070-079 имеют разные уровни сложности", () => {
     tasksManifest.forEach((task) => {
-      expect(task.difficulty).toBe("easy");
+      const taskNum = parseInt(task.id, 10);
+      if (taskNum >= 70 && taskNum <= 73) {
+        expect(task.difficulty).toBe("easy");
+      } else if (taskNum >= 74 && taskNum <= 78) {
+        expect(task.difficulty).toBe("medium");
+      } else if (taskNum === 79) {
+        expect(task.difficulty).toBe("hard");
+      } else {
+        expect(task.difficulty).toBe("easy");
+      }
     });
   });
 

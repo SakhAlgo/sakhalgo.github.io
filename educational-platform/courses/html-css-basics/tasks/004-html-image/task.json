@@ -8,9 +8,9 @@
   "timeLimit": 10,
   "description": "Добавьте изображение космоса",
   "requirements": [
-    "Использовать тег <img>",
-    "Атрибут src='https://1avatara.ru/pic/space/space021.jpg'",
-    "Атрибут alt='Космос'"
+    "Использовать тег img",
+    "Атрибут <code>src='https://1avatara.ru/pic/space/space021.jpg'</code>",
+    "Атрибут <code>alt='Космос'</code>"
   ],
   "sampleFiles": {
     "html": "sample.html",

@@ -8,10 +8,10 @@
   "timeLimit": 10,
   "description": "Добавьте изображение с атрибутами alt, width и height",
   "requirements": [
-    "Использовать тег <img>",
+    "Использовать тег img",
     "Атрибут alt: 'Пример изображения'",
-    "Атрибут width: '300'",
-    "Атрибут height: '200'"
+    "Атрибут <code>width: '300px'</code>",
+    "Атрибут <code>height: '200px'<code>"
   ],
   "sampleFiles": {
     "html": "sample.html",

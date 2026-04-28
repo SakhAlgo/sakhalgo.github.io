@@ -9,9 +9,9 @@ export default class Task051Validator {
         // Проверка 1: наличие тега p
         const hasP = /<p[^>]*>.*?<\/p>/is.test(html);
         checks.push({
-            label: 'Тег <p> присутствует',
+            label: 'Тег &lt;p&gt; присутствует',
             passed: hasP,
-            hint: 'Добавьте тег <p> с текстом'
+            hint: 'Добавьте тег &lt;p&gt; с текстом'
         });
         if (hasP) score += 20;
 
@@ -27,9 +27,9 @@ export default class Task051Validator {
         // Проверка 3: наличие strong внутри p
         const hasStrong = /<strong[^>]*>.*?<\/strong>/i.test(html);
         checks.push({
-            label: 'Тег <strong> присутствует внутри p',
+            label: 'Тег &lt;strong&gt; присутствует внутри p',
             passed: hasStrong,
-            hint: 'Добавьте тег <strong> внутри p для выделения текста'
+            hint: 'Добавьте тег &lt;strong&gt; внутри p для выделения текста'
         });
         if (hasStrong) score += 20;
 
@@ -45,9 +45,9 @@ export default class Task051Validator {
         // Проверка 5: наличие em внутри p
         const hasEm = /<em[^>]*>.*?<\/em>/i.test(html);
         checks.push({
-            label: 'Тег <em> присутствует внутри p',
+            label: 'Тег em присутствует внутри p',
             passed: hasEm,
-            hint: 'Добавьте тег <em> внутри p для курсива'
+            hint: 'Добавьте тег em внутри p для курсива'
         });
         if (hasEm) score += 20;
 

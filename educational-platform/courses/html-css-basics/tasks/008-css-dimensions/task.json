@@ -8,9 +8,9 @@
   "timeLimit": 10,
   "description": "Задайте размеры и синий фон для элемента с классом 'box'",
   "requirements": [
-    "Использовать свойство width: 100px",
-    "Использовать свойство height: 50px",
-    "Использовать свойство background-color: blue"
+    "Использовать свойство <code>width: 100px</code>",
+    "Использовать свойство <code>height: 50px</code>",
+    "Использовать свойство <code>background-color: blue</code>"
   ],
   "sampleFiles": {
     "html": "sample.html",

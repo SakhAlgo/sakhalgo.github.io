@@ -5,9 +5,9 @@ export default class Task004Validator {
 
     const hasImg = /<img[^>]*>/i.test(html);
     checks.push({
-      label: "Тег <img> присутствует",
+      label: "Тег img присутствует",
       passed: hasImg,
-      hint: "Добавьте тег <img>",
+      hint: "Добавьте тег img",
     });
     if (hasImg) score += 30;
 

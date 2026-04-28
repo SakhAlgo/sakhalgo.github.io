@@ -2,7 +2,7 @@
     "title": "Шрифт текста",
     "description": "Измените шрифт элемента с помощью CSS свойства font-family.",
     "requirements": [
-        "Используйте свойство font-family",
+        "Используйте свойство <code>font-family</code>",
         "Примените к любому элементу"
     ],
     "sampleFiles": {

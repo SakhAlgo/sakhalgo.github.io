@@ -1,0 +1,20 @@
+{
+  "id": "072",
+  "title": "Цикл while: обратный отсчёт",
+  "description": "Исправьте код: нужно вывести числа от 5 до 1 через цикл while",
+  "requirements": [
+    "Объявите let i = 5 как начальное значение",
+    "Создайте цикл while (i >= 1) для обратного отсчёта",
+    "Внутри цикла добавьте i к textContent элемента #output",
+    "Добавьте декремент i-- внутри цикла",
+    "Используйте document.getElementById('output').textContent"
+  ],
+  "difficulty": "easy",
+  "points": 50,
+  "tags": ["js", "loop", "while"],
+  "sample": {
+    "html": "sample.html",
+    "css": "sample.css",
+    "js": "sample.js"
+  }
+}

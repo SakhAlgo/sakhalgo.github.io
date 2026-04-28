@@ -9,9 +9,9 @@ export default class Task060Validator {
         // Проверка 1: наличие тега p
         const hasP = /<p[^>]*>.*?<\/p>/i.test(html);
         checks.push({
-            label: 'Тег <p> присутствует',
+            label: 'Тег p присутствует',
             passed: hasP,
-            hint: 'Добавьте тег <p>'
+            hint: 'Добавьте тег p'
         });
         if (hasP) score += 20;
 

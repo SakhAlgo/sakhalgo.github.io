@@ -800,7 +800,7 @@ iframe {
   border-radius: 20px;
   background: var(--bg-overlay);
   border: 1px solid var(--border);
-  font-size: 12px;
+  font-size: 14px;
   color: #dee46b;
 }
 
@@ -1147,7 +1147,7 @@ iframe {
   border-top: 1px solid var(--border);
   padding: 16px 20px;
   flex-shrink: 0;
-  max-height: 200px;
+  max-height: 250px;
   overflow-y: auto;
 }
 
@@ -1392,7 +1392,7 @@ iframe {
 /* ─── Toast ─────────────────────────────────────────── */
 .toast-container {
   position: fixed;
-  bottom: 200px;
+  bottom: 240px;
   right: 20px;
   z-index: 200;
   display: flex;

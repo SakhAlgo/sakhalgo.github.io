@@ -8,8 +8,8 @@
   "timeLimit": 10,
   "description": "Задайте цвет текста для элемента с классом 'text'",
   "requirements": [
-    "Использовать свойство color",
-    "Установить цвет: blue"
+    "Использовать свойство <code>color</code>",
+    "Установить цвет: <code>blue</code>"
   ],
   "sampleFiles": {
     "html": "sample.html",

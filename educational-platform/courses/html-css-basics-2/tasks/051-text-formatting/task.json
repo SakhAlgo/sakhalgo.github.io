@@ -1,1 +1,21 @@
-{ "id": "051", "title": "Абзац с форматированием", "difficulty": "easy", "points": 50, "passThreshold": 70, "tags": ["html", "p", "strong", "em"], "timeLimit": 10, "description": "Создайте абзац с текстом 'Привет, мир!' и выделите 'мир' жирным и курсивом", "requirements": [ "Использовать тег <p>", "Текст внутри <p>: 'Привет, мир!'", "Выделить 'мир' жирным с помощью <strong>", "Выделить 'мир' курсивом с помощью <em>" ], "sampleFiles": { "html": "sample.html", "css": "sample.css", "js": "sample.js" } }
+{
+  "id": "051",
+  "title": "Абзац с форматированием",
+  "difficulty": "easy",
+  "points": 50,
+  "passThreshold": 70,
+  "tags": ["html", "p", "strong", "em"],
+  "timeLimit": 10,
+  "description": "Создайте абзац с текстом 'Привет, мир!' и выделите 'мир' жирным и курсивом",
+  "requirements": [
+    "Использовать тег p",
+    "Текст внутри p: 'Привет, мир!'",
+    "Выделить 'мир' жирным с помощью strong",
+    "Выделить 'мир' курсивом с помощью em"
+  ],
+  "sampleFiles": {
+    "html": "sample.html",
+    "css": "sample.css",
+    "js": "sample.js"
+  }
+}

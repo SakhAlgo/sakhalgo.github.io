@@ -8,8 +8,8 @@
   "timeLimit": 10,
   "description": "Создайте ссылку с атрибутами href и title",
   "requirements": [
-    "Использовать тег <a>",
-    "Атрибут href: 'https://example.com'",
+    "Использовать тег a",
+    "Атрибут href: <code>'https://example.com'</code>",
     "Атрибут title: 'Перейти на пример'",
     "Текст ссылки: 'Пример ссылки'"
   ],

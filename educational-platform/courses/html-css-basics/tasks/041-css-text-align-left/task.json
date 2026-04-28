@@ -8,8 +8,8 @@
   "timeLimit": 10,
   "description": "Выровняйте текст по левому краю с помощью CSS свойства text-align.",
   "requirements": [
-    "Использовать свойство text-align",
-    "Значение должно быть left"
+    "Использовать свойство <code>text-align</code>",
+    "Значение должно быть <code>left</code>"
   ],
   "sampleFiles": {
     "html": "sample.html",

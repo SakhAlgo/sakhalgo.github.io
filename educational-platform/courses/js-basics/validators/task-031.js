@@ -36,6 +36,5 @@ export default class Task031Validator {
       score,
       checks,
     };
-
   }
 }

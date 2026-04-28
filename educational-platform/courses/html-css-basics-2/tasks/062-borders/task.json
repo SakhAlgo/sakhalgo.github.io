@@ -8,9 +8,9 @@
   "timeLimit": 10,
   "description": "Создайте блок с границей и скруглением углов",
   "requirements": [
-    "Использовать тег <div>",
-    "CSS: border: 2px solid black;",
-    "CSS: border-radius: 10px;"
+    "Использовать тег div",
+    "CSS: <code>border: 2px solid black;</code>",
+    "CSS: <code>border-radius: 10px;</code>"
   ],
   "sampleFiles": {
     "html": "sample.html",

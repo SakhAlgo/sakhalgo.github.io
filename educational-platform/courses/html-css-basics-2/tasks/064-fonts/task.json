@@ -8,9 +8,9 @@
   "timeLimit": 10,
   "description": "Задайте тексту шрифт и размер",
   "requirements": [
-    "Использовать тег <p>",
-    "CSS: font-family: Arial, sans-serif;",
-    "CSS: font-size: 18px;"
+    "Использовать тег p",
+    "CSS: <code>font-family: Arial, sans-serif;</code>",
+    "CSS: <code>font-size: 18px;</code>"
   ],
   "sampleFiles": {
     "html": "sample.html",

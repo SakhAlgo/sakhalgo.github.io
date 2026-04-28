@@ -9,9 +9,9 @@ export default class Task068Validator {
         // Проверка 1: наличие div с id header
         const hasHeaderId = /<div[^>]*id\s*=\s*["']header["'][^>]*>/i.test(html);
         checks.push({
-            label: 'Тег <div id="header"> присутствует',
+            label: 'Тег div id="header" присутствует',
             passed: hasHeaderId,
-            hint: 'Добавьте <div id="header">'
+            hint: 'Добавьте div id="header"'
         });
         if (hasHeaderId) score += 40;
 

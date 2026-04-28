@@ -7,7 +7,7 @@
   "tags": ["css", "width", "dimensions"],
   "timeLimit": 10,
   "description": "Установите ширину элемента в 200 пиксели с помощью CSS свойства width.",
-  "requirements": ["Использовать свойство width", "Значение должно быть 200px"],
+  "requirements": ["Использовать свойство <code>width</code>", "Значение должно быть <code>200px</code>"],
   "sampleFiles": {
     "html": "sample.html",
     "css": "sample.css",

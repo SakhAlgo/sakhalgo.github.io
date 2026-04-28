@@ -8,10 +8,10 @@
   "timeLimit": 10,
   "description": "Задайте блоку ширину, высоту и внешний отступ",
   "requirements": [
-    "Использовать тег <div>",
-    "CSS: width: 200px;",
-    "CSS: height: 100px;",
-    "CSS: margin: 20px;"
+    "Использовать тег div",
+    "CSS: <code>width: 200px;</code>",
+    "CSS: <code>height: 100px;</code>",
+    "CSS: <code>margin: 20px;</code>"
   ],
   "sampleFiles": {
     "html": "sample.html",

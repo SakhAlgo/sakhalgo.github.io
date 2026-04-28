@@ -2,7 +2,7 @@
     "title": "Тень блока",
     "description": "Добавьте тень блоку с помощью CSS свойства box-shadow.",
     "requirements": [
-        "Используйте свойство box-shadow",
+        "Используйте свойство <code>box-shadow</code>",
         "Укажите смещение и цвет тени"
     ],
     "sampleFiles": {

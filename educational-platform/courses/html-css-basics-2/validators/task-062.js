@@ -9,9 +9,9 @@ export default class Task062Validator {
         // Проверка 1: наличие тега div
         const hasDiv = /<div[^>]*>.*?<\/div>/i.test(html);
         checks.push({
-            label: 'Тег <div> присутствует',
+            label: 'Тег div присутствует',
             passed: hasDiv,
-            hint: 'Добавьте тег <div>'
+            hint: 'Добавьте тег div'
         });
         if (hasDiv) score += 20;
 

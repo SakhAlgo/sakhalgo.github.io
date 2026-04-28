@@ -1,0 +1,7 @@
+#output {
+  font-family: monospace;
+  padding: 10px;
+  color: #58a6ff;
+  white-space: pre;
+  line-height: 1.5;
+}

@@ -8,8 +8,8 @@
   "timeLimit": 10,
   "description": "Создайте ссылку на 'https://example.com' с текстом 'Перейти'",
   "requirements": [
-    "Использовать тег <a>",
-    "Атрибут href='https://example.com'",
+    "Использовать тег a",
+    "Атрибут <code>href='https://example.com'<c/ode>",
     "Текст ссылки: 'Перейти'"
   ],
   "sampleFiles": {"html": "sample.html", "css": "sample.css", "js": "sample.js"}

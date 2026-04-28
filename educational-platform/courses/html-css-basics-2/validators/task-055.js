@@ -9,9 +9,9 @@ export default class Task055Validator {
         // Проверка 1: наличие тега div
         const hasDiv = /<div[^>]*>.*?<\/div>/is.test(html);
         checks.push({
-            label: 'Тег <div> присутствует',
+            label: 'Тег div присутствует',
             passed: hasDiv,
-            hint: 'Добавьте контейнер <div>'
+            hint: 'Добавьте контейнер div'
         });
         if (hasDiv) score += 25;
 
@@ -21,9 +21,9 @@ export default class Task055Validator {
         const pCount = (divContent.match(/<p[^>]*>.*?<\/p>/gi) || []).length;
         const hasTwoP = pCount >= 2;
         checks.push({
-            label: 'Внутри <div> есть 2 параграфа',
+            label: 'Внутри div есть 2 параграфа',
             passed: hasTwoP,
-            hint: 'Добавьте 2 тега <p> внутри <div>'
+            hint: 'Добавьте 2 тега p внутри div'
         });
         if (hasTwoP) score += 25;
 
@@ -32,7 +32,7 @@ export default class Task055Validator {
         checks.push({
             label: 'Первый параграф: "Параграф 1"',
             passed: firstP,
-            hint: 'Первый <p> должен содержать "Параграф 1"'
+            hint: 'Первый p должен содержать "Параграф 1"'
         });
         if (firstP) score += 25;
 
@@ -41,7 +41,7 @@ export default class Task055Validator {
         checks.push({
             label: 'Второй параграф: "Параграф 2"',
             passed: secondP,
-            hint: 'Второй <p> должен содержать "Параграф 2"'
+            hint: 'Второй p должен содержать "Параграф 2"'
         });
         if (secondP) score += 25;
 

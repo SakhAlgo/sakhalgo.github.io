@@ -9,9 +9,9 @@ export default class Task001Validator {
         // Проверка 1: наличие тега h1
         const hasH1 = /<h1[^>]*>.*?<\/h1>/i.test(html);
         checks.push({
-            label: 'Тег <h1> присутствует',
+            label: 'Тег h1 присутствует',
             passed: hasH1,
-            hint: 'Добавьте тег <h1> с закрывающим тегом </h1>'
+            hint: 'Добавьте тег h1 с закрывающим тегом /h1'
         });
         if (hasH1) score += 50;
 

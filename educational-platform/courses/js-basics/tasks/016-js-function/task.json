@@ -8,9 +8,9 @@
   "timeLimit": 10,
   "description": "Создайте функцию sayHello, которая выводит 'Hello' в консоль",
   "requirements": [
-    "Функция должна называться sayHello",
-    "Функция должна использовать console.log",
-    "Вывод: 'Hello'"
+    "Функция должна называться <code>sayHello",
+    "Функция должна использовать <code>console.log",
+    "Вывод: <code>Hello"
   ],
   "sampleFiles": {
     "html": "sample.html",

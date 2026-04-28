@@ -8,8 +8,8 @@
   "timeLimit": 10,
   "description": "Задайте отступы для элемента с классом 'box'",
   "requirements": [
-    "Использовать свойство padding: 20px",
-    "Использовать свойство margin: 10px"
+    "Использовать свойство <code>padding: 20px</code>",
+    "Использовать свойство <code>margin: 10px</code>"
   ],
   "sampleFiles": {
     "html": "sample.html",

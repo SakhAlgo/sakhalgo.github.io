@@ -1,0 +1,19 @@
+{
+  "id": "070",
+  "title": "Простой цикл for",
+  "description": "Напишите цикл for, который выводит числа от 1 до 5 в консоль",
+  "requirements": [
+    "Создайте цикл for (let i = 1; i <= 5; i++)",
+    "Внутри цикла выведите i в консоль с помощью console.log()",
+    "Цикл должен считать от 1 до 5 включительно",
+    "Добавьте инкремент i++"
+  ],
+  "difficulty": "easy",
+  "points": 50,
+  "tags": ["js", "loop", "for"],
+  "sample": {
+    "html": "sample.html",
+    "css": "sample.css",
+    "js": "sample.js"
+  }
+}

@@ -8,9 +8,9 @@
   "timeLimit": 10,
   "description": "Добавьте блоку тень и установите прозрачность",
   "requirements": [
-    "Использовать тег <div>",
-    "CSS: box-shadow: 5px 5px 10px rgba(0,0,0,0.5);",
-    "CSS: opacity: 0.8;"
+    "Использовать тег div",
+    "CSS: <code>box-shadow: 5px 5px 10px rgba(0,0,0,0.5);</code>",
+    "CSS: <code>opacity: 0.8;</code>"
   ],
   "sampleFiles": {
     "html": "sample.html",

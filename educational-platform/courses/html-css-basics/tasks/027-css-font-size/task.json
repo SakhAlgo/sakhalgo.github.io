@@ -3,8 +3,8 @@
     "description": "Измените размер шрифта с помощью CSS свойства font-size.",
     "requirements": [
         "Добавьте текст \"Пример\" в HTML",
-        "Используйте свойство font-size",
-        "Укажите размер 24px"
+        "Используйте свойство <code>font-size</code>",
+        "Укажите размер <code>24px</code>"
     ],
     "sampleFiles": {
         "html": "sample.html",

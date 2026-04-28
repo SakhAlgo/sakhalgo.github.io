@@ -9,9 +9,9 @@ export default class Task022Validator {
         // Проверка 1: наличие тега strong или b
         const hasBold = /<(strong|b)[^>]*>.*?<\/(strong|b)>/i.test(html);
         checks.push({
-            label: 'Тег <strong> или <b> присутствует',
+            label: 'Тег strong или <b> присутствует',
             passed: hasBold,
-            hint: 'Используйте тег <strong> или <b> для жирного текста'
+            hint: 'Используйте тег strong или b для жирного текста'
         });
         if (hasBold) score += 50;
 

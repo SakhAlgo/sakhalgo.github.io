@@ -8,8 +8,8 @@
   "timeLimit": 10,
   "description": "Стилизуйте элемент с помощью селектора класса",
   "requirements": [
-    "HTML: <div class='box'>Текст</div>",
-    "CSS: .box { color: blue; }"
+    "HTML: <code>&lt;div class='box'&gt;Текст&lt;/div&gt;</code>",
+    "CSS: Напиши селектор по классу. Свойство: <code>{ color: blue; }</code>"
   ],
   "sampleFiles": {
     "html": "sample.html",

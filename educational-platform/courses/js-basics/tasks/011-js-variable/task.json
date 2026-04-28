@@ -9,9 +9,9 @@
   "description": "Объявите переменную с именем 'name' и значением 'JavaScript'",
   "requirements": [
     "Использовать let или const",
-    "Переменная должна называться 'name'",
-    "Значение: 'JavaScript'",
-    "Вывести значение переменной в консоль с помощью console.log()"
+    "Переменная должна называться <code>name</code>",
+    "Значение: <code>JavaScript</code>",
+    "Вывести значение переменной в консоль с помощью <code>console.log()</code>"
   ],
   "sampleFiles": {
     "html": "sample.html",

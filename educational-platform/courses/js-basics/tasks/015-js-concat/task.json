@@ -8,10 +8,10 @@
   "timeLimit": 10,
   "description": "Объедините две строки: firstName и lastName в fullName",
   "requirements": [
-    "Создать переменную firstName = 'John'",
-    "Создать переменную lastName = 'Doe'",
-    "Создать переменную fullName через конкатенацию",
-    "Вывести значение переменной fullName в консоль с помощью console.log()"
+    "Создать переменную <code>firstName = 'John'",
+    "Создать переменную <code>lastName = 'Doe'",
+    "Создать переменную <code>fullName через конкатенацию",
+    "Вывести значение переменной <code>fullName в консоль с помощью <code>console.log()"
   ],
   "sampleFiles": {
     "html": "sample.html",

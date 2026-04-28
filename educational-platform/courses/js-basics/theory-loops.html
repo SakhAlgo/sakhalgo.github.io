@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Теория: Циклы в JavaScript</title>
+    <style>
+        body {
+            font-family: 'Syne', sans-serif;
+            line-height: 1.6;
+            color: #c9d1d9;
+            background: #0d1117;
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        h1, h2, h3 {
+            color: #58a6ff;
+            margin-top: 1.5em;
+            margin-bottom: 0.8em;
+        }
+
+        h1 {
+            font-size: 24px;
+            border-bottom: 1px solid #30363d;
+            padding-bottom: 10px;
+        }
+
+        h2 {
+            font-size: 20px;
+            margin-top: 2em;
+        }
+
+        h3 {
+            font-size: 18px;
+            margin-top: 1.5em;
+        }
+
+        code {
+            background: #21262d;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'JetBrains Mono', monospace;
+            color: #9ecbc6;
+        }
+
+        pre {
+            background: #161b22;
+            padding: 15px;
+            border-radius: 6px;
+            overflow-x: auto;
+            margin: 15px 0;
+            border: 1px solid #30363d;
+        }
+
+        .code-block {
+            background: #161b22;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 15px 0;
+            border: 1px solid #30363d;
+        }
+
+        .code-block pre {
+            margin: 0;
+            background: none;
+            border: none;
+            padding: 0;
+        }
+
+        .important {
+            background: rgba(88, 166, 255, 0.1);
+            padding: 12px;
+            border-radius: 6px;
+            border-left: 3px solid #58a6ff;
+            margin: 15px 0;
+        }
+
+        .tip {
+            background: rgba(63, 185, 80, 0.1);
+            padding: 12px;
+            border-radius: 6px;
+            border-left: 3px solid #3fb950;
+            margin: 15px 0;
+        }
+
+        .warning {
+            background: rgba(210, 153, 34, 0.1);
+            padding: 12px;
+            border-radius: 6px;
+            border-left: 3px solid #d29922;
+            margin: 15px 0;
+        }
+
+        ul, ol {
+            margin: 10px 0 15px 25px;
+            padding: 0;
+        }
+
+        li {
+            margin: 8px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+
+        th, td {
+            padding: 10px;
+            border: 1px solid #30363d;
+            text-align: left;
+        }
+
+        th {
+            background: #161b22;
+            color: #58a6ff;
+        }
+
+        td {
+            background: #0d1117;
+        }
+    </style>
+</head>
+<body>
+    <article>
+        <h1>🔄 Циклы в JavaScript</h1>
+
+        <section>
+            <h2>1. Что такое цикл?</h2>
+            <p>Цикл — это конструкция, которая позволяет выполнять один и тот же блок кода многократно. Циклы используются, когда нужно повторить действие несколько раз или перебрать элементы коллекции (массива, объекта).</p>
+
+            <div class="important">
+                <strong>💡 Важно:</strong> Без циклов нам пришлось бы писать один и тот же код снова и снова. Циклы делают код компактным и гибким.
+            </div>
+        </section>
+
+        <section>
+            <h2>2. Цикл for</h2>
+            <p>Цикл <code>for</code> — самый распространённый цикл. Он состоит из трёх частей:</p>
+            <ul>
+                <li><strong>Инициализация</strong> — создаёт счётчик (выполняется один раз в начале)</li>
+                <li><strong>Условие</strong> — проверяется перед каждой итерацией</li>
+                <li><strong>Шаг</strong> — выполняется после каждой итерации</li>
+            </ul>
+
+            <div class="code-block">
+                <pre><code>for (let i = 1; i <= 5; i++) {
+    console.log(i);
+}
+// Выведет: 1 2 3 4 5</code></pre>
+            </div>
+
+            <p><strong>Как это работает:</strong></p>
+            <ol>
+                <li><code>let i = 1</code> — создаём переменную-счётчик со значением 1</li>
+                <li><code>i <= 5</code> — проверяем условие. Если true — выполняем тело цикла</li>
+                <li><code>console.log(i)</code> — тело цикла (выводим i)</li>
+                <li><code>i++</code> — увеличиваем i на 1</li>
+                <li>Возвращаемся к шагу 2</li>
+            </ol>
+
+            <div class="tip">
+                <strong>🎯 Важно:</strong> Переменная <code>i</code> — это традиционное имя для счётчика цикла. Можно использовать любое имя.
+            </div>
+
+            <h3>2.1. Обратный отсчёт</h3>
+            <div class="code-block">
+                <pre><code>for (let i = 5; i >= 1; i--) {
+    console.log(i);
+}
+// Выведет: 5 4 3 2 1</code></pre>
+            </div>
+
+            <h3>2.2. Шаг больше 1</h3>
+            <div class="code-block">
+                <pre><code>for (let i = 0; i <= 10; i += 2) {
+    console.log(i);
+}
+// Выведет: 0 2 4 6 8 10</code></pre>
+            </div>
+        </section>
+
+        <section>
+            <h2>3. Цикл while</h2>
+            <p>Цикл <code>while</code> выполняется, пока условие истинно. Он проверяет условие <strong>перед</strong> каждой итерацией.</p>
+
+            <div class="code-block">
+                <pre><code>let i = 1;
+while (i <= 5) {
+    console.log(i);
+    i++;
+}
+// Выведет: 1 2 3 4 5</code></pre>
+            </div>
+
+            <div class="warning">
+                <strong>⚠️ Осторожно:</strong> Если условие всегда истинно, цикл станет бесконечным! Убедитесь, что счётчик меняется внутри цикла.
+            </div>
+        </section>
+
+        <section>
+            <h2>4. Цикл do...while</h2>
+            <p>Цикл <code>do...while</code> похож на <code>while</code>, но он проверяет условие <strong>после</strong> выполнения тела. Значит, тело выполнится хотя бы один раз.</p>
+
+            <div class="code-block">
+                <pre><code>let i = 1;
+do {
+    console.log(i);
+    i++;
+} while (i <= 5);
+// Выведет: 1 2 3 4 5
+
+// Даже если условие false с самого начала:
+let j = 10;
+do {
+    console.log(j);
+    j++;
+} while (j <= 5);
+// Выведет: 10 (выполнится один раз)</code></pre>
+            </div>
+        </section>
+
+        <section>
+            <h2>5. Перебор массивов</h2>
+
+            <h3>5.1. Цикл for для массива</h3>
+            <p>Массивы перебираются по индексам от 0 до длины массива минус 1.</p>
+
+            <div class="code-block">
+                <pre><code>const fruits = ["яблоко", "банан", "апельсин"];
+
+for (let i = 0; i < fruits.length; i++) {
+    console.log(fruits[i]);
+}
+// Выведет: яблоко банан апельсин</code></pre>
+            </div>
+
+            <h3>5.2. Цикл for...of</h3>
+            <p>Современный способ перебора элементов массива. Более короткий и читаемый.</p>
+
+            <div class="code-block">
+                <pre><code>const fruits = ["яблоко", "банан", "апельсин"];
+
+for (const fruit of fruits) {
+    console.log(fruit);
+}
+// Выведет: яблоко банан апельсин</code></pre>
+            </div>
+
+            <div class="tip">
+                <strong>🎯 Совет:</strong> <code>for...of</code> удобнее, когда нам не нужен индекс элемента. Он автоматически перебирает все элементы массива.
+            </div>
+        </section>
+
+        <section>
+            <h2>6. Перебор объектов (for...in)</h2>
+            <p>Цикл <code>for...in</code> используется для перебора свойств объекта.</p>
+
+            <div class="code-block">
+                <pre><code>const user = {
+    name: "Алиса",
+    age: 25,
+    city: "Москва"
+};
+
+for (const key in user) {
+    console.log(key + ": " + user[key]);
+}
+// Выведет:
+// name: Алиса
+// age: 25
+// city: Москва</code></pre>
+            </div>
+
+            <div class="warning">
+                <strong>⚠️ Важно:</strong> <code>for...in</code> предназначен для объектов, а не для массивов. Для массивов используйте <code>for...of</code>.
+            </div>
+        </section>
+
+        <section>
+            <h2>7. Управление циклом: break и continue</h2>
+
+            <h3>7.1. break — прерывание цикла</h3>
+            <p><code>break</code> немедленно завершает выполнение цикла.</p>
+
+            <div class="code-block">
+                <pre><code>for (let i = 1; i <= 10; i++) {
+    if (i === 5) {
+        break;  // Цикл остановится на 5
+    }
+    console.log(i);
+}
+// Выведет: 1 2 3 4</code></pre>
+            </div>
+
+            <p>Часто <code>break</code> используют для поиска: как только нашли нужный элемент — прекращаем поиск.</p>
+
+            <h3>7.2. continue — пропуск итерации</h3>
+            <p><code>continue</code> пропускает текущую итерацию и переходит к следующей.</p>
+
+            <div class="code-block">
+                <pre><code>for (let i = 1; i <= 10; i++) {
+    if (i % 2 === 0) {
+        continue;  // Пропускаем чётные числа
+    }
+    console.log(i);
+}
+// Выведет: 1 3 5 7 9</code></pre>
+            </div>
+        </section>
+
+        <section>
+            <h2>8. Вложенные циклы</h2>
+            <p>Цикл может содержать другой цикл внутри себя. Это называется <strong>вложенными циклами</strong>.</p>
+
+            <div class="code-block">
+                <pre><code>for (let i = 1; i <= 3; i++) {
+    for (let j = 1; j <= 3; j++) {
+        console.log(i + " × " + j + " = " + (i * j));
+    }
+    console.log("---");
+}</code></pre>
+            </div>
+
+            <p>Внешний цикл выполняется 3 раза, и каждый раз внутренний цикл выполняется полностью (3 раза). Итого — 9 итераций.</p>
+
+            <div class="important">
+                <strong>📝 Пример:</strong> Вложенные циклы часто используют для создания таблиц, матриц и всех комбинаций элементов.
+            </div>
+        </section>
+
+        <section>
+            <h2>9. Сравнение циклов</h2>
+
+            <table>
+                <tr>
+                    <th>Цикл</th>
+                    <th>Когда использовать</th>
+                    <th>Пример</th>
+                </tr>
+                <tr>
+                    <td><code>for</code></td>
+                    <td>Когда известно количество повторений</td>
+                    <td><code>for (let i = 0; i < 5; i++)</code></td>
+                </tr>
+                <tr>
+                    <td><code>while</code></td>
+                    <td>Когда повторяем, пока условие истинно</td>
+                    <td><code>while (num > 0)</code></td>
+                </tr>
+                <tr>
+                    <td><code>do...while</code></td>
+                    <td>Когда нужно выполнить хотя бы один раз</td>
+                    <td><code>do { ... } while (cond)</code></td>
+                </tr>
+                <tr>
+                    <td><code>for...of</code></td>
+                    <td>Для перебора элементов массива</td>
+                    <td><code>for (const item of arr)</code></td>
+                </tr>
+                <tr>
+                    <td><code>for...in</code></td>
+                    <td>Для перебора свойств объекта</td>
+                    <td><code>for (const key in obj)</code></td>
+                </tr>
+            </table>
+        </section>
+
+        <section>
+            <h2>10. Практические примеры</h2>
+
+            <h3>10.1. Сумма чисел от 1 до N</h3>
+            <div class="code-block">
+                <pre><code>function sumTo(n) {
+    let sum = 0;
+    for (let i = 1; i <= n; i++) {
+        sum += i;
+    }
+    return sum;
+}
+
+console.log(sumTo(5));  // Выведет: 15 (1+2+3+4+5)
+console.log(sumTo(10)); // Выведет: 55</code></pre>
+            </div>
+
+            <h3>10.2. Таблица умножения</h3>
+            <div class="code-block">
+                <pre><code>function multiplicationTable() {
+    for (let i = 1; i <= 10; i++) {
+        let row = "";
+        for (let j = 1; j <= 10; j++) {
+            row += (i * j) + "\t";
+        }
+        console.log(row);
+    }
+}</code></pre>
+            </div>
+
+            <h3>10.3. Поиск в массиве</h3>
+            <div class="code-block">
+                <pre><code>function findNumber(arr, target) {
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] === target) {
+            return i;  // Нашли — возвращаем индекс
+        }
+    }
+    return -1;  // Не нашли
+}
+
+const numbers = [10, 20, 30, 40, 50];
+console.log(findNumber(numbers, 30));  // Выведет: 2
+console.log(findNumber(numbers, 99));  // Выведет: -1</code></pre>
+            </div>
+        </section>
+
+        <section>
+            <h2>11. Частые ошибки</h2>
+
+            <ul>
+                <li><strong>Бесконечный цикл:</strong> если условие никогда не станет false, цикл будет выполняться вечно. Проверяйте, что счётчик меняется.</li>
+                <li><strong>Ошибка на единицу (off-by-one):</strong> например, <code>i <= arr.length</code> вместо <code>i < arr.length</code> — выход за границы массива.</li>
+                <li><strong>Забыли инициализировать счётчик:</strong> переменная может содержать неожиданное значение.</li>
+                <li><strong>Изменение массива во время перебора:</strong> может привести к пропуску элементов.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>12. Задания для практики</h2>
+            <p>Попробуйте выполнить эти задания, чтобы закрепить материал:</p>
+
+            <ol>
+                <li>Напишите цикл, который выводит числа от 1 до 10</li>
+                <li>Напишите функцию, которая считает сумму чисел от 1 до N</li>
+                <li>Напишите цикл while для обратного отсчёта от 10 до 1</li>
+                <li>Переберите массив с помощью for...of</li>
+                <li>Напишите вложенный цикл для таблицы умножения</li>
+                <li>Используйте break для поиска элемента в массиве</li>
+                <li>Используйте continue для вывода только нечётных чисел</li>
+            </ol>
+        </section>
+    </article>
+</body>
+</html>

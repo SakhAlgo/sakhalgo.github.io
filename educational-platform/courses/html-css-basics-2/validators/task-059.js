@@ -11,7 +11,7 @@ export default class Task059Validator {
         checks.push({
             label: 'HTML-комментарий присутствует',
             passed: hasComment,
-            hint: 'Добавьте HTML-комментарий <!-- ... -->'
+            hint: 'Добавьте HTML-комментарий &lt;!-- ... &gt;'
         });
         if (hasComment) score += 50;
 

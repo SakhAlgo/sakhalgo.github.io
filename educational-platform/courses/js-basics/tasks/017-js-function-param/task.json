@@ -8,9 +8,9 @@
   "timeLimit": 10,
   "description": "Создайте функцию greet(name), которая принимает имя и выводит приветствие",
   "requirements": [
-    "Функция должна называться greet",
-    "Функция должна принимать параметр name",
-    "Вывод: 'Hello, ' + name"
+    "Функция должна называться <code>greet",
+    "Функция должна принимать параметр <code>name",
+    "Вывод: <code>'Hello, ' + name"
   ],
   "sampleFiles": {
     "html": "sample.html",

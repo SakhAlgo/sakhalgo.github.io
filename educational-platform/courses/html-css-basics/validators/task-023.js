@@ -9,9 +9,9 @@ export default class Task023Validator {
         // Проверка 1: наличие тега em или i
         const hasItalic = /<(em|i)[^>]*>.*?<\/(em|i)>/i.test(html);
         checks.push({
-            label: 'Тег <em> или <i> присутствует',
+            label: 'Тег em или i присутствует',
             passed: hasItalic,
-            hint: 'Используйте тег <em> или <i> для курсива'
+            hint: 'Используйте тег em или i для курсива'
         });
         if (hasItalic) score += 50;
 

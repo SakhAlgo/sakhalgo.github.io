@@ -9,9 +9,9 @@ export default class Task050Validator {
         // Проверка 1: наличие тега h1
         const hasH1 = /<h1[^>]*>.*?<\/h1>/i.test(html);
         checks.push({
-            label: 'Тег <h1> присутствует',
+            label: 'Тег h1 присутствует',
             passed: hasH1,
-            hint: 'Добавьте тег <h1> с закрывающим тегом </h1>'
+            hint: 'Добавьте тег h1 с закрывающим тегом /h1'
         });
         if (hasH1) score += 25;
 
@@ -27,9 +27,9 @@ export default class Task050Validator {
         // Проверка 3: наличие тега h2
         const hasH2 = /<h2[^>]*>.*?<\/h2>/i.test(html);
         checks.push({
-            label: 'Тег <h2> присутствует',
+            label: 'Тег h2 присутствует',
             passed: hasH2,
-            hint: 'Добавьте тег <h2> с закрывающим тегом </h2>'
+            hint: 'Добавьте тег h2 с закрывающим тегом /h2'
         });
         if (hasH2) score += 25;
 

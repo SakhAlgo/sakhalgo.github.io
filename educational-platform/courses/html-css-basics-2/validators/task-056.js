@@ -9,36 +9,36 @@ export default class Task056Validator {
         // Проверка 1: наличие ul
         const hasUl = /<ul[^>]*>.*?<\/ul>/is.test(html);
         checks.push({
-            label: 'Неупорядоченный список <ul> присутствует',
+            label: 'Неупорядоченный список ul присутствует',
             passed: hasUl,
-            hint: 'Добавьте тег <ul>'
+            hint: 'Добавьте тег ul'
         });
         if (hasUl) score += 20;
 
         // Проверка 2: наличие ol
         const hasOl = /<ol[^>]*>.*?<\/ol>/is.test(html);
         checks.push({
-            label: 'Упорядоченный список <ol> присутствует',
+            label: 'Упорядоченный список ol присутствует',
             passed: hasOl,
-            hint: 'Добавьте тег <ol>'
+            hint: 'Добавьте тег ol'
         });
         if (hasOl) score += 20;
 
         // Проверка 3: три li в ul
         const hasUlLis = /<ul[^>]*>.*?(<li[^>]*>.*?<\/li>.*?){3}.*?<\/ul>/is.test(html);
         checks.push({
-            label: 'В <ul> 3 элемента <li>',
+            label: 'В ul 3 элемента li',
             passed: hasUlLis,
-            hint: 'Добавьте 3 <li> внутри <ul>'
+            hint: 'Добавьте 3 li внутри ul'
         });
         if (hasUlLis) score += 15;
 
         // Проверка 4: три li в ol
         const hasOlLis = /<ol[^>]*>.*?(<li[^>]*>.*?<\/li>.*?){3}.*?<\/ol>/is.test(html);
         checks.push({
-            label: 'В <ol> 3 элемента <li>',
+            label: 'В ol 3 элемента li',
             passed: hasOlLis,
-            hint: 'Добавьте 3 <li> внутри <ol>'
+            hint: 'Добавьте 3 li внутри ol'
         });
         if (hasOlLis) score += 15;
 

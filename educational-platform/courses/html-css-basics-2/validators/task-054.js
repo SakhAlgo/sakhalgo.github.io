@@ -9,9 +9,9 @@ export default class Task054Validator {
         // Проверка 1: наличие тега h2
         const hasH2 = /<h2[^>]*>.*?<\/h2>/i.test(html);
         checks.push({
-            label: 'Тег <h2> присутствует',
+            label: 'Тег h2 присутствует',
             passed: hasH2,
-            hint: 'Добавьте тег <h2>'
+            hint: 'Добавьте тег h2'
         });
         if (hasH2) score += 25;
 
@@ -27,9 +27,9 @@ export default class Task054Validator {
         // Проверка 3: наличие тега img
         const hasImg = /<img[^>]*>/i.test(html);
         checks.push({
-            label: 'Тег <img> присутствует',
+            label: 'Тег img присутствует',
             passed: hasImg,
-            hint: 'Добавьте тег <img>'
+            hint: 'Добавьте тег img'
         });
         if (hasImg) score += 25;
 

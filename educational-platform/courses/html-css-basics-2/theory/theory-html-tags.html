@@ -26,39 +26,44 @@
 </head>
 <body>
     <article>
-        <h1>📚 HTML теги</h1>
+        <h1>&#128218; HTML теги</h1>
+
         <section>
             <h2>1. Что такое HTML?</h2>
-            <p>HTML (HyperText Markup Language) — язык разметки для веб-страниц. Страница состоит из <strong>тегов</strong> — команд, которые говорят браузеру, как отображать содержимое.</p>
+            <p>HTML — язык разметки веб-страниц. Страница состоит из <strong>тегов</strong> — команд для браузера.</p>
             <div class="code-block"><pre><code>&lt;тег&gt;содержимое&lt;/тег&gt;</code></pre></div>
             <p>Большинство тегов парные: открывающий <code>&lt;тег&gt;</code> и закрывающий <code>&lt;/тег&gt;</code>.</p>
         </section>
+
         <section>
-            <h2>2. Заголовки (h1-h6)</h2>
-            <p>Заголовки создают иерархию текста. <code>&lt;h1&gt;</code> — самый важный, <code>&lt;h6&gt;</code> — наименее важный.</p>
+            <h2>2. Заголовки (h1&ndash;h6)</h2>
+            <p>Создают иерархию текста. <code>&lt;h1&gt;</code> — самый важный, <code>&lt;h6&gt;</code> — наименее важный.</p>
             <div class="code-block"><pre><code>&lt;h1&gt;Главный заголовок&lt;/h1&gt;
 &lt;h2&gt;Заголовок раздела&lt;/h2&gt;
 &lt;h3&gt;Подзаголовок&lt;/h3&gt;</code></pre></div>
-            <div class="important"><strong>💡 Важно:</strong> На странице должен быть только один <code>&lt;h1&gt;</code>. Заголовки должны идти по порядку, без пропусков.</div>
+            <div class="important"><strong>&#128161; Важно:</strong> На странице один <code>&lt;h1&gt;</code>. Заголовки идут по порядку, без пропусков.</div>
         </section>
+
         <section>
             <h2>3. Абзац (&lt;p&gt;)</h2>
-            <p>Тег <code>&lt;p&gt;</code> создаёт абзац текста. Браузер добавляет отступы между абзацами.</p>
-            <div class="code-block"><pre><code>&lt;p&gt;Это первый абзац.&lt;/p&gt;
-&lt;p&gt;А это второй абзац.&lt;/p&gt;</code></pre></div>
+            <p>Тег <code>&lt;p&gt;</code> создаёт абзац. Браузер добавляет отступы между абзацами.</p>
+            <div class="code-block"><pre><code>&lt;p&gt;Первый абзац.&lt;/p&gt;
+&lt;p&gt;Второй абзац.&lt;/p&gt;</code></pre></div>
         </section>
+
         <section>
             <h2>4. Форматирование текста</h2>
-            <h3>&lt;strong&gt; и &lt;b&gt; — жирный текст</h3>
-            <div class="code-block"><pre><code>&lt;strong&gt;Важный жирный текст&lt;/strong&gt;
-&lt;b&gt;Просто жирный текст&lt;/b&gt;</code></pre></div>
-            <h3>&lt;em&gt; и &lt;i&gt; — курсив</h3>
-            <div class="code-block"><pre><code>&lt;em&gt;Важный текст курсивом&lt;/em&gt;
+            <h3>Жирный: &lt;strong&gt; и &lt;b&gt;</h3>
+            <div class="code-block"><pre><code>&lt;strong&gt;Важный текст&lt;/strong&gt;
+&lt;b&gt;Просто жирный&lt;/b&gt;</code></pre></div>
+            <h3>Курсив: &lt;em&gt; и &lt;i&gt;</h3>
+            <div class="code-block"><pre><code>&lt;em&gt;Важный курсив&lt;/em&gt;
 &lt;i&gt;Просто курсив&lt;/i&gt;</code></pre></div>
-            <h3>&lt;br&gt; — разрыв строки</h3>
-            <p>Тег <code>&lt;br&gt;</code> переносит текст на новую строку. Это одиночный тег (без закрытия).</p>
+            <h3>Разрыв строки: &lt;br&gt;</h3>
+            <p>Одиночный тег (без закрытия). Переносит текст на новую строку.</p>
             <div class="code-block"><pre><code>&lt;p&gt;Строка 1&lt;br&gt;Строка 2&lt;/p&gt;</code></pre></div>
         </section>
+
         <section>
             <h2>5. Списки</h2>
             <h3>Маркированный (&lt;ul&gt;)</h3>
@@ -68,36 +73,85 @@
 &lt;/ul&gt;</code></pre></div>
             <h3>Нумерованный (&lt;ol&gt;)</h3>
             <div class="code-block"><pre><code>&lt;ol&gt;
-  &lt;li&gt;Первый шаг&lt;/li&gt;
-  &lt;li&gt;Второй шаг&lt;/li&gt;
+  &lt;li&gt;Шаг 1&lt;/li&gt;
+  &lt;li&gt;Шаг 2&lt;/li&gt;
 &lt;/ol&gt;</code></pre></div>
+            <p>Списки можно вкладывать друг в друга: внутрь <code>&lt;li&gt;</code> ставят ещё один <code>&lt;ul&gt;</code> или <code>&lt;ol&gt;</code>.</p>
         </section>
+
         <section>
             <h2>6. Изображения (&lt;img&gt;)</h2>
-            <p>Тег <code>&lt;img&gt;</code> вставляет изображение. Атрибуты: <code>src</code> (путь) и <code>alt</code> (альтернативный текст).</p>
-            <div class="code-block"><pre><code>&lt;img src="cat.jpg" alt="Милый кот"&gt;</code></pre></div>
+            <p>Тег <code>&lt;img&gt;</code> вставляет изображение. Атрибуты: <code>src</code> (путь), <code>alt</code> (альтернативный текст), <code>width</code> и <code>height</code> (размеры).</p>
+            <div class="code-block"><pre><code>&lt;img src="cat.jpg" alt="Кот" width="300" height="200"&gt;</code></pre></div>
         </section>
+
         <section>
             <h2>7. Ссылки (&lt;a&gt;)</h2>
-            <p>Тег <code>&lt;a&gt;</code> создаёт гиперссылку. Атрибут <code>href</code> указывает адрес.</p>
-            <div class="code-block"><pre><code>&lt;a href="https://example.com"&gt;Нажми меня&lt;/a&gt;</code></pre></div>
+            <p>Тег <code>&lt;a&gt;</code> создаёт гиперссылку. <code>href</code> — адрес, <code>title</code> — подсказка при наведении.</p>
+            <div class="code-block"><pre><code>&lt;a href="https://example.com" title="Перейти на сайт"&gt;Нажми меня&lt;/a&gt;</code></pre></div>
         </section>
+
         <section>
-            <h2>8. Шпаргалка тегов</h2>
+            <h2>8. Контейнер (&lt;div&gt;)</h2>
+            <p>Тег <code>&lt;div&gt;</code> — универсальный блочный контейнер. Используется для группировки элементов.</p>
+            <div class="code-block"><pre><code>&lt;div&gt;
+  &lt;p&gt;Текст внутри div&lt;/p&gt;
+  &lt;p&gt;Ещё текст&lt;/p&gt;
+&lt;/div&gt;</code></pre></div>
+        </section>
+
+        <section>
+            <h2>9. Таблицы (&lt;table&gt;)</h2>
+            <p>Таблица состоит из строк (<code>&lt;tr&gt;</code>), ячеек-заголовков (<code>&lt;th&gt;</code>) и ячеек-данных (<code>&lt;td&gt;</code>). <code>&lt;thead&gt;</code> — шапка таблицы, <code>&lt;tbody&gt;</code> — тело.</p>
+            <div class="code-block"><pre><code>&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Имя&lt;/th&gt;
+      &lt;th&gt;Возраст&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Анна&lt;/td&gt;
+      &lt;td&gt;25&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</code></pre></div>
+        </section>
+
+        <section>
+            <h2>10. Формы (&lt;form&gt;)</h2>
+            <p>Тег <code>&lt;form&gt;</code> создаёт форму. Внутри — поля ввода <code>&lt;input&gt;</code> и кнопка <code>&lt;button&gt;</code>.</p>
+            <div class="code-block"><pre><code>&lt;form&gt;
+  &lt;input type="text" placeholder="Введите имя"&gt;
+  &lt;button&gt;Отправить&lt;/button&gt;
+&lt;/form&gt;</code></pre></div>
+            <p>Атрибуты <code>input</code>: <code>type</code> (текст, число, email&hellip;), <code>placeholder</code> (подсказка внутри поля).</p>
+        </section>
+
+        <section>
+            <h2>11. Комментарии (&lt;!-- --&gt;)</h2>
+            <p>Комментарии не отображаются на странице. Используются для заметок в коде.</p>
+            <div class="code-block"><pre><code>&lt;!-- Это комментарий --&gt;
+&lt;p&gt;Видимый текст&lt;/p&gt;</code></pre></div>
+        </section>
+
+        <section>
+            <h2>12. Шпаргалка тегов</h2>
             <table>
                 <tr><th>Тег</th><th>Описание</th></tr>
-                <tr><td><code>&lt;h1&gt;...&lt;h6&gt;</code></td><td>Заголовки</td></tr>
+                <tr><td><code>&lt;h1&gt;&hellip;&lt;h6&gt;</code></td><td>Заголовки</td></tr>
                 <tr><td><code>&lt;p&gt;</code></td><td>Абзац</td></tr>
-                <tr><td><code>&lt;strong&gt;</code></td><td>Жирный (важный)</td></tr>
-                <tr><td><code>&lt;b&gt;</code></td><td>Жирный</td></tr>
-                <tr><td><code>&lt;em&gt;</code></td><td>Курсив (важный)</td></tr>
-                <tr><td><code>&lt;i&gt;</code></td><td>Курсив</td></tr>
+                <tr><td><code>&lt;strong&gt;</code>, <code>&lt;b&gt;</code></td><td>Жирный текст</td></tr>
+                <tr><td><code>&lt;em&gt;</code>, <code>&lt;i&gt;</code></td><td>Курсив</td></tr>
                 <tr><td><code>&lt;br&gt;</code></td><td>Разрыв строки</td></tr>
-                <tr><td><code>&lt;ul&gt;</code></td><td>Маркированный список</td></tr>
-                <tr><td><code>&lt;ol&gt;</code></td><td>Нумерованный список</td></tr>
-                <tr><td><code>&lt;li&gt;</code></td><td>Элемент списка</td></tr>
+                <tr><td><code>&lt;ul&gt;</code>, <code>&lt;ol&gt;</code>, <code>&lt;li&gt;</code></td><td>Списки</td></tr>
                 <tr><td><code>&lt;img&gt;</code></td><td>Изображение</td></tr>
                 <tr><td><code>&lt;a&gt;</code></td><td>Ссылка</td></tr>
+                <tr><td><code>&lt;div&gt;</code></td><td>Контейнер</td></tr>
+                <tr><td><code>&lt;table&gt;</code></td><td>Таблица</td></tr>
+                <tr><td><code>&lt;form&gt;</code>, <code>&lt;input&gt;</code></td><td>Форма и поле ввода</td></tr>
+                <tr><td><code>&lt;!--&hellip;--&gt;</code></td><td>Комментарий</td></tr>
             </table>
         </section>
     </article>

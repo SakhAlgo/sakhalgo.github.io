@@ -26,125 +26,119 @@
 </head>
 <body>
     <article>
-        <h1>🎨 CSS стилизация</h1>
+        <h1>&#127912; CSS стилизация</h1>
+
         <section>
             <h2>1. Что такое CSS?</h2>
-            <p>CSS (Cascading Style Sheets) — язык для стилизации HTML-элементов. С помощью CSS можно задавать цвета, размеры, шрифты, отступы и многое другое.</p>
-            <p>Базовый синтаксис CSS:</p>
+            <p>CSS — язык для стилизации HTML-элементов. С помощью CSS задают цвета, размеры, шрифты, отступы и другое.</p>
             <div class="code-block"><pre><code>селектор {
   свойство: значение;
 }</code></pre></div>
         </section>
+
         <section>
             <h2>2. Цвет текста (color)</h2>
-            <p>Свойство <code>color</code> задаёт цвет текста элемента.</p>
-            <div class="code-block"><pre><code>p {
-  color: red;        /* по названию */
-  color: #ff0000;    /* HEX-код */
-  color: rgb(255, 0, 0); /* RGB */
-}</code></pre></div>
+            <p>Свойство <code>color</code> задаёт цвет текста.</p>
+            <div class="code-block"><pre><code>p { color: red; }
+p { color: #ff0000; }
+p { color: rgb(255, 0, 0); }</code></pre></div>
         </section>
+
         <section>
-            <h2>3. Фон элемента (background)</h2>
-            <p>Свойство <code>background</code> задаёт фон. Можно указать цвет, изображение или градиент.</p>
-            <div class="code-block"><pre><code>div {
-  background: lightblue;
-  background: #f0f0f0;
-  background: url('bg.jpg');
-}</code></pre></div>
-            <p>Для фона также есть <code>background-color</code> — только цвет без других настроек.</p>
+            <h2>3. Фон (background)</h2>
+            <p>Свойство <code>background</code> задаёт фон элемента.</p>
+            <div class="code-block"><pre><code>div { background: lightblue; }
+div { background: #f0f0f0; }</code></pre></div>
         </section>
+
         <section>
             <h2>4. Размеры (width, height)</h2>
-            <p><code>width</code> — ширина элемента, <code>height</code> — высота.</p>
+            <p><code>width</code> — ширина, <code>height</code> — высота элемента.</p>
             <div class="code-block"><pre><code>.block {
   width: 300px;
   height: 150px;
-  background-color: #ffcc00;
+  background: #ffcc00;
 }</code></pre></div>
-            <p>Единицы измерения: px (пиксели), %, em, rem, vw, vh.</p>
         </section>
+
         <section>
             <h2>5. Отступы (margin, padding)</h2>
-            <p><code>margin</code> — внешний отступ (расстояние между элементами).</p>
-            <p><code>padding</code> — внутренний отступ (расстояние от границы до содержимого).</p>
+            <p><code>margin</code> — внешний отступ (между элементами). <code>padding</code> — внутренний отступ (от границы до содержимого).</p>
             <div class="code-block"><pre><code>.card {
-  margin: 20px;        /* со всех сторон */
-  margin: 10px 20px;   /* верх/низ лево/право */
+  margin: 20px;          /* со всех сторон */
+  margin: 10px 20px;     /* верх/низ лево/право */
   padding: 15px;
   padding: 5px 10px 15px 20px; /* верх право низ лево */
 }</code></pre></div>
         </section>
+
         <section>
             <h2>6. Граница (border)</h2>
-            <p>Свойство <code>border</code> дбавляет рамку вокруг элемента.</p>
-            <div class="code-block"><pre><code>.box {
-  border: 2px solid black; /* толщина стиль цвет */
-  border: 3px dashed red;
-  border: 1px dotted blue;
-}</code></pre></div>
-            <p>Стили границ: <code>solid</code> (сплошная), <code>dashed</code> (пунктир), <code>dotted</code> (точки), <code>none</code> (нет).</p>
+            <p>Свойство <code>border</code> добавляет рамку: <code>border: толщина стиль цвет;</code></p>
+            <div class="code-block"><pre><code>.box { border: 2px solid black; }
+.box { border: 3px dashed red; }
+.box { border: 1px dotted blue; }</code></pre></div>
+            <p>Стили: <code>solid</code> (сплошная), <code>dashed</code> (пунктир), <code>dotted</code> (точки).</p>
         </section>
+
         <section>
             <h2>7. Шрифт (font-family, font-size)</h2>
-            <p><code>font-family</code> — задаёт шрифт текста. <code>font-size</code> — размер шрифта.</p>
+            <p><code>font-family</code> — шрифт, <code>font-size</code> — размер.</p>
             <div class="code-block"><pre><code>p {
   font-family: Arial, sans-serif;
   font-size: 18px;
 }</code></pre></div>
         </section>
+
         <section>
             <h2>8. Выравнивание текста (text-align)</h2>
-            <p>Свойство <code>text-align</code> выравнивает текст по горизонтали.</p>
-            <div class="code-block"><pre><code>h1 {
-  text-align: center;  /* по центру */
-  text-align: left;    /* по левому краю */
-  text-align: right;   /* по правому краю */
-}</code></pre></div>
+            <p><code>text-align</code> выравнивает текст по горизонтали.</p>
+            <div class="code-block"><pre><code>h1 { text-align: center; }
+h1 { text-align: left; }
+h1 { text-align: right; }</code></pre></div>
         </section>
+
         <section>
             <h2>9. Прозрачность (opacity)</h2>
-            <p>Свойство <code>opacity</code> задаёт прозрачность элемента от 0 (полностью прозрачный) до 1 (непрозрачный).</p>
-            <div class="code-block"><pre><code>.faded {
-  opacity: 0.5; /* полупрозрачный */
-}
-.invisible {
-  opacity: 0;   /* невидимый */
-}</code></pre></div>
+            <p><code>opacity</code> — прозрачность от 0 до 1.</p>
+            <div class="code-block"><pre><code>.faded { opacity: 0.5; }
+.hidden { opacity: 0; }</code></pre></div>
         </section>
+
         <section>
             <h2>10. Тень (box-shadow)</h2>
-            <p>Свойство <code>box-shadow</code> добавляет тень к элементу.</p>
+            <p><code>box-shadow</code> добавляет тень: <code>смещениеX смещениеY размытие цвет</code></p>
             <div class="code-block"><pre><code>.card {
   box-shadow: 5px 5px 10px rgba(0,0,0,0.3);
-  /* смещениеX смещениеY размытие цвет */
 }</code></pre></div>
         </section>
+
         <section>
             <h2>11. CSS-селекторы</h2>
-            <p>Селекторы указывают, к каким элементам применять стили.</p>
-            <h3>Селектор по тегу</h3>
-            <div class="code-block"><pre><code>p {
-  color: blue; /* все абзацы */
-}</code></pre></div>
-            <h3>Селектор по классу</h3>
-            <div class="code-block"><pre><code>.my-class {
-  font-size: 20px; /* все элементы с class="my-class" */
-}</code></pre></div>
-            <p>В HTML класс указывается так: <code>&lt;div class="my-class"&gt;</code></p>
-            <div class="important"><strong>💡 Важно:</strong> В CSS перед именем класса ставится точка <code>.</code>, а в HTML атрибут <code>class</code> пишется без точки.</div>
-            <h3>Селектор по ID</h3>
-            <div class="code-block"><pre><code>#header {
-  background: black; /* элемент с id="header" */
-}</code></pre></div>
+
+            <h3>По тегу</h3>
+            <div class="code-block"><pre><code>p { color: blue; } /* все &lt;p&gt; */</code></pre></div>
+
+            <h3>По классу (.имя)</h3>
+            <p>В HTML: <code>&lt;p class="note"&gt;</code>. В CSS: <code>.note</code> с точкой.</p>
+            <div class="code-block"><pre><code>.note { font-size: 20px; }</code></pre></div>
+            <div class="important"><strong>&#128161; Важно:</strong> В CSS перед классом ставится точка <code>.</code>, в HTML атрибут <code>class</code> пишется без точки.</div>
+
+            <h3>По ID (#имя)</h3>
+            <p>В HTML: <code>&lt;div id="header"&gt;</code>. В CSS: <code>#header</code> с решёткой.</p>
+            <div class="code-block"><pre><code>#header { background: black; }</code></pre></div>
+
+            <h3>Комбинированные селекторы</h3>
+            <p>Можно комбинировать тег и класс: <code>p.note</code> — только <code>&lt;p&gt;</code> с классом <code>note</code>.</p>
+            <div class="code-block"><pre><code>p.note { color: green; } /* только &lt;p class="note"&gt; */</code></pre></div>
         </section>
+
         <section>
             <h2>12. Шпаргалка CSS-свойств</h2>
             <table>
                 <tr><th>Свойство</th><th>Описание</th><th>Пример</th></tr>
                 <tr><td><code>color</code></td><td>Цвет текста</td><td><code>color: red;</code></td></tr>
-                <tr><td><code>background</code></td><td>Фон элемента</td><td><code>background: blue;</code></td></tr>
-                <tr><td><code>background-color</code></td><td>Цвет фона</td><td><code>background-color: #eee;</code></td></tr>
+                <tr><td><code>background</code></td><td>Фон</td><td><code>background: blue;</code></td></tr>
                 <tr><td><code>width</code></td><td>Ширина</td><td><code>width: 200px;</code></td></tr>
                 <tr><td><code>height</code></td><td>Высота</td><td><code>height: 100px;</code></td></tr>
                 <tr><td><code>margin</code></td><td>Внешний отступ</td><td><code>margin: 10px;</code></td></tr>

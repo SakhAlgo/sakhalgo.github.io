@@ -3,7 +3,7 @@
     "description": "Создайте функцию с помощью function expression.",
     "requirements": [
         "Присвойте функцию переменной",
-        "Используйте function expression"
+        "Используйте <code>function expression"
     ],
     "sampleFiles": {
         "html": "sample.html",

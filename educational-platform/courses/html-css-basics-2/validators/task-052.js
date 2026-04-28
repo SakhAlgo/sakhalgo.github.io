@@ -6,22 +6,31 @@ export default class Task052Validator {
         const checks = [];
         let score = 0;
 
-        // Проверка 1: наличие тега ul
+        // Проверка 0: наличие тега ul
         const hasUl = /<ul[^>]*>.*?<\/ul>/is.test(html);
         checks.push({
-            label: 'Тег <ul> присутствует',
+            label: 'Тег &lt;ul&gt; присутствует',
             passed: hasUl,
-            hint: 'Добавьте неупорядоченный список <ul>'
+            hint: 'Добавьте неупорядоченный список &lt;ul&gt;'
         });
-        if (hasUl) score += 25;
+        if (hasUl) score += 12;
+
+        // Проверка 1: наличие тега h1
+        const hasH1 = /<h1[^>]*>.*?<\/h1>/is.test(html);
+        checks.push({
+            label: 'Тег &lt;h1&gt; присутствует',
+            passed: hasH1,
+            hint: 'Добавьте неупорядоченный список &lt;h1&gt;'
+        });
+        if (hasH1) score += 15;
 
         // Проверка 2: три элемента li внутри ul
         const liCount = (html.match(/<li[^>]*>/gi) || []).length;
         const hasThreeLi = liCount === 3;
         checks.push({
-            label: 'Список содержит 3 элемента <li>',
+            label: 'Список содержит 3 элемента &lt;li&gt;',
             passed: hasThreeLi,
-            hint: 'Добавьте 3 элемента <li> внутри <ul>'
+            hint: 'Добавьте 3 элемента &lt;li&gt; внутри &lt;ul&gt;'
         });
         if (hasThreeLi) score += 25;
 
@@ -30,7 +39,7 @@ export default class Task052Validator {
         checks.push({
             label: 'Первый элемент: "Яблоко"',
             passed: firstItem,
-            hint: 'Первый <li> должен содержать текст "Яблоко"'
+            hint: 'Первый &lt;li&gt; должен содержать текст "Яблоко"'
         });
         if (firstItem) score += 17;
 
@@ -48,7 +57,7 @@ export default class Task052Validator {
         checks.push({
             label: 'Третий элемент: "Апельсин"',
             passed: thirdItem,
-            hint: 'Третий <li> должен содержать текст "Апельсин"'
+            hint: 'Третий &lt;li&gt; должен содержать текст "Апельсин"'
         });
         if (thirdItem) score += 16;
 

@@ -1,0 +1,21 @@
+{
+  "id": "078",
+  "title": "Перебор объекта for...in",
+  "description": "Переберите объект user с помощью for...in и выведите каждое свойство в формате 'ключ: значение'",
+  "requirements": [
+    "Объявите объект: const user = { name: 'Алиса', age: 25, city: 'Москва' }",
+    "Создайте цикл for (const key in user) для перебора свойств",
+    "Внутри цикла обращайтесь к значению через скобочную нотацию: user[key]",
+    "Выведите каждое свойство в формате key + ': ' + user[key]",
+    "Добавляйте результат к textContent элемента #output",
+    "Используйте document.getElementById('output').textContent"
+  ],
+  "difficulty": "medium",
+  "points": 100,
+  "tags": ["js", "loop", "for-in", "object"],
+  "sample": {
+    "html": "sample.html",
+    "css": "sample.css",
+    "js": "sample.js"
+  }
+}
