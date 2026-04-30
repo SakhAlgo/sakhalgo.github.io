@@ -1,0 +1,14 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: #f0f0f0;
+    padding: 10px;
+}
+
+.item {
+    background: tomato;
+    color: white;
+    padding: 15px;
+    text-align: center;
+}

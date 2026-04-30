@@ -1,0 +1,19 @@
+{
+  "id": "088",
+  "title": "Псевдокласс :hover",
+  "difficulty": "medium",
+  "points": 60,
+  "passThreshold": 70,
+  "tags": ["css", "hover", "pseudo-class"],
+  "timeLimit": 10,
+  "description": "Используйте псевдокласс :hover для изменения стиля при наведении",
+  "requirements": [
+    "HTML: Создайте <code><button>Наведи</button></code>",
+    "CSS: Задайте <code>button:hover { background: green; color: white; }</code>"
+  ],
+  "sampleFiles": {
+    "html": "sample.html",
+    "css": "sample.css",
+    "js": "sample.js"
+  }
+}

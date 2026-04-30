@@ -1,0 +1,19 @@
+{
+  "id": "081",
+  "title": "Семантический footer",
+  "difficulty": "easy",
+  "points": 50,
+  "passThreshold": 70,
+  "tags": ["html", "footer", "semantic"],
+  "timeLimit": 10,
+  "description": "Создайте подвал сайта с помощью семантического тега footer",
+  "requirements": [
+    "HTML: Используйте тег <code>footer</code>",
+    "Внутри footer разместите абзац<code>© 2024 Все права защищены</code>"
+  ],
+  "sampleFiles": {
+    "html": "sample.html",
+    "css": "sample.css",
+    "js": "sample.js"
+  }
+}

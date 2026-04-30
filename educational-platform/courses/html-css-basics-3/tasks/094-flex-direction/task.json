@@ -1,0 +1,19 @@
+{
+  "id": "094",
+  "title": "Flexbox flex-direction",
+  "difficulty": "medium",
+  "points": 60,
+  "passThreshold": 70,
+  "tags": ["css", "flexbox", "flex-direction"],
+  "timeLimit": 10,
+  "description": "Измените направление flex-элементов с помощью flex-direction",
+  "requirements": [
+    "HTML: Контейнер <code><div class='container'></code> с тремя <code><div class='item'>...</div></code>",
+    "CSS: <code>.container { display: flex; flex-direction: column; }</code> — элементы в колонку"
+  ],
+  "sampleFiles": {
+    "html": "sample.html",
+    "css": "sample.css",
+    "js": "sample.js"
+  }
+}

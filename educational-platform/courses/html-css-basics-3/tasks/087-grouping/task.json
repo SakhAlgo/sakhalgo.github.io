@@ -1,0 +1,19 @@
+{
+  "id": "087",
+  "title": "Группировка селекторов",
+  "difficulty": "medium",
+  "points": 60,
+  "passThreshold": 70,
+  "tags": ["css", "grouping", "selectors"],
+  "timeLimit": 10,
+  "description": "Примените один стиль к нескольким элементам через группировку селекторов",
+  "requirements": [
+    "CSS: Сгруппируйте <code>h1, h2, h3 { color: darkblue; }</code> — все заголовки одного цвета",
+    "HTML: Создайте <code><h1></code>, <code><h2></code> и <code><h3></code>"
+  ],
+  "sampleFiles": {
+    "html": "sample.html",
+    "css": "sample.css",
+    "js": "sample.js"
+  }
+}

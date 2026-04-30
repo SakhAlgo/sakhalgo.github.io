@@ -1,0 +1,20 @@
+{
+  "id": "086",
+  "title": "Наследование свойств",
+  "difficulty": "medium",
+  "points": 60,
+  "passThreshold": 70,
+  "tags": ["css", "inheritance", "properties"],
+  "timeLimit": 10,
+  "description": "Поймите как работает наследование: цвет текста наследуется от родителя",
+  "requirements": [
+    "CSS: Задайте <code>div { color: navy; font-family: Arial; }</code> — div родитель",
+    "HTML: Внутри div разместите <code><p>Наследованный стиль</p></code>",
+    "p унаследует color и font-family от div"
+  ],
+  "sampleFiles": {
+    "html": "sample.html",
+    "css": "sample.css",
+    "js": "sample.js"
+  }
+}

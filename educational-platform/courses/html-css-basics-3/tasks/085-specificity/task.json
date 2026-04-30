@@ -1,0 +1,20 @@
+{
+  "id": "085",
+  "title": "Специфичность селекторов",
+  "difficulty": "medium",
+  "points": 60,
+  "passThreshold": 70,
+  "tags": ["css", "specificity", "selectors"],
+  "timeLimit": 10,
+  "description": "Разберитесь с весом селекторов: тег < класс < id",
+  "requirements": [
+    "CSS: Задайте <code>p { color: blue; }</code> (вес 0,0,1)",
+    "CSS: Задайте <code>.text { color: green; }</code> (вес 0,1,0) — переопределит тег",
+    "CSS: Задайте <code>#main { color: red; }</code> (вес 1,0,0) — победит все"
+  ],
+  "sampleFiles": {
+    "html": "sample.html",
+    "css": "sample.css",
+    "js": "sample.js"
+  }
+}

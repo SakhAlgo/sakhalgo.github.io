@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Теория: Продвинутый CSS</title>
+    <style>
+        body { font-family: 'Syne', sans-serif; line-height: 1.6; color: #c9d1d9; background: #0d1117; padding: 20px; max-width: 800px; margin: 0 auto; }
+        h1, h2, h3 { color: #58a6ff; margin-top: 1.5em; margin-bottom: 0.8em; }
+        h1 { font-size: 24px; border-bottom: 1px solid #30363d; padding-bottom: 10px; }
+        h2 { font-size: 20px; margin-top: 2em; }
+        h3 { font-size: 18px; margin-top: 1.5em; }
+        code { background: #21262d; padding: 2px 6px; border-radius: 4px; font-family: 'JetBrains Mono', monospace; color: #9ecbc6; }
+        pre { background: #161b22; padding: 15px; border-radius: 6px; overflow-x: auto; margin: 15px 0; border: 1px solid #30363d; }
+        .code-block { background: #161b22; padding: 15px; border-radius: 6px; margin: 15px 0; border: 1px solid #30363d; }
+        .code-block pre { margin: 0; background: none; border: none; padding: 0; }
+        .important { background: rgba(88,166,255,0.1); padding: 12px; border-radius: 6px; border-left: 3px solid #58a6ff; margin: 15px 0; }
+        .tip { background: rgba(63,185,80,0.1); padding: 12px; border-radius: 6px; border-left: 3px solid #3fb950; margin: 15px 0; }
+        ul, ol { margin: 10px 0 15px 25px; padding: 0; }
+        li { margin: 8px 0; }
+        table { width: 100%; border-collapse: collapse; margin: 15px 0; }
+        th, td { padding: 10px; border: 1px solid #30363d; text-align: left; }
+        th { background: #161b22; color: #58a6ff; }
+        td { background: #0d1117; }
+    </style>
+</head>
+<body>
+    <article>
+        <h1>&#128736;&#65039; Продвинутый CSS</h1>
+
+        <section>
+            <h2>1. Специфичность (вес) селекторов</h2>
+            <p>Когда к элементу применяются несколько правил, побеждает <strong>самое специфичное</strong>. Вес считается как трёхзначное число (0,0,0):</p>
+            <table>
+                <tr><th>Селектор</th><th>Вес</th><th>Пример</th></tr>
+                <tr><td>Тег (p, div, h1)</td><td>(0,0,1)</td><td><code>p { color: blue; }</code></td></tr>
+                <tr><td>Класс (.text)</td><td>(0,1,0)</td><td><code>.text { color: green; }</code></td></tr>
+                <tr><td>ID (#main)</td><td>(1,0,0)</td><td><code>#main { color: red; }</code></td></tr>
+            </table>
+            <div class="code-block"><pre><code><p id="main" class="text">Какой цвет победит?</p></code></pre></div>
+            <p>Применится <code>#main { color: red; }</code> — у id самый высокий вес.</p>
+        </section>
+
+        <section>
+            <h2>2. Наследование свойств</h2>
+            <p>Некоторые CSS-свойства <strong>наследуются</strong> от родителя к потомкам. Например, <code>color</code> и <code>font-family</code>.</p>
+            <div class="code-block"><pre><code>div { color: navy; font-family: Arial; }
+/* p внутри div унаследует эти стили */
+<div>
+    <p>Наследованный стиль</p>
+</div></code></pre></div>
+            <div class="important"><strong>&#128161; Важно:</strong> Не все свойства наследуются. Например, <code>margin</code>, <code>padding</code>, <code>border</code> — не наследуются.</div>
+        </section>
+
+        <section>
+            <h2>3. Группировка селекторов</h2>
+            <p>Если несколько селекторов должны иметь одинаковые стили, их перечисляют через <strong>запятую</strong>.</p>
+            <div class="code-block"><pre><code>h1, h2, h3 {
+    color: darkblue;
+    font-family: Arial;
+}
+/* Все заголовки h1, h2, h3 будут темно-синими */</code></pre></div>
+        </section>
+
+        <section>
+            <h2>4. Псевдокласс :hover</h2>
+            <p>Псевдокласс <code>:hover</code> применяет стили при <strong>наведении мыши</strong> на элемент.</p>
+            <div class="code-block"><pre><code>button {
+    background: lightgray;
+}
+button:hover {
+    background: green;
+    color: white;
+}</code></pre></div>
+        </section>
+
+        <section>
+            <h2>5. Псевдокласс :first-child</h2>
+            <p><code>:first-child</code> выбирает <strong>первый дочерний элемент</strong> среди siblings.</p>
+            <div class="code-block"><pre><code>li:first-child {
+    font-weight: bold;
+    color: darkred;
+}
+/* Первый пункт списка будет жирным и красным */</code></pre></div>
+        </section>
+
+        <section>
+            <h2>6. Псевдокласс :last-child</h2>
+            <p><code>:last-child</code> выбирает <strong>последний дочерний элемент</strong> среди siblings.</p>
+            <div class="code-block"><pre><code>li:last-child {
+    color: green;
+    font-weight: bold;
+}
+/* Последний пункт списка будет зелёным и жирным */</code></pre></div>
+        </section>
+
+        <section>
+            <h2>7. Псевдоэлементы ::before и ::after</h2>
+            <p>Псевдоэлементы добавляют <strong>виртуальный контент</strong> до или после элемента. Обязательно свойство <code>content</code>.</p>
+            <div class="code-block"><pre><code>.quote::before {
+    content: "«";
+    color: gray;
+}
+.quote::after {
+    content: "»";
+    color: gray;
+}
+<p class="quote">Текст цитаты</p>
+/* Результат: «Текст цитаты» */</code></pre></div>
+            <div class="important"><strong>&#128161; Важно:</strong> Без <code>content</code> псевдоэлемент не отобразится.</div>
+        </section>
+
+        <section>
+            <h2>8. Единицы измерения px и %</h2>
+            <table>
+                <tr><th>Единица</th><th>Тип</th><th>Описание</th></tr>
+                <tr><td><code>px</code></td><td>Абсолютная</td><td>Фиксированный размер в пикселях</td></tr>
+                <tr><td><code>%</code></td><td>Относительная</td><td>Процент от родительского элемента</td></tr>
+            </table>
+            <div class="code-block"><pre><code>.parent {
+    width: 400px;   /* фиксированная ширина */
+}
+.child {
+    width: 50%;     /* 50% от 400px = 200px */
+}</code></pre></div>
+        </section>
+
+        <section>
+            <h2>9. Flexbox — display: flex</h2>
+            <p>Flexbox — одномерная раскладка. <code>display: flex</code> превращает контейнер в гибкий, и его дочерние элементы встают в <strong>ряд</strong>.</p>
+            <div class="code-block"><pre><code>.container {
+    display: flex;
+    gap: 10px;
+}
+.item {
+    flex: 1;  /* все элементы равной ширины */
+}</code></pre></div>
+        </section>
+
+        <section>
+            <h2>10. Flexbox — flex-direction</h2>
+            <p><code>flex-direction</code> задаёт направление осей:</p>
+            <table>
+                <tr><th>Значение</th><th>Направление</th></tr>
+                <tr><td><code>row</code></td><td>Слева направо (по умолчанию)</td></tr>
+                <tr><td><code>column</code></td><td>Сверху вниз</td></tr>
+                <tr><td><code>row-reverse</code></td><td>Справа налево</td></tr>
+                <tr><td><code>column-reverse</code></td><td>Снизу вверх</td></tr>
+            </table>
+            <div class="code-block"><pre><code>.container {
+    display: flex;
+    flex-direction: column; /* элементы в колонку */
+}</code></pre></div>
+        </section>
+
+        <section>
+            <h2>11. Шпаргалка</h2>
+            <table>
+                <tr><th>Концепция</th><th>Синтаксис</th><th>Описание</th></tr>
+                <tr><td>Специфичность</td><td><code>p {} .class {} #id {}</code></td><td>id > класс > тег</td></tr>
+                <tr><td>Наследование</td><td><code>color, font-family</code></td><td>Передаются потомкам</td></tr>
+                <tr><td>Группировка</td><td><code>h1, h2, h3 {}</code></td><td>Один стиль для нескольких</td></tr>
+                <tr><td>:hover</td><td><code>button:hover {}</code></td><td>При наведении</td></tr>
+                <tr><td>:first-child</td><td><code>li:first-child {}</code></td><td>Первый среди siblings</td></tr>
+                <tr><td>:last-child</td><td><code>li:last-child {}</code></td><td>Последний среди siblings</td></tr>
+                <tr><td>::before</td><td><code>.el::before { content: ""; }</code></td><td>Контент до элемента</td></tr>
+                <tr><td>::after</td><td><code>.el::after { content: ""; }</code></td><td>Контент после элемента</td></tr>
+                <tr><td>px</td><td><code>width: 200px</code></td><td>Абсолютная единица</td></tr>
+                <tr><td>%</td><td><code>width: 50%</code></td><td>Относительная единица</td></tr>
+                <tr><td>Flex</td><td><code>display: flex</code></td><td>Гибкая раскладка</td></tr>
+                <tr><td>flex-direction</td><td><code>flex-direction: column</code></td><td>Направление осей</td></tr>
+            </table>
+        </section>
+    </article>
+</body>
+</html>

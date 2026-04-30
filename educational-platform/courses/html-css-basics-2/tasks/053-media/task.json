@@ -9,9 +9,10 @@
   "description": "Добавьте изображение с атрибутами alt, width и height",
   "requirements": [
     "Использовать тег img",
-    "Атрибут alt: 'Пример изображения'",
-    "Атрибут <code>width: '300px'</code>",
-    "Атрибут <code>height: '200px'<code>"
+    "<code>src=\"https://example.com\"",
+    "Атрибут <code>alt: \"Пример изображения\"",
+    "Атрибут <code>width: \"300px\"</code>",
+    "Атрибут <code>height: \"200px\"<code>"
   ],
   "sampleFiles": {
     "html": "sample.html",

@@ -1,0 +1,19 @@
+{
+  "id": "084",
+  "title": "Навигация nav",
+  "difficulty": "easy",
+  "points": 50,
+  "passThreshold": 70,
+  "tags": ["html", "nav", "semantic"],
+  "timeLimit": 10,
+  "description": "Создайте навигационное меню с помощью тега nav",
+  "requirements": [
+    "HTML: Используйте тег <code>nav</code>",
+    "Внутри nav разместите <code>ul</code> с тремя <code>li внутри ссылки &lt;a href='#'&gt;...&lt;a&gt; с текстом как в эталоне</code>"
+  ],
+  "sampleFiles": {
+    "html": "sample.html",
+    "css": "sample.css",
+    "js": "sample.js"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "id": "091",
+  "title": "Псевдоэлементы ::before и ::after",
+  "difficulty": "medium",
+  "points": 60,
+  "passThreshold": 70,
+  "tags": ["css", "before", "after", "pseudo-element"],
+  "timeLimit": 10,
+  "description": "Добавьте контент до и после элемента с помощью псевдоэлементов",
+  "requirements": [
+    "CSS: <code>.quote::before { content: '«'; }</code> — кавычка перед текстом",
+    "CSS: <code>.quote::after { content: '»'; }</code> — кавычка после текста",
+    "HTML: <code><p class='quote'>Текст цитаты</p></code>"
+  ],
+  "sampleFiles": {
+    "html": "sample.html",
+    "css": "sample.css",
+    "js": "sample.js"
+  }
+}

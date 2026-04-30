@@ -1,0 +1,20 @@
+{
+  "id": "092",
+  "title": "Единицы измерения px и %",
+  "difficulty": "medium",
+  "points": 60,
+  "passThreshold": 70,
+  "tags": ["css", "units", "px", "percent"],
+  "timeLimit": 10,
+  "description": "Поймите разницу между абсолютными (px) и относительными (%) единицами",
+  "requirements": [
+    "HTML: <code><div class='parent'><div class='child'></div></div></code>",
+    "CSS: parent шириной 400px",
+    "CSS: child шириной 50% (будет 200px — половина родителя)"
+  ],
+  "sampleFiles": {
+    "html": "sample.html",
+    "css": "sample.css",
+    "js": "sample.js"
+  }
+}

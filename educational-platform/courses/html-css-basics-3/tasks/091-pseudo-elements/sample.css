@@ -1,0 +1,8 @@
+.quote::before {
+    content: "«";
+    color: gray;
+}
+.quote::after {
+    content: "»";
+    color: gray;
+}

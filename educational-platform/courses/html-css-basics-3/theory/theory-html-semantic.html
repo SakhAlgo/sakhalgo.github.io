@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Теория: Семантические теги HTML</title>
+    <style>
+        body { font-family: 'Syne', sans-serif; line-height: 1.6; color: #c9d1d9; background: #0d1117; padding: 20px; max-width: 800px; margin: 0 auto; }
+        h1, h2, h3 { color: #58a6ff; margin-top: 1.5em; margin-bottom: 0.8em; }
+        h1 { font-size: 24px; border-bottom: 1px solid #30363d; padding-bottom: 10px; }
+        h2 { font-size: 20px; margin-top: 2em; }
+        h3 { font-size: 18px; margin-top: 1.5em; }
+        code { background: #21262d; padding: 2px 6px; border-radius: 4px; font-family: 'JetBrains Mono', monospace; color: #9ecbc6; }
+        pre { background: #161b22; padding: 15px; border-radius: 6px; overflow-x: auto; margin: 15px 0; border: 1px solid #30363d; white-space: pre-wrap; word-break: keep-all; }
+        .code-block { background: #161b22; padding: 15px; border-radius: 6px; margin: 15px 0; border: 1px solid #30363d; }
+        .code-block pre { margin: 0; background: none; border: none; padding: 0; }
+        .important { background: rgba(88,166,255,0.1); padding: 12px; border-radius: 6px; border-left: 3px solid #58a6ff; margin: 15px 0; }
+        .tip { background: rgba(63,185,80,0.1); padding: 12px; border-radius: 6px; border-left: 3px solid #3fb950; margin: 15px 0; }
+        ul, ol { margin: 10px 0 15px 25px; padding: 0; }
+        li { margin: 8px 0; }
+        table { width: 100%; border-collapse: collapse; margin: 15px 0; }
+        th, td { padding: 10px; border: 1px solid #30363d; text-align: left; }
+        th { background: #161b22; color: #58a6ff; }
+        td { background: #0d1117; }
+    </style>
+</head>
+<body>
+    <article>
+        <h1>&#127912; Семантические теги HTML</h1>
+
+        <section>
+            <h2>1. Что такое семантическая вёрстка?</h2>
+            <p>Семантические теги описывают <strong>смысл</strong> содержимого, а не просто его внешний вид. Браузеры, поисковые системы и скринридеры лучше понимают структуру страницы.</p>
+            <div class="important"><strong>&#128161; Важно:</strong> Семантические теги не меняют внешний вид страницы, но делают код более понятным и доступным.</div>
+        </section>
+
+        <section>
+            <h2>2. header — шапка страницы</h2>
+            <p>Тег <code>&lt;header&gt;</code> задаёт вводную часть (шапку) страницы или раздела. Обычно содержит логотип, заголовок, навигацию.</p>
+            <div class="code-block"><pre><code>&lt;header&gt;
+    Заголовок страницы
+    Навигация
+&lt;/header&gt;</code></pre></div>
+            <div class="tip"><strong>&#128161; Совет:</strong> На странице может быть несколько header — один для всей страницы и по одному внутри каждого section/article.</div>
+        </section>
+
+        <section>
+            <h2>3. footer — подвал страницы</h2>
+            <p>Тег <code>&lt;footer&gt;</code> задаёт нижнюю часть (подвал) страницы или раздела. Обычно содержит копирайт, контакты, ссылки.</p>
+            <div class="code-block"><pre><code>&lt;footer&gt;
+    &lt;p&gt;© 2024 Все права защищены&lt;/p&gt;
+&lt;/footer&gt;</code></pre></div>
+        </section>
+
+        <section>
+            <h2>4. main — основной контент</h2>
+            <p>Тег <code>&lt;main&gt;</code> содержит уникальное содержимое страницы. На странице <strong>один</strong> тег main.</p>
+            <div class="code-block"><pre><code>&lt;main&gt;
+    &lt;p&gt;Основной текст страницы&lt;/p&gt;
+&lt;/main&gt;</code></pre></div>
+            <div class="important"><strong>&#128161; Важно:</strong> main не вкладывают в header, footer, article, aside, nav. Он один на страницу.</div>
+        </section>
+
+        <section>
+            <h2>5. section — раздел</h2>
+            <p>Тег <code>&lt;section&gt;</code> группирует связанный контент. Обычно внутри есть заголовок.</p>
+            <div class="code-block"><pre><code>&lt;section&gt;
+    &lt;h2&gt;О нас&lt;/h2&gt;
+    &lt;p&gt;Текст раздела&lt;/p&gt;
+&lt;/section&gt;</code></pre></div>
+        </section>
+
+        <section>
+            <h2>6. nav — навигация</h2>
+            <p>Тег <code>&lt;nav&gt;</code> содержит навигационные ссылки. Обычно внутри список <code>&lt;ul&gt;</code> со ссылками <code>&lt;a&gt;</code>.</p>
+            <div class="code-block"><pre><code>&lt;nav&gt;
+    &lt;ul&gt;
+        &lt;li&gt;&lt;a href="#"&gt;Главная&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#"&gt;О нас&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#"&gt;Контакты&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/nav&gt;</code></pre></div>
+        </section>
+
+        <section>
+            <h2>7. Типовая структура страницы</h2>
+            <div class="code-block"><pre><code>&lt;body&gt;
+    &lt;header&gt;...&lt;/header&gt;
+    &lt;nav&gt;...&lt;/nav&gt;
+    &lt;main&gt;
+        &lt;section&gt;...&lt;/section&gt;
+        &lt;section&gt;...&lt;/section&gt;
+    &lt;/main&gt;
+    &lt;footer&gt;...&lt;/footer&gt;
+&lt;/body&gt;</code></pre></div>
+        </section>
+
+        <section>
+            <h2>8. Шпаргалка семантических тегов</h2>
+            <table>
+                <tr><th>Тег</th><th>Описание</th><th>Особенности</th></tr>
+                <tr><td><code>&lt;header&gt;</code></td><td>Шапка страницы/раздела</td><td>Может быть несколько</td></tr>
+                <tr><td><code>&lt;footer&gt;</code></td><td>Подвал страницы/раздела</td><td>Может быть несколько</td></tr>
+                <tr><td><code>&lt;main&gt;</code></td><td>Основной контент</td><td>Один на страницу</td></tr>
+                <tr><td><code>&lt;section&gt;</code></td><td>Раздел контента</td><td>Обычно с заголовком</td></tr>
+                <tr><td><code>&lt;nav&gt;</code></td><td>Навигация</td><td>Содержит ссылки</td></tr>
+                <tr><td><code>&lt;article&gt;</code></td><td>Самостоятельный блок</td><td>Например, новость</td></tr>
+                <tr><td><code>&lt;aside&gt;</code></td><td>Боковая панель</td><td>Дополнительный контент</td></tr>
+            </table>
+        </section>
+    </article>
+</body>
+</html>

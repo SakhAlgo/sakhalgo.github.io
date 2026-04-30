@@ -16,11 +16,11 @@ export default class Task067Validator {
         if (hasBoxClass) score += 40;
 
         // Проверка 2: селектор .box с color: blue в CSS
-        const hasBoxSelector = /\.box\s*\{[^}]*color\s*:\s*blue/i.test(css);
+        const hasBoxSelector = /\.box\s*\{[^}]*color\s*:\s*lightblue/i.test(css);
         checks.push({
-            label: 'Селектор .box с color: blue',
+            label: 'Селектор .box с color: lightblue',
             passed: hasBoxSelector,
-            hint: 'Добавьте .box { color: blue; } в CSS'
+            hint: 'Добавьте .box { color: lightblue; } в CSS'
         });
         if (hasBoxSelector) score += 60;
 

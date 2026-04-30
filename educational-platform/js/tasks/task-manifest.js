@@ -18,6 +18,11 @@ import {
 } from "../../courses/html-css-basics-2/course-html-css-basics-2.js";
 
 import {
+  tasksCourseHtmlCssBasics3,
+  courseHtmlCssBasics3,
+} from "../../courses/html-css-basics-3/course-html-css-basics-3.js";
+
+import {
   tasksCourseJsBasics,
   courseJsBasics,
 } from "../../courses/js-basics/course-js-basics.js";
@@ -35,6 +40,7 @@ export const DIFFICULTY_MAP = {
 export const coursesManifest = [
   courseHtmlCssBasics,
   courseHtmlCssBasics2,
+  courseHtmlCssBasics3,
   courseJsBasics,
 
 ];
@@ -47,5 +53,6 @@ export const tasksManifest = [
   ...tasksCourseHtmlCssBasics,
   ...tasksCourseHtmlCssBasics2,
   ...tasksCourseJsBasics,
-
+  ...tasksCourseHtmlCssBasics3,
 ];
+

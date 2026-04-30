@@ -9,8 +9,8 @@
   "description": "Оформите текст: выравнивание и подчёркивание",
   "requirements": [
     "Использовать тег p",
-    "CSS: <code>text-align: center;</code>",
-    "CSS: <code>text-decoration: underline;</code>"
+    "Центрирование. CSS: <code>text-align: center;</code>",
+    "Подчёркивание: <code>text-decoration: underline;</code>"
   ],
   "sampleFiles": {
     "html": "sample.html",

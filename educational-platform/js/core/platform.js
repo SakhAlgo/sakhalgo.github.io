@@ -58,6 +58,7 @@ export class EducationalPlatform {
   _getCourseDir(courseId) {
     return courseId === 'html-css-basics' ? 'html-css-basics' :
       courseId === 'html-css-basics-2' ? 'html-css-basics-2' :
+      courseId === 'html-css-basics-3' ? 'html-css-basics-3' :
       courseId === 'js-basics' ? 'js-basics' : '';
   }
 
@@ -506,6 +507,14 @@ highlight {
       "css-opacity": "Прозрачность",
       "css-shadow": "Тень блока",
       "css-selectors": "Селекторы",
+      "semantic-html": "Семантические теги",
+      "css-specificity": "Специфичность селекторов",
+      "css-inheritance": "Наследование свойств",
+      "css-grouping": "Группировка селекторов",
+      "css-pseudo-classes": "Псевдоклассы",
+      "css-pseudo-elements": "Псевдоэлементы",
+      "css-units": "Единицы измерения",
+      "css-flexbox": "Flexbox",
       "js-variables": "Переменные и типы",
       "js-number-type": "Тип number",
       "js-to-string": "Преобразование в строку",
