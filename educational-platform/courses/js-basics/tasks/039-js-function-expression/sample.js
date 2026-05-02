@@ -1,4 +1,4 @@
-const sayHello = function(name) {
-    return 'Привет, ' + name;
+const sayHello = function() {
+    return 'Hello!';
 };
-document.getElementById('output').textContent = sayHello('Мир');
+document.getElementById('output').textContent = sayHello();

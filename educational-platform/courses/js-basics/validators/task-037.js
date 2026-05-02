@@ -6,23 +6,41 @@ export default class Task037Validator {
         const checks = [];
         let score = 0;
 
-        // Проверка 1: стрелочная функция
-        const hasArrow = /=>/.test(js);
+        // Проверка 1: стрелочная функция getGreeting
+        const hasArrowFunc = /const\s+getGreeting\s*=\s*\(?\s*\w*\s*\)?\s*=>/.test(js);
         checks.push({
-            label: 'Стрелочная функция использована',
-            passed: hasArrow,
-            hint: 'Используйте стрелочную функцию с =>'
+            label: 'Стрелочная функция getGreeting объявлена',
+            passed: hasArrowFunc,
+            hint: 'Объявите стрелочную функцию getGreeting: const getGreeting = (param) => ...'
         });
-        if (hasArrow) score += 50;
+        if (hasArrowFunc) score += 30;
 
-        // Проверка 2: параметр
-        const hasParam = /\(\s*\w+\s*\)\s*=>/.test(js);
+        // Проверка 2: параметр param
+        const hasParam = /const\s+getGreeting\s*=\s*\(?\s*param\s*\)?\s*=>/.test(js);
         checks.push({
-            label: 'Параметр в функции',
+            label: 'Параметр param в функции',
             passed: hasParam,
-            hint: 'Укажите параметр в скобках: (param) =>'
+            hint: 'Укажите параметр param: const getGreeting = (param) => ...'
         });
-        if (hasParam) score += 50;
+        if (hasParam) score += 25;
+
+        // Проверка 3: возврат с шаблонной строкой Hello, ${param}
+        const hasTemplateReturn = /return\s*`Hello,\s*\$\{.*?\}`/.test(js);
+        checks.push({
+            label: 'Функция возвращает `Hello, ${param}`',
+            passed: hasTemplateReturn,
+            hint: 'Добавьте return с шаблонной строкой: return `Hello, ${param}`'
+        });
+        if (hasTemplateReturn) score += 25;
+
+        // Проверка 4: вызов getGreeting('World')
+        const hasCall = /getGreeting\s*\(\s*['\"]World['\"]\s*\)/.test(js);
+        checks.push({
+            label: 'Функция вызвана с параметром World',
+            passed: hasCall,
+            hint: 'Вызовите getGreeting(\'World\')'
+        });
+        if (hasCall) score += 20;
 
         return {
             passed: score >= (config.passThreshold || 70),

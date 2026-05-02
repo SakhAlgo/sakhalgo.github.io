@@ -2,8 +2,9 @@
     "title": "Функция выражение",
     "description": "Создайте функцию с помощью function expression.",
     "requirements": [
-        "Присвойте функцию переменной",
-        "Используйте <code>function expression"
+        "Присвойте функцию переменной const greet = function()...",
+        "Функция должна выводить в консаль 'Hello!'",
+        "Вызовите функцию"
     ],
     "sampleFiles": {
         "html": "sample.html",

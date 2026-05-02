@@ -11,18 +11,27 @@ export default class Task038Validator {
         checks.push({
             label: 'Функция с двумя параметрами',
             passed: hasTwoParams,
-            hint: 'Объявите функцию с двумя параметрами'
+            hint: 'Объявите функцию с двумя параметрами: function sum(a, b)'
         });
-        if (hasTwoParams) score += 50;
+        if (hasTwoParams) score += 30;
 
-        // Проверка 2: return с суммой
-        const hasReturnSum = /return\s+\w+\s*\+\s*\w+/.test(js);
+        // Проверка 2: return с шаблонной строкой 'Сумма: ${...}'
+        const hasReturnTemplate = /return\s*`Сумма:\s*\$\{.*?\}`/i.test(js);
         checks.push({
-            label: 'Возвращается сумма',
-            passed: hasReturnSum,
-            hint: 'Верните сумму: return a + b'
+            label: 'Возвращается строка "Сумма: ${...}"',
+            passed: hasReturnTemplate,
+            hint: 'Верните шаблонную строку: return `Сумма: ${a + b}`'
         });
-        if (hasReturnSum) score += 50;
+        if (hasReturnTemplate) score += 40;
+
+        // Проверка 3: вывод в консоль
+        const hasConsoleLog = /console\.log\s*\(.*\)/.test(js);
+        checks.push({
+            label: 'Результат выведен в консоль',
+            passed: hasConsoleLog,
+            hint: 'Вызовите console.log() с результатом функции'
+        });
+        if (hasConsoleLog) score += 30;
 
         return {
             passed: score >= (config.passThreshold || 70),
