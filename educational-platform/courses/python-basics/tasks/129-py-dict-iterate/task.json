@@ -1,0 +1,11 @@
+{
+  "id": "129",
+  "title": "Перебор словаря",
+  "difficulty": "easy",
+  "points": 50,
+  "passThreshold": 70,
+  "tags": ["python"],
+  "description": "Перебор словаря",
+  "requirements": ["Создать словарь {x: 10, y: 20, z: 30}","Вывести каждую пару ключ=значение"],
+  "sampleFiles": { "py": "sample.py" }
+}

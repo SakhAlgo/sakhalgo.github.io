@@ -1,0 +1,11 @@
+{
+  "id": "106",
+  "title": "Простая функция",
+  "difficulty": "easy",
+  "points": 50,
+  "passThreshold": 70,
+  "tags": ["python"],
+  "description": "Простая функция",
+  "requirements": ["Создать функцию greet()","Функция должна выводить Привет!","Вызвать функцию"],
+  "sampleFiles": { "py": "sample.py" }
+}

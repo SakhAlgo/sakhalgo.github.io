@@ -1,0 +1,11 @@
+{
+  "id": "110",
+  "title": "Лямбда-функция",
+  "difficulty": "easy",
+  "points": 50,
+  "passThreshold": 70,
+  "tags": ["python"],
+  "description": "Лямбда-функция",
+  "requirements": ["Создать лямбду для умножения на 2","Присвоить её переменной double","Вывести double(5)"],
+  "sampleFiles": { "py": "sample.py" }
+}

@@ -1,0 +1,11 @@
+{
+  "id": "101",
+  "title": "Объявление переменной",
+  "difficulty": "easy",
+  "points": 50,
+  "passThreshold": 70,
+  "tags": ["python"],
+  "description": "Объявление переменной",
+  "requirements": ["Создать переменную name","Присвоить значение Python","Вывести переменную через print()"],
+  "sampleFiles": { "py": "sample.py" }
+}

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Переменные и типы данных в Python</title>
+  <style>
+    body { font-family: system-ui, sans-serif; line-height: 1.7; max-width: 800px; margin: auto; padding: 20px; background: #0d1117; color: #c9d1d9; }
+    h1, h2, h3 { color: #58a6ff; }
+    pre { background: #161b22; padding: 14px; border-radius: 8px; overflow-x: auto; border: 1px solid #30363d; }
+    code { font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #f08d49; }
+    pre code { color: #c9d1d9; }
+    .kw { color: #ff7b72; } .str { color: #a5d6ff; } .num { color: #79c0ff; } .cm { color: #6e7681; }
+    .info-box { background: #21262d; border-left: 4px solid #58a6ff; padding: 14px; border-radius: 6px; margin: 16px 0; }
+  </style>
+</head>
+<body>
+  <h1>Переменные и типы данных в Python</h1>
+
+  <h2>Переменные</h2>
+  <p>В Python переменная — это имя, которое ссылается на значение. Python — язык с динамической типизацией: тип переменной определяется автоматически по присвоенному значению.</p>
+  <pre><code><span class="kw">name</span> = <span class="str">"Python"</span>
+<span class="kw">age</span> = <span class="num">30</span>
+<span class="kw">is_fun</span> = <span class="str">True</span>
+<span class="kw">pi</span> = <span class="num">3.14</span></code></pre>
+
+  <div class="info-box">
+    <strong>Правила именования переменных:</strong>
+    <ul>
+      <li>Могут содержать буквы, цифры и знак подчеркивания</li>
+      <li>Не могут начинаться с цифры</li>
+      <li>Регистр имеет значение: <code>name</code> и <code>Name</code> — разные переменные</li>
+      <li>Рекомендуется стиль <code>snake_case</code></li>
+    </ul>
+  </div>
+
+  <h2>Основные типы данных</h2>
+
+  <h3>str (строка)</h3>
+  <p>Строки создаются с помощью одинарных или двойных кавычек:</p>
+  <pre><code><span class="kw">text1</span> = <span class="str">'Привет'</span>
+<span class="kw">text2</span> = <span class="str">"Мир"</span>
+<span class="kw">multiline</span> = <span class="str">'''Многострочная
+строка'''</span></code></pre>
+
+  <h3>int (целое число)</h3>
+  <pre><code><span class="kw">count</span> = <span class="num">42</span>
+<span class="kw">negative</span> = <span class="num">-10</span>
+<span class="kw">big</span> = <span class="num">1_000_000</span>  <span class="cm"># можно использовать подчеркивания</span></code></pre>
+
+  <h3>float (число с плавающей точкой)</h3>
+  <pre><code><span class="kw">price</span> = <span class="num">99.99</span>
+<span class="kw">scientific</span> = <span class="num">1.5e-2</span>  <span class="cm"># 0.015</span></code></pre>
+
+  <h3>bool (булево значение)</h3>
+  <pre><code><span class="kw">is_active</span> = <span class="str">True</span>
+<span class="kw">is_empty</span> = <span class="str">False</span></code></pre>
+
+  <h2>Проверка типа</h2>
+  <p>Функция <code>type()</code> возвращает тип переменной:</p>
+  <pre><code><span class="kw">x</span> = <span class="num">5</span>
+<span class="kw">print</span>(type(x))  <span class="cm"># <class 'int'></span>
+
+<span class="kw">y</span> = <span class="str">"Hello"</span>
+<span class="kw">print</span>(type(y))  <span class="cm"># <class 'str'></span></code></pre>
+
+  <h2>Приведение типов</h2>
+  <pre><code><span class="kw">num_str</span> = <span class="str">"123"</span>
+<span class="kw">num_int</span> = int(num_str)     <span class="cm"># строка → целое число</span>
+<span class="kw">num_float</span> = float(num_str) <span class="cm"># строка → число с плавающей точкой</span>
+<span class="kw">text</span> = str(<span class="num">456</span>)          <span class="cm"># число → строка</span></code></pre>
+
+  <h2>F-строки</h2>
+  <p>F-строки позволяют вставлять значения переменных внутрь строки:</p>
+  <pre><code><span class="kw">name</span> = <span class="str">"Alice"</span>
+<span class="kw">age</span> = <span class="num">25</span>
+<span class="kw">print</span>(f<span class="str">"Меня зовут {name}, мне {age} лет"</span>)</code></pre>
+
+  <div class="info-box">
+    <strong>Важно:</strong> F-строки доступны начиная с Python 3.6. Они обозначаются префиксом <code>f</code> перед строкой.
+  </div>
+
+  <h2>Практика</h2>
+  <p>В каждом задании потребуется написать Python-код. Результат будет исполняться в браузере с помощью Skulpt — интерпретатора Python на JavaScript.</p>
+</body>
+</html>

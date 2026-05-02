@@ -1,0 +1,11 @@
+{
+  "id": "104",
+  "title": "Булево значение",
+  "difficulty": "easy",
+  "points": 50,
+  "passThreshold": 70,
+  "tags": ["python"],
+  "description": "Булево значение",
+  "requirements": ["Создать переменную is_ready","Присвоить True","Вывести значение"],
+  "sampleFiles": { "py": "sample.py" }
+}

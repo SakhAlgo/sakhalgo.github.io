@@ -1,0 +1,11 @@
+{
+  "id": "134",
+  "title": "Поиск подстроки",
+  "difficulty": "easy",
+  "points": 50,
+  "passThreshold": 70,
+  "tags": ["python"],
+  "description": "Поиск подстроки",
+  "requirements": ["Создать текст Python программирование","Проверить есть ли слово Python через in","Найти позицию слова программирование через find()"],
+  "sampleFiles": { "py": "sample.py" }
+}

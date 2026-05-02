@@ -1,0 +1,11 @@
+{
+  "id": "109",
+  "title": "Функция с двумя параметрами",
+  "difficulty": "easy",
+  "points": 50,
+  "passThreshold": 70,
+  "tags": ["python"],
+  "description": "Функция с двумя параметрами",
+  "requirements": ["Создать функцию add(a, b)","Вернуть сумму a + b","Вывести результат add(3, 7)"],
+  "sampleFiles": { "py": "sample.py" }
+}

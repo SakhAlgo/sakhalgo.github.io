@@ -54,10 +54,10 @@ export class StorageManager {
 
     /* ─── Код пользователя ─── */
 
-    static saveCode(taskId, html, css, js) {
+    static saveCode(taskId, html, css, js, py = '') {
         try {
             const all = this._loadCode();
-            all[taskId] = { html, css, js, savedAt: Date.now() };
+            all[taskId] = { html, css, js, py, savedAt: Date.now() };
             localStorage.setItem(this.CODE_KEY, JSON.stringify(all));
         } catch (e) {
             console.error('[StorageManager] saveCode failed:', e);
@@ -87,7 +87,7 @@ export class StorageManager {
         };
         this.save(all);
         // Также сохраняем код
-        this.saveCode(taskId, code.html, code.css, code.js);
+        this.saveCode(taskId, code.html, code.css, code.js, code.py || '');
     }
 
     static getTaskProgress(taskId) {

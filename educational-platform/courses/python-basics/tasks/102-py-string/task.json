@@ -1,0 +1,11 @@
+{
+  "id": "102",
+  "title": "Строковая переменная",
+  "difficulty": "easy",
+  "points": 50,
+  "passThreshold": 70,
+  "tags": ["python"],
+  "description": "Строковая переменная",
+  "requirements": ["Создать переменную greeting","Присвоить значение Привет, мир!","Вывести значение через print()"],
+  "sampleFiles": { "py": "sample.py" }
+}

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Строки в Python</title>
+  <style>
+    body { font-family: system-ui, sans-serif; line-height: 1.7; max-width: 800px; margin: auto; padding: 20px; background: #0d1117; color: #c9d1d9; }
+    h1, h2, h3 { color: #58a6ff; }
+    pre { background: #161b22; padding: 14px; border-radius: 8px; overflow-x: auto; border: 1px solid #30363d; }
+    code { font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #f08d49; }
+    pre code { color: #c9d1d9; }
+    .kw { color: #ff7b72; } .str { color: #a5d6ff; } .num { color: #79c0ff; } .cm { color: #6e7681; }
+    .info-box { background: #21262d; border-left: 4px solid #58a6ff; padding: 14px; border-radius: 6px; margin: 16px 0; }
+    table { border-collapse: collapse; width: 100%; margin: 12px 0; }
+    th, td { border: 1px solid #30363d; padding: 8px 12px; text-align: left; }
+    th { background: #161b22; color: #58a6ff; }
+    ul { padding-left: 20px; }
+    li { margin: 4px 0; }
+  </style>
+</head>
+<body>
+  <h2>Строки в Python</h2>
+
+  <p>Строки (str) — это неизменяемые последовательности символов. Поддерживают множество встроенных методов.</p>
+
+  <h3>Создание строк</h3>
+  <pre><code class="language-python">s1 = "Python"
+s2 = 'Python'
+s3 = """Многострочный
+текст"""
+s4 = "Строка с 'кавычками'"</code></pre>
+
+  <h3>Методы строк</h3>
+  <pre><code class="language-python">text = "Hello World"
+
+text.upper()            # "HELLO WORLD"
+text.lower()            # "hello world"
+text.capitalize()       # "Hello world"
+text.title()            # "Hello World"
+
+text.strip()            # удалить пробелы по краям
+text.lstrip()           # удалить слева
+text.rstrip()           # удалить справа
+
+text.replace("World", "Python")  # "Hello Python"
+
+len(text)               # 11 — длина строки</code></pre>
+
+  <h3>Поиск и проверка</h3>
+  <pre><code class="language-python">text = "Python programming"
+
+# Поиск подстроки
+"Python" in text           # True
+text.find("prog")          # 7 — индекс первого вхождения
+text.find("Java")          # -1 — не найдено
+text.index("prog")         # 7 — как find, но вызывает ошибку
+
+# Проверка содержимого
+"123".isdigit()            # True
+"abc".isalpha()            # True
+"abc123".isalnum()         # True (буквы + цифры)
+"   ".isspace()            # True
+"Hello".startswith("He")   # True
+"World".endswith("ld")     # True</code></pre>
+
+  <h3>Разделение и соединение</h3>
+  <pre><code class="language-python">text = "яблоко,банан,апельсин"
+
+# Разделение на список
+fruits = text.split(",")
+print(fruits)  # ['яблоко', 'банан', 'апельсин']
+
+# Разделение по пробелам
+words = "a b c".split()
+print(words)   # ['a', 'b', 'c']
+
+# Соединение списка в строку
+joined = " - ".join(fruits)
+print(joined)  # 'яблоко - банан - апельсин'</code></pre>
+
+  <h3>Форматирование строк</h3>
+  <pre><code class="language-python">name = "Анна"
+age = 25
+
+# F-строки (Python 3.6+)
+print(f"Меня зовут {name}, мне {age} лет")
+
+# Метод format()
+print("Меня зовут {}, мне {} лет".format(name, age))
+
+# По индексам
+print("{1} — {0}".format("Python", "код"))
+
+# По именам
+print("{name}, возраст: {age}".format(name="Иван", age=30))</code></pre>
+
+  <h3>Индексация и срезы строк</h3>
+  <pre><code class="language-python">text = "Python"
+print(text[0])     # P
+print(text[-1])    # n
+print(text[1:4])   # yth
+print(text[:3])    # Pyt
+print(text[::-1])  # nohtyP — переворот строки</code></pre>
+
+  <h3>Важно: строки неизменяемы</h3>
+  <pre><code class="language-python">s = "hello"
+# s[0] = "H"  # TypeError!
+s = "H" + s[1:]  # Правильно: "Hello"</code></pre>
+</body>
+</html>

@@ -1,0 +1,11 @@
+{
+  "id": "112",
+  "title": "If/else",
+  "difficulty": "easy",
+  "points": 50,
+  "passThreshold": 70,
+  "tags": ["python"],
+  "description": "If/else",
+  "requirements": ["Создать x = 3","Если x > 5 вывести Больше, иначе Меньше или равно"],
+  "sampleFiles": { "py": "sample.py" }
+}

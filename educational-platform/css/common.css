@@ -894,6 +894,9 @@ iframe {
 .js-dot {
   background: var(--syn-js);
 }
+.py-dot {
+  background: #3776ab;
+}
 
 .editor-actions {
   display: flex;
@@ -1522,6 +1525,89 @@ iframe {
     display: none;
   }
 }
+
+/* ─── Python Theory Styles ─────────────────────────── */
+.theory-content {
+  line-height: 1.8;
+}
+.theory-content h2 {
+  font-size: 20px;
+  font-weight: 800;
+  margin: 24px 0 12px;
+  color: var(--text-primary);
+}
+.theory-content h3 {
+  font-size: 16px;
+  font-weight: 700;
+  margin: 20px 0 10px;
+  color: var(--text-primary);
+}
+.theory-content p {
+  margin-bottom: 12px;
+  color: var(--text-secondary);
+}
+.theory-content pre {
+  background: #161b22;
+  border: 1px solid var(--border);
+  border-left: 3px solid #3776ab;
+  border-radius: var(--radius);
+  padding: 16px;
+  margin: 12px 0;
+  overflow-x: auto;
+  font-family: var(--font-code);
+  font-size: 13px;
+  line-height: 1.6;
+  color: #c9d1d9;
+}
+.theory-content code {
+  font-family: var(--font-code);
+  font-size: 12px;
+  background: #161b22;
+  padding: 2px 6px;
+  border-radius: 3px;
+  color: #ffa657;
+}
+.theory-content pre code {
+  background: none;
+  padding: 0;
+  color: inherit;
+  font-size: inherit;
+}
+.theory-content ul, .theory-content ol {
+  margin: 8px 0 16px 24px;
+  color: var(--text-secondary);
+}
+.theory-content li {
+  margin-bottom: 4px;
+}
+.theory-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 12px 0;
+  font-size: 12px;
+}
+.theory-content th {
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+  font-weight: 700;
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  text-align: left;
+}
+.theory-content td {
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+}
+.theory-content tr:nth-child(even) td {
+  background: var(--bg-surface);
+}
+.theory-content .kw { color: #ff7b72; }
+.theory-content .str { color: #a5d6ff; }
+.theory-content .cm { color: #8b949e; font-style: italic; }
+.theory-content .fn { color: #d2a8ff; }
+.theory-content .num { color: #79c0ff; }
+.theory-content .op { color: #ffa657; }
 
 /* ─── Utilities ─────────────────────────────────────── */
 .hidden {

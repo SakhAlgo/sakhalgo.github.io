@@ -1,24 +1,51 @@
 /**
  * EditorManager — управление редактором кода
  * Вкладки, нумерация строк, Tab-indent, автосохранение
+ *
+ * Режимы вкладок:
+ * - 'web'   → показывать HTML, CSS, JS (для курсов HTML/CSS и JS)
+ * - 'python' → показывать только Python (для курса Python)
  */
 export class EditorManager {
     constructor() {
         this.editors = {
             html: document.getElementById('htmlEditor'),
             css:  document.getElementById('cssEditor'),
-            js:   document.getElementById('jsEditor')
+            js:   document.getElementById('jsEditor'),
+            py:   document.getElementById('pyEditor')
         };
         this.lineNumbers  = document.getElementById('lineNumbers');
         this.tabs         = document.querySelectorAll('.tab-btn');
         this.activeTab    = 'html';
         this._changeCallbacks = [];
         this._autoSaveTimer   = null;
+        this._currentMode     = 'web'; // 'web' | 'python'
 
-        this._initTabs();
-        this._initEditors();
-        this._initKeyboardShortcuts();
-        this.updateLineNumbers();
+    this._initTabs();
+    this._initEditors();
+    this._initKeyboardShortcuts();
+    this.updateLineNumbers();
+    // По умолчанию режим 'web' — показываем HTML/CSS/JS
+    this.setMode('web');
+    }
+
+    /* ─── Режим (набор вкладок) ─── */
+
+    /**
+     * Установить режим редактора.
+     * @param {'web'|'python'} mode
+     *   - 'web'    – показать вкладки HTML, CSS, JS
+     *   - 'python' – показать только вкладку Python
+     */
+    setMode(mode) {
+        this._currentMode = mode;
+        const tabs = mode === 'python' ? ['py'] : ['html', 'css', 'js'];
+        this.showTabs(tabs);
+    }
+
+    /** @returns {'web'|'python'} */
+    getMode() {
+        return this._currentMode;
     }
 
     /* ─── Tabs ─── */
@@ -27,8 +54,33 @@ export class EditorManager {
         document.getElementById('editorTabs')?.addEventListener('click', e => {
             const btn = e.target.closest('.tab-btn');
             if (!btn) return;
+            // Не переключаться на скрытую вкладку
+            if (btn.style.display === 'none') return;
             this.switchTab(btn.dataset.tab);
         });
+    }
+
+    /**
+     * Показать только указанные табы, остальные скрыть.
+     * @param {string[]} tabs - массив имён табов, например ['html','css','js'] или ['py']
+     */
+    showTabs(tabs) {
+        // Скрываем/показываем кнопки вкладок
+        this.tabs.forEach(btn => {
+            const name = btn.dataset.tab;
+            const show = tabs.includes(name);
+            btn.style.display = show ? '' : 'none';
+            btn.classList.toggle('active', show && name === this.activeTab);
+        });
+        // Скрываем/показываем редакторы
+        Object.entries(this.editors).forEach(([key, el]) => {
+            const show = tabs.includes(key);
+            el.classList.toggle('active', show && key === this.activeTab);
+        });
+        // Если активная вкладка теперь скрыта — переключиться на первую доступную
+        if (!tabs.includes(this.activeTab)) {
+            this.switchTab(tabs[0]);
+        }
     }
 
     switchTab(tabName) {
@@ -80,9 +132,9 @@ export class EditorManager {
 
     _initKeyboardShortcuts() {
         document.addEventListener('keydown', e => {
-            // Ctrl+1/2/3 — переключение вкладок
-            if ((e.ctrlKey || e.metaKey) && ['1','2','3'].includes(e.key)) {
-                const tabs = ['html', 'css', 'js'];
+            // Ctrl+1/2/3/4 — переключение вкладок
+            if ((e.ctrlKey || e.metaKey) && ['1','2','3','4'].includes(e.key)) {
+                const tabs = ['html', 'css', 'js', 'py'];
                 const idx  = parseInt(e.key) - 1;
                 if (tabs[idx]) { e.preventDefault(); this.switchTab(tabs[idx]); }
             }
@@ -135,20 +187,23 @@ export class EditorManager {
     getHTML() { return this.editors.html?.value || ''; }
     getCSS()  { return this.editors.css?.value  || ''; }
     getJS()   { return this.editors.js?.value   || ''; }
+    getPy()   { return this.editors.py?.value   || ''; }
 
     setHTML(val) { if (this.editors.html) { this.editors.html.value = val; this.updateLineNumbers(); } }
     setCSS(val)  { if (this.editors.css)  this.editors.css.value  = val; }
     setJS(val)   { if (this.editors.js)   this.editors.js.value   = val; }
+    setPy(val)   { if (this.editors.py)   this.editors.py.value   = val; }
 
-    setAll(html, css, js) {
+    setAll(html, css, js, py = '') {
         this.setHTML(html);
         this.setCSS(css);
         this.setJS(js);
+        this.setPy(py);
         this.updateLineNumbers();
     }
 
     clearAll() {
-        this.setAll('', '', '');
+        this.setAll('', '', '', '');
     }
 
     /* ─── Format code (basic indent fix) ─── */
@@ -184,7 +239,8 @@ export class EditorManager {
         this._changeCallbacks.forEach(cb => cb({
             html: this.getHTML(),
             css:  this.getCSS(),
-            js:   this.getJS()
+            js:   this.getJS(),
+            py:   this.getPy()
         }));
     }
 }

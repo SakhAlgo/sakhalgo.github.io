@@ -1,0 +1,24 @@
+{
+  "id": "100",
+  "title": "Расчёт доставки (вложенные if + арифметика)",
+  "difficulty": "medium",
+  "points": 100,
+  "passThreshold": 75,
+  "tags": ["js", "if", "nested", "conditional", "delivery", "math"],
+  "timeLimit": 12,
+  "description": "Напишите функцию calcDelivery, которая принимает два параметра: distance (число, км) и isExpress (булево). Если distance <= 0 — вернуть 'invalid'. Если distance <= 10, стоимость 300 руб. Если distance > 10 и <= 50, стоимость 500 руб. Если distance > 50, стоимость 800 руб. Если isExpress === true, к стоимости добавляется 200 руб. Вернуть итоговую стоимость как строку с ' руб' (например '700 руб').",
+  "requirements": [
+    "Функция должна называться <code>calcDelivery</code>",
+    "Принимать два параметра: <code>distance</code> (число) и <code>isExpress</code> (булево)",
+    "Использовать вложенные условия if/else",
+    "Возвращать <code>'invalid'</code> если distance <= 0",
+    "Базовая стоимость: до 10 км — 300 руб, до 50 км — 500 руб, больше — 800 руб",
+    "Если isExpress === true, добавлять 200 руб к базовой стоимости",
+    "Возвращать строку вида <code>'700 руб'</code>"
+  ],
+  "sampleFiles": {
+    "html": "sample.html",
+    "css": "sample.css",
+    "js": "sample.js"
+  }
+}

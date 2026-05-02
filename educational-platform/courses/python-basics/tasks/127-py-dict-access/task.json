@@ -1,0 +1,11 @@
+{
+  "id": "127",
+  "title": "Доступ к элементам словаря",
+  "difficulty": "easy",
+  "points": 50,
+  "passThreshold": 70,
+  "tags": ["python"],
+  "description": "Доступ к элементам словаря",
+  "requirements": ["Создать словарь с ключами title и price","Вывести значение по ключу title","Вывести значение по ключу price"],
+  "sampleFiles": { "py": "sample.py" }
+}

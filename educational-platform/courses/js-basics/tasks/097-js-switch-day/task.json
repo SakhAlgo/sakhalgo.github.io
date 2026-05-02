@@ -1,0 +1,23 @@
+{
+  "id": "097",
+  "title": "День недели (switch)",
+  "difficulty": "medium",
+  "points": 75,
+  "passThreshold": 70,
+  "tags": ["js", "switch", "conditional"],
+  "timeLimit": 10,
+  "description": "Напишите функцию getDayType, которая принимает число от 1 до 7 (день недели: 1 — понедельник, 7 — воскресенье). Используйте switch. Вернуть 'weekend' для 6 или 7. Вернуть 'workday' для 1-5. Вернуть 'invalid' для других значений.",
+  "requirements": [
+    "Функция должна называться <code>getDayType</code>",
+    "Использовать <code>switch</code>",
+    "Принимать один параметр — число от 1 до 7",
+    "Возвращать <code>'weekend'</code> для 6 и 7",
+    "Возвращать <code>'workday'</code> для 1-5",
+    "Возвращать <code>'invalid'</code> для других значений"
+  ],
+  "sampleFiles": {
+    "html": "sample.html",
+    "css": "sample.css",
+    "js": "sample.js"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "id": "107",
+  "title": "Функция с параметром",
+  "difficulty": "easy",
+  "points": 50,
+  "passThreshold": 70,
+  "tags": ["python"],
+  "description": "Функция с параметром",
+  "requirements": ["Создать функцию hello(name)","Вывести Привет, {name}!","Вызвать с именем Python"],
+  "sampleFiles": { "py": "sample.py" }
+}

@@ -1,0 +1,11 @@
+{
+  "id": "128",
+  "title": "Методы словарей",
+  "difficulty": "easy",
+  "points": 50,
+  "passThreshold": 70,
+  "tags": ["python"],
+  "description": "Методы словарей",
+  "requirements": ["Создать словарь {a: 1, b: 2, c: 3}","Вывести список ключей","Вывести список значений"],
+  "sampleFiles": { "py": "sample.py" }
+}

@@ -1,0 +1,11 @@
+{
+  "id": "130",
+  "title": "Вложенные словари",
+  "difficulty": "easy",
+  "points": 50,
+  "passThreshold": 70,
+  "tags": ["python"],
+  "description": "Вложенные словари",
+  "requirements": ["Создать словарь users с двумя пользователями","У каждого пользователя: name и age","Вывести имя второго пользователя"],
+  "sampleFiles": { "py": "sample.py" }
+}

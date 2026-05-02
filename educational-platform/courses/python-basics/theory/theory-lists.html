@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Списки в Python</title>
+  <style>
+    body { font-family: system-ui, sans-serif; line-height: 1.7; max-width: 800px; margin: auto; padding: 20px; background: #0d1117; color: #c9d1d9; }
+    h1, h2, h3 { color: #58a6ff; }
+    pre { background: #161b22; padding: 14px; border-radius: 8px; overflow-x: auto; border: 1px solid #30363d; }
+    code { font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #f08d49; }
+    pre code { color: #c9d1d9; }
+    .kw { color: #ff7b72; } .str { color: #a5d6ff; } .num { color: #79c0ff; } .cm { color: #6e7681; }
+    .info-box { background: #21262d; border-left: 4px solid #58a6ff; padding: 14px; border-radius: 6px; margin: 16px 0; }
+    table { border-collapse: collapse; width: 100%; margin: 12px 0; }
+    th, td { border: 1px solid #30363d; padding: 8px 12px; text-align: left; }
+    th { background: #161b22; color: #58a6ff; }
+    ul { padding-left: 20px; }
+    li { margin: 4px 0; }
+  </style>
+</head>
+<body>
+  <h2>Списки в Python</h2>
+
+  <p>Список (list) — это упорядоченная коллекция элементов. Может содержать элементы разных типов.</p>
+
+  <h3>Создание списка</h3>
+  <pre><code class="language-python"># Пустой список
+empty = []
+
+# Список с элементами
+fruits = ["яблоко", "банан", "апельсин"]
+
+# Смешанный список
+mixed = [1, "текст", True, 3.14]</code></pre>
+
+  <h3>Индексация</h3>
+  <p>Элементы списка нумеруются с 0. Можно использовать отрицательные индексы для доступа с конца:</p>
+  <pre><code class="language-python">nums = [10, 20, 30, 40, 50]
+print(nums[0])    # 10  — первый элемент
+print(nums[-1])   # 50  — последний элемент
+print(nums[-2])   # 40  — предпоследний элемент</code></pre>
+
+  <h3>Срезы (slicing)</h3>
+  <p>Синтаксис: <code>список[начало:конец:шаг]</code></p>
+  <pre><code class="language-python">nums = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+print(nums[2:5])    # [2, 3, 4]
+print(nums[:3])     # [0, 1, 2]
+print(nums[5:])     # [5, 6, 7, 8, 9]
+print(nums[::2])    # [0, 2, 4, 6, 8]
+print(nums[::-1])   # [9, 8, 7, 6, 5, 4, 3, 2, 1, 0]</code></pre>
+
+  <h3>Основные методы списков</h3>
+  <pre><code class="language-python">nums = [1, 2, 3]
+
+nums.append(4)     # [1, 2, 3, 4] — добавить в конец
+nums.insert(0, 0)  # [0, 1, 2, 3, 4] — вставить по индексу
+nums.remove(2)     # [0, 1, 3, 4] — удалить по значению
+popped = nums.pop()  # удалить и вернуть последний элемент
+nums.sort()        # сортировка
+nums.reverse()     # обратный порядок
+len(nums)          # длина списка</code></pre>
+
+  <h3>Генераторы списков (list comprehension)</h3>
+  <p>Компактный способ создания списков:</p>
+  <pre><code class="language-python"># Квадраты чисел от 0 до 9
+squares = [x**2 for x in range(10)]
+# Результат: [0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+
+# Чётные числа от 0 до 19
+evens = [x for x in range(20) if x % 2 == 0]
+
+# С условием
+result = ["чёт" if x % 2 == 0 else "нечёт" for x in range(5)]</code></pre>
+
+  <h3>Перебор списка</h3>
+  <pre><code class="language-python">fruits = ["яблоко", "банан", "апельсин"]
+
+# По элементам
+for fruit in fruits:
+    print(fruit)
+
+# По индексам
+for i in range(len(fruits)):
+    print(f"{i}: {fruits[i]}")
+
+# По индексам и элементам
+for i, fruit in enumerate(fruits):
+    print(f"{i}: {fruit}")</code></pre>
+</body>
+</html>

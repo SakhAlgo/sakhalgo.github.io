@@ -27,6 +27,11 @@ import {
   courseJsBasics,
 } from "../../courses/js-basics/course-js-basics.js";
 
+import {
+  tasksCoursePythonBasics,
+  coursePythonBasics,
+} from "../../courses/python-basics/course-python-basics.js";
+
 export const DIFFICULTY_MAP = {
   easy: { label: "Лёгкое", color: "#3fb950", stars: "⭐" },
   medium: { label: "Среднее", color: "#d29922", stars: "⭐⭐" },
@@ -42,7 +47,7 @@ export const coursesManifest = [
   courseHtmlCssBasics2,
   courseHtmlCssBasics3,
   courseJsBasics,
-
+  coursePythonBasics,
 ];
 
 // ════════════════════════════════════════════════════
@@ -54,5 +59,6 @@ export const tasksManifest = [
   ...tasksCourseHtmlCssBasics2,
   ...tasksCourseJsBasics,
   ...tasksCourseHtmlCssBasics3,
+  ...tasksCoursePythonBasics,
 ];
 

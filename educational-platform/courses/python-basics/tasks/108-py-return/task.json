@@ -1,0 +1,11 @@
+{
+  "id": "108",
+  "title": "Возврат значения",
+  "difficulty": "easy",
+  "points": 50,
+  "passThreshold": 70,
+  "tags": ["python"],
+  "description": "Возврат значения",
+  "requirements": ["Создать функцию square(x)","Функция должна возвращать x*x","Вывести результат square(5)"],
+  "sampleFiles": { "py": "sample.py" }
+}

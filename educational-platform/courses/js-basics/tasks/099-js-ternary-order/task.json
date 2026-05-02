@@ -1,0 +1,23 @@
+{
+  "id": "099",
+  "title": "Статус заказа (тернарный оператор)",
+  "difficulty": "medium",
+  "points": 75,
+  "passThreshold": 70,
+  "tags": ["js", "ternary", "conditional", "operator"],
+  "timeLimit": 8,
+  "description": "Напишите функцию getOrderStatus, которая принимает два параметра: isPaid (булево) и isShipped (булево). Используйте тернарный оператор. Если isPaid === false — вернуть 'awaiting payment'. Если isPaid === true и isShipped === false — вернуть 'processing'. Если isPaid === true и isShipped === true — вернуть 'shipped'.",
+  "requirements": [
+    "Функция должна называться <code>getOrderStatus</code>",
+    "Принимать два булевых параметра: <code>isPaid</code> и <code>isShipped</code>",
+    "Использовать тернарный оператор (<code>? :</code>) хотя бы один раз",
+    "Возвращать <code>'awaiting payment'</code> если не оплачен",
+    "Возвращать <code>'processing'</code> если оплачен, но не отправлен",
+    "Возвращать <code>'shipped'</code> если оплачен и отправлен"
+  ],
+  "sampleFiles": {
+    "html": "sample.html",
+    "css": "sample.css",
+    "js": "sample.js"
+  }
+}

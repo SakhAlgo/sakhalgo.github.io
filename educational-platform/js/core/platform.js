@@ -43,8 +43,15 @@ export class EducationalPlatform {
     if (lastId) {
       await this.loadTask(lastId);
     } else {
-      // Загрузить первое задание по умолчанию
-      const firstTask = this.manifest[0];
+      // Если выбран курс, загрузить первое задание этого курса
+      let firstTask;
+      if (this._filter && this._filter.startsWith("course-")) {
+        const courseId = this._filter.replace("course-", "");
+        firstTask = this.manifest.find(t => t.courseId === courseId);
+      }
+      if (!firstTask) {
+        firstTask = this.manifest[0];
+      }
       if (firstTask) {
         await this.loadTask(firstTask.id);
       }
@@ -55,12 +62,13 @@ export class EducationalPlatform {
        TASK LOADING
     ══════════════════════════════════════════ */
 
-  _getCourseDir(courseId) {
-    return courseId === 'html-css-basics' ? 'html-css-basics' :
-      courseId === 'html-css-basics-2' ? 'html-css-basics-2' :
-      courseId === 'html-css-basics-3' ? 'html-css-basics-3' :
-      courseId === 'js-basics' ? 'js-basics' : '';
-  }
+    _getCourseDir(courseId) {
+        return courseId === 'html-css-basics' ? 'html-css-basics' :
+            courseId === 'html-css-basics-2' ? 'html-css-basics-2' :
+            courseId === 'html-css-basics-3' ? 'html-css-basics-3' :
+            courseId === 'js-basics' ? 'js-basics' :
+            courseId === 'python-basics' ? 'python-basics' : '';
+    }
 
   async loadTask(taskId) {
     const taskInfo = this.manifest.find((t) => t.id === taskId);
@@ -89,7 +97,7 @@ export class EducationalPlatform {
     }
 
     // Загрузить эталонные файлы
-    let samples = { html: "", css: "", js: "" };
+    let samples = { html: "", css: "", js: "", py: "" };
     try {
       samples = await this._loadSamples(taskUrlPrefix, config);
     } catch (e) {
@@ -107,8 +115,17 @@ export class EducationalPlatform {
     }
 
     // Восстановить код пользователя или взять шаблон
+    const isPythonCourse = taskInfo.courseId === 'python-basics';
     const savedCode = StorageManager.loadCode(taskId);
-    const userCode = savedCode || this._getStarterCode(taskInfo.id, config);
+    let userCode;
+    if (savedCode) {
+      userCode = savedCode;
+    } else if (isPythonCourse) {
+      // Для Python-задач редактор пустой — ученик пишет код сам
+      userCode = { html: "", css: "", js: "", py: "" };
+    } else {
+      userCode = this._getStarterCode(taskInfo.id, config);
+    }
 
     this.currentTask = {
       ...taskInfo,
@@ -119,8 +136,16 @@ export class EducationalPlatform {
     };
 
     this.renderTaskList();
-    this.editor.setAll(userCode.html, userCode.css, userCode.js);
-    this.editor.switchTab("html"); // Принудительно переключаем на HTML
+
+    // Показываем нужные вкладки в зависимости от курса
+    this.editor.setMode(isPythonCourse ? 'python' : 'web');
+
+    this.editor.setAll(userCode.html, userCode.css, userCode.js, userCode.py || '');
+    // setMode() уже переключает активную вкладку, но для web-курсов
+    // по умолчанию показываем HTML
+    if (!isPythonCourse && this.editor.activeTab !== 'html') {
+      this.editor.switchTab('html');
+    }
 
     // Очистить превью если нет сохранённого кода (первое открытие)
     if (!savedCode) {
@@ -128,6 +153,10 @@ export class EducationalPlatform {
     }
 
     this._renderSample();
+    // Для Python-задач сразу запускаем эталон (результат sample.py)
+    if (isPythonCourse && samples.py) {
+      this.preview.renderSample('', '', '', samples.py);
+    }
     this._updateTaskHeader(taskInfo, config);
 
     localStorage.setItem("educode_last_task", taskId);
@@ -138,18 +167,20 @@ export class EducationalPlatform {
   }
 
   async _loadSamples(taskPath, config) {
-    const [html, css, js] = await Promise.all([
-      fetch(`${taskPath}${config.sampleFiles?.html || "sample.html"}`)
+    const sampleFiles = config.sampleFiles || {};
+    const fetchFile = (filename) => {
+      if (!filename) return Promise.resolve("");
+      return fetch(`${taskPath}${filename}`)
         .then((r) => r.text())
-        .catch(() => ""),
-      fetch(`${taskPath}${config.sampleFiles?.css || "sample.css"}`)
-        .then((r) => r.text())
-        .catch(() => ""),
-      fetch(`${taskPath}${config.sampleFiles?.js || "sample.js"}`)
-        .then((r) => r.text())
-        .catch(() => ""),
+        .catch(() => "");
+    };
+    const [html, css, js, py] = await Promise.all([
+      fetchFile(sampleFiles.html),
+      fetchFile(sampleFiles.css),
+      fetchFile(sampleFiles.js),
+      fetchFile(sampleFiles.py),
     ]);
-    return { html, css, js };
+    return { html, css, js, py };
   }
 
   _getStarterCode(taskId, config) {
@@ -285,9 +316,14 @@ highlight {
 
   runCode() {
     if (!this.currentTask) return;
-    const { html, css, js } = this._getEditorCode();
-    this.preview.renderUser(html, css, js);
-    StorageManager.saveCode(this.currentTask.id, html, css, js);
+    const code = this._getEditorCode();
+    const isPython = this.currentTask.courseId === 'python-basics';
+    if (isPython) {
+      this.preview.renderPython(code.py);
+    } else {
+      this.preview.renderUser(code.html, code.css, code.js);
+    }
+    StorageManager.saveCode(this.currentTask.id, code.html, code.css, code.js, code.py);
     this.setStatus("Код запущен", "success");
   }
 
@@ -301,17 +337,18 @@ highlight {
     btn.disabled = true;
     btn.textContent = "⏳ Проверяю...";
 
-    const { html, css, js } = this._getEditorCode();
+    const code = this._getEditorCode();
     this.runCode();
 
     try {
       // Ждём рендера
       await new Promise((r) => setTimeout(r, 300));
 
+      const isPython = this.currentTask.courseId === 'python-basics';
       const result = await this.currentTask.validator.validate(
-        html,
-        css,
-        js,
+        isPython ? code.py : code.html,
+        isPython ? '' : code.css,
+        isPython ? '' : code.js,
         this.currentTask.samples,
         this.currentTask.config,
       );
@@ -320,9 +357,10 @@ highlight {
 
       if (result.passed) {
         StorageManager.markCompleted(this.currentTask.id, result.score, {
-          html,
-          css,
-          js,
+          html: code.html,
+          css: code.css,
+          js: code.js,
+          py: code.py,
         });
         this.progress = StorageManager.load();
         this.updateGlobalProgress();
@@ -351,6 +389,7 @@ highlight {
       html: this.editor.getHTML(),
       css: this.editor.getCSS(),
       js: this.editor.getJS(),
+      py: this.editor.getPy(),
     };
   }
 
@@ -523,6 +562,18 @@ highlight {
       "js-functions": "Функции",
       "js-conditionals": "Ветвление",
       "js-loops": "Циклы",
+      "py-variables": "Переменные и типы",
+      "py-data-types": "Типы данных",
+      "py-strings": "Строки",
+      "py-numbers": "Числа",
+      "py-booleans": "Логический тип",
+      "py-conversion": "Преобразование типов",
+      "py-input-output": "Ввод и вывод",
+      "py-functions": "Функции",
+      "py-conditionals": "Ветвления",
+      "py-loops": "Циклы",
+      "py-lists": "Списки",
+      "py-dicts": "Словари",
     };
     return (
       titles[topic] ||
@@ -615,8 +666,13 @@ highlight {
 
   _renderSample() {
     if (!this.currentTask) return;
-    const { html, css, js } = this.currentTask.samples;
-    this.preview.renderSample(html, css, js);
+    const { html, css, js, py } = this.currentTask.samples;
+    const isPython = this.currentTask.courseId === 'python-basics';
+    if (isPython && py) {
+      this.preview.renderSample('', '', '', py);
+    } else {
+      this.preview.renderSample(html, css, js);
+    }
   }
 
   _markActiveTask(taskId) {
@@ -775,6 +831,12 @@ highlight {
           this._filter = value;
           localStorage.setItem("educode_selected_course", value);
           if (welcomeScreen) welcomeScreen.classList.add("hidden");
+          // Загрузить первое задание выбранного курса
+          const courseId = value.replace("course-", "");
+          const firstTask = this.manifest.find(t => t.courseId === courseId);
+          if (firstTask) {
+            this.loadTask(firstTask.id);
+          }
         } else {
           this._filter = "";
           localStorage.removeItem("educode_selected_course");
@@ -872,7 +934,17 @@ highlight {
     if (!module || !module.theoryFile) return;
 
     const courseDir = this._getCourseDir(courseId);
-    const theoryPath = `courses/${courseDir}/${module.theoryFile}`;
+    let theoryPath;
+    if (module.theoryFile.startsWith("./")) {
+      // У HTML/CSS курсов theoryFile уже содержит путь (./theory/...)
+      theoryPath = `courses/${courseDir}/${module.theoryFile}`;
+    } else if (courseId === "python-basics") {
+      // У Python-курса файлы теории в подпапке theory/
+      theoryPath = `courses/${courseDir}/theory/${module.theoryFile}`;
+    } else {
+      // У JS-курса файлы теории прямо в корне courses/js-basics/
+      theoryPath = `courses/${courseDir}/${module.theoryFile}`;
+    }
 
     const overlay = document.createElement("div");
     overlay.className = "fullscreen-overlay";

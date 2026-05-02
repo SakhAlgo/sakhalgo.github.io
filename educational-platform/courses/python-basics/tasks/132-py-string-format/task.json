@@ -1,0 +1,11 @@
+{
+  "id": "132",
+  "title": "Форматирование строк",
+  "difficulty": "easy",
+  "points": 50,
+  "passThreshold": 70,
+  "tags": ["python"],
+  "description": "Форматирование строк",
+  "requirements": ["Создать name = Мария, age = 28","Вывести через format()","Вывести через f-строку"],
+  "sampleFiles": { "py": "sample.py" }
+}

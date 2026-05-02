@@ -1,0 +1,11 @@
+{
+  "id": "135",
+  "title": "Проверка строк",
+  "difficulty": "easy",
+  "points": 50,
+  "passThreshold": 70,
+  "tags": ["python"],
+  "description": "Проверка строк",
+  "requirements": ["Создать строку 12345","Проверить isdigit()","Создать строку abc","Проверить isalpha()"],
+  "sampleFiles": { "py": "sample.py" }
+}

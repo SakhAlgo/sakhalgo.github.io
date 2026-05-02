@@ -1,0 +1,11 @@
+{
+  "id": "124",
+  "title": "Срезы списка",
+  "difficulty": "easy",
+  "points": 50,
+  "passThreshold": 70,
+  "tags": ["python"],
+  "description": "Срезы списка",
+  "requirements": ["Создать список [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]","Вывести первые 3 элемента","Вывести элементы с 3 по 6","Вывести каждый второй"],
+  "sampleFiles": { "py": "sample.py" }
+}

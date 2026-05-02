@@ -1,0 +1,11 @@
+{
+  "id": "111",
+  "title": "Условный оператор if",
+  "difficulty": "easy",
+  "points": 50,
+  "passThreshold": 70,
+  "tags": ["python"],
+  "description": "Условный оператор if",
+  "requirements": ["Создать переменную x = 10","Если x > 5, вывести Больше 5"],
+  "sampleFiles": { "py": "sample.py" }
+}

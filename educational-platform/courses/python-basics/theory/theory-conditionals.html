@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Условные операторы в Python</title>
+  <style>
+    body { font-family: system-ui, sans-serif; line-height: 1.7; max-width: 800px; margin: auto; padding: 20px; background: #0d1117; color: #c9d1d9; }
+    h1, h2, h3 { color: #58a6ff; }
+    pre { background: #161b22; padding: 14px; border-radius: 8px; overflow-x: auto; border: 1px solid #30363d; }
+    code { font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #f08d49; }
+    pre code { color: #c9d1d9; }
+    .kw { color: #ff7b72; } .str { color: #a5d6ff; } .num { color: #79c0ff; } .cm { color: #6e7681; }
+    .info-box { background: #21262d; border-left: 4px solid #58a6ff; padding: 14px; border-radius: 6px; margin: 16px 0; }
+    table { border-collapse: collapse; width: 100%; margin: 12px 0; }
+    th, td { border: 1px solid #30363d; padding: 8px 12px; text-align: left; }
+    th { background: #161b22; color: #58a6ff; }
+    ul { padding-left: 20px; }
+    li { margin: 4px 0; }
+  </style>
+</head>
+<body>
+  <h2>Условные операторы в Python</h2>
+
+  <p>Условные операторы позволяют выполнять код в зависимости от условий.</p>
+
+  <h3>Оператор if</h3>
+  <p>Базовый условный оператор:</p>
+  <pre><code class="language-python">x = 10
+if x > 5:
+    print("x больше 5")</code></pre>
+
+  <h3>Оператор if/else</h3>
+  <p>Выполняет один блок кода при истинности условия, другой — при ложности:</p>
+  <pre><code class="language-python">x = 3
+if x > 5:
+    print("Больше 5")
+else:
+    print("Меньше или равно 5")</code></pre>
+
+  <h3>Оператор if/elif/else</h3>
+  <p>Для множественных условий используйте elif (сокращение от else if):</p>
+  <pre><code class="language-python">x = 0
+if x > 0:
+    print("Положительное")
+elif x < 0:
+    print("Отрицательное")
+else:
+    print("Ноль")</code></pre>
+
+  <h3>Логические оператор</h3>
+  <ul>
+    <li><code>and</code> — логическое И (оба условия истинны)</li>
+    <li><code>or</code> — логическое ИЛИ (хотя бы одно истинно)</li>
+    <li><code>not</code> — логическое НЕ (отрицание)</li>
+  </ul>
+  <pre><code class="language-python">age = 25
+has_license = True
+
+if age >= 18 and has_license:
+    print("Можно водить машину")
+
+is_weekend = False
+if not is_weekend:
+    print("Сегодня будний день")</code></pre>
+
+  <h3>Тернарный оператор</h3>
+  <p>Краткая форма записи if/else в одну строку:</p>
+  <pre><code class="language-python">x = 7
+result = "Большой" if x > 5 else "Маленький"
+print(result)</code></pre>
+
+  <h3>Операторы сравнения</h3>
+  <table>
+    <tr><th>Оператор</th><th>Описание</th></tr>
+    <tr><td><code>==</code></td><td>Равно</td></tr>
+    <tr><td><code>!=</code></td><td>Не равно</td></tr>
+    <tr><td><code>></code></td><td>Больше</td></tr>
+    <tr><td><code><</code></td><td>Меньше</td></tr>
+    <tr><td><code>>=</code></td><td>Больше или равно</td></tr>
+    <tr><td><code><=</code></td><td>Меньше или равно</td></tr>
+  </table>
+</body>
+</html>

@@ -25,8 +25,8 @@ describe("DIFFICULTY_MAP", () => {
 });
 
 describe("coursesManifest", () => {
-  test("должен содержать 4 курса", () => {
-    expect(coursesManifest.length).toBe(4);
+  test("должен содержать 5 курсов", () => {
+    expect(coursesManifest.length).toBe(5);
   });
 
   test("первый курс - Основы HTML & CSS Тест I", () => {
@@ -97,8 +97,28 @@ describe("coursesManifest", () => {
 });
 
 describe("tasksManifest", () => {
-  test("должен содержать 94 задачи", () => {
-    expect(tasksManifest.length).toBe(94);
+  test("должен содержать 135 задач", () => {
+    expect(tasksManifest.length).toBe(135);
+  });
+
+  test("задачи 046-049 относятся к курсу js-basics и модулю js-conditionals", () => {
+    for (let i = 46; i <= 49; i++) {
+      const taskId = String(i).padStart(3, "0");
+      const task = tasksManifest.find((t) => t.id === taskId);
+      expect(task).toBeDefined();
+      expect(task.courseId).toBe("js-basics");
+      expect(task.moduleId).toBe("js-conditionals");
+    }
+  });
+
+  test("задачи 095-100 относятся к курсу js-basics и модулю js-conditionals", () => {
+    for (let i = 95; i <= 100; i++) {
+      const taskId = String(i).padStart(3, "0");
+      const task = tasksManifest.find((t) => t.id === taskId);
+      expect(task).toBeDefined();
+      expect(task.courseId).toBe("js-basics");
+      expect(task.moduleId).toBe("js-conditionals");
+    }
   });
 
   test("задачи 001-005 относятся к курсу html-css-basics и модулю html-tags", () => {
@@ -141,8 +161,9 @@ describe("tasksManifest", () => {
     }
   });
 
-  test("задачи 050-059 относятся к курсу html-css-basics-2 и модулю html-tags", () => {
-    for (let i = 50; i <= 59; i++) {
+
+  test("задачи 056-059 относятся  курсу html-css-basics-2 и модулю html-tags", () => {
+    for (let i = 56; i <= 59; i++) {
       const taskId = String(i).padStart(3, "0");
       const task = tasksManifest.find((t) => t.id === taskId);
       expect(task).toBeDefined();
@@ -175,10 +196,14 @@ describe("tasksManifest", () => {
     });
   });
 
-  test("задачи 001-069 имеют сложность easy, а 070-094 имеют разные уровни сложности", () => {
+  test("задачи имеют корректные уровни сложности", () => {
     tasksManifest.forEach((task) => {
       const taskNum = parseInt(task.id, 10);
-      if (taskNum >= 70 && taskNum <= 73) {
+      if (taskNum >= 95 && taskNum <= 99) {
+        expect(task.difficulty).toBe("medium");
+      } else if (taskNum === 100) {
+        expect(task.difficulty).toBe("medium");
+      } else if (taskNum >= 70 && taskNum <= 73) {
         expect(task.difficulty).toBe("easy");
       } else if (taskNum >= 74 && taskNum <= 78) {
         expect(task.difficulty).toBe("medium");
@@ -186,6 +211,13 @@ describe("tasksManifest", () => {
         expect(task.difficulty).toBe("hard");
       } else if (taskNum >= 80 && taskNum <= 94) {
         expect(task.difficulty).toBe("medium");
+      } else if (taskNum >= 101 && taskNum <= 135) {
+        const mediumTasks = [110, 114, 115, 119, 120, 124, 125, 129, 130, 134, 135];
+        if (mediumTasks.includes(taskNum)) {
+          expect(task.difficulty).toBe("medium");
+        } else {
+          expect(task.difficulty).toBe("easy");
+        }
       } else {
         expect(task.difficulty).toBe("easy");
       }

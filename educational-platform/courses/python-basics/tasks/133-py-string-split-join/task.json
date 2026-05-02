@@ -1,0 +1,11 @@
+{
+  "id": "133",
+  "title": "Split и join",
+  "difficulty": "easy",
+  "points": 50,
+  "passThreshold": 70,
+  "tags": ["python"],
+  "description": "Split и join",
+  "requirements": ["Создать строку яблоко,банан,апельсин","Разделить по запятой","Соединить через дефис","Вывести оба результата"],
+  "sampleFiles": { "py": "sample.py" }
+}

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Словари в Python</title>
+  <style>
+    body { font-family: system-ui, sans-serif; line-height: 1.7; max-width: 800px; margin: auto; padding: 20px; background: #0d1117; color: #c9d1d9; }
+    h1, h2, h3 { color: #58a6ff; }
+    pre { background: #161b22; padding: 14px; border-radius: 8px; overflow-x: auto; border: 1px solid #30363d; }
+    code { font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #f08d49; }
+    pre code { color: #c9d1d9; }
+    .kw { color: #ff7b72; } .str { color: #a5d6ff; } .num { color: #79c0ff; } .cm { color: #6e7681; }
+    .info-box { background: #21262d; border-left: 4px solid #58a6ff; padding: 14px; border-radius: 6px; margin: 16px 0; }
+    table { border-collapse: collapse; width: 100%; margin: 12px 0; }
+    th, td { border: 1px solid #30363d; padding: 8px 12px; text-align: left; }
+    th { background: #161b22; color: #58a6ff; }
+    ul { padding-left: 20px; }
+    li { margin: 4px 0; }
+  </style>
+</head>
+<body>
+  <h2>Словари в Python</h2>
+
+  <p>Словарь (dict) — это неупорядоченная коллекция пар "ключ-значение". Ключи должны быть уникальными и неизменяемыми.</p>
+
+  <h3>Создание словаря</h3>
+  <pre><code class="language-python"># Пустой словарь
+empty = {}
+
+# Словарь с элементами
+person = {"name": "Анна", "age": 25, "city": "Москва"}
+
+# Через конструктор dict()
+person2 = dict(name="Иван", age=30)</code></pre>
+
+  <h3>Доступ к элементам</h3>
+  <pre><code class="language-python">person = {"name": "Анна", "age": 25}
+
+# Через квадратные скобки
+print(person["name"])  # Анна
+
+# Через get() — безопасный доступ
+print(person.get("age"))     # 25
+print(person.get("city", "Не указан"))  # Не указан
+
+# person["city"] — вызовет ошибку KeyError!</code></pre>
+
+  <h3>Изменение и добавление</h3>
+  <pre><code class="language-python">person = {"name": "Анна"}
+
+# Добавление нового ключа
+person["age"] = 25
+
+# Изменение существующего
+person["name"] = "Мария"
+
+# Обновление нескольких ключей
+person.update({"city": "Москва", "age": 26})</code></pre>
+
+  <h3>Основные методы словарей</h3>
+  <pre><code class="language-python">person = {"name": "Анна", "age": 25}
+
+person.keys()      # dict_keys(['name', 'age'])
+person.values()    # dict_values(['Анна', 25])
+person.items()     # dict_items([('name', 'Анна'), ('age', 25)])
+
+# Проверка наличия ключа
+print("name" in person)     # True
+print("city" not in person) # True
+
+# Удаление
+del person["age"]           # удалить ключ
+person.pop("name")          # удалить и вернуть значение
+person.clear()              # очистить словарь</code></pre>
+
+  <h3>Перебор словаря</h3>
+  <pre><code class="language-python">person = {"name": "Анна", "age": 25, "city": "Москва"}
+
+# По ключам
+for key in person:
+    print(f"{key}: {person[key]}")
+
+# По значениям
+for value in person.values():
+    print(value)
+
+# По парам ключ-значение
+for key, value in person.items():
+    print(f"{key} = {value}")</code></pre>
+
+  <h3>Вложенные словари</h3>
+  <pre><code class="language-python">users = {
+    "user1": {"name": "Анна", "age": 25},
+    "user2": {"name": "Иван", "age": 30}
+}
+
+print(users["user1"]["name"])  # Анна
+
+# Добавление вложенного словаря
+users["user3"] = {"name": "Ольга", "age": 28}</code></pre>
+
+  <h3>Что может быть ключом?</h3>
+  <p>Ключами могут быть только неизменяемые типы: <code>str</code>, <code>int</code>, <code>float</code>, <code>tuple</code>. Списки и словари ключами быть не могут.</p>
+  <pre><code class="language-python"># Можно
+d = {1: "один", "key": "value", (1, 2): "tuple"}
+
+# Нельзя — list не может быть ключом
+# d = {[1, 2]: "error"}  # TypeError!</code></pre>
+</body>
+</html>

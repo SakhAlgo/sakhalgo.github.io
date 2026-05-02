@@ -1,0 +1,11 @@
+{
+  "id": "121",
+  "title": "Создание списка",
+  "difficulty": "easy",
+  "points": 50,
+  "passThreshold": 70,
+  "tags": ["python"],
+  "description": "Создание списка",
+  "requirements": ["Создать список fruits: яблоко, банан, апельсин","Вывести список"],
+  "sampleFiles": { "py": "sample.py" }
+}

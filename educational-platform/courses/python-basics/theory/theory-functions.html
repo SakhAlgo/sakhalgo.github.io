@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Функции в Python</title>
+  <style>
+    body { font-family: system-ui, sans-serif; line-height: 1.7; max-width: 800px; margin: auto; padding: 20px; background: #0d1117; color: #c9d1d9; }
+    h1, h2, h3 { color: #58a6ff; }
+    pre { background: #161b22; padding: 14px; border-radius: 8px; overflow-x: auto; border: 1px solid #30363d; }
+    code { font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #f08d49; }
+    pre code { color: #c9d1d9; }
+    .kw { color: #ff7b72; } .str { color: #a5d6ff; } .num { color: #79c0ff; } .cm { color: #6e7681; } .fn { color: #d2a8ff; }
+    .info-box { background: #21262d; border-left: 4px solid #58a6ff; padding: 14px; border-radius: 6px; margin: 16px 0; }
+  </style>
+</head>
+<body>
+  <h1>Функции в Python</h1>
+
+  <h2>Определение функции</h2>
+  <p>Функция в Python определяется с помощью ключевого слова <code>def</code>:</p>
+  <pre><code><span class="kw">def</span> <span class="fn">greet</span>():
+    <span class="kw">print</span>(<span class="str">"Привет, мир!"</span>)</code></pre>
+
+  <h2>Вызов функции</h2>
+  <pre><code><span class="fn">greet</span>()  <span class="cm"># Выведет: Привет, мир!</span></code></pre>
+
+  <h2>Функция с параметрами</h2>
+  <pre><code><span class="kw">def</span> <span class="fn">greet_person</span>(name):
+    <span class="kw">print</span>(f<span class="str">"Привет, {name}!"</span>)
+
+<span class="fn">greet_person</span>(<span class="str">"Alice"</span>)  <span class="cm"># Привет, Alice!</span></code></pre>
+
+  <h2>Возврат значения</h2>
+  <pre><code><span class="kw">def</span> <span class="fn">add</span>(a, b):
+    <span class="kw">return</span> a + b
+
+<span class="kw">result</span> = <span class="fn">add</span>(<span class="num">3</span>, <span class="num">5</span>)
+<span class="kw">print</span>(result)  <span class="cm"># 8</span></code></pre>
+
+  <h2>Параметры по умолчанию</h2>
+  <pre><code><span class="kw">def</span> <span class="fn">repeat</span>(text, times=<span class="num">1</span>):
+    <span class="kw">return</span> text * times
+
+<span class="kw">print</span>(<span class="fn">repeat</span>(<span class="str">"Hi"</span>))       <span class="cm"># Hi</span>
+<span class="kw">print</span>(<span class="fn">repeat</span>(<span class="str">"Hi"</span>, <span class="num">3</span>))   <span class="cm"># HiHiHi</span></code></pre>
+
+  <h2>Лямбда-функции</h2>
+  <p>Лямбда — это анонимная функция, которая определяется в одну строку:</p>
+  <pre><code><span class="kw">square</span> = <span class="kw">lambda</span> x: x ** <span class="num">2</span>
+<span class="kw">print</span>(<span class="fn">square</span>(<span class="num">5</span>))  <span class="cm"># 25</span>
+
+<span class="cm"># Использование с sorted:</span>
+<span class="kw">pairs</span> = [(<span class="num">1</span>, <span class="str">'b'</span>), (<span class="num">2</span>, <span class="str">'a'</span>)]
+<span class="kw">pairs</span>.sort(key=<span class="kw">lambda</span> x: x[<span class="num">1</span>])
+<span class="kw">print</span>(pairs)  <span class="cm"># [(2, 'a'), (1, 'b')]</span></code></pre>
+
+  <div class="info-box">
+    <strong>Важно:</strong> Тело функции определяется отступом (4 пробела). Все строки с одинаковым отступом после <code>def</code> считаются телом функции.
+  </div>
+</body>
+</html>
+</content>
+
+<write_to_file>
+<path>courses/python-basics/theory/theory-conditionals.html</path>
+<content><!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Условные операторы в Python</title>
+  <style>
+    body { font-family: system-ui, sans-serif; line-height: 1.7; max-width: 800px; margin: auto; padding: 20px; background: #0d1117; color: #c9d1d9; }
+    h1, h2, h3 { color: #58a6ff; }
+    pre { background: #161b22; padding: 14px; border-radius: 8px; overflow-x: auto; border: 1px solid #30363d; }
+    code { font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #f08d49; }
+    pre code { color: #c9d1d9; }
+    .kw { color: #ff7b72; } .str { color: #a5d6ff; } .num { color: #79c0ff; } .cm { color: #6e7681; } .fn { color: #d2a8ff; }
+    .info-box { background: #21262d; border-left: 4px solid #58a6ff; padding: 14px; border-radius: 6px; margin: 16px 0; }
+  </style>
+</head>
+<body>
+  <h1>Условные операторы в Python</h1>
+
+  <h2>Оператор if</h2>
+  <pre><code><span class="kw">age</span> = <span class="num">18</span>
+<span class="kw">if</span> age >= <span class="num">18</span>:
+    <span class="kw">print</span>(<span class="str">"Вы совершеннолетний"</span>)</code></pre>
+
+  <h2>if/else</h2>
+  <pre><code><span class="kw">age</span> = <span class="num">16</span>
+<span class="kw">if</span> age >= <span class="num">18</span>:
+    <span class="kw">print</span>(<span class="str">"Доступ разрешен"</span>)
+<span class="kw">else</span>:
+    <span class="kw">print</span>(<span class="str">"Доступ запрещен"</span>)</code></pre>
+
+  <h2>if/elif/else</h2>
+  <pre><code><span class="kw">score</span> = <span class="num">85</span>
+<span class="kw">if</span> score >= <span class="num">90</span>:
+    grade = <span class="str">"A"</span>
+<span class="kw">elif</span> score >= <span class="num">80</span>:
+    grade = <span class="str">"B"</span>
+<span class="kw">elif</span> score >= <span class="num">70</span>:
+    grade = <span class="str">"C"</span>
+<span class="kw">else</span>:
+    grade = <span class="str">"F"</span>
+<span class="kw">print</span>(f<span class="str">"Оценка: {grade}"</span>)</code></pre>
+
+  <h2>Логические операторы</h2>
+  <pre><code><span class="cm"># and — И (оба условия истинны)</span>
+<span class="kw">if</span> age >= <span class="num">18</span> <span class="kw">and</span> has_ticket:
+    <span class="kw">print</span>(<span class="str">"Проходите"</span>)
+
+<span class="cm"># or — ИЛИ (хотя бы одно истинно)</span>
+<span class="kw">if</span> is_admin <span class="kw">or</span> is_owner:
+    <span class="kw">print</span>(<span class="str">"Доступ разрешен"</span>)
+
+<span class="cm"># not — НЕ (отрицание)</span>
+<span class="kw">if</span> <span class="kw">not</span> is_banned:
+    <span class="kw">print</span>(<span class="str">"Вы не забанены"</span>)</code></pre>
+
+  <h2>Тернарный оператор</h2>
+  <p>Краткая форма if/else в одну строку:</p>
+  <pre><code><span class="kw">status</span> = <span class="str">"взрослый"</span> <span class="kw">if</span> age >= <span class="num">18</span> <span class="kw">else</span> <span class="str">"ребенок"</span></code></pre>
+
+  <div class="info-box">
+    <strong>Важно:</strong> В Python отступы определяют блок кода. Все строки внутри if/elif/else должны иметь одинаковый отступ (4 пробела).
+  </div>
+</body>
+</html>
+</content>
+
+<write_to_file>
+<path>courses/python-basics/theory/theory-loops.html</path>
+<content><!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Циклы в Python</title>
+  <style>
+    body { font-family: system-ui, sans-serif; line-height: 1.7; max-width: 800px; margin: auto; padding: 20px; background: #0d1117; color: #c9d1d9; }
+    h1, h2, h3 { color: #58a6ff; }
+    pre { background: #161b22; padding: 14px; border-radius: 8px; overflow-x: auto; border: 1px solid #30363d; }
+    code { font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #f08d49; }
+    pre code { color: #c9d1d9; }
+    .kw { color: #ff7b72; } .str { color: #a5d6ff; } .num { color: #79c0ff; } .cm { color: #6e7681; } .fn { color: #d2a8ff; }
+    .info-box { background: #21262d; border-left: 4px solid #58a6ff; padding: 14px; border-radius: 6px; margin: 16px 0; }
+  </style>
+</head>
+<body>
+  <h1>Циклы в Python</h1>
+
+  <h2>Цикл for</h2>
+  <p>Цикл <code>for</code> используется для перебора элементов последовательности:</p>
+  <pre><code><span class="cm"># Перебор строки</span>
+<span class="kw">for</span> char <span class="kw">in</span> <span class="str">"Python"</span>:
+    <span class="kw">print</span>(char)
+
+<span class="cm"># Перебор списка</span>
+<span class="kw">for</span> fruit <span class="kw">in</span> [<span class="str">"apple"</span>, <span class="str">"banana"</span>, <span class="str">"cherry"</span>]:
+    <span class="kw">print</span>(fruit)</code></pre>
+
+  <h2>Функция range()</h2>
+  <pre><code><span class="cm"># range(5) → 0, 1, 2, 3, 4</span>
+<span class="kw">for</span> i <span class="kw">in</span> <span class="fn">range</span>(<span class="num">5</span>):
+    <span class="kw">print</span>(i)
+
+<span class="cm"># range(2, 7) → 2, 3, 4, 5, 6</span>
+<span class="kw">for</span> i <span class="kw">in</span> <span class="fn">range</span>(<span class="num">2</span>, <span class="num">7</span>):
+    <span class="kw">print</span>(i)
+
+<span class="cm"># range(0, 10, 2) → 0, 2, 4, 6, 8 (шаг 2)</span>
+<span class="kw">for</span> i <span class="kw">in</span> <span class="fn">range</span>(<span class="num">0</span>, <span class="num">10</span>, <span class="num">2</span>):
+    <span class="kw">print</span>(i)</code></pre>
+
+  <h2>Цикл while</h2>
+  <p>Цикл <code>while</code> выполняется, пока условие истинно:</p>
+  <pre><code><span class="kw">count</span> = <span class="num">0</span>
+<span class="kw">while</span> count < <span class="num">5</span>:
+    <span class="kw">print</span>(count)
+    count += <span class="num">1</span></code></pre>
+
+  <h2>Break и Continue</h2>
+  <pre><code><span class="cm"># break — досрочный выход из цикла</span>
+<span class="kw">for</span> i <span class="kw">in</span> <span class="fn">range</span>(<span class="num">10</span>):
+    <span class="kw">if</span> i == <span class="num">5</span>:
+        <span class="kw">break</span>  <span class="cm"># цикл прервется на 5</span>
+    <span class="kw">print</span>(i)
+
+<span class="cm"># continue — пропуск итерации</span>
+<span class="kw">for</span> i <span class="kw">in</span> <span class="fn">range</span>(<span class="num">5</span>):
+    <span class="kw">if</span> i == <span class="num">2</span>:
+        <span class="kw">continue</span>  <span class="cm"># пропустит 2</span>
+    <span class="kw">print</span>(i)</code></pre>
+
+  <h2>Вложенные циклы</h2>
+  <pre><code><span class="kw">for</span> i <span class="kw">in</span> <span class="fn">range</span>(<span class="num">3</span>):
+    <span class="kw">for</span> j <span class="kw">in</span> <span class="fn">range</span>(<span class="num">2</span>):
+        <span class="kw">print</span>(f<span class="str">"({i}, {j})"</span>)</code></pre>
+
+  <div class="info-box">
+    <strong>Важно:</strong> В Python нет цикла <code>do-while</code>. Для бесконечного цикла используйте <code>while True:</code>
+  </div>
+</body>
+</html>
+</content>
+
+<write_to_file>
+<path>courses/python-basics/theory/theory-lists.html</path>
+<content><!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Списки в Python</title>
+  <style>
+    body { font-family: system-ui, sans-serif; line-height: 1.7; max-width: 800px; margin: auto; padding: 20px; background: #0d1117; color: #c9d1d9; }
+    h1, h2, h3 { color: #58a6ff; }
+    pre { background: #161b22; padding: 14px; border-radius: 8px; overflow-x: auto; border: 1px solid #30363d; }
+    code { font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #f08d49; }
+    pre code { color: #c9d1d9; }
+    .kw { color: #ff7b72; } .str { color: #a5d6ff; } .num { color: #79c0ff; } .cm { color: #6e7681; } .fn { color: #d2a8ff; }
+    .info-box { background: #21262d; border-left: 4px solid #58a6ff; padding: 14px; border-radius: 6px; margin: 16px 0; }
+  </style>
+</head>
+<body>
+  <h1>Списки в Python</h1>
+
+  <h2>Создание списка</h2>
+  <pre><code><span class="kw">fruits</span> = [<span class="str">"apple"</span>, <span class="str">"banana"</span>, <span class="str">"cherry"</span>]
+<span class="kw">numbers</span> = [<span class="num">1</span>, <span class="num">2</span>, <span class="num">3</span>, <span class="num">4</span>, <span class="num">5</span>]
+<span class="kw">mixed</span> = [<span class="num">1</span>, <span class="str">"hello"</span>, <span class="num">3.14</span>, <span class="str">True</span>]
+<span class="kw">empty</span> = []</code></pre>
+
+  <h2>Индексация</h2>
+  <pre><code><span class="kw">fruits</span> = [<span class="str">"apple"</span>, <span class="str">"banana"</span>, <span class="str">"cherry"</span>]
+<span class="kw">print</span>(fruits[<span class="num">0</span>])   <span class="cm"># apple</span>
+<span class="kw">print</span>(fruits[<span class="num">1</span>])   <span class="cm"># banana</span>
+<span class="kw">print</span>(fruits[-<span class="num">1</span>])  <span class="cm"># cherry (последний элемент)</span>
+<span class="kw">print</span>(fruits[-<span class="num">2</span>])  <span class="cm"># banana (предпоследний)</span></code></pre>
+
+  <h2>Методы списков</h2>
+  <pre><code><span class="kw">nums</span> = [<span class="num">1</span>, <span class="num">2</span>, <span class="num">3</span>]
+
+<span class="cm"># Добавление</span>
+nums.append(<span class="num">4</span>)        <span class="cm"># [1, 2, 3, 4]</span>
+nums.insert(<span class="num">0</span>, <span class="num">0</span>)    <span class="cm"># [0, 1, 2, 3, 4]</span>
+
+<span class="cm"># Удаление</span>
+nums.remove(<span class="num">2</span>)        <span class="cm"># [0, 1, 3, 4]</span>
+<span class="kw">last</span> = nums.pop()      <span class="cm"># last = 4, nums = [0, 1, 3]</span>
+
+<span class="cm"># Информация</span>
+<span class="kw">idx</span> = nums.index(<span class="num">3</span>)    <span class="cm"># 2</span>
+<span class="kw">count</span> = nums.count(<span class="num">1</span>)  <span class="cm"># 1</span>
+<span class="kw">length</span> = len(nums)     <span class="cm"># 3</span></code></pre>
+
+  <h2>Срезы списков</h2>
+  <pre><code><span class="kw">nums</span> = [<span class="num">0</span>, <span class="num">1</span>, <span class="num">2</span>, <span class="num">3</span>, <span class="num">4</span>, <span class="num">5</span>]
+
+<span class="kw">print</span>(nums[<span class="num">1</span>:<span class="num">4</span>])   <span class="cm"># [1, 2, 3]</span>
+<span class="kw">print</span>(nums[:<span class="num">3</span>])    <span class="cm"># [0, 1, 2]</span>
+<span class="kw">print</span>(nums[<span class="num">3</span>:])    <span class="cm"># [3, 4, 5]</span>
+<span class="kw">print</span>(nums[::<span class="num">2</span>])   <span class="cm"># [0, 2, 4]</span>
+<span class="kw">print</span>(nums[::-<span class="num">1</span>])  <span class="cm"># [5, 4, 3, 2, 1, 0]</span></code></pre>
+
+  <h2>Генератор списка (List Comprehension)</h2>
+  <pre><code><span class="cm"># Квадраты чисел от 0 до 9</span>
+<span class="kw">squares</span> = [x**<span class="num">2</span> <span class="kw">for</span> x <span class="kw">in</span> <span class="fn">range</span>(<span class="num">10</span>)]
+
+<span class="cm"># Чётные числа</span>
+<span class="kw">evens</span> = [x <span class="kw">for</span> x <span class="kw">in</span> <span class="fn">range</span>(<span class="num">20</span>) <span class="kw">if</span> x % <span class="num">2</span> == <span class="num">0</span>]
+
+<span class="cm"># Матрица 3x3</span>
+<span class="kw">matrix</span> = [[i * <span class="num">3</span> + j <span class="kw">for</span> j <span class="kw">in</span> <span class="fn">range</span>(<span class="num">3</span>)] <span class="kw">for</span> i <span class="kw">in</span> <span class="fn">range</span>(<span class="num">3</span>)]</code></pre>
+
+  <div class="info-box">
+    <strong>Важно:</strong> Списки — изменяемый тип данных. Элементы списка можно менять после создания: <code>nums[0] = 10</code>
+  </div>
+</body>
+</html>
+</content>
+
+<write_to_file>
+<path>courses/python-basics/theory/theory-dicts.html</path>
+<content><!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Словари в Python</title>
+  <style>
+    body { font-family: system-ui, sans-serif; line-height: 1.7; max-width: 800px; margin: auto; padding: 20px; background: #0d1117; color: #c9d1d9; }
+    h1, h2, h3 { color: #58a6ff; }
+    pre { background: #161b22; padding: 14px; border-radius: 8px; overflow-x: auto; border: 1px solid #30363d; }
+    code { font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #f08d49; }
+    pre code { color: #c9d1d9; }
+    .kw { color: #ff7b72; } .str { color: #a5d6ff; } .num { color: #79c0ff; } .cm { color: #6e7681; } .fn { color: #d2a8ff; }
+    .info-box { background: #21262d; border-left: 4px solid #58a6ff; padding: 14px; border-radius: 6px; margin: 16px 0; }
+  </style>
+</head>
+<body>
+  <h1>Словари в Python</h1>
+
+  <h2>Создание словаря</h2>
+  <p>Словарь хранит пары "ключ — значение":</p>
+  <pre><code><span class="kw">person</span> = {
+    <span class="str">"name"</span>: <span class="str">"Alice"</span>,
+    <span class="str">"age"</span>: <span class="num">25</span>,
+    <span class="str">"city"</span>: <span class="str">"Moscow"</span>
+}
+
+<span class="kw">empty</span> = {}
+<span class="kw">scores</span> = dict(a=<span class="num">10</span>, b=<span class="num">20</span>)</code></pre>
+
+  <h2>Доступ к элементам</h2>
+  <pre><code><span class="kw">print</span>(person[<span class="str">"name"</span>])   <span class="cm"># Alice</span>
+
+<span class="cm"># get() с значением по умолчанию</span>
+<span class="kw">print</span>(person.get(<span class="str">"age"</span>))           <span class="cm"># 25</span>
+<span class="kw">print</span>(person.get(<span class="str">"country"</span>, <span class="str">"Россия"</span>))  <span class="cm"># Россия</span></code></pre>
+
+  <h2>Изменение словаря</h2>
+  <pre><code><span class="cm"># Добавление/изменение</span>
+person[<span class="str">"email"</span>] = <span class="str">"alice@example.com"</span>
+person[<span class="str">"age"</span>] = <span class="num">26</span>
+
+<span class="cm"># Удаление</span>
+<span class="kw">del</span> person[<span class="str">"city"</span>]
+person.pop(<span class="str">"email"</span>)</code></pre>
+
+  <h2>Методы словарей</h2>
+  <pre><code><span class="kw">print</span>(person.keys())    <span class="cm"># dict_keys(['name', 'age'])</span>
+<span class="kw">print</span>(person.values())  <span class="cm"># dict_values(['Alice', 26])</span>
+<span class="kw">print</span>(person.items())   <span class="cm"># dict_items([('name', 'Alice'), ('age', 26)])</span></code></pre>
+
+  <h2>Перебор словаря</h2>
+  <pre><code><span class="cm"># Перебор ключей</span>
+<span class="kw">for</span> key <span class="kw">in</span> person:
+    <span class="kw">print</span>(key)
+
+<span class="cm"># Перебор значений</span>
+<span class="kw">for</span> value <span class="kw">in</span> person.values():
+    <span class="kw">print</span>(value)
+
+<span class="cm"># Перебор пар ключ-значение</span>
+<span class="kw">for</span> key, value <span class="kw">in</span> person.items():
+    <span class="kw">print</span>(f<span class="str">"{key}: {value}"</span>)</code></pre>
+
+  <h2>Проверка наличия ключа</h2>
+  <pre><code><span class="kw">if</span> <span class="str">"name"</span> <span class="kw">in</span> person:
+    <span class="kw">print</span>(<span class="str">"Ключ 'name' существует"</span>)</code></pre>
+
+  <h2>Вложенные словари</h2>
+  <pre><code><span class="kw">users</span> = {
+    <span class="str">"alice"</span>: {<span class="str">"age"</span>: <span class="num">25</span>, <span class="str">"role"</span>: <span class="str">"admin"</span>},
+    <span class="str">"bob"</span>: {<span class="str">"age"</span>: <span class="num">30</span>, <span class="str">"role"</span>: <span class="str">"user"</span>}
+}
+<span class="kw">print</span>(users[<span class="str">"alice"</span>][<span class="str">"role"</span>])  <span class="cm"># admin</span></code></pre>
+
+  <div class="info-box">
+    <strong>Важно:</strong> Ключи словаря должны быть неизменяемыми (строки, числа, кортежи). Значениями могут быть любые типы данных.
+  </div>
+</body>
+</html>
+</content>
+
+<write_to_file>
+<path>courses/python-basics/theory/theory-strings.html</path>
+<content><!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Строки в Python</title>
+  <style>
+    body { font-family: system-ui, sans-serif; line-height: 1.7; max-width: 800px; margin: auto; padding: 20px; background: #0d1117; color: #c9d1d9; }
+    h1, h2, h3 { color: #58a6ff; }
+    pre { background: #161b22; padding: 14px; border-radius: 8px; overflow-x: auto; border: 1px solid #30363d; }
+    code { font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #f08d49; }
+    pre code { color: #c9d1d9; }
+    .kw { color: #ff7b72; } .str { color: #a5d6ff; } .num { color: #79c0ff; } .cm { color: #6e7681; } .fn { color: #d2a8ff; }
+    .info-box { background: #21262d; border-left: 4px solid #58a6ff; padding: 14px; border-radius: 6px; margin: 16px 0; }
+  </style>
+</head>
+<body>
+  <h1>Строки в Python</h1>
+
+  <h2>Создание строк</h2>
+  <pre><code><span class="kw">s1</span> = <span class="str">'Hello'</span>
+<span class="kw">s2</span> = <span class="str">"World"</span>
+<span class="kw">s3</span> = <span class="str">'''Multi-line
+string'''</span></code></pre>
+
+  <h2>Методы строк</h2>
+  <pre><code><span class="kw">text</span> = <span class="str">"  Hello, Python!  "</span>
+
+<span class="kw">print</span>(text.upper())          <span class="cm"># "  HELLO, PYTHON!  "</span>
+<span class="kw">print</span>(text.lower())          <span class="cm"># "  hello, python!  "</span>
+<span class="kw">print</span>(text.strip())          <span class="cm"># "Hello, Python!"</span>
+<span class="kw">print</span>(text.replace(<span class="str">"Python"</span>, <span class="str">"World"</span>))  <span class="cm"># "  Hello, World!  "</span>
+<span class="kw">print</span>(text.startswith(<span class="str">"Hello"</span>))  <span class="cm"># False (из-за пробелов)</span>
+<span class="kw">print</span>(text.endswith(<span class="str">"!"</span>))     <span class="cm"># False</span></code></pre>
+
+  <h2>Форматирование строк</h2>
+  <pre><code><span class="cm"># F-строки (Python 3.6+)</span>
+<span class="kw">name</span>, <span class="kw">age</span> = <span class="str">"Alice"</span>, <span class="num">25</span>
+<span class="kw">print</span>(f<span class="str">"Name: {name}, Age: {age}"</span>)
+<span class="kw">print</span>(f<span class="str">"{name:>10}"</span>)  <span class="cm"># выравнивание вправо</span>
+
+<span class="cm"># format()</span>
+<span class="kw">print</span>(<span class="str">"Name: {}, Age: {}"</span>.format(name, age))
+
+<span class="cm"># %-format (старый стиль)</span>
+<span class="kw">print</span>(<span class="str">"Name: %s, Age: %d"</span> % (name, age))</code></pre>
+
+  <h2>Разделение и соединение</h2>
+  <pre><code><span class="cm"># split — разделяет строку на список</span>
+<span class="kw">sentence</span> = <span class="str">"apple,banana,cherry"</span>
+<span class="kw">fruits</span> = sentence.split(<span class="str">","</span>)
+<span class="kw">print</span>(fruits)  <span class="cm"># ['apple', 'banana', 'cherry']</span>
+
+<span class="cm"># join — соединяет список в строку</span>
+<span class="kw">new_sentence</span> = <span class="str">" - "</span>.join(fruits)
+<span class="kw">print</span>(new_sentence)  <span class="cm"># "apple - banana - cherry"</span></code></pre>
+
+  <h2>Поиск подстроки</h2>
+  <pre><code><span class="kw">text</span> = <span class="str">"Hello, Python!"</span>
+
+<span class="cm"># find — ищет подстроку, возвращает индекс или -1</span>
+<span class="kw">print</span>(text.find(<span class="str">"Python"</span>))  <span class="cm"># 7</span>
+<span class="kw">print</span>(text.find(<span class="str">"Java"</span>))   <span class="cm"># -1</span>
+
+<span class="cm"># in — проверяет наличие подстроки</span>
+<span class="kw">print</span>(<span class="str">"Python"</span> <span class="kw">in</span> text)  <span class="cm"># True</span></code></pre>
+
+  <h2>Проверка строк</h2>
+  <pre><code><span class="kw">print</span>(<span class="str">"123"</span>.isdigit())      <span class="cm"># True</span>
+<span class="kw">print</span>(<span class="str">"abc"</span>.isalpha())      <span class="cm"># True</span>
+<span class="kw">print</span>(<span class="str">"abc123"</span>.isalnum())   <span class="cm"># True</span>
+<span class="kw">print</span>(<span class="str">"  "</span>.isspace())       <span class="cm"># True</span>
+<span class="kw">print</span>(<span class="str">"Hello"</span>.istitle())    <span class="cm"># True</span></code></pre>
+
+  <div class="info-box">
+    <strong>Важно:</strong> Строки в Python — неизменяемый тип. Методы строк не изменяют исходную строку, а возвращают новую.
+  </div>
+</body>
+</html>

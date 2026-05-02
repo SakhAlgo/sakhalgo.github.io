@@ -1,0 +1,23 @@
+{
+  "id": "096",
+  "title": "Погодные активности (логические операторы)",
+  "difficulty": "medium",
+  "points": 75,
+  "passThreshold": 70,
+  "tags": ["js", "if", "else", "logical", "&&", "!"],
+  "timeLimit": 10,
+  "description": "Напишите функцию suggestActivity, которая принимает два параметра: isWeekend (булево) и isRainy (булево). Если isWeekend === true и isRainy === false — вернуть 'go for a walk'. Если isWeekend === true и isRainy === true — вернуть 'watch a movie'. Иначе (будний день) — вернуть 'work'.",
+  "requirements": [
+    "Функция должна называться <code>suggestActivity</code>",
+    "Принимать два булевых параметра: <code>isWeekend</code> и <code>isRainy</code>",
+    "Использовать логический оператор <code>&&</code> (И)",
+    "Возвращать <code>'go for a walk'</code> если выходной и нет дождя",
+    "Возвращать <code>'watch a movie'</code> если выходной и идёт дождь",
+    "Возвращать <code>'work'</code> в будний день"
+  ],
+  "sampleFiles": {
+    "html": "sample.html",
+    "css": "sample.css",
+    "js": "sample.js"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "id": "105",
+  "title": "F-строки",
+  "difficulty": "easy",
+  "points": 50,
+  "passThreshold": 70,
+  "tags": ["python"],
+  "description": "F-строки",
+  "requirements": ["Создать переменные name и age","Вывести f-строку: Меня зовут {name}, мне {age} лет"],
+  "sampleFiles": { "py": "sample.py" }
+}
