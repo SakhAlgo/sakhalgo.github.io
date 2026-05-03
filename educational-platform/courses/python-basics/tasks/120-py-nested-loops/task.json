@@ -3,7 +3,7 @@
   "title": "Вложенные циклы",
   "difficulty": "easy",
   "points": 50,
-  "passThreshold": 70,
+  "passThreshold": 80,
   "tags": ["python"],
   "description": "Вложенные циклы",
   "requirements": ["Вывести таблицу умножения 3x3","Для i от 1 до 3, для j от 1 до 3","Формат: i*j = результат"],

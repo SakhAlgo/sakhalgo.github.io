@@ -8,9 +8,9 @@
   "timeLimit": 10,
   "description": "Сделайте элементы гибкими с помощью Flexbox",
   "requirements": [
-    "HTML: Контейнер <code><div class='container'></code> с тремя <code><div class='item'>1</div></code>",
-    "CSS: <code>.container { display: flex; }</code> — элементы встанут в ряд",
-    "CSS: Задайте <code>.item { flex: 1; }</code> — равная ширина"
+    "<code>HTML: Контейнер <code><div class='container'></code> с тремя <code><div class='item'>1</div></code>",
+    "<code>CSS: <code>.container { display: flex; }</code> — элементы встанут в ряд",
+    "<code>CSS: Задайте <code>.item { flex: 1; }</code> — равная ширина"
   ],
   "sampleFiles": {
     "html": "sample.html",

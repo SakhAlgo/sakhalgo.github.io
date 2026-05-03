@@ -8,9 +8,9 @@
   "timeLimit": 10,
   "description": "Создайте форму с полем ввода текста",
   "requirements": [
-    "Использовать тег form",
-    "Поле ввода: <code>input type='text' placeholder='Введите имя'</code>",
-    "Текст кнопки отправки: Отправить. Тег кнопки посмотри в документации"
+    "<code>Использовать тег form",
+    "<code>Поле ввода: <code>input type='text' placeholder='Введите имя'</code>",
+    "<code>Текст кнопки отправки: Отправить. Тег кнопки посмотри в документации"
   ],
   "sampleFiles": {
     "html": "sample.html",

@@ -8,8 +8,8 @@
   "timeLimit": 10,
   "description": "Стилизуйте первый элемент списка с помощью псевдокласса :first-child",
   "requirements": [
-    "HTML: Создайте <code><ul></code> с тремя <code><li></code>",
-    "CSS: <code>li:first-child { font-weight: bold; }</code> — первый пункт жирный"
+    "<code>HTML: Создайте <code><ul></code> с тремя <code><li></code>",
+    "<code>CSS: <code>li:first-child { font-weight: bold; }</code> — первый пункт жирный"
   ],
   "sampleFiles": {
     "html": "sample.html",

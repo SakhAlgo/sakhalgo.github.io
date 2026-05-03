@@ -3,7 +3,7 @@
   "title": "Форматирование строк",
   "difficulty": "easy",
   "points": 50,
-  "passThreshold": 70,
+  "passThreshold": 80,
   "tags": ["python"],
   "description": "Форматирование строк",
   "requirements": ["Создать name = Мария, age = 28","Вывести через format()","Вывести через f-строку"],

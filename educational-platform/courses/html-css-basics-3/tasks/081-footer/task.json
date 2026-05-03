@@ -9,7 +9,7 @@
   "description": "Создайте подвал сайта с помощью семантического тега footer",
   "requirements": [
     "HTML: Используйте тег <code>footer</code>",
-    "Внутри footer разместите абзац<code>© 2024 Все права защищены</code>"
+    "Внутри footer разместите абзац<code>'© 2024 Все права защищены'</code>"
   ],
   "sampleFiles": {
     "html": "sample.html",

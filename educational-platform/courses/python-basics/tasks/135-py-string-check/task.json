@@ -3,7 +3,7 @@
   "title": "Проверка строк",
   "difficulty": "easy",
   "points": 50,
-  "passThreshold": 70,
+  "passThreshold": 80,
   "tags": ["python"],
   "description": "Проверка строк",
   "requirements": ["Создать строку 12345","Проверить isdigit()","Создать строку abc","Проверить isalpha()"],

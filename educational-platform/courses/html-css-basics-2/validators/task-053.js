@@ -34,20 +34,20 @@ export default class Task053Validator {
         if (correctAlt) score += 17;
 
         // Проверка 4: атрибут width
-        const correctWidth = /<img[^>]*\swidth\s*=\s*"300px"/i.test(html);
+        const correctWidth = /<img[^>]*\swidth\s*=\s*"80px"/i.test(html);
         checks.push({
-            label: 'width="300px"',
+            label: 'width="80px"',
             passed: correctWidth,
-            hint: 'Добавьте атрибут width="300px"'
+            hint: 'Добавьте атрибут width="80px"'
         });
         if (correctWidth) score += 17;
 
         // Проверка 5: атрибут height
-        const correctHeight = /<img[^>]*\sheight\s*=\s*"200px"/i.test(html);
+        const correctHeight = /<img[^>]*\sheight\s*=\s*"100px"/i.test(html);
         checks.push({
-            label: 'height="200px"',
+            label: 'height="100px"',
             passed: correctHeight,
-            hint: 'Добавьте атрибут height="200px"'
+            hint: 'Добавьте атрибут height="100px"'
         });
         if (correctHeight) score += 16;
 

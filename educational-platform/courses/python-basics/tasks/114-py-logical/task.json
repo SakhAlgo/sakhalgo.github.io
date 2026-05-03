@@ -3,7 +3,7 @@
   "title": "Логические операторы",
   "difficulty": "easy",
   "points": 50,
-  "passThreshold": 70,
+  "passThreshold": 80,
   "tags": ["python"],
   "description": "Логические операторы",
   "requirements": ["Создать a = 5, b = 10","Если a > 0 and b > 0 вывести Оба положительные","Иначе вывести Не оба"],

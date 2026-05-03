@@ -3,7 +3,7 @@
   "title": "Цикл for с range",
   "difficulty": "easy",
   "points": 50,
-  "passThreshold": 70,
+  "passThreshold": 80,
   "tags": ["python"],
   "description": "Цикл for с range",
   "requirements": ["Создать цикл от 1 до 5","Вывести каждое число"],

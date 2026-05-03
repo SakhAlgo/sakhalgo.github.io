@@ -1,29 +1,43 @@
 export default class Task102PyValidator {
   async validate(pyCode, css, js, samples, config) {
-    const checks = [];
 
-    
-    if (pyCode && pyCode.trim().length > 0) {
-      checks.push({ name: "Код предоставлен", passed: true, label: "Код предоставлен" });
-    }
+    const checks = [
+      {
+        name: "Код предоставлен",
+        label: "Код предоставлен",
+        passed: Boolean(pyCode && pyCode.trim().length > 0),
+      },
+      {
+        name: "Переменная greeting объявлена",
+        label: "Переменная greeting объявлена",
+        passed: /greeting\s*=/.test(pyCode),
+      },
+      {
+        name: "Присвоено корректное значение",
+        label: "Присвоено корректное значение",
+        passed: /["\x27]Привет, мир!["\x27]/.test(pyCode),
+      },
+      {
+        name: "print(greeting) используется",
+        label: "print(greeting) используется",
+        passed: /print\s*\(\s*greeting\s*\)/.test(pyCode),
+      },
+    ];
 
-    if (/greeting\s*=/.test(pyCode)) {
-      checks.push({ name: "Переменная greeting объявлена", passed: true, label: "Переменная greeting объявлена" });
-    }
+    const totalChecks = checks.length;               // 4
+    const pointsPerCheck = 100 / totalChecks;         // 25 за каждую
 
-    if (/["\x27]Привет, мир!["\x27]/.test(pyCode)) {
-      checks.push({ name: "Присвоено корректное значение", passed: true, label: "Присвоено корректное значение" });
-    }
+    const score = checks.reduce(
+      (sum, check) => sum + (check.passed ? pointsPerCheck : 0),
+      0
+    );
 
-    if (/print\s*\(\s*greeting\s*\)/.test(pyCode)) {
-      checks.push({ name: "print(greeting) используется", passed: true, label: "print(greeting) используется" });
-    }
+    const passThreshold = config?.passThreshold ?? 80;
 
-
-    const totalChecks = checks.length;
-    const pointsPerCheck = Math.floor(100 / totalChecks);
-    const passed = checks.filter(c => c.passed).length;
-    const score = passed * pointsPerCheck;
-    return { passed: score >= (config.passThreshold || 70), score, checks };
+    return {
+      passed: score >= passThreshold,
+      score: Math.round(score),
+      checks,
+    };
   }
 }

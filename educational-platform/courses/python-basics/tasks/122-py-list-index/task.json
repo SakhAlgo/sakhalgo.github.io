@@ -3,7 +3,7 @@
   "title": "Индексация списка",
   "difficulty": "easy",
   "points": 50,
-  "passThreshold": 70,
+  "passThreshold": 80,
   "tags": ["python"],
   "description": "Индексация списка",
   "requirements": ["Создать список [10, 20, 30, 40, 50]","Вывести первый элемент","Вывести последний элемент"],

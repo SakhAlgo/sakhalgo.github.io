@@ -3,9 +3,9 @@
   "title": "Строковая переменная",
   "difficulty": "easy",
   "points": 50,
-  "passThreshold": 70,
+  "passThreshold": 80,
   "tags": ["python"],
   "description": "Строковая переменная",
-  "requirements": ["Создать переменную greeting","Присвоить значение Привет, мир!","Вывести значение через print()"],
+  "requirements": ["<code>Создать переменную greeting","Присвоить значение Привет, мир!","Вывести значение через print()"],
   "sampleFiles": { "py": "sample.py" }
 }

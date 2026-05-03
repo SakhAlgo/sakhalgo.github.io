@@ -8,9 +8,8 @@
   "timeLimit": 10,
   "description": "Поймите как работает наследование: цвет текста наследуется от родителя",
   "requirements": [
-    "CSS: Задайте <code>div { color: navy; font-family: Arial; }</code> — div родитель",
-    "HTML: Внутри div разместите <code><p>Наследованный стиль</p></code>",
-    "p унаследует color и font-family от div"
+    "<code>CSS: Задайте <code>div { color: navy; font-family: Arial; }</code> — div родитель",
+    "<code>Запустите код. Тег p унаследует color и font-family от div"
   ],
   "sampleFiles": {
     "html": "sample.html",

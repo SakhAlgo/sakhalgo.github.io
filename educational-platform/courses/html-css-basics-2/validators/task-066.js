@@ -13,7 +13,7 @@ export default class Task066Validator {
             passed: hasDiv,
             hint: 'Добавьте тег div'
         });
-        if (hasDiv) score += 10;
+        if (hasDiv) score += 20;
 
         // Проверка 2: padding-top: 10px
         const hasPaddingTop = /padding-top\s*:\s*10px/i.test(css) ||
@@ -23,7 +23,7 @@ export default class Task066Validator {
             passed: hasPaddingTop,
             hint: 'Установите padding-top: 10px'
         });
-        if (hasPaddingTop) score += 25;
+        if (hasPaddingTop) score += 20;
 
         // Проверка 3: padding-right: 15px
         const hasPaddingRight = /padding-right\s*:\s*15px/i.test(css) ||
@@ -33,7 +33,7 @@ export default class Task066Validator {
             passed: hasPaddingRight,
             hint: 'Установите padding-right: 15px'
         });
-        if (hasPaddingRight) score += 25;
+        if (hasPaddingRight) score += 20;
 
         // Проверка 4: padding-bottom: 20px
         const hasPaddingBottom = /padding-bottom\s*:\s*20px/i.test(css) ||

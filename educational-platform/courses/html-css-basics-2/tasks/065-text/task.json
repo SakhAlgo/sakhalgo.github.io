@@ -8,7 +8,7 @@
   "timeLimit": 10,
   "description": "Оформите текст: выравнивание и подчёркивание",
   "requirements": [
-    "Использовать тег p",
+    "<code>Использовать тег p",
     "Центрирование. CSS: <code>text-align: center;</code>",
     "Подчёркивание: <code>text-decoration: underline;</code>"
   ],

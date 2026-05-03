@@ -18,7 +18,7 @@ export default class Task080Validator {
         // Проверка 2: внутри header есть h1
         const hasH1InHeader = /<header>[\s\S]*<h1>[\s\S]*<\/h1>[\s\S]*<\/header>/i.test(html);
         checks.push({
-            label: 'Внутри header есть <h1>',
+            label: 'Внутри header есть h1',
             passed: hasH1InHeader,
             hint: 'Добавьте h1 внутрь header'
         });

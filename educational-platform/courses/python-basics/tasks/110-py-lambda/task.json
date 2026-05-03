@@ -3,7 +3,7 @@
   "title": "Лямбда-функция",
   "difficulty": "easy",
   "points": 50,
-  "passThreshold": 70,
+  "passThreshold": 80,
   "tags": ["python"],
   "description": "Лямбда-функция",
   "requirements": ["Создать лямбду для умножения на 2","Присвоить её переменной double","Вывести double(5)"],

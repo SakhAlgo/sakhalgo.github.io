@@ -9,7 +9,7 @@ export default class Task069Validator {
     // Проверка 1: наличие div с p внутри
     const hasDivWithP = /<div[^>]*>.*?<p[^>]*>.*?<\/p>.*?<\/div>/i.test(html);
     checks.push({
-      label: "Тег p внутри <div> присутствует",
+      label: "Тег p внутри div присутствует",
       passed: hasDivWithP,
       hint: "Добавьте &lt;div&gt;&lt;p&gt;...&lt;/p&gt;&lt;/div&gt;",
     });

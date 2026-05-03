@@ -1,29 +1,43 @@
 export default class Task115PyValidator {
   async validate(pyCode, css, js, samples, config) {
-    const checks = [];
 
-    
-    if (pyCode && pyCode.trim().length > 0) {
-      checks.push({ name: "Код предоставлен", passed: true, label: "Код предоставлен" });
-    }
-
-    if (/\bx\s*=\s*7\b/.test(pyCode)) {
-      checks.push({ name: "x = 7 объявлена", passed: true, label: "x = 7 объявлена" });
-    }
-
-    if (/\bif\s+.+\s+else\b/.test(pyCode)) {
-      checks.push({ name: "Используется тернарный оператор", passed: true, label: "Используется тернарный оператор" });
-    }
-
-    if (/print\s*\(/.test(pyCode) && /\bresult\b/.test(pyCode)) {
-      checks.push({ name: "Результат выведен через print()", passed: true, label: "Результат выведен через print()" });
-    }
-
+    const checks = [
+      {
+        name: "Код предоставлен",
+        label: "Код предоставлен",
+        passed: Boolean(pyCode && pyCode.trim().length > 0),
+      },
+      {
+        name: "x = 7 объявлена",
+        label: "x = 7 объявлена",
+        passed: /\bx\s*=\s*7\b/.test(pyCode),
+      },
+      {
+        name: "Используется тернарный оператор",
+        label: "Используется тернарный оператор",
+        passed: /\bif\s+.+\s+else\b/.test(pyCode),
+      },
+      {
+        name: "Результат выведен через print()",
+        label: "Результат выведен через print()",
+        passed: /print\s*\(/.test(pyCode) && /\bresult\b/.test(pyCode),
+      },
+    ];
 
     const totalChecks = checks.length;
-    const pointsPerCheck = Math.floor(100 / totalChecks);
-    const passed = checks.filter(c => c.passed).length;
-    const score = passed * pointsPerCheck;
-    return { passed: score >= (config.passThreshold || 70), score, checks };
+    const pointsPerCheck = 100 / totalChecks;
+
+    const score = checks.reduce(
+      (sum, check) => sum + (check.passed ? pointsPerCheck : 0),
+      0
+    );
+
+    const passThreshold = config?.passThreshold ?? 80;
+
+    return {
+      passed: score >= passThreshold,
+      score: Math.round(score),
+      checks,
+    };
   }
 }

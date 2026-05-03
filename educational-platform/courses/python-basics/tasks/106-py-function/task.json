@@ -3,7 +3,7 @@
   "title": "Простая функция",
   "difficulty": "easy",
   "points": 50,
-  "passThreshold": 70,
+  "passThreshold": 80,
   "tags": ["python"],
   "description": "Простая функция",
   "requirements": ["Создать функцию greet()","Функция должна выводить Привет!","Вызвать функцию"],

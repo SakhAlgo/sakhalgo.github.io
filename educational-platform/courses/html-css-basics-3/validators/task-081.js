@@ -16,9 +16,9 @@ export default class Task081Validator {
         if (hasFooter) score += 50;
 
         // Проверка 2: внутри footer есть параграф с символом копирайта
-        const hasCopyInFooter = /<footer>[\s\S]*<p>[\s\S]*©[\s\S]*<\/p>[\s\S]*<\/footer>/i.test(html);
+        const hasCopyInFooter = /<footer>[\s\S]*<p>[\s\S]*© 2024 Все права защищены[\s\S]*<\/p>[\s\S]*<\/footer>/i.test(html);
         checks.push({
-            label: 'Внутри footer есть p с символом ©',
+            label: 'Внутри footer есть p с "© 2024 Все права защищены"',
             passed: hasCopyInFooter,
             hint: 'Добавьте абзац © 2024 Все права защищены внутрь footer'
         });

@@ -1,25 +1,38 @@
 export default class Task121PyValidator {
   async validate(pyCode, css, js, samples, config) {
-    const checks = [];
 
-    
-    if (pyCode && pyCode.trim().length > 0) {
-      checks.push({ name: "Код предоставлен", passed: true, label: "Код предоставлен" });
-    }
-
-    if (/\[["\x27]яблоко["\x27]/.test(pyCode) || /\[["\x27]банан["\x27]/.test(pyCode)) {
-      checks.push({ name: "Список fruits содержит фрукты", passed: true, label: "Список fruits содержит фрукты" });
-    }
-
-    if (/print\s*\(\s*fruits\s*\)/.test(pyCode)) {
-      checks.push({ name: "Список выведен", passed: true, label: "Список выведен" });
-    }
-
+    const checks = [
+      {
+        name: "Код предоставлен",
+        label: "Код предоставлен",
+        passed: Boolean(pyCode && pyCode.trim().length > 0),
+      },
+      {
+        name: "Список fruits содержит фрукты",
+        label: "Список fruits содержит фрукты",
+        passed: /\[["\x27]яблоко["\x27]/.test(pyCode) || /\[["\x27]банан["\x27]/.test(pyCode),
+      },
+      {
+        name: "Список выведен",
+        label: "Список выведен",
+        passed: /print\s*\(\s*fruits\s*\)/.test(pyCode),
+      },
+    ];
 
     const totalChecks = checks.length;
-    const pointsPerCheck = Math.floor(100 / totalChecks);
-    const passed = checks.filter(c => c.passed).length;
-    const score = passed * pointsPerCheck;
-    return { passed: score >= (config.passThreshold || 70), score, checks };
+    const pointsPerCheck = 100 / totalChecks;
+
+    const score = checks.reduce(
+      (sum, check) => sum + (check.passed ? pointsPerCheck : 0),
+      0
+    );
+
+    const passThreshold = config?.passThreshold ?? 80;
+
+    return {
+      passed: score >= passThreshold,
+      score: Math.round(score),
+      checks,
+    };
   }
 }

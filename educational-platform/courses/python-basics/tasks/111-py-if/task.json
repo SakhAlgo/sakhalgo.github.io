@@ -3,7 +3,7 @@
   "title": "Условный оператор if",
   "difficulty": "easy",
   "points": 50,
-  "passThreshold": 70,
+  "passThreshold": 80,
   "tags": ["python"],
   "description": "Условный оператор if",
   "requirements": ["Создать переменную x = 10","Если x > 5, вывести Больше 5"],

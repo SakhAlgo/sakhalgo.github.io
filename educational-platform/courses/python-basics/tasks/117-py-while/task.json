@@ -3,7 +3,7 @@
   "title": "Цикл while",
   "difficulty": "easy",
   "points": 50,
-  "passThreshold": 70,
+  "passThreshold": 80,
   "tags": ["python"],
   "description": "Цикл while",
   "requirements": ["Создать переменную i = 1","Выводить i пока i <= 5","Увеличивать i на 1"],

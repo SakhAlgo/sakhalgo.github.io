@@ -9,9 +9,9 @@ export default class Task088Validator {
         // Проверка 1: кнопка в HTML
         const hasButton = /<button>[\s\S]*<\/button>/i.test(html);
         checks.push({
-            label: 'HTML: тег <button> присутствует',
+            label: 'HTML: тег button присутствует',
             passed: hasButton,
-            hint: 'Добавьте <button>Наведи</button>'
+            hint: 'Добавьте button с текстом "Наведи"'
         });
         if (hasButton) score += 40;
 

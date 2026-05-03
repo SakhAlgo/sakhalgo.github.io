@@ -8,11 +8,11 @@
   "timeLimit": 10,
   "description": "Добавьте изображение с атрибутами alt, width и height",
   "requirements": [
-    "Использовать тег img",
-    "<code>src=\"https://example.com\"",
+    "<code>Использовать тег img",
+    "<code>src=\"https://upload.wikimedia.org/wikipedia/commons/d/dd/Linux_logo.jpg\"",
     "Атрибут <code>alt: \"Пример изображения\"",
-    "Атрибут <code>width: \"300px\"</code>",
-    "Атрибут <code>height: \"200px\"<code>"
+    "Атрибут <code>width: \"80px\"</code>",
+    "Атрибут <code>height: \"100px\"<code>"
   ],
   "sampleFiles": {
     "html": "sample.html",

@@ -11,7 +11,7 @@ export default class Task086Validator {
         checks.push({
             label: 'HTML: div содержит p внутри',
             passed: hasDivWithP,
-            hint: 'Создайте <div> с <p> внутри'
+            hint: 'Создайте div с <p> внутри'
         });
         if (hasDivWithP) score += 30;
 

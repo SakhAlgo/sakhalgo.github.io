@@ -18,7 +18,7 @@ export default class Task083Validator {
         // Проверка 2: внутри section есть h2 и p
         const hasH2InSection = /<section>[\s\S]*<h2>[\s\S]*<\/h2>[\s\S]*<p>[\s\S]*<\/p>[\s\S]*<\/section>/i.test(html);
         checks.push({
-            label: 'Внутри section есть <h2> и <p>',
+            label: 'Внутри section есть h2 и p',
             passed: hasH2InSection,
             hint: 'Добавьте h2 в section'
         });

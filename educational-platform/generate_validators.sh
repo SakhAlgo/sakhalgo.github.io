@@ -21,7 +21,7 @@ export default class Task${id}PyValidator {
     const pointsPerCheck = Math.floor(100 / totalChecks);
     const passed = checks.filter(c => c.passed).length;
     const score = passed * pointsPerCheck;
-    return { passed: score >= (config.passThreshold || 70), score, checks };
+    return { passed: score >= (config.passThreshold || 80), score, checks };
   }
 }
 JSEOF

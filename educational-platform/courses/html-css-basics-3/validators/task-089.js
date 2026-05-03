@@ -9,9 +9,9 @@ export default class Task089Validator {
         // Проверка 1: ul с тремя li
         const hasList = /<ul>[\s\S]*<li>[\s\S]*<li>[\s\S]*<li>[\s\S]*<\/ul>/i.test(html);
         checks.push({
-            label: 'HTML: <ul> с тремя <li>',
+            label: 'HTML: ul с тремя li',
             passed: hasList,
-            hint: 'Добавьте <ul> с тремя пунктами <li>'
+            hint: 'Добавьте ul с тремя пунктами li'
         });
         if (hasList) score += 40;
 

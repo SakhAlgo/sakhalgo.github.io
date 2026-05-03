@@ -8,9 +8,9 @@
   "timeLimit": 10,
   "description": "Добавьте контент до и после элемента с помощью псевдоэлементов",
   "requirements": [
-    "CSS: <code>.quote::before { content: '«'; }</code> — кавычка перед текстом",
-    "CSS: <code>.quote::after { content: '»'; }</code> — кавычка после текста",
-    "HTML: <code><p class='quote'>Текст цитаты</p></code>"
+    "<code>CSS: <code>.quote::before { content: '«'; }</code> — кавычка перед текстом",
+    "<code>CSS: <code>.quote::after { content: '»'; }</code> — кавычка после текста",
+    "<code>HTML: <code><p class='quote'>Текст цитаты</p></code>"
   ],
   "sampleFiles": {
     "html": "sample.html",

@@ -3,7 +3,7 @@
   "title": "Break и continue",
   "difficulty": "easy",
   "points": 50,
-  "passThreshold": 70,
+  "passThreshold": 80,
   "tags": ["python"],
   "description": "Break и continue",
   "requirements": ["Вывести числа от 1 до 10","Пропустить число 5 через continue","Остановиться после 7 через break"],

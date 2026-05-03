@@ -11,7 +11,7 @@ export default class Task091Validator {
         checks.push({
             label: 'HTML: элемент с class="quote"',
             passed: hasQuote,
-            hint: 'Добавьте <p class="quote">Текст цитаты</p>'
+            hint: 'Добавьте &lt;p class="quote"&lt;Текст цитаты&lt;/p&gt;'
         });
         if (hasQuote) score += 30;
 

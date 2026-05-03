@@ -117,7 +117,7 @@ for entry in "${TASKS[@]}"; do
   "title": "$title",
   "difficulty": "easy",
   "points": 50,
-  "passThreshold": 70,
+  "passThreshold": 80,
   "tags": ["python"],
   "description": "$title",
   "requirements": $reqs,
@@ -152,7 +152,7 @@ export default class Task${id}PyValidator extends BaseValidator {
       checks.push({ name: "Используется print()", passed: false });
     }
 
-    return { passed: score >= (config.passThreshold || 70), score, checks };
+    return { passed: score >= (config.passThreshold || 80), score, checks };
   }
 }
 JSEOF

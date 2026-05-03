@@ -8,8 +8,8 @@
   "timeLimit": 10,
   "description": "Стилизуйте последний элемент списка с помощью псевдокласса :last-child",
   "requirements": [
-    "HTML: Создайте <code><ul></code> с тремя <code><li></code>",
-    "CSS: <code>li:last-child { color: green; }</code> — последний пункт зелёный"
+    "<code>HTML: Создайте <code><ul></code> с тремя <code><li></code>",
+    "<code>CSS: <code>li:last-child { color: green; }</code> — последний пункт зелёный"
   ],
   "sampleFiles": {
     "html": "sample.html",

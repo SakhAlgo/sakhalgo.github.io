@@ -47,7 +47,7 @@ export class EducationalPlatform {
       let firstTask;
       if (this._filter && this._filter.startsWith("course-")) {
         const courseId = this._filter.replace("course-", "");
-        firstTask = this.manifest.find(t => t.courseId === courseId);
+        firstTask = this.manifest.find((t) => t.courseId === courseId);
       }
       if (!firstTask) {
         firstTask = this.manifest[0];
@@ -62,13 +62,19 @@ export class EducationalPlatform {
        TASK LOADING
     ══════════════════════════════════════════ */
 
-    _getCourseDir(courseId) {
-        return courseId === 'html-css-basics' ? 'html-css-basics' :
-            courseId === 'html-css-basics-2' ? 'html-css-basics-2' :
-            courseId === 'html-css-basics-3' ? 'html-css-basics-3' :
-            courseId === 'js-basics' ? 'js-basics' :
-            courseId === 'python-basics' ? 'python-basics' : '';
-    }
+  _getCourseDir(courseId) {
+    return courseId === "html-css-basics"
+      ? "html-css-basics"
+      : courseId === "html-css-basics-2"
+        ? "html-css-basics-2"
+        : courseId === "html-css-basics-3"
+          ? "html-css-basics-3"
+          : courseId === "js-basics"
+            ? "js-basics"
+            : courseId === "python-basics"
+              ? "python-basics"
+              : "";
+  }
 
   async loadTask(taskId) {
     const taskInfo = this.manifest.find((t) => t.id === taskId);
@@ -84,7 +90,9 @@ export class EducationalPlatform {
     }
 
     const courseDir = this._getCourseDir(taskInfo.courseId);
-    const taskUrlPrefix = courseDir ? `courses/${courseDir}/${taskInfo.taskPath}` : taskInfo.taskPath;
+    const taskUrlPrefix = courseDir
+      ? `courses/${courseDir}/${taskInfo.taskPath}`
+      : taskInfo.taskPath;
 
     // Загрузить конфиг
     let config = {};
@@ -107,7 +115,9 @@ export class EducationalPlatform {
     // Загрузить валидатор
     let ValidatorClass;
     try {
-      const mod = await import(`../../courses/${courseDir}/validators/${taskInfo.validator}`);
+      const mod = await import(
+        `../../courses/${courseDir}/validators/${taskInfo.validator}`
+      );
       ValidatorClass = mod.default;
     } catch (e) {
       this.toast("Ошибка загрузки валидатора", "error");
@@ -115,7 +125,7 @@ export class EducationalPlatform {
     }
 
     // Восстановить код пользователя или взять шаблон
-    const isPythonCourse = taskInfo.courseId === 'python-basics';
+    const isPythonCourse = taskInfo.courseId === "python-basics";
     const savedCode = StorageManager.loadCode(taskId);
     let userCode;
     if (savedCode) {
@@ -132,19 +142,24 @@ export class EducationalPlatform {
       config,
       samples,
       validator: new ValidatorClass(),
-      passThreshold: config.passThreshold || 70,
+      passThreshold: config.passThreshold || 80,
     };
 
     this.renderTaskList();
 
     // Показываем нужные вкладки в зависимости от курса
-    this.editor.setMode(isPythonCourse ? 'python' : 'web');
+    this.editor.setMode(isPythonCourse ? "python" : "web");
 
-    this.editor.setAll(userCode.html, userCode.css, userCode.js, userCode.py || '');
+    this.editor.setAll(
+      userCode.html,
+      userCode.css,
+      userCode.js,
+      userCode.py || "",
+    );
     // setMode() уже переключает активную вкладку, но для web-курсов
     // по умолчанию показываем HTML
-    if (!isPythonCourse && this.editor.activeTab !== 'html') {
-      this.editor.switchTab('html');
+    if (!isPythonCourse && this.editor.activeTab !== "html") {
+      this.editor.switchTab("html");
     }
 
     // Очистить превью если нет сохранённого кода (первое открытие)
@@ -155,7 +170,7 @@ export class EducationalPlatform {
     this._renderSample();
     // Для Python-задач сразу запускаем эталон (результат sample.py)
     if (isPythonCourse && samples.py) {
-      this.preview.renderSample('', '', '', samples.py);
+      this.preview.renderSample("", "", "", samples.py);
     }
     this._updateTaskHeader(taskInfo, config);
 
@@ -294,6 +309,40 @@ highlight {
 }`,
         js: ``,
       },
+      "085": {
+        html: `
+<!doctype html>
+<html lang="en">
+  <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  </head>
+    <body>
+      <p id="main" class="text">Какого цвета этот текст?</p>
+    </body>
+</html>`,
+        css: ``,
+        js: ``,
+      },
+      "086": {
+        html: `
+<!doctype html>
+<html lang="en">
+  <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  </head>
+    <body>
+      <div>
+          <p>Наследованный стиль</p>
+      </div>
+    </body>
+</html>`,
+        css: ``,
+        js: ``,
+      },
     };
 
     // Возвращаем шаблон для конкретного задания или базовый шаблон
@@ -317,13 +366,19 @@ highlight {
   runCode() {
     if (!this.currentTask) return;
     const code = this._getEditorCode();
-    const isPython = this.currentTask.courseId === 'python-basics';
+    const isPython = this.currentTask.courseId === "python-basics";
     if (isPython) {
       this.preview.renderPython(code.py);
     } else {
       this.preview.renderUser(code.html, code.css, code.js);
     }
-    StorageManager.saveCode(this.currentTask.id, code.html, code.css, code.js, code.py);
+    StorageManager.saveCode(
+      this.currentTask.id,
+      code.html,
+      code.css,
+      code.js,
+      code.py,
+    );
     this.setStatus("Код запущен", "success");
   }
 
@@ -344,11 +399,11 @@ highlight {
       // Ждём рендера
       await new Promise((r) => setTimeout(r, 300));
 
-      const isPython = this.currentTask.courseId === 'python-basics';
+      const isPython = this.currentTask.courseId === "python-basics";
       const result = await this.currentTask.validator.validate(
         isPython ? code.py : code.html,
-        isPython ? '' : code.css,
-        isPython ? '' : code.js,
+        isPython ? "" : code.css,
+        isPython ? "" : code.js,
         this.currentTask.samples,
         this.currentTask.config,
       );
@@ -453,7 +508,11 @@ highlight {
           const theoryInfo = module?.theoryFile
             ? { theoryFile: module.theoryFile, courseDir }
             : null;
-          renderedContent += this._renderTopic(topic, topics[topic], theoryInfo);
+          renderedContent += this._renderTopic(
+            topic,
+            topics[topic],
+            theoryInfo,
+          );
         });
       }
     }
@@ -528,15 +587,15 @@ highlight {
   _formatTopicTitle(topic) {
     // Преобразуем topic в читаемый заголовок
     const titles = {
-      "headings": "Заголовки страницы",
+      headings: "Заголовки страницы",
       "text-formatting": "Форматирование текста",
-      "lists": "Списки",
-      "borders": "Границы",
-      "forms": "Формы",
-      "comments": "Комментарии",
-      "structure": "Группировка элементов",
-      "tables": "Таблицы",
-      "media": "Медиа элементы",
+      lists: "Списки",
+      borders: "Границы",
+      forms: "Формы",
+      comments: "Комментарии",
+      structure: "Группировка элементов",
+      tables: "Таблицы",
+      media: "Медиа элементы",
       "css-colors": "Цвета в CSS",
       "css-dimensions": "Размеры элементов",
       "css-spacing": "Отступы и границы",
@@ -667,9 +726,9 @@ highlight {
   _renderSample() {
     if (!this.currentTask) return;
     const { html, css, js, py } = this.currentTask.samples;
-    const isPython = this.currentTask.courseId === 'python-basics';
+    const isPython = this.currentTask.courseId === "python-basics";
     if (isPython && py) {
-      this.preview.renderSample('', '', '', py);
+      this.preview.renderSample("", "", "", py);
     } else {
       this.preview.renderSample(html, css, js);
     }
@@ -833,7 +892,7 @@ highlight {
           if (welcomeScreen) welcomeScreen.classList.add("hidden");
           // Загрузить первое задание выбранного курса
           const courseId = value.replace("course-", "");
-          const firstTask = this.manifest.find(t => t.courseId === courseId);
+          const firstTask = this.manifest.find((t) => t.courseId === courseId);
           if (firstTask) {
             this.loadTask(firstTask.id);
           }

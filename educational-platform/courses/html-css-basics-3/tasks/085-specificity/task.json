@@ -8,9 +8,10 @@
   "timeLimit": 10,
   "description": "Разберитесь с весом селекторов: тег < класс < id",
   "requirements": [
-    "CSS: Задайте <code>p { color: blue; }</code> (вес 0,0,1)",
-    "CSS: Задайте <code>.text { color: green; }</code> (вес 0,1,0) — переопределит тег",
-    "CSS: Задайте <code>#main { color: red; }</code> (вес 1,0,0) — победит все"
+    "Вводит по очереди CSS правила для одного и того же элемента и наблюдает, как меняется цвет текста",
+    "<code>CSS: Задайте <code>p { color: blue; }",
+    "<code>CSS: Задайте <code>.text { color: green; } переопределит тег",
+    "<code>CSS: Задайте <code>#main { color: red; } победит все"
   ],
   "sampleFiles": {
     "html": "sample.html",

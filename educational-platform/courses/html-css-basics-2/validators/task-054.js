@@ -32,11 +32,11 @@ export default class Task054Validator {
         if (correctText) score += 20;
 
         // Проверка 3: атрибут href
-        const hasHref = /<a[^>]*\shref\s*=\s*"https:\/\/example\.com"[^>]*>/i.test(html);
+        const hasHref = /<a[^>]*\shref\s*=\s*"#"[^>]*>/i.test(html);
         checks.push({
-            label: 'href="https://example.com"',
+            label: 'href="#"',
             passed: hasHref,
-            hint: 'Добавьте атрибут href="https://example.com"'
+            hint: 'Добавьте атрибут href="#"'
         });
         if (hasHref) score += 30;
 

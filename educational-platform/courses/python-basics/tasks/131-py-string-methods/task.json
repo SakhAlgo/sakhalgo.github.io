@@ -3,7 +3,7 @@
   "title": "Методы строк",
   "difficulty": "easy",
   "points": 50,
-  "passThreshold": 70,
+  "passThreshold": 80,
   "tags": ["python"],
   "description": "Методы строк",
   "requirements": ["Создать текст = Hello World","Вывести в верхнем регистре","Вывести в нижнем регистре"],

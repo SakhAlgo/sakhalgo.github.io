@@ -3,7 +3,7 @@
   "title": "Сумма чисел циклом",
   "difficulty": "easy",
   "points": 50,
-  "passThreshold": 70,
+  "passThreshold": 80,
   "tags": ["python"],
   "description": "Сумма чисел циклом",
   "requirements": ["Посчитать сумму чисел от 1 до 100","Вывести результат"],

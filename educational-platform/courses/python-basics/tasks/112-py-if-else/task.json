@@ -3,7 +3,7 @@
   "title": "If/else",
   "difficulty": "easy",
   "points": 50,
-  "passThreshold": 70,
+  "passThreshold": 80,
   "tags": ["python"],
   "description": "If/else",
   "requirements": ["Создать x = 3","Если x > 5 вывести Больше, иначе Меньше или равно"],

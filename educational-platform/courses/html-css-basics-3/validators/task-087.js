@@ -14,7 +14,7 @@ export default class Task087Validator {
         checks.push({
             label: 'HTML: есть все заголовки h1, h2, h3',
             passed: allHeadings,
-            hint: 'Добавьте <h1>, <h2> и <h3> в HTML'
+            hint: 'Добавьте h1, h2 и h3 в HTML'
         });
         if (allHeadings) score += 30;
 

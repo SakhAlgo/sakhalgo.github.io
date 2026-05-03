@@ -8,8 +8,8 @@
   "timeLimit": 10,
   "description": "Создайте раздел страницы с помощью тега section",
   "requirements": [
-    "HTML: Используйте тег <code>section</code>",
-    "Внутри section разместите в h2 'О нас', а в абзац 'Текст раздела'"
+    "HTML: <code>Используйте тег <code>section</code>",
+    "<code>Внутри section разместите в h2 'О нас', а в тег p 'Текст раздела'"
   ],
   "sampleFiles": {
     "html": "sample.html",

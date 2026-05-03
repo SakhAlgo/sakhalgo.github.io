@@ -1,33 +1,47 @@
 export default class Task105PyValidator {
   async validate(pyCode, css, js, samples, config) {
-    const checks = [];
-
-    
-    if (pyCode && pyCode.trim().length > 0) {
-      checks.push({ name: "Код предоставлен", passed: true, label: "Код предоставлен" });
-    }
-
-    if (/name\s*=/.test(pyCode) && /age\s*=/.test(pyCode)) {
-      checks.push({ name: "Переменные name и age объявлены", passed: true, label: "Переменные name и age объявлены" });
-    }
-
-    if (/f["\x27]/.test(pyCode)) {
-      checks.push({ name: "Используется f-строка", passed: true, label: "Используется f-строка" });
-    }
-
-    if (/\{name\}/.test(pyCode) && /\{age\}/.test(pyCode)) {
-      checks.push({ name: "Подстановка name и age в f-строку", passed: true, label: "Подстановка name и age в f-строку" });
-    }
-
-    if (/print\s*\(/.test(pyCode)) {
-      checks.push({ name: "Используется print()", passed: true, label: "Используется print()" });
-    }
-
+    const checks = [
+      {
+        name: "Код предоставлен",
+        label: "Код предоставлен",
+        passed: Boolean(pyCode && pyCode.trim().length > 0),
+      },
+      {
+        name: "Переменные name и age объявлены",
+        label: "Переменные name и age объявлены",
+        passed: /name\s*=/.test(pyCode) && /age\s*=/.test(pyCode),
+      },
+      {
+        name: "Используется f-строка",
+        label: "Используется f-строка",
+        passed: /f["']/.test(pyCode),
+      },
+      {
+        name: "Подстановка name и age в f-строку",
+        label: "Подстановка name и age в f-строку",
+        passed: /\{name\}/.test(pyCode) && /\{age\}/.test(pyCode),
+      },
+      {
+        name: "Используется print()",
+        label: "Используется print()",
+        passed: /print\s*\(/.test(pyCode),
+      },
+    ];
 
     const totalChecks = checks.length;
-    const pointsPerCheck = Math.floor(100 / totalChecks);
-    const passed = checks.filter(c => c.passed).length;
-    const score = passed * pointsPerCheck;
-    return { passed: score >= (config.passThreshold || 70), score, checks };
+    const pointsPerCheck = 100 / totalChecks;
+
+    const score = checks.reduce(
+      (sum, check) => sum + (check.passed ? pointsPerCheck : 0),
+      0
+    );
+
+    const passThreshold = config?.passThreshold ?? 80;
+
+    return {
+      passed: score >= passThreshold,
+      score: Math.round(score),
+      checks,
+    };
   }
 }

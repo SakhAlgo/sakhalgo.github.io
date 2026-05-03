@@ -3,7 +3,7 @@
   "title": "Создание словаря",
   "difficulty": "easy",
   "points": 50,
-  "passThreshold": 70,
+  "passThreshold": 80,
   "tags": ["python"],
   "description": "Создание словаря",
   "requirements": ["Создать словарь person с ключами name и age","Значения: Анна и 25","Вывести словарь"],

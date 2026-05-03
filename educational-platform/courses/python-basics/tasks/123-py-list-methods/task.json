@@ -3,7 +3,7 @@
   "title": "Методы списков",
   "difficulty": "easy",
   "points": 50,
-  "passThreshold": 70,
+  "passThreshold": 80,
   "tags": ["python"],
   "description": "Методы списков",
   "requirements": ["Создать список [1, 2, 3]","Добавить 4 через append()","Удалить 2 через remove()","Вывести результат"],

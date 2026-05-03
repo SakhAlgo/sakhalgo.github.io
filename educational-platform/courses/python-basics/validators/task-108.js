@@ -1,29 +1,43 @@
 export default class Task108PyValidator {
   async validate(pyCode, css, js, samples, config) {
-    const checks = [];
 
-    
-    if (pyCode && pyCode.trim().length > 0) {
-      checks.push({ name: "Код предоставлен", passed: true, label: "Код предоставлен" });
-    }
-
-    if (/def\s+square\s*\(\s*x\s*\)/.test(pyCode)) {
-      checks.push({ name: "Функция square(x) объявлена", passed: true, label: "Функция square(x) объявлена" });
-    }
-
-    if (/\breturn\b/.test(pyCode)) {
-      checks.push({ name: "Функция возвращает значение", passed: true, label: "Функция возвращает значение" });
-    }
-
-    if (/square\s*\(\s*5\s*\)/.test(pyCode)) {
-      checks.push({ name: "square(5) вызвана", passed: true, label: "square(5) вызвана" });
-    }
-
+    const checks = [
+      {
+        name: "Код предоставлен",
+        label: "Код предоставлен",
+        passed: Boolean(pyCode && pyCode.trim().length > 0),
+      },
+      {
+        name: "Функция square(x) объявлена",
+        label: "Функция square(x) объявлена",
+        passed: /def\s+square\s*\(\s*x\s*\)/.test(pyCode),
+      },
+      {
+        name: "Функция возвращает значение",
+        label: "Функция возвращает значение",
+        passed: /\breturn\b/.test(pyCode),
+      },
+      {
+        name: "square(5) вызвана",
+        label: "square(5) вызвана",
+        passed: /square\s*\(\s*5\s*\)/.test(pyCode),
+      },
+    ];
 
     const totalChecks = checks.length;
-    const pointsPerCheck = Math.floor(100 / totalChecks);
-    const passed = checks.filter(c => c.passed).length;
-    const score = passed * pointsPerCheck;
-    return { passed: score >= (config.passThreshold || 70), score, checks };
+    const pointsPerCheck = 100 / totalChecks;
+
+    const score = checks.reduce(
+      (sum, check) => sum + (check.passed ? pointsPerCheck : 0),
+      0
+    );
+
+    const passThreshold = config?.passThreshold ?? 80;
+
+    return {
+      passed: score >= passThreshold,
+      score: Math.round(score),
+      checks,
+    };
   }
 }

@@ -8,8 +8,8 @@
   "timeLimit": 10,
   "description": "Примените один стиль к нескольким элементам через группировку селекторов",
   "requirements": [
-    "CSS: Сгруппируйте <code>h1, h2, h3 { color: darkblue; }</code> — все заголовки одного цвета",
-    "HTML: Создайте <code><h1></code>, <code><h2></code> и <code><h3></code>"
+    "<code>CSS: Сгруппируйте h1, h2, h3 { color: darkblue; }</code> — все заголовки одного цвета",
+    "<code>HTML: Создайте h1, h2 и h3"
   ],
   "sampleFiles": {
     "html": "sample.html",
