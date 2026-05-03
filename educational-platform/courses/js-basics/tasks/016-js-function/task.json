@@ -10,7 +10,7 @@
   "requirements": [
     "Функция должна называться <code>sayHello",
     "Функция должна использовать <code>console.log",
-    "Вывод: <code>Hello"
+    "Вызови функцию."
   ],
   "sampleFiles": {
     "html": "sample.html",

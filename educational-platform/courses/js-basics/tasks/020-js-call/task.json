@@ -8,9 +8,10 @@
   "timeLimit": 10,
   "description": "Создайте функцию и вызовите её",
   "requirements": [
-    "Создать функцию <code>start",
-    "Вызвать функцию <code>start",
-    "Вывод: <code>Started"
+    "Создать функцию <code>start</code> с одним параметром <code>name</code>",
+    "Функция должна выводить <code>Started </code> + значение параметра",
+    "Вызвать функцию <code>start</code> с аргументом <code>'server'</code>",
+    "Вывод: <code>Started server</code>"
   ],
   "sampleFiles": {
     "html": "sample.html",

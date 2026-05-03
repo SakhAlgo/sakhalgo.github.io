@@ -8,14 +8,24 @@ export default class Task016Validator {
       passed: hasFunc,
       hint: "Создайте функцию sayHello()",
     });
-    if (hasFunc) score += 50;
-    const hasReturn = /return\s+['\"]Hello['\"]/i.test(js);
+    if (hasFunc) score += 30;
+    const hasReturn = /console\.log\s*\(?\s*['\"]Hello['\"]/i.test(js);
     checks.push({
-      label: "Возврат значения Hello",
+      label: "Добавьте console.log()",
       passed: hasReturn,
-      hint: 'Добавьте return \"Hello\"',
+      hint: 'Добавьте console.log() \"Hello\"',
     });
-    if (hasReturn) score += 50;
+    if (hasReturn) score += 30;
+
+    const hasCall = /(?<!function\s+)sayHello\s*\(\s*\)/i.test(js);
+    checks.push({
+      label: "Вызов функции sayHello",
+      passed: hasCall,
+      hint: 'Добавьте вызов функции sayHello()',
+    });
+    if (hasCall) score += 40;
+
+
     return { passed: score >= (config.passThreshold || 70), score, checks };
   }
 }
