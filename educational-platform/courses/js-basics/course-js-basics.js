@@ -487,7 +487,7 @@ export const tasksCourseJsBasics = [
     courseId: "js-basics",
     moduleId: "js-loops",
     title: "Факториал (цикл for)",
-    difficulty: "hard",
+    difficulty: "medium",
     points: 125,
     tags: ["js", "loop", "factorial", "function"],
     validator: "task-079.js",
@@ -499,7 +499,7 @@ export const tasksCourseJsBasics = [
 
 export const courseJsBasics = {
   id: "js-basics",
-  title: "Основы JavaScript",
+  title: "⚡ Основы JavaScript",
   description: "Программирование на JavaScript",
   icon: "⚡",
   modules: [

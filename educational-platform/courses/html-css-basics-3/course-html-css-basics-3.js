@@ -194,9 +194,9 @@ export const tasksCourseHtmlCssBasics3 = [
 
 export const courseHtmlCssBasics3 = {
   id: "html-css-basics-3",
-  title: "Основы HTML & CSS Тест &#8546;",
+  title: "🌐 Основы HTML & CSS Тест &#8546;",
   description: "Изучите семантические теги HTML и продвинутый CSS",
-  icon: "🎯",
+  icon: "🌐",
   modules: [
     {
       id: "html-semantic",

@@ -10,7 +10,7 @@
     "Функция должна возвращать result: return result",
     "Вызовите factorial(5) и выведите результат в #output"
   ],
-  "difficulty": "hard",
+  "difficulty": "medium",
   "points": 125,
   "tags": ["js", "loop", "factorial", "function"],
   "sample": {

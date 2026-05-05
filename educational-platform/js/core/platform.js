@@ -33,16 +33,29 @@ export class EducationalPlatform {
     this.bindUI();
     this.preview.clearUser();
 
-    if (this._filter) {
+    if (this._filter === "standalone-react-basics") {
+      // Если выбран standalone React курс — открываем iframe
       const welcomeScreen = document.getElementById("welcomeScreen");
       if (welcomeScreen) welcomeScreen.classList.add("hidden");
-    }
-
-    // Восстановить последнее задание или загрузить первое
-    const lastId = localStorage.getItem("educode_last_task");
-    if (lastId) {
-      await this.loadTask(lastId);
+      this._openEmbeddedCourse("courses/react-basics/index.html");
     } else {
+      if (this._filter) {
+        const welcomeScreen = document.getElementById("welcomeScreen");
+        if (welcomeScreen) welcomeScreen.classList.add("hidden");
+      }
+
+      // Восстановить последнее задание или загрузить первое
+      const lastId = localStorage.getItem("educode_last_task");
+      if (lastId && this._filter && this._filter.startsWith("course-")) {
+        // Только если lastId принадлежит текущему курсу
+        const courseId = this._filter.replace("course-", "");
+        const taskInfo = this.manifest.find((t) => t.id === lastId);
+        if (taskInfo && taskInfo.courseId === courseId) {
+          await this.loadTask(lastId);
+          return;
+        }
+      }
+
       // Если выбран курс, загрузить первое задание этого курса
       let firstTask;
       if (this._filter && this._filter.startsWith("course-")) {
@@ -477,9 +490,21 @@ highlight {
     let renderedContent = "";
     let topics = this._groupTasksByTopic();
 
-    if (!this._filter || !this._filter.startsWith("course-")) {
+    if (!this._filter) {
       container.innerHTML =
         '<div class="task-list-loading"><span>Выберите курс, чтобы увидеть задания</span></div>';
+      return;
+    }
+
+    if (this._filter === "standalone-react-basics") {
+      container.innerHTML = `
+        <div class="task-list-loading" style="text-align:center;gap:8px;">
+          <span style="font-size:1.5rem;">⚛️</span>
+          <span>React. Теория и тесты</span>
+          <span style="font-size:11px;color:var(--text-muted);">
+            Курс выполняется в VSC<br>
+          </span>
+        </div>`;
       return;
     }
 
@@ -541,6 +566,7 @@ highlight {
             `<option value="course-${course.id}">${course.title}</option>`,
         )
         .join("")}
+      <option value="standalone-react-basics">⚛️ React. Теория и тесты</option>
     `;
     select.value = this._filter;
   }
@@ -656,7 +682,12 @@ highlight {
   }
 
   _getSelectedCourseProgress() {
-    if (!this._filter || !this._filter.startsWith("course-")) {
+    // Для standalone-курсов прогресс не тр��ается
+    if (!this._filter || this._filter === "standalone-react-basics") {
+      return { completed: 0, total: 0, percent: 0, avgScore: 0, points: 0 };
+    }
+
+    if (!this._filter.startsWith("course-")) {
       return { completed: 0, total: 0, percent: 0, avgScore: 0, points: 0 };
     }
 
@@ -886,11 +917,24 @@ highlight {
       ?.addEventListener("change", (event) => {
         const value = event.target.value;
         const welcomeScreen = document.getElementById("welcomeScreen");
-        if (value) {
+
+        if (value === "standalone-react-basics") {
+          // Standalone React курс
           this._filter = value;
           localStorage.setItem("educode_selected_course", value);
           if (welcomeScreen) welcomeScreen.classList.add("hidden");
-          // Загрузить первое задание выбранного курса
+          this._openEmbeddedCourse("courses/react-basics/index.html");
+          this.renderTaskList();
+          this.updateGlobalProgress();
+        } else if (value) {
+          // Обычный курс платформы
+          this._filter = value;
+          localStorage.setItem("educode_selected_course", value);
+          if (welcomeScreen) welcomeScreen.classList.add("hidden");
+
+          // Закрываем iframe, если был открыт standalone-курс
+          this._closeEmbeddedCourse();
+
           const courseId = value.replace("course-", "");
           const firstTask = this.manifest.find((t) => t.courseId === courseId);
           if (firstTask) {
@@ -899,6 +943,7 @@ highlight {
         } else {
           this._filter = "";
           localStorage.removeItem("educode_selected_course");
+          this._closeEmbeddedCourse();
           if (welcomeScreen) welcomeScreen.classList.remove("hidden");
         }
         this.renderTaskList();
@@ -1062,5 +1107,81 @@ highlight {
       },
       { once: true },
     );
+  }
+
+  /* ══════════════════════════════════════════
+       EMBEDDED COURSE (standalone SPA)
+     ══════════════════════════════════════════ */
+
+  /**
+   * Открывает standalone-курс в iframe вместо редактора.
+   * Скрывает шапку задания, рабочую область и приветствие.
+   * @param {string} coursePath — путь к index.html курса (относительно корня)
+   */
+  _openEmbeddedCourse(coursePath) {
+    const welcome = document.getElementById("welcomeScreen");
+    const workspace = document.getElementById("workspace");
+    const taskHeader = document.getElementById("taskHeader");
+    const mainContent = document.getElementById("mainContent");
+
+    // Скрываем шапку задания, рабочую область и приветствие
+    if (welcome) welcome.classList.add("hidden");
+    if (workspace) workspace.style.display = "none";
+    if (taskHeader) taskHeader.style.display = "none";
+
+    // Если контейнер курса уже существует — просто показываем его
+    let container = document.getElementById("embeddedCourseContainer");
+    if (container) {
+      container.style.display = "";
+      return;
+    }
+
+    // Создаём контейнер курса
+    container = document.createElement("div");
+    container.id = "embeddedCourseContainer";
+    container.className = "embedded-course";
+    container.innerHTML = `
+      <iframe
+        src="${coursePath}"
+        class="embedded-course-frame"
+        sandbox="allow-scripts allow-modals allow-same-origin allow-forms"
+        title="⚛️ React. Теория и тесты"
+      ></iframe>
+    `;
+
+    mainContent.appendChild(container);
+
+    // Обработчик кнопки «Вернуться»
+    document
+      .getElementById("closeEmbeddedCourse")
+      ?.addEventListener("click", () => this._closeEmbeddedCourse());
+  }
+
+  /**
+   * Закрывает iframe курса и восстанавливает рабочую область.
+   */
+  _closeEmbeddedCourse() {
+    const container = document.getElementById("embeddedCourseContainer");
+    const workspace = document.getElementById("workspace");
+    const taskHeader = document.getElementById("taskHeader");
+    const welcome = document.getElementById("welcomeScreen");
+
+    // Прячем контейнер курса
+    if (container) container.style.display = "none";
+
+    // Восстанавливаем шапку задания
+    if (taskHeader) taskHeader.style.display = "";
+
+    // Восстанавливаем рабочую область (если было открыто задание)
+    if (this.currentTask && workspace) {
+      workspace.style.display = "";
+      this._updateTaskHeader(this.currentTask, this.currentTask.config);
+      this._renderSample();
+    } else {
+      // Если не было открыто задание и курс не выбран — показываем приветствие
+      if (welcome && !this._filter) {
+        welcome.classList.remove("hidden");
+      }
+    }
   }
 }

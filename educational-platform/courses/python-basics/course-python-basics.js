@@ -439,7 +439,7 @@ export const tasksCoursePythonBasics = [
 
 export const coursePythonBasics = {
   id: "python-basics",
-  title: "Основы Python",
+  title: "🐍 Основы Python",
   description: "Программирование на Python",
   icon: "🐍",
   modules: [

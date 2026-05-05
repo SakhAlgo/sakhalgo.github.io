@@ -1573,7 +1573,8 @@ iframe {
   color: inherit;
   font-size: inherit;
 }
-.theory-content ul, .theory-content ol {
+.theory-content ul,
+.theory-content ol {
   margin: 8px 0 16px 24px;
   color: var(--text-secondary);
 }
@@ -1602,12 +1603,25 @@ iframe {
 .theory-content tr:nth-child(even) td {
   background: var(--bg-surface);
 }
-.theory-content .kw { color: #ff7b72; }
-.theory-content .str { color: #a5d6ff; }
-.theory-content .cm { color: #8b949e; font-style: italic; }
-.theory-content .fn { color: #d2a8ff; }
-.theory-content .num { color: #79c0ff; }
-.theory-content .op { color: #ffa657; }
+.theory-content .kw {
+  color: #ff7b72;
+}
+.theory-content .str {
+  color: #a5d6ff;
+}
+.theory-content .cm {
+  color: #8b949e;
+  font-style: italic;
+}
+.theory-content .fn {
+  color: #d2a8ff;
+}
+.theory-content .num {
+  color: #79c0ff;
+}
+.theory-content .op {
+  color: #ffa657;
+}
 
 /* ─── Utilities ─────────────────────────────────────── */
 .hidden {
@@ -1732,4 +1746,37 @@ iframe {
   display: flex;
   flex-direction: column;
   gap: 2px;
+}
+
+/* ─── Embedded Course (standalone iframe) ────────────── */
+.embedded-course {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+}
+
+.embedded-course-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 16px;
+  height: var(--header-h, 56px);
+  background: var(--bg-surface);
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.embedded-course-header span {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.embedded-course-frame {
+  flex: 1;
+  width: 100%;
+  border: none;
+  background: var(--bg-base);
+  min-height: 0;
 }
