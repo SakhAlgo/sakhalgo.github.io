@@ -38,6 +38,11 @@ export class EducationalPlatform {
       const welcomeScreen = document.getElementById("welcomeScreen");
       if (welcomeScreen) welcomeScreen.classList.add("hidden");
       this._openEmbeddedCourse("courses/react-basics/index.html");
+    } else if (this._filter === "standalone-roblox-studio") {
+      // Если выбран standalone Roblox Studio курс — открываем iframe
+      const welcomeScreen = document.getElementById("welcomeScreen");
+      if (welcomeScreen) welcomeScreen.classList.add("hidden");
+      this._openEmbeddedCourse("courses/roblox-studio/index.html");
     } else {
       if (this._filter) {
         const welcomeScreen = document.getElementById("welcomeScreen");
@@ -502,7 +507,19 @@ highlight {
           <span style="font-size:1.5rem;">⚛️</span>
           <span>React. Теория и тесты</span>
           <span style="font-size:11px;color:var(--text-muted);">
-            Курс выполняется в VSC<br>
+            Курс выполняется в браузере<br>
+          </span>
+        </div>`;
+      return;
+    }
+
+    if (this._filter === "standalone-roblox-studio") {
+      container.innerHTML = `
+        <div class="task-list-loading" style="text-align:center;gap:8px;">
+          <span style="font-size:1.5rem;">🎮</span>
+          <span>Roblox Studio. Теория и тесты</span>
+          <span style="font-size:11px;color:var(--text-muted);">
+            Курс выполняется в Roblox Studio<br>
           </span>
         </div>`;
       return;
@@ -567,6 +584,7 @@ highlight {
         )
         .join("")}
       <option value="standalone-react-basics">⚛️ React. Теория и тесты</option>
+      <option value="standalone-roblox-studio">🎮 Roblox Studio. Теория и тесты</option>
     `;
     select.value = this._filter;
   }
@@ -682,8 +700,12 @@ highlight {
   }
 
   _getSelectedCourseProgress() {
-    // Для standalone-курсов прогресс не тр��ается
-    if (!this._filter || this._filter === "standalone-react-basics") {
+    // Для standalone-курсов прогресс не трогается
+    if (
+      !this._filter ||
+      this._filter === "standalone-react-basics" ||
+      this._filter === "standalone-roblox-studio"
+    ) {
       return { completed: 0, total: 0, percent: 0, avgScore: 0, points: 0 };
     }
 
@@ -926,6 +948,14 @@ highlight {
           this._openEmbeddedCourse("courses/react-basics/index.html");
           this.renderTaskList();
           this.updateGlobalProgress();
+        } else if (value === "standalone-roblox-studio") {
+          // Standalone Roblox Studio курс
+          this._filter = value;
+          localStorage.setItem("educode_selected_course", value);
+          if (welcomeScreen) welcomeScreen.classList.add("hidden");
+          this._openEmbeddedCourse("courses/roblox-studio/index.html");
+          this.renderTaskList();
+          this.updateGlobalProgress();
         } else if (value) {
           // Обычный курс платформы
           this._filter = value;
@@ -1136,6 +1166,11 @@ highlight {
       return;
     }
 
+    // Определяем заголовок iframe на основе пути
+    const frameTitle = coursePath.includes("roblox-studio")
+      ? "🎮 Roblox Studio. Теория и тесты"
+      : "⚛️ React. Теория и тесты";
+
     // Создаём контейнер курса
     container = document.createElement("div");
     container.id = "embeddedCourseContainer";
@@ -1145,7 +1180,7 @@ highlight {
         src="${coursePath}"
         class="embedded-course-frame"
         sandbox="allow-scripts allow-modals allow-same-origin allow-forms"
-        title="⚛️ React. Теория и тесты"
+        title="${frameTitle}"
       ></iframe>
     `;
 

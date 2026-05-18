@@ -20,7 +20,13 @@ function renderCurrentTheme() {
   let tasksHtml = "";
   theme.tasks.forEach((task, idx) => {
     const isCompleted = !!completedTasks[`${currentTheme}_${idx}`];
-    tasksHtml += `<div class="task-card ${isCompleted ? "completed" : ""}" data-task-idx="${idx}"><div class="task-header" onclick="toggleTaskBody(this, ${idx})"><div class="task-number">${isCompleted ? "✓" : idx + 1}</div><div class="task-info"><h4>${escapeHtml(task.title)}</h4><p>${escapeHtml(task.desc)}</p></div><div class="difficulty ${task.difficulty}">${task.difficulty === "easy" ? "Лёгкое" : "Среднее"}</div></div><div class="task-body" id="taskBody-${idx}"><div class="hint-box">💡 Подсказка: ${escapeHtml(task.hint)}</div><button class="btn btn-primary" onclick="toggleSolution(${idx})">📘 Показать решение</button><div class="solution-area" id="solution-${idx}"><div class="code-block"><div class="code-header">✅ Решение.</div><pre>${escapeHtmlPreserveSpaces(task.solution)}</pre></div></div><button class="btn" style="margin-top:12px" onclick="toggleComplete(${currentTheme}, ${idx})">${isCompleted ? "Отменить выполнение" : "✓ Отметить выполненным"}</button></div></div>`;
+    const difficultyLabel =
+      task.difficulty === "easy"
+        ? "Лёгкое"
+        : task.difficulty === "medium"
+          ? "Среднее"
+          : "Тяжелое";
+    tasksHtml += `<div class="task-card ${isCompleted ? "completed" : ""}" data-task-idx="${idx}"><div class="task-header" onclick="toggleTaskBody(this, ${idx})"><div class="task-number">${isCompleted ? "✓" : idx + 1}</div><div class="task-info"><h4>${escapeHtml(task.title)}</h4><p>${escapeHtml(task.desc)}</p></div><div class="difficulty ${task.difficulty}">${difficultyLabel}</div></div><div class="task-body" id="taskBody-${idx}"><div class="hint-box">💡 Подсказка: ${escapeHtml(task.hint)}</div><button class="btn btn-primary" onclick="toggleSolution(${idx})">📘 Показать решение</button><div class="solution-area" id="solution-${idx}"><div class="code-block"><div class="code-header">✅ Решение.</div><pre>${escapeHtmlPreserveSpaces(task.solution)}</pre></div></div><button class="btn" style="margin-top:12px" onclick="toggleComplete(${currentTheme}, ${idx})">${isCompleted ? "Отменить выполнение" : "✓ Отметить выполненным"}</button></div></div>`;
   });
   main.innerHTML = `<div class="card"><h2>${escapeHtml(theme.theory.title)}</h2><div class="subtitle">${escapeHtml(theme.theory.subtitle)}</div>${theme.theory.content}</div><h3 style="margin-bottom:20px">📋 Практические задания (10 заданий) — код с правильными отступами</h3><div class="tasks-section">${tasksHtml}</div><div class="nav-buttons"><button class="btn" ${currentTheme === 0 ? "disabled" : ""} onclick="prevTheme()">← Предыдущая тема</button><button class="btn btn-primary" onclick="nextTheme()">Следующая тема →</button></div>`;
 }

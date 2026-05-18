@@ -12,7 +12,7 @@ export class EditorManager {
             html: document.getElementById('htmlEditor'),
             css:  document.getElementById('cssEditor'),
             js:   document.getElementById('jsEditor'),
-            py:   document.getElementById('pyEditor')
+            py:   document.getElementById('pyEditor'),
         };
         this.lineNumbers  = document.getElementById('lineNumbers');
         this.tabs         = document.querySelectorAll('.tab-btn');
@@ -241,6 +241,6 @@ export class EditorManager {
             css:  this.getCSS(),
             js:   this.getJS(),
             py:   this.getPy()
-        }));
+       }));
     }
 }

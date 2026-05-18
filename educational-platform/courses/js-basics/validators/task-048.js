@@ -21,17 +21,6 @@ export default class Task048Validator {
     });
     if (hasAgeCheck) score += 15;
 
-    // Проверка вложенного if (hasLicense)
-    const hasNestedIf =
-      /if\s*\(\s*hasLicense\s*\)/.test(js) ||
-      /if\s*\(\s*hasLicense\s*===?\s*true\s*\)/.test(js);
-    checks.push({
-      label: "Проверка hasLicense внутри if",
-      passed: hasNestedIf,
-      hint: "Добавьте вложенный if (hasLicense)",
-    });
-    if (hasNestedIf) score += 15;
-
     // Проверка использования else
     const hasElse = /\belse\b/.test(js);
     checks.push({
@@ -39,7 +28,7 @@ export default class Task048Validator {
       passed: hasElse,
       hint: "Добавьте блок else",
     });
-    if (hasElse) score += 10;
+    if (hasElse) score += 25;
 
     // Проверка возврата 'drive'
     const returnsDrive = /return\s+['"]drive['"]/.test(js);

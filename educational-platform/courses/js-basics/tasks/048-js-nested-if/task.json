@@ -9,7 +9,7 @@
   "description": "Напишите функцию canAccess, которая принимает возраст (age) и наличие прав (hasLicense - булево). Функция должна возвращать 'drive' если возраст >= 18 и есть права, 'no license' если возраст >= 18 и нет прав, 'too young' если возраст < 18",
   "requirements": [
     "Функция должна называться <code>canAccess",
-    "Использовать вложенные if/else",
+    "Использовать if/else",
     "Принимать два параметра: <code>age и hasLicense",
     "Возвращать <code>'drive' если age >= 18 и hasLicense === true",
     "Возвращать '<code>no license' если age >= 18 и hasLicense === false",

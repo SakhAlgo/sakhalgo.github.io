@@ -266,3 +266,80 @@ useDispatch и useSelector
    - Минимум багов, корректная работа в современных браузерах.
 
 **Твоя главная задача — выдать полностью законченный HTML-файл, который я могу сохранить как `.html` и открыть в браузере, и сразу видеть удобный, красивый курс с теорией, заданиями, кнопками решений и прогрессом.**
+---------------
+The user wants 4 more beginner-level topic names. Let me think about what foundational topics haven't been covered yet that are suitable for beginners:
+
+Сценарии (Scripts) и переменные - Basic Lua scripting: variables, functions, conditions, loops - This is actually quite fundamental but seems to be taught implicitly through tasks rather than as a standalone topic.
+Материалы и освещение (Materials & Lighting) - Working with materials, lighting properties, environment settings - Visual customization.
+Звуки и музыка (Sounds & Music) - Adding sound effects, background music, Sound objects in Roblox.
+Инструменты и предметы инвентаря (Tools & Inventory) - Creating tools players can pick up, hold, and use.
+Wait, let me think about what's truly beginner-level that the course hasn't covered yet:
+
+Looking at the existing themes, they cover:
+
+Objects/properties
+Events/communication
+Animation
+GUI
+Data persistence
+Procedural generation
+Missing beginner topics:
+
+Основы Lua: переменные, функции и условия - Basic Lua scripting fundamentals (this is assumed knowledge in current tasks)
+Террейн и ландшафт (Terrain & Environment) - Using Roblox terrain editor, water, sky, lighting
+Звуки и эффекты (Sounds & Effects) - Sound objects, audio, particle effects
+Инструменты игрока (Player Tools) - Tool objects, equip/unequip, sword/tool creation
+Actually, thinking more carefully about what's truly "начальный уровень" (beginner level) and complementary to the existing themes:
+
+Основы скриптинга: переменные, условия, циклы - The existing themes teach scripting through examples but there's no dedicated topic that covers Lua basics systematically
+Террейн и окружение - Using Roblox terrain tools, water, lighting, atmosphere
+Звуки в игре - Sound objects, background music, sound effects triggered by events
+Инструменты и предметы - Creating tools (swords, items), Tool object, equip mechanics
+These are all beginner-level topics that haven't been covered yet. Let me present these.
+
+Вот существующие 6 тем курса для контекста:
+
+Объекты и их свойства
+События (Events) и общение сервера с игроком
+Плавная анимация: TweenService
+GUI: кнопки и экраны в игре
+DataStore: сохранение прогресса
+Процедурная генерация: мир создаёт себя сам
+4 дополнительных топика начального уровня (пока только названия):
+
+Основы Lua: переменные, условия и циклы
+Террейн и окружение: ландшафт, вода, небо
+Звуки: музыка и звуковые эффекты
+Инструменты и предметы игрока
+-----------------------------------------------
+Порядок тем
+
+Волшебный мир Roblox
+(знакомство со средой, интерфейсом Studio, базовыми объектами)
+
+Террейн и окружение: ландшафт, вода, небо
+(основы создания мира, важны для любой игры)
+
+Волшебные кнопки и секретные сообщения. Часть 1
+(первые скрипты: обработка нажатий, вывод сообщений в Output)
+
+Инструменты и предметы игрока
+(логика инвентаря, экипировка — естественное развитие после работы с кнопками)
+
+GUI: кнопки и экраны в игре
+(интерфейс, который видит игрок — без него сложно делать меню магазинов/инвентаря)
+
+Волшебные кнопки и секретные сообщения. Часть 2
+(усложнение: передача данных между клиентом и сервером, RemoteEvents)
+
+Звуки: музыка и звуковые эффекты
+(работа с SoundService, воспроизведение по событиям)
+
+Анимация и волшебные перемещения
+(создание анимаций, перемещение объектов и персонажа)
+
+DataStore: сохранение прогресса
+(требует понимания серверных скриптов и работы с ошибками)
+
+Процедурная генерация: мир создаёт себя сам
+(самая сложная тема — циклы, шум, генерация ландшафта/лута, отладка)

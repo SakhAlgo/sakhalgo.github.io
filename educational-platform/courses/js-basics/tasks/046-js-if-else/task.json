@@ -9,7 +9,7 @@
   "description": "Напишите функцию checkNumber, которая принимает число и возвращает 'positive' если число больше 0, 'negative' если меньше 0, и 'zero' если равно 0",
   "requirements": [
     "Функция должна называться <code>checkNumber",
-    "Использовать <code>if/else if/else",
+    "Использовать <code>if/else",
     "Возвращать <code>'positive' для чисел > 0",
     "Возвращать <code>'negative' для чисел < 0",
     "Возвращать <code>'zero' для числа 0"
