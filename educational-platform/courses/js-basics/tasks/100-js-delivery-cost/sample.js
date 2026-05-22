@@ -1,22 +1,16 @@
-function calcDelivery(distance, isExpress) {
-  if (distance <= 0) {
-    return 'invalid';
+function getPlanetName(n) {
+  switch (n) {
+    case 1:
+      return 'Mercury';
+    case 2:
+      return 'Venus';
+    case 3:
+      return 'Earth';
+    case 4:
+      return 'Mars';
+    default:
+      return 'unknown';
   }
-
-  let cost;
-  if (distance <= 10) {
-    cost = 300;
-  } else if (distance <= 50) {
-    cost = 500;
-  } else {
-    cost = 800;
-  }
-
-  if (isExpress) {
-    cost += 200;
-  }
-
-  return cost + ' руб';
 }
 
-document.getElementById('output').textContent = calcDelivery(25, true);
+document.getElementById('output').textContent = getPlanetName(3);

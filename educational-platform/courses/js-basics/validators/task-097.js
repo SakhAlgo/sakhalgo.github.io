@@ -1,36 +1,32 @@
-export default class Task052Validator {
+export default class Task097Validator {
   async validate(html, css, js, samples, config) {
     const checks = [];
     let score = 0;
 
-    // Проверка наличия функции getDayType
-    const hasFunction = /function\s+getDayType\s*\(/.test(js);
+    const hasFunction = /function\s+getFoodType\s*\(/.test(js);
     checks.push({
-      label: "Функция getDayType объявлена",
+      label: "Функция getFoodType объявлена",
       passed: hasFunction,
-      hint: "Создайте функцию getDayType(day)",
+      hint: "Создайте функцию getFoodType(food)",
     });
     if (hasFunction) score += 20;
 
-    // Проверка использования switch
     const hasSwitch = /\bswitch\s*\(/.test(js);
     checks.push({
       label: "Использован switch",
       passed: hasSwitch,
       hint: "Добавьте конструкцию switch",
     });
-    if (hasSwitch) score += 20;
+    if (hasSwitch) score += 15;
 
-    // Проверка использования case
-    const hasCase = /\bcase\s+\d+/.test(js);
+    const hasCase = /\bcase\s+/.test(js);
     checks.push({
-      label: "Использованы case с числами",
+      label: "Использованы case",
       passed: hasCase,
-      hint: "Добавьте case для каждого дня недели",
+      hint: "Добавьте case для каждого значения",
     });
     if (hasCase) score += 15;
 
-    // Проверка использования default
     const hasDefault = /\bdefault\s*:/.test(js);
     checks.push({
       label: "Использован default",
@@ -39,33 +35,38 @@ export default class Task052Validator {
     });
     if (hasDefault) score += 10;
 
-    // Проверка возврата 'workday'
-    const returnsWorkday = /return\s+['"]workday['"]/.test(js);
+    const returnsFruit = /return\s+['"]fruit['"]/.test(js);
     checks.push({
-      label: 'Возвращает "workday" для будних дней',
-      passed: returnsWorkday,
-      hint: 'Добавьте return "workday"',
+      label: 'Возвращает "fruit" для фруктов',
+      passed: returnsFruit,
+      hint: 'Добавьте return "fruit"',
     });
-    if (returnsWorkday) score += 15;
+    if (returnsFruit) score += 10;
 
-    // Проверка возврата 'weekend'
-    const returnsWeekend = /return\s+['"]weekend['"]/.test(js);
+    const returnsVegetable = /return\s+['"]vegetable['"]/.test(js);
     checks.push({
-      label: 'Возвращает "weekend" для выходных',
-      passed: returnsWeekend,
-      hint: 'Добавьте return "weekend"',
+      label: 'Возвращает "vegetable" для овощей',
+      passed: returnsVegetable,
+      hint: 'Добавьте return "vegetable"',
     });
-    if (returnsWeekend) score += 10;
+    if (returnsVegetable) score += 10;
 
-    // Проверка возврата 'invalid'
-    const returnsInvalid = /return\s+['"]invalid['"]/.test(js);
+    const returnsGrain = /return\s+['"]grain['"]/.test(js);
     checks.push({
-      label: 'Возвращает "invalid" для неверных значений',
-      passed: returnsInvalid,
-      hint: 'Добавьте return "invalid"',
+      label: 'Возвращает "grain" для хлеба',
+      passed: returnsGrain,
+      hint: 'Добавьте return "grain"',
     });
-    if (returnsInvalid) score += 10;
+    if (returnsGrain) score += 10;
 
-    return { passed: score >= (config.passThreshold || 70), score, checks };
+    const returnsUnknown = /return\s+['"]unknown['"]/.test(js);
+    checks.push({
+      label: 'Возвращает "unknown" для остальных',
+      passed: returnsUnknown,
+      hint: 'Добавьте return "unknown"',
+    });
+    if (returnsUnknown) score += 10;
+
+    return { passed: score >= (config.passThreshold || 60), score, checks };
   }
 }

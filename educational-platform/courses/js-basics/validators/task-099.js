@@ -1,63 +1,73 @@
-export default class Task054Validator {
+export default class Task099Validator {
   async validate(html, css, js, samples, config) {
     const checks = [];
     let score = 0;
 
-    // Проверка наличия функции getOrderStatus
-    const hasFunction = /function\s+getOrderStatus\s*\(/.test(js);
+    const hasFunction = /function\s+getNumberType\s*\(/.test(js);
     checks.push({
-      label: "Функция getOrderStatus объявлена",
+      label: "Функция getNumberType объявлена",
       passed: hasFunction,
-      hint: "Создайте функцию getOrderStatus(isPaid, isShipped)",
+      hint: "Создайте функцию getNumberType(n)",
     });
     if (hasFunction) score += 20;
 
-    // Проверка использования if
-    const hasIf = /\bif\s*\(/.test(js);
+    const hasSwitch = /\bswitch\s*\(/.test(js);
     checks.push({
-      label: "Использован if",
-      passed: hasIf,
-      hint: "Добавьте условие if",
+      label: "Использован switch",
+      passed: hasSwitch,
+      hint: "Добавьте конструкцию switch",
     });
-    if (hasIf) score += 10;
+    if (hasSwitch) score += 15;
 
-    // Проверка использования тернарного оператора
-    const hasTernary = /\?[^:]*:/.test(js);
+    const hasCase = /\bcase\s+\d+/.test(js);
     checks.push({
-      label: "Использован тернарный оператор (?:)",
-      passed: hasTernary,
-      hint: "Добавьте тернарный оператор ? :",
+      label: "Использованы case с числами",
+      passed: hasCase,
+      hint: "Добавьте case для каждого числа",
     });
-    if (hasTernary) score += 25;
+    if (hasCase) score += 15;
 
-    // Проверка возврата 'awaiting payment'
-    const returnsAwaiting =
-      /return\s+['"]awaiting\s*payment['"]/.test(js);
+    const hasDefault = /\bdefault\s*:/.test(js);
     checks.push({
-      label: 'Возвращает "awaiting payment" если не оплачен',
-      passed: returnsAwaiting,
-      hint: 'Добавьте return "awaiting payment"',
+      label: "Использован default",
+      passed: hasDefault,
+      hint: "Добавьте блок default",
     });
-    if (returnsAwaiting) score += 15;
+    if (hasDefault) score += 10;
 
-    // Проверка возврата 'processing'
-    const returnsProcessing = /return\s+['"]processing['"]/.test(js);
+    const returnsOdd = /return\s+['"]odd['"]/.test(js);
     checks.push({
-      label: 'Возвращает "processing" если оплачен, но не отправлен',
-      passed: returnsProcessing,
-      hint: 'Добавьте return "processing"',
+      label: 'Возвращает "odd" для нечётных',
+      passed: returnsOdd,
+      hint: 'Добавьте return "odd"',
     });
-    if (returnsProcessing) score += 15;
+    if (returnsOdd) score += 10;
 
-    // Проверка возврата 'shipped'
-    const returnsShipped = /return\s+['"]shipped['"]/.test(js);
+    const returnsEven = /return\s+['"]even['"]/.test(js);
     checks.push({
-      label: 'Возвращает "shipped" если оплачен и отправлен',
-      passed: returnsShipped,
-      hint: 'Добавьте return "shipped"',
+      label: 'Возвращает "even" для чётных',
+      passed: returnsEven,
+      hint: 'Добавьте return "even"',
     });
-    if (returnsShipped) score += 15;
+    if (returnsEven) score += 10;
 
-    return { passed: score >= (config.passThreshold || 70), score, checks };
+    const returnsOutOfRange = /return\s+['"]out of range['"]/.test(js);
+    checks.push({
+      label: 'Возвращает "out of range" для остальных',
+      passed: returnsOutOfRange,
+      hint: 'Добавьте return "out of range"',
+    });
+    if (returnsOutOfRange) score += 10;
+
+    // нечётные: 1,3,5 — проверка через case fallthrough
+    const hasOddFallthrough = /case\s+1[\s\S]*case\s+3[\s\S]*case\s+5/.test(js);
+    checks.push({
+      label: "Объединены case 1, 3, 5 для odd",
+      passed: hasOddFallthrough,
+      hint: "Сгруппируйте case 1, 3, 5 вместе",
+    });
+    if (hasOddFallthrough) score += 10;
+
+    return { passed: score >= (config.passThreshold || 60), score, checks };
   }
 }

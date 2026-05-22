@@ -1,9 +1,14 @@
-function isLeapYear(year) {
-  if ((year % 4 === 0 && year % 100 !== 0) || year % 400 === 0) {
-    return true;
-  } else {
-    return false;
+function getTrafficLightAction(color) {
+  switch (color) {
+    case 'green':
+      return 'go';
+    case 'yellow':
+      return 'wait';
+    case 'red':
+      return 'stop';
+    default:
+      return 'invalid color';
   }
 }
 
-document.getElementById('output').textContent = isLeapYear(2024);
+document.getElementById('output').textContent = getTrafficLightAction('green');

@@ -1,19 +1,20 @@
 {
   "id": "097",
-  "title": "День недели (switch)",
-  "difficulty": "medium",
-  "points": 75,
-  "passThreshold": 70,
-  "tags": ["js", "switch", "conditional"],
-  "timeLimit": 10,
-  "description": "Напишите функцию getDayType, которая принимает число от 1 до 7 (день недели: 1 — понедельник, 7 — воскресенье). Используйте switch. Вернуть 'weekend' для 6 или 7. Вернуть 'workday' для 1-5. Вернуть 'invalid' для других значений.",
+  "title": "Тип еды (switch)",
+  "difficulty": "easy",
+  "points": 50,
+  "passThreshold": 60,
+  "tags": ["js", "switch", "string"],
+  "timeLimit": 8,
+  "description": "Напишите функцию getFoodType, которая принимает строку — название еды. Используйте switch. 'apple' или 'banana' → 'fruit'. 'carrot' или 'broccoli' → 'vegetable'. 'bread' → 'grain'. В остальных случаях → 'unknown'.",
   "requirements": [
-    "Функция должна называться <code>getDayType</code>",
-    "Использовать <code>switch</code>",
-    "Принимать один параметр — число от 1 до 7",
-    "Возвращать <code>'weekend'</code> для 6 и 7",
-    "Возвращать <code>'workday'</code> для 1-5",
-    "Возвращать <code>'invalid'</code> для других значений"
+    "Функция должна называться <code>getFoodType</code>",
+    "Использовать <code>switch</code> со строковыми значениями",
+    "Принимать один параметр — строку (название еды)",
+    "Возвращать <code>'fruit'</code> для 'apple' и 'banana'",
+    "Возвращать <code>'vegetable'</code> для 'carrot' и 'broccoli'",
+    "Возвращать <code>'grain'</code> для 'bread'",
+    "Возвращать <code>'unknown'</code> для остальных значений"
   ],
   "sampleFiles": {
     "html": "sample.html",

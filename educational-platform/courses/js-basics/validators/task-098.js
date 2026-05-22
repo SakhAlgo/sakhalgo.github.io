@@ -1,80 +1,72 @@
-export default class Task053Validator {
+export default class Task098Validator {
   async validate(html, css, js, samples, config) {
     const checks = [];
     let score = 0;
 
-    // Проверка наличия функции isLeapYear
-    const hasFunction = /function\s+isLeapYear\s*\(/.test(js);
+    const hasFunction = /function\s+getTrafficLightAction\s*\(/.test(js);
     checks.push({
-      label: "Функция isLeapYear объявлена",
+      label: "Функция getTrafficLightAction объявлена",
       passed: hasFunction,
-      hint: "Создайте функцию isLeapYear(year)",
+      hint: "Создайте функцию getTrafficLightAction(color)",
     });
     if (hasFunction) score += 20;
 
-    // Проверка использования if
-    const hasIf = /\bif\s*\(/.test(js);
+    const hasSwitch = /\bswitch\s*\(/.test(js);
     checks.push({
-      label: "Использован if",
-      passed: hasIf,
-      hint: "Добавьте условие if",
+      label: "Использован switch",
+      passed: hasSwitch,
+      hint: "Добавьте конструкцию switch",
     });
-    if (hasIf) score += 10;
+    if (hasSwitch) score += 15;
 
-    // Проверка использования else
-    const hasElse = /\}\s*else\s*\{/.test(js) || /\belse\b[^{]*\{/.test(js);
+    const hasCase = /\bcase\s+/.test(js);
     checks.push({
-      label: "Использован else",
-      passed: hasElse,
-      hint: "Добавьте блок else",
+      label: "Использованы case",
+      passed: hasCase,
+      hint: "Добавьте case для каждого цвета",
     });
-    if (hasElse) score += 10;
+    if (hasCase) score += 15;
 
-    // Проверка использования % (деление по модулю)
-    const hasModulo = /%/.test(js);
+    const hasDefault = /\bdefault\s*:/.test(js);
     checks.push({
-      label: "Использован оператор % (остаток от деления)",
-      passed: hasModulo,
-      hint: "Добавьте проверку остатка от деления через %",
+      label: "Использован default",
+      passed: hasDefault,
+      hint: "Добавьте блок default",
     });
-    if (hasModulo) score += 15;
+    if (hasDefault) score += 10;
 
-    // Проверка использования &&
-    const hasAnd = /&&/.test(js);
+    const returnsGo = /return\s+['"]go['"]/.test(js);
     checks.push({
-      label: "Использован логический оператор &&",
-      passed: hasAnd,
-      hint: "Добавьте оператор &&",
+      label: 'Возвращает "go" для green',
+      passed: returnsGo,
+      hint: 'Добавьте return "go"',
     });
-    if (hasAnd) score += 10;
+    if (returnsGo) score += 10;
 
-    // Проверка использования ||
-    const hasOr = /\|\|/.test(js);
+    const returnsWait = /return\s+['"]wait['"]/.test(js);
     checks.push({
-      label: "Использован логический оператор ||",
-      passed: hasOr,
-      hint: "Добавьте оператор ||",
+      label: 'Возвращает "wait" для yellow',
+      passed: returnsWait,
+      hint: 'Добавьте return "wait"',
     });
-    if (hasOr) score += 10;
+    if (returnsWait) score += 10;
 
-    // Проверка возврата true
-    const returnsTrue = /return\s+true/.test(js);
+    const returnsStop = /return\s+['"]stop['"]/.test(js);
     checks.push({
-      label: 'Возвращает true для високосного года',
-      passed: returnsTrue,
-      hint: "Добавьте return true",
+      label: 'Возвращает "stop" для red',
+      passed: returnsStop,
+      hint: 'Добавьте return "stop"',
     });
-    if (returnsTrue) score += 15;
+    if (returnsStop) score += 10;
 
-    // Проверка возврата false
-    const returnsFalse = /return\s+false/.test(js);
+    const returnsInvalid = /return\s+['"]invalid color['"]/.test(js);
     checks.push({
-      label: 'Возвращает false для невисокосного года',
-      passed: returnsFalse,
-      hint: "Добавьте return false",
+      label: 'Возвращает "invalid color" для остальных',
+      passed: returnsInvalid,
+      hint: 'Добавьте return "invalid color"',
     });
-    if (returnsFalse) score += 10;
+    if (returnsInvalid) score += 10;
 
-    return { passed: score >= (config.passThreshold || 70), score, checks };
+    return { passed: score >= (config.passThreshold || 60), score, checks };
   }
 }

@@ -1,17 +1,16 @@
-function getDayType(day) {
-  switch (day) {
-    case 1:
-    case 2:
-    case 3:
-    case 4:
-    case 5:
-      return 'workday';
-    case 6:
-    case 7:
-      return 'weekend';
+function getFoodType(food) {
+  switch (food) {
+    case 'apple':
+    case 'banana':
+      return 'fruit';
+    case 'carrot':
+    case 'broccoli':
+      return 'vegetable';
+    case 'bread':
+      return 'grain';
     default:
-      return 'invalid';
+      return 'unknown';
   }
 }
 
-document.getElementById('output').textContent = getDayType(3);
+document.getElementById('output').textContent = getFoodType('apple');

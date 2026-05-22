@@ -1,80 +1,72 @@
-export default class Task055Validator {
+export default class Task100Validator {
   async validate(html, css, js, samples, config) {
     const checks = [];
     let score = 0;
 
-    // Проверка наличия функции calcDelivery
-    const hasFunction = /function\s+calcDelivery\s*\(/.test(js);
+    const hasFunction = /function\s+getPlanetName\s*\(/.test(js);
     checks.push({
-      label: "Функция calcDelivery объявлена",
+      label: "Функция getPlanetName объявлена",
       passed: hasFunction,
-      hint: "Создайте функцию calcDelivery(distance, isExpress)",
+      hint: "Создайте функцию getPlanetName(n)",
     });
-    if (hasFunction) score += 15;
+    if (hasFunction) score += 20;
 
-    // Проверка использования if
-    const hasIf = /\bif\s*\(/.test(js);
+    const hasSwitch = /\bswitch\s*\(/.test(js);
     checks.push({
-      label: "Использован if",
-      passed: hasIf,
-      hint: "Добавьте условие if",
+      label: "Использован switch",
+      passed: hasSwitch,
+      hint: "Добавьте конструкцию switch",
     });
-    if (hasIf) score += 10;
+    if (hasSwitch) score += 15;
 
-    // Проверка использования else if
-    const hasElseIf = /\belse\s+if\b/.test(js);
+    const hasCase = /\bcase\s+\d+/.test(js);
     checks.push({
-      label: "Использован else if",
-      passed: hasElseIf,
-      hint: "Добавьте else if",
+      label: "Использованы case с числами",
+      passed: hasCase,
+      hint: "Добавьте case для каждой планеты",
     });
-    if (hasElseIf) score += 10;
+    if (hasCase) score += 15;
 
-    // Проверка использования else
-    const hasElse = /\}\s*else\s*\{/.test(js) || /\belse\b[^{]*\{/.test(js);
+    const hasDefault = /\bdefault\s*:/.test(js);
     checks.push({
-      label: "Использован else",
-      passed: hasElse,
-      hint: "Добавьте блок else",
+      label: "Использован default",
+      passed: hasDefault,
+      hint: "Добавьте блок default",
     });
-    if (hasElse) score += 10;
+    if (hasDefault) score += 10;
 
-    // Проверка возврата 'invalid'
-    const returnsInvalid = /return\s+['"]invalid['"]/.test(js);
+    const returnsMercury = /return\s+['"]Mercury['"]/.test(js);
     checks.push({
-      label: 'Возвращает "invalid" при distance <= 0',
-      passed: returnsInvalid,
-      hint: 'Добавьте return "invalid"',
+      label: 'Возвращает "Mercury" для 1',
+      passed: returnsMercury,
+      hint: 'Добавьте return "Mercury"',
     });
-    if (returnsInvalid) score += 15;
+    if (returnsMercury) score += 10;
 
-    // Проверка использования сложения с числом (расчёт стоимости)
-    const hasAddition = /\+/.test(js);
+    const returnsVenus = /return\s+['"]Venus['"]/.test(js);
     checks.push({
-      label: "Использовано сложение для расчёта стоимости",
-      passed: hasAddition,
-      hint: "Добавьте сложение для добавления express-доплаты",
+      label: 'Возвращает "Venus" для 2',
+      passed: returnsVenus,
+      hint: 'Добавьте return "Venus"',
     });
-    if (hasAddition) score += 10;
+    if (returnsVenus) score += 10;
 
-    // Проверка возврата строки с ' руб'
-    const hasRubleSuffix = /['"]\s*руб['"]/.test(js) || /\+ \s*['"]руб['"]/.test(js);
+    const returnsEarth = /return\s+['"]Earth['"]/.test(js);
     checks.push({
-      label: "Возвращает строку с ' руб'",
-      passed: hasRubleSuffix,
-      hint: "Добавьте ' руб' к итоговой стоимости",
+      label: 'Возвращает "Earth" для 3',
+      passed: returnsEarth,
+      hint: 'Добавьте return "Earth"',
     });
-    if (hasRubleSuffix) score += 15;
+    if (returnsEarth) score += 10;
 
-    // Проверка использования let или const (работа с переменной стоимости)
-    const hasVarDeclaration = /\blet\s+cost\b/.test(js) || /\bconst\s+cost\b/.test(js);
+    const returnsMars = /return\s+['"]Mars['"]/.test(js);
     checks.push({
-      label: "Использована переменная для хранения стоимости",
-      passed: hasVarDeclaration,
-      hint: "Создайте переменную для хранения стоимости",
+      label: 'Возвращает "Mars" для 4',
+      passed: returnsMars,
+      hint: 'Добавьте return "Mars"',
     });
-    if (hasVarDeclaration) score += 15;
+    if (returnsMars) score += 10;
 
-    return { passed: score >= (config.passThreshold || 75), score, checks };
+    return { passed: score >= (config.passThreshold || 60), score, checks };
   }
 }

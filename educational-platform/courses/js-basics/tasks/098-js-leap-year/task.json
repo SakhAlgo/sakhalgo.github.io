@@ -1,19 +1,20 @@
 {
   "id": "098",
-  "title": "Високосный год (сложное условие)",
-  "difficulty": "medium",
-  "points": 75,
-  "passThreshold": 70,
-  "tags": ["js", "if", "else", "logical", "leap-year"],
-  "timeLimit": 12,
-  "description": "Напишите функцию isLeapYear, которая принимает год и возвращает true, если год високосный, и false в противном случае. Правило: год високосный, если он делится на 4, но не делится на 100, за исключением годов, которые делятся на 400.",
+  "title": "Светофор (switch)",
+  "difficulty": "easy",
+  "points": 50,
+  "passThreshold": 60,
+  "tags": ["js", "switch", "conditional"],
+  "timeLimit": 8,
+  "description": "Напишите функцию getTrafficLightAction, которая принимает строку — цвет светофора. Используйте switch. 'green' → 'go'. 'yellow' → 'wait'. 'red' → 'stop'. В остальных случаях → 'invalid color'.",
   "requirements": [
-    "Функция должна называться <code>isLeapYear</code>",
-    "Принимать один параметр — число (год)",
-    "Использовать логические операторы",
-    "Возвращать <code>true</code> для високосного года",
-    "Возвращать <code>false</code> для невисокосного года",
-    "Пример: 2000 — true, 2024 — true, 1900 — false, 2023 — false"
+    "Функция должна называться <code>getTrafficLightAction</code>",
+    "Использовать <code>switch</code>",
+    "Принимать один параметр — строку (цвет)",
+    "Возвращать <code>'go'</code> для 'green'",
+    "Возвращать <code>'wait'</code> для 'yellow'",
+    "Возвращать <code>'stop'</code> для 'red'",
+    "Возвращать <code>'invalid color'</code> для остальных значений"
   ],
   "sampleFiles": {
     "html": "sample.html",

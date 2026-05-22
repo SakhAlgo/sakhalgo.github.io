@@ -1,19 +1,19 @@
 {
   "id": "099",
-  "title": "Статус заказа (тернарный оператор)",
-  "difficulty": "medium",
-  "points": 75,
-  "passThreshold": 70,
-  "tags": ["js", "ternary", "conditional", "operator"],
+  "title": "Чётное или нечётное (switch)",
+  "difficulty": "easy",
+  "points": 50,
+  "passThreshold": 60,
+  "tags": ["js", "switch", "conditional"],
   "timeLimit": 8,
-  "description": "Напишите функцию getOrderStatus, которая принимает два параметра: isPaid (булево) и isShipped (булево). Используйте тернарный оператор. Если isPaid === false — вернуть 'awaiting payment'. Если isPaid === true и isShipped === false — вернуть 'processing'. Если isPaid === true и isShipped === true — вернуть 'shipped'.",
+  "description": "Напишите функцию getNumberType, которая принимает число от 1 до 5. Используйте switch. 1, 3, 5 → 'odd'. 2, 4 → 'even'. В остальных случаях → 'out of range'.",
   "requirements": [
-    "Функция должна называться <code>getOrderStatus</code>",
-    "Принимать два булевых параметра: <code>isPaid</code> и <code>isShipped</code>",
-    "Использовать тернарный оператор (<code>? :</code>) хотя бы один раз",
-    "Возвращать <code>'awaiting payment'</code> если не оплачен",
-    "Возвращать <code>'processing'</code> если оплачен, но не отправлен",
-    "Возвращать <code>'shipped'</code> если оплачен и отправлен"
+    "Функция должна называться <code>getNumberType</code>",
+    "Использовать <code>switch</code>",
+    "Принимать один параметр — число от 1 до 5",
+    "Возвращать <code>'odd'</code> для 1, 3, 5",
+    "Возвращать <code>'even'</code> для 2, 4",
+    "Возвращать <code>'out of range'</code> для остальных значений"
   ],
   "sampleFiles": {
     "html": "sample.html",
