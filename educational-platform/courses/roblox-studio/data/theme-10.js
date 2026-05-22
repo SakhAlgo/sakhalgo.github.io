@@ -7,22 +7,26 @@ const theme10 = {
     content: `<p>В Roblox можно создавать предметы, которые игрок берёт в руки — мечи, ключи, магические палочки, еду и многое другое! Такие предметы называются <strong>Tool</strong> (инструмент).</p>
 
       <h3 style="color:var(--accent);margin-top:24px">🛠️ Что такое Tool?</h3>
-      <p><strong>Tool</strong> — это специальный объект, который может взять в руки персонаж. Когда игрок подбирает инструмент, он появляется в панели быстрого доступа (хотбар) внизу экрана [citation:9].</p>
+      <p><strong>Tool</strong> — это специальный объект, который может взять в руки персонаж. Когда игрок подбирает инструмент, он появляется в панели быстрого доступа (хотбар) внизу экрана  .</p>
       <div class="code-block"><div class="code-header">Самый простой инструмент</div><pre>-- Создаём Tool и даём игроку
 local tool = Instance.new("Tool")
 tool.Name = "Волшебная палочка"
 tool.Parent = game:GetService("StarterPack")  -- выдаётся всем игрокам</pre></div>
 
       <h3 style="color:var(--accent);margin-top:24px">📦 Где хранятся инструменты?</h3>
-      <p>• <strong>StarterPack</strong> — инструменты отсюда получает каждый игрок при появлении в игре [citation:9].<br>
+      <p>• <strong>StarterPack</strong> — инструменты отсюда получает каждый игрок при появлении в игре.<br>
       • <strong>Workspace</strong> — инструменты, которые лежат на карте (их можно подобрать).<br>
       • <strong>Backpack игрока</strong> — рюкзак игрока, где лежат его инструменты.<br>
       • <strong>ServerStorage</strong> — склад, где инструменты ждут своего часа.</p>
       
-      <div class="info-box success"><strong>💡 Важно:</strong> У каждого инструмента должна быть деталь с именем <strong>Handle</strong> — это та часть, за которую персонаж держит предмет [citation:9]!</div>
+      <div class="info-box success"><strong>💡 Важно:</strong> У каждого инструмента должна быть деталь с именем <strong>Handle</strong> — это та часть, за которую персонаж держит предмет  !</div>
 
       <h3 style="color:var(--accent);margin-top:24px">🎮 Главные события Tool</h3>
-      <div class="code-block"><div class="code-header">Equipped, Unequipped, Activated</div><pre>local tool = script.Parent
+      <div class="code-block"><div class="code-header">Equipped, Unequipped, Activated</div><pre>
+-- Объявляем переменную "tool" — это ссылка на сам инструмент
+-- script.Parent означает: "родительская папка того скрипта, который сейчас работает"
+-- То есть если этот скрипт лежит ВНУТРИ инструмента, то tool — это и есть этот инструмент
+local tool = script.Parent
 
 -- Когда игрок взял предмет в руки
 tool.Equipped:Connect(function()
@@ -40,20 +44,31 @@ tool.Activated:Connect(function()
 end)</pre></div>
 
       <h3 style="color:var(--accent);margin-top:24px">⌨️ Обработка нажатий клавиш</h3>
-      <p>Если нужно, чтобы предмет реагировал на клавиши (например, R для перезарядки), используй <strong>ContextActionService</strong> [citation:2]:</p>
-      <div class="code-block"><div class="code-header">Привязка клавиши R</div><pre>local ContextActionService = game:GetService("ContextActionService")
+      <p>Если нужно, чтобы предмет реагировал на клавиши (например, R для перезарядки), используй <strong>ContextActionService</strong>  :</p>
+      <div class="code-block"><div class="code-header">Привязка клавиши R</div><pre>
 
+-- Подключаем специальную игровую службу, которая следит за нажатиями клавиш
+local ContextActionService = game:GetService("ContextActionService")
+
+-- ЭТО БЛОК-СХЕМА: что делать, когда клавиша нажата
 local function onAction(actionName, inputState, inputObject)
+    -- Если клавиша ТОЛЬКО ЧТО была нажата (а не зажата и не отпущена)
     if inputState == Enum.UserInputState.Begin then
+        -- Пишем в консоль (для разработчика) сообщение
         print("Клавиша R нажата!")
     end
 end
 
+-- КОГДА ИГРОК ВЗЯЛ ИНСТРУМЕНТ В РУКИ (достал из рюкзака)
 tool.Equipped:Connect(function()
+    -- Привязываем действие "myAction" к клавише R
+    -- "true" означает, что игра не будет мешать другим действиям
     ContextActionService:BindAction("myAction", onAction, true, Enum.KeyCode.R)
 end)
 
+-- КОГДА ИГРОК УБРАЛ ИНСТРУМЕНТ (положил обратно в рюкзак)
 tool.Unequipped:Connect(function()
+    -- Отвязываем действие "myAction" — клавиша R больше ничего не делает
     ContextActionService:UnbindAction("myAction")
 end)</pre></div>`,
   },
@@ -73,7 +88,7 @@ end)</pre></div>`,
 
 <h4>👆 Шаг 2 — Добавь Handle (рукоятку):</h4>
 <ol>
-  <li>Внутри Sword нажми «+» → <strong>Part</strong> → назови <strong>Handle</strong> [citation:7]</li>
+  <li>Внутри Sword нажми «+» → <strong>Part</strong> → назови <strong>Handle</strong>  </li>
   <li>Настрой Handle:<br>
     &nbsp;&nbsp;• <strong>Size</strong> → 1, 1, 3 (длинная палка)<br>
     &nbsp;&nbsp;• <strong>Color</strong> → серый или серебряный<br>
@@ -141,7 +156,7 @@ print("✅ Меч готов! Нажми на него, чтобы взять")<
 
 <h4>🔍 Проверь себя:</h4>
 <p>• Есть ли у меча деталь Handle? ✅<br>• Меч можно подобрать? ✅<br>• Меч появляется в инвентаре (внизу экрана)? ✅<br>• При нажатии мышки меч меняет цвет? ✅<br>• Слышен звук взмаха? ✅</p>`,
-      hint: "Handle — самая важная часть Tool! Без него предмет не возьмётся в руки [citation:9]. Попробуй изменить SoundId на другой звук — например, magic spell для волшебного меча!",
+      hint: "Handle — самая важная часть Tool! Без него предмет не возьмётся в руки  . Попробуй изменить SoundId на другой звук — например, magic spell для волшебного меча!",
       difficulty: "easy",
       solution: "local tool=script.Parent local sound=tool.SwingSound tool.Activated:Connect(function() sound:Play() end)",
     },
@@ -174,13 +189,14 @@ print("✅ Меч готов! Нажми на него, чтобы взять")<
     &nbsp;&nbsp;• Size → 4, 6, 0.5<br>
     &nbsp;&nbsp;• Color → коричневый<br>
     &nbsp;&nbsp;• Anchored → ✅</li>
-  <li>Внутри Door создай <strong>ProximityPrompt</strong> [citation:4]<br>
+  <li>Внутри Door создай <strong>ProximityPrompt</strong>  <br>
     &nbsp;&nbsp;• <strong>ActionText</strong> → «Открыть дверь»<br>
     &nbsp;&nbsp;• <strong>ObjectText</strong> → «Дверь»</li>
 </ol>
 
 <h4>👆 Шаг 3 — Добавь Script в Door:</h4>
-<div class="code-block"><div class="code-header">Script внутри Door</div><pre>local door = script.Parent
+<div class="code-block"><div class="code-header">Script внутри Door</div><pre>
+local door = script.Parent
 local prompt = door:WaitForChild("ProximityPrompt")
 local players = game:GetService("Players")
 
@@ -229,12 +245,15 @@ prompt.Triggered:Connect(function(player)
             label.TextColor3 = Color3.fromRGB(255, 255, 255)
             label.TextScaled = true
             label.Parent = gui
-            player.MessageLabel = label
         end
         
-        player.MessageLabel.Text = "🚪 Дверь открылась! 🚪"
-        task.wait(2)
-        player.MessageLabel.Text = ""
+        -- Находим TextLabel внутри GUI
+        local label = gui:FindFirstChild("TextLabel")
+        if label then
+            label.Text = "🚪 Дверь открылась! 🚪"
+            task.wait(2)
+            label.Text = ""
+        end
         
         -- Анимация открытия (улетает вверх)
         local tweenService = game:GetService("TweenService")
@@ -252,22 +271,27 @@ prompt.Triggered:Connect(function(player)
         print("🔒 Нет ключа! Дверь закрыта")
         
         local gui = player.PlayerGui:FindFirstChild("DoorMessage")
-        if gui and gui:FindFirstChild("TextLabel") then
-            gui.TextLabel.Text = "🔒 Нужен ключ! 🔒"
-            task.wait(2)
-            gui.TextLabel.Text = ""
+        if gui then
+            local label = gui:FindFirstChild("TextLabel")
+            if label then
+                label.Text = "🔒 Нужен ключ! 🔒"
+                task.wait(2)
+                label.Text = ""
+            end
         end
     end
 end)
 
-print("🚪 Дверь создана! Нужен ключ, чтобы открыть")</pre></div>
+print("🚪 Дверь создана! Нужен ключ, чтобы открыть")
+
+</pre></div>
 
 <h4>👆 Шаг 4 — Добавь ключ в StarterPack (по желанию):</h4>
-<p>Если хочешь, чтобы ключ был у игрока с самого начала — перетащи ключ в <strong>StarterPack</strong> [citation:9].</p>
+<p>Если хочешь, чтобы ключ был у игрока с самого начала — перетащи ключ в <strong>StarterPack</strong>  .</p>
 
 <h4>🔍 Проверь себя:</h4>
 <p>• Ключ можно подобрать? ✅<br>• Без ключа дверь не открывается? ✅<br>• С ключом дверь открывается? ✅<br>• После открытия ключ исчезает? ✅</p>`,
-      hint: "ProximityPrompt — это кнопка, которая появляется на экране, когда игрок подходит близко к объекту. Можно менять ActionText на 'Взять ключ' или 'Использовать'! [citation:4]",
+      hint: "ProximityPrompt — это кнопка, которая появляется на экране, когда игрок подходит близко к объекту. Можно менять ActionText на 'Взять ключ' или 'Использовать'!  ",
       difficulty: "medium",
       solution: "prompt.Triggered:Connect(function(p) if p.Backpack:FindFirstChild('Key') then door:Destroy() else p.PlayerGui:FindFirstChild('Hint').Text='Нужен ключ!' end end)",
     },
@@ -552,7 +576,7 @@ end)</pre></div>
 
 <h4>🔍 Проверь себя:</h4>
 <p>• Монетка вращается? ✅<br>• При касании слышен звон? ✅<br>• Монетка исчезает? ✅<br>• Счётчик монеток увеличивается? ✅<br>• Можно собрать несколько монеток? ✅</p>`,
-      hint: "Leaderstats автоматически показывается в правой части экрана! NumberValue с именем 'Монетки' отобразится как 'Монетки: 0' [citation:6]. Чтобы создать другие ресурсы, добавь ещё NumberValue — например, 'Алмазы' или 'Здоровье'!",
+      hint: "Leaderstats автоматически показывается в правой части экрана! NumberValue с именем 'Монетки' отобразится как 'Монетки: 0'  . Чтобы создать другие ресурсы, добавь ещё NumberValue — например, 'Алмазы' или 'Здоровье'!",
       difficulty: "medium",
       solution: "local c=script.Parent c.Touched:Connect(function(h) if h.Parent:FindFirstChild('Humanoid') then local p=game.Players:GetPlayerFromCharacter(h.Parent) p.leaderstats.Монетки.Value+=1 c:Destroy() end end)",
     },
@@ -566,7 +590,7 @@ end)</pre></div>
 <h4>👆 Шаг 1 — Создай бластер:</h4>
 <ol>
   <li>В <strong>StarterPack</strong> создай <strong>Tool</strong> → назови <strong>Blaster</strong></li>
-  <li>Внутри Blaster создай <strong>MeshPart</strong> → назови <strong>Handle</strong> [citation:9]<br>
+  <li>Внутри Blaster создай <strong>MeshPart</strong> → назови <strong>Handle</strong>  <br>
     &nbsp;&nbsp;• <strong>MeshId</strong> → вставь ID: rbxassetid://92656610 (форма бластера)<br>
     &nbsp;&nbsp;• <strong>TextureId</strong> → rbxassetid://92658105 (текстура)</li>
   <li>Или сделай простой бластер из Parts:<br>
@@ -782,9 +806,9 @@ print("🔫 Бластер готов! Стреляй мышкой, переза
 
 <h4>🔍 Проверь себя:</h4>
 <p>• Бластер можно взять в руки? ✅<br>• При стрельбе патроны уменьшаются? ✅<br>• Когда патроны кончаются, слышен звук? ✅<br>• Клавиша R перезаряжает бластер? ✅<br>• Лазер летит из бластера? ✅</p>`,
-      hint: "ContextActionService позволяет привязать клавиши к действиям даже когда инструмент в руках [citation:2]. Клавиша R отлично подходит для перезарядки! Можно изменить MAX_AMMO на 10 или 30 — будет больше патронов!",
+      hint: "ContextActionService позволяет привязать клавиши к действиям даже когда инструмент в руках  . Клавиша R отлично подходит для перезарядки! Можно изменить MAX_AMMO на 10 или 30 — будет больше патронов!",
       difficulty: "hard",
-      solution: "-- Используем ContextActionService для клавиши R [citation:2]\n-- Отслеживаем количество патронов\n-- При выстреле создаём лазерный луч\n-- При перезарядке ждём 2 секунды",
+      solution: "-- Используем ContextActionService для клавиши R  \n-- Отслеживаем количество патронов\n-- При выстреле создаём лазерный луч\n-- При перезарядке ждём 2 секунды",
     },
   ],
 };
