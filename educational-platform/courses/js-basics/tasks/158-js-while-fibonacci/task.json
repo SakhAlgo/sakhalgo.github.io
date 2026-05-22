@@ -1,0 +1,22 @@
+{
+  "id": "158",
+  "title": "Числа Фибоначчи (while)",
+  "description": "Напишите функцию fibonacci(n), которая возвращает первые n чисел Фибоначчи в виде массива с помощью цикла while. Последовательность: 0, 1, 1, 2, 3, 5, 8... Пример: fibonacci(6) = [0, 1, 1, 2, 3, 5]",
+  "requirements": [
+    "Объявите функцию function fibonacci(n) { ... }",
+    "Обработайте случаи n <= 0 (пустой массив) и n === 1 ([0])",
+    "Создайте массив let arr = [0, 1] и let i = 2",
+    "Используйте цикл while (i < n)",
+    "Внутри цикла: arr.push(arr[i-1] + arr[i-2]) и i++",
+    "Функция должна возвращать arr",
+    "Вызовите fibonacci(6) и выведите результат в #output через .join(', ')"
+  ],
+  "difficulty": "medium",
+  "points": 100,
+  "tags": ["js", "loop", "while", "fibonacci", "function"],
+  "sample": {
+    "html": "sample.html",
+    "css": "sample.css",
+    "js": "sample.js"
+  }
+}

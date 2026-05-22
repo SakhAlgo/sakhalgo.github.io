@@ -1,0 +1,22 @@
+{
+  "id": "153",
+  "title": "Поиск символа в строке (while)",
+  "description": "Напишите функцию findChar(str, char), которая находит индекс первого вхождения символа char в строку str с помощью цикла while. Если символ не найден, верните -1.",
+  "requirements": [
+    "Объявите функцию function findChar(str, char) { ... }",
+    "Создайте let i = 0 для обхода строки",
+    "Используйте цикл while (i < str.length)",
+    "Внутри проверьте: if (str[i] === char) верните i",
+    "Добавьте i++ для перехода к следующему символу",
+    "Верните -1 после цикла, если символ не найден",
+    "Вызовите findChar('hello', 'l') и выведите результат в #output"
+  ],
+  "difficulty": "medium",
+  "points": 75,
+  "tags": ["js", "loop", "while", "string"],
+  "sample": {
+    "html": "sample.html",
+    "css": "sample.css",
+    "js": "sample.js"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "id": "151",
+  "title": "Сумма от 1 до N (while)",
+  "description": "Напишите функцию sumTo(n), которая вычисляет сумму чисел от 1 до n через цикл while. Пример: sumTo(5) = 15",
+  "requirements": [
+    "Объявите функцию function sumTo(n) { ... }",
+    "Создайте переменные let sum = 0 и let i = 1",
+    "Добавьте цикл while (i <= n)",
+    "Внутри цикла: sum += i и i++",
+    "Функция должна возвращать sum",
+    "Вызовите sumTo(5) и выведите результат в #output"
+  ],
+  "difficulty": "easy",
+  "points": 75,
+  "tags": ["js", "loop", "while", "sum", "function"],
+  "sample": {
+    "html": "sample.html",
+    "css": "sample.css",
+    "js": "sample.js"
+  }
+}

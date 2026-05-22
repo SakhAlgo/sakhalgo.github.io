@@ -1,0 +1,20 @@
+{
+  "id": "150",
+  "title": "Цикл while: числа от 1 до N",
+  "description": "Напишите цикл while, который выводит числа от 1 до 5. Каждое число на новой строке.",
+  "requirements": [
+    "Объявите let i = 1 как начальное значение",
+    "Создайте цикл while (i <= 5)",
+    "Внутри цикла добавьте i к textContent элемента #output с переводом строки",
+    "Добавьте инкремент i++ внутри цикла",
+    "Используйте document.getElementById('output').textContent"
+  ],
+  "difficulty": "easy",
+  "points": 50,
+  "tags": ["js", "loop", "while"],
+  "sample": {
+    "html": "sample.html",
+    "css": "sample.css",
+    "js": "sample.js"
+  }
+}

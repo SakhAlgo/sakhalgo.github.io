@@ -1,0 +1,21 @@
+{
+  "id": "155",
+  "title": "Возведение в степень (while)",
+  "description": "Напишите функцию power(base, exp), которая возводит число base в степень exp с помощью цикла while. Пример: power(2, 3) = 8",
+  "requirements": [
+    "Объявите функцию function power(base, exp) { ... }",
+    "Создайте let result = 1 и let i = 1",
+    "Используйте цикл while (i <= exp)",
+    "Внутри цикла: result *= base и i++",
+    "Функция должна возвращать result",
+    "Вызовите power(2, 3) и выведите результат в #output"
+  ],
+  "difficulty": "medium",
+  "points": 75,
+  "tags": ["js", "loop", "while", "power", "function"],
+  "sample": {
+    "html": "sample.html",
+    "css": "sample.css",
+    "js": "sample.js"
+  }
+}

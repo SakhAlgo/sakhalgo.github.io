@@ -1,0 +1,21 @@
+{
+  "id": "154",
+  "title": "Факториал через while",
+  "description": "Напишите функцию factorial(n), которая вычисляет факториал числа n (n! = 1*2*3*...*n) с помощью цикла while. Пример: factorial(5) = 120",
+  "requirements": [
+    "Объявите функцию function factorial(n) { ... }",
+    "Создайте let result = 1 и let i = 2",
+    "Используйте цикл while (i <= n)",
+    "Внутри цикла: result *= i и i++",
+    "Функция должна возвращать result",
+    "Вызовите factorial(5) и выведите результат в #output"
+  ],
+  "difficulty": "medium",
+  "points": 75,
+  "tags": ["js", "loop", "while", "factorial", "function"],
+  "sample": {
+    "html": "sample.html",
+    "css": "sample.css",
+    "js": "sample.js"
+  }
+}

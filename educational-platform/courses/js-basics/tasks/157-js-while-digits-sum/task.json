@@ -1,0 +1,22 @@
+{
+  "id": "157",
+  "title": "Сумма цифр числа (while)",
+  "description": "Напишите функцию sumDigits(n), которая вычисляет сумму цифр числа с помощью цикла while. Пример: sumDigits(123) = 6 (1+2+3)",
+  "requirements": [
+    "Объявите функцию function sumDigits(n) { ... }",
+    "Создайте let sum = 0",
+    "Используйте цикл while (n > 0)",
+    "Внутри цикла: sum += n % 10 (берём последнюю цифру)",
+    "Удалите последнюю цифру: n = Math.floor(n / 10)",
+    "Функция должна возвращать sum",
+    "Вызовите sumDigits(123) и выведите результат в #output"
+  ],
+  "difficulty": "medium",
+  "points": 100,
+  "tags": ["js", "loop", "while", "digits", "sum", "function"],
+  "sample": {
+    "html": "sample.html",
+    "css": "sample.css",
+    "js": "sample.js"
+  }
+}
