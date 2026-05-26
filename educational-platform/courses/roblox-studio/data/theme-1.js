@@ -59,33 +59,43 @@ const theme1 = {
 
 <div class="code-block">
   <div class="code-header">📜 Скрипт внутри Activator</div>
-  <pre id="code1">local activator = script.Parent
-local staircase = workspace:WaitForChild("Staircase")
+  <pre id="code1">
+local activator = script.Parent
 local stairsCreated = false
 
 activator.Touched:Connect(function(hit)
-    local humanoid = hit.Parent:FindFirstChild("Humanoid")
-    
-    if humanoid and not stairsCreated then
-        stairsCreated = true
-        
-        -- Создаём 5 ступенек!
-        for i = 1, 5 do
-            local stair = Instance.new("Part")
-            stair.Size = Vector3.new(4, 0.5, 2)
-            stair.BrickColor = BrickColor.new("Bright yellow")
-            stair.Anchored = true
-            stair.Position = Vector3.new(0, i * 1, 5)
-            stair.Parent = staircase
-        end
-        
-        -- Делаем коврик красным (активирован)
-        activator.BrickColor = BrickColor.new("Bright red")
-        
-        -- Волшебное сообщение
-        print("⭐ Лестница появилась! Иди наверх!")
-    end
-end)</pre>
+	local character = hit.Parent
+	local humanoid = character:FindFirstChild("Humanoid")
+	local rootPart = character:FindFirstChild("HumanoidRootPart")
+
+	if humanoid and rootPart and not stairsCreated then
+		stairsCreated = true
+
+		local playerPos = rootPart.Position
+		local lookVector = rootPart.CFrame.LookVector
+
+		for i = 1, 5 do
+			local stair = Instance.new("Part")
+			stair.Size = Vector3.new(4, 0.5, 2)
+			stair.BrickColor = BrickColor.new("Bright yellow")
+			stair.Anchored = true
+
+			local offset = lookVector * (i * 5 + 5)
+			stair.Position = Vector3.new(
+				playerPos.X + offset.X,
+				playerPos.Y + (i * 1),
+				playerPos.Z + offset.Z
+			)
+
+			stair.CFrame = CFrame.new(stair.Position, stair.Position + lookVector)
+			stair.Parent = workspace
+		end
+
+		activator.BrickColor = BrickColor.new("Bright red")
+		print("⭐ Лестница появилась перед игроком!")
+	end
+end)
+</pre>
   <button class="copy-btn" data-code="code1">📋 Копировать код</button>
 </div>
 
@@ -96,30 +106,25 @@ end)</pre>
     },
     {
       title: '🌈 Погоня за радугой',
-      desc: `<p>Сделай волшебную тропинку, которая переливается всеми цветами!</p>
+      desc: `
+<p>Сделай тропинку из 7 блоков. Наступишь на блок — он переливается всеми цветами!</p>
 
-<h4>🎯 Что должно получиться:</h4>
-<p>7 цветных блоков лежат на земле. Когда игрок наступает на блок — он начинает светиться и менять цвет.</p>
+<h4>Шаг 1 — Создай 7 блоков</h4>
+<p>В панели <strong>Explorer</strong> справа найди <strong>Workspace</strong>. Нажми на него <strong>правой кнопкой мыши</strong> → <strong>Insert Object</strong> → <strong>Part</strong>. Появится серый блок.</p>
+<p>Выдели блок и в панели <strong>Properties</strong> снизу справа задай:</p>
+<ul>
+  <li><strong>Name</strong> → напиши <code>RedBlock</code></li>
+  <li><strong>BrickColor</strong> → выбери <code>Bright red</code></li>
+  <li><strong>Size</strong> → введи <code>4, 1, 4</code></li>
+  <li><strong>Anchored</strong> → поставь галочку ✅ (чтобы блок не падал)</li>
+  <li><strong>Material</strong> → выбери <code>Neon</code> (блок будет светиться!)</li>
+</ul>
+<p>Теперь скопируй этот блок 6 раз: выдели его и нажми <strong>Ctrl+D</strong> шесть раз. Переименуй копии так:</p>
+<p><code>OrangeBlock</code>, <code>YellowBlock</code>, <code>GreenBlock</code>, <code>BlueBlock</code></p>
+<p>У каждого блока измени <strong>BrickColor</strong> на его цвет: оранжевый, жёлтый, зелёный, синий. Расставь блоки в линию на земле.</p>
 
-<h4>🖱️ Шаг 1 — Создай 7 разноцветных блоков:</h4>
-<ol>
-  <li>Создай первый блок: <strong>Workspace</strong> → правой кнопкой → <strong>Insert Object → Part</strong>.</li>
-  <li>В Properties:<br>
-      • <strong>Name</strong> → RedBlock<br>
-      • <strong>BrickColor</strong> → Bright red<br>
-      • <strong>Size</strong> → 4, 1, 4<br>
-      • <strong>Anchored</strong> → ✅ галочка<br>
-      • <strong>Material</strong> → Neon</li>
-  <li>Скопируй блок 6 раз (<strong>Ctrl + D</strong>). Назови их по цветам:<br>
-      OrangeBlock, YellowBlock, GreenBlock, BlueBlock, IndigoBlock, VioletBlock</li>
-  <li>Разложи их в линию или радугой!</li>
-</ol>
-
-<h4>🖱️ Шаг 2 — Добавь скрипт в ServerScriptService:</h4>
-<ol>
-  <li>Правой кнопкой на <strong>ServerScriptService</strong> → <strong>Insert Object → Script</strong>.</li>
-  <li>Скопируй этот код (нажми на кнопку):</li>
-</ol>
+<h4>Шаг 2 — Добавь скрипт</h4>
+<p>В <strong>Explorer</strong> найди <strong>ServerScriptService</strong>. Нажми на него <strong>правой кнопкой</strong> → <strong>Insert Object</strong> → <strong>Script</strong>. Откроется редактор кода. Удали весь текст внутри и вставь этот код:</p>
 
 <div class="code-block">
   <div class="code-header">📜 Скрипт в ServerScriptService</div>
@@ -130,8 +135,6 @@ local rainbowBlocks = {
     workspace:WaitForChild("YellowBlock"),
     workspace:WaitForChild("GreenBlock"),
     workspace:WaitForChild("BlueBlock"),
-    workspace:WaitForChild("IndigoBlock"),
-    workspace:WaitForChild("VioletBlock")
 }
 
 -- Цвета для переливания
@@ -145,23 +148,23 @@ local colors = {
     BrickColor.new("Bright violet")
 }
 
--- Для каждого блока
+-- Для каждого блока добавляем реакцию на касание
 for i, block in ipairs(rainbowBlocks) do
     local originalColor = block.BrickColor
     local isActive = false
-    
+
     block.Touched:Connect(function(hit)
         local humanoid = hit.Parent:FindFirstChild("Humanoid")
-        
+
         if humanoid and not isActive then
             isActive = true
-            
-            -- Превращаем блок в радужный!
+
+            -- Перебираем все цвета по очереди
             for colorIndex = 1, #colors do
                 task.wait(0.3)
                 block.BrickColor = colors[colorIndex]
             end
-            
+
             -- Возвращаем исходный цвет
             block.BrickColor = originalColor
             isActive = false
@@ -169,350 +172,281 @@ for i, block in ipairs(rainbowBlocks) do
     end)
 end
 
-print("🌈 Радуга готова! Наступай на блоки!")</pre>
+print("🌈 Радуга готова!")</pre>
   <button class="copy-btn" data-code="code2">📋 Копировать код</button>
 </div>
 
-<h4>✅ Проверь себя:</h4>
-<p>• Все 7 блоков лежат на земле?<br>• При наступлении блок переливается цветами?<br>• Материал Neon делает блоки светящимися?</p>`,
-      hint: 'Neon — волшебный материал! Блоки будут светиться как настоящие лампочки. Попробуй наступить на все блоки подряд!',
+<h4>✅ Проверь</h4>
+<p>Нажми <strong>Play</strong> (кнопка ▶ вверху). Подойди к любому блоку и наступи на него — он должен начать переливаться цветами, а потом вернуться к своему цвету.</p>
+`,
+      hint: 'Материал Neon делает блок светящимся — как настоящая неоновая лампа. Попробуй наступить на все блоки один за другим!',
       difficulty: 'medium',
     },
+
     {
       title: '💨 Невидимый батут',
-      desc: `<p>Создай прозрачный батут, который подбрасывает игроков высоко вверх!</p>
+      desc: `
+<p>Создай невидимую площадку. Наступишь на неё — и тебя подбросит высоко вверх!</p>
 
-<h4>🎯 Что должно получиться:</h4>
-<p>Невидимая площадка. Наступил на неё — и тебя подкинуло в воздух!</p>
+<h4>Шаг 1 — Создай батут</h4>
+<p>В <strong>Explorer</strong> нажми правой кнопкой на <strong>Workspace</strong> → <strong>Insert Object</strong> → <strong>Part</strong>.</p>
+<p>Выдели созданный блок и в <strong>Properties</strong> задай:</p>
+<ul>
+  <li><strong>Name</strong> → <code>Booster</code></li>
+  <li><strong>Size</strong> → <code>8, 0.5, 8</code> (широкий и плоский)</li>
+  <li><strong>Anchored</strong> → галочка ✅</li>
+  <li><strong>Transparency</strong> → <code>1</code> (значение 1 = полностью невидимый)</li>
+  <li><strong>CanCollide</strong> → галочка ✅ (игрок всё равно встанет на него, даже если не видит)</li>
+</ul>
 
-<h4>🖱️ Шаг 1 — Сделай батут невидимым:</h4>
-<ol>
-  <li>Правой кнопкой на <strong>Workspace</strong> → <strong>Insert Object → Part</strong>.</li>
-  <li>Назови <strong>Booster</strong>.</li>
-  <li>В Properties:<br>
-      • <strong>Size</strong> → 8, 0.5, 8<br>
-      • <strong>Anchored</strong> → ✅ галочка<br>
-      • <strong>Transparency</strong> → 1 (совсем не видно!)<br>
-      • <strong>CanCollide</strong> → ✅ оставь галочку (чтобы на него можно было встать)</li>
-</ol>
-
-<h4>🖱️ Шаг 2 — Укрась батут светящимися точками по краям:</h4>
-<ol>
-  <li>Создай маленький шарик: <strong>Insert Object → Part</strong>.</li>
-  <li>Размер: 0.5, 0.5, 0.5</li>
-  <li>Цвет: Bright yellow, Material: Neon</li>
-  <li>Поставь 4 таких шарика по углам батута.</li>
-</ol>
-
-<h4>🖱️ Шаг 3 — Добавь скрипт внутрь Booster:</h4>
-<ol>
-  <li>Правой кнопкой на <strong>Booster</strong> → <strong>Insert Object → Script</strong>.</li>
-  <li>Скопируй этот код (нажми на кнопку):</li>
-</ol>
+<h4>Шаг 2 — Добавь скрипт прямо в батут</h4>
+<p>В <strong>Explorer</strong> нажми правой кнопкой на <strong>Booster</strong> → <strong>Insert Object</strong> → <strong>Script</strong>. Удали весь текст и вставь:</p>
 
 <div class="code-block">
   <div class="code-header">📜 Скрипт внутри Booster</div>
   <pre id="code3">local booster = script.Parent
 
--- Сила прыжка (чем больше, тем выше!)
+-- Сила прыжка. Попробуй изменить это число!
 local jumpPower = 80
 
 booster.Touched:Connect(function(hit)
     local character = hit.Parent
     local humanoid = character:FindFirstChild("Humanoid")
-    
+
     if humanoid then
-        -- Находим ногу или основную часть персонажа
         local rootPart = character:FindFirstChild("HumanoidRootPart")
-        
+
         if rootPart then
-            -- Создаём эффект вспышки (жёлтый свет)
-            local spark = Instance.new("Sparkles")
-            spark.Parent = booster
-            task.wait(0.2)
-            spark:Destroy()
-            
-            -- Подбрасываем игрока!
+            -- Подбрасываем игрока вверх
             rootPart.Velocity = Vector3.new(0, jumpPower, 0)
-            
-            -- Игровой эффект
-            print("💨 БУМ! Ты взлетел!")
+            print("💨 Взлетаем!")
         end
     end
 end)</pre>
   <button class="copy-btn" data-code="code3">📋 Копировать код</button>
 </div>
 
-<h4>✅ Проверь себя:</h4>
-<p>• Батут невидимый, но на него можно встать?<br>• По краям светятся жёлтые точки?<br>• Прыжок подкидывает высоко-высоко?</p>`,
-      hint: 'Чем больше число в jumpPower, тем выше прыжок! Попробуй поставить 120 — полетишь как ракета! 🚀',
+<h4>✅ Проверь</h4>
+<p>Нажми <strong>Play</strong> и зайди на то место, где стоит батут — он невидимый, но ты стоишь на нём. Сделай шаг вперёд и встань на него — тебя подбросит!</p>
+`,
+      hint: 'Измени число 80 в строке jumpPower на 150 — и полетишь как ракета! Только не поставь слишком большое число, иначе улетишь за карту 😄',
       difficulty: 'easy',
     },
+
     {
       title: '🎭 Маска-невидимка',
-      desc: `<p>Создай волшебную маску! Надень её — и ты исчезнешь на 5 секунд.</p>
+      desc: `
+<p>Создай инструмент — маску. Подберёшь её и нажмёшь — станешь невидимым на 5 секунд!</p>
 
-<h4>🎯 Что должно получиться:</h4>
-<p>На земле лежит инструмент-маска. Берёшь её в руки — игрок становится прозрачным на 5 секунд.</p>
+<h4>Шаг 1 — Создай инструмент</h4>
+<p>В <strong>Explorer</strong> нажми правой кнопкой на <strong>Workspace</strong> → <strong>Insert Object</strong> → <strong>Tool</strong>. Назови его <code>MaskTool</code>.</p>
+<p>Теперь нажми правой кнопкой на <strong>MaskTool</strong> → <strong>Insert Object</strong> → <strong>Part</strong>. Назови эту деталь ровно <code>Handle</code> — это обязательно, иначе инструмент не будет работать!</p>
+<p>Выдели <strong>Handle</strong> и в <strong>Properties</strong> задай:</p>
+<ul>
+  <li><strong>Size</strong> → <code>2, 1, 0.5</code></li>
+  <li><strong>BrickColor</strong> → <code>Bright violet</code></li>
+  <li><strong>Material</strong> → <code>Neon</code></li>
+</ul>
 
-<h4>🖱️ Шаг 1 — Создай маску (инструмент):</h4>
-<ol>
-  <li>Правой кнопкой на <strong>Workspace</strong> → <strong>Insert Object → Tool</strong>.</li>
-  <li>Назови инструмент <strong>MaskTool</strong>.</li>
-  <li>Внутри инструмента создай деталь: правой кнопкой на <strong>MaskTool</strong> → <strong>Insert Object → Part</strong>.</li>
-  <li>Назови деталь <strong>Handle</strong> (обязательно!).</li>
-  <li>Настрой Handle:<br>
-      • <strong>Size</strong> → 2, 1, 0.5 (плоская маска)<br>
-      • <strong>BrickColor</strong> → Bright violet (фиолетовая)<br>
-      • <strong>Material</strong> → Neon<br>
-      • <strong>Shape</strong> → Ball (или оставь блоком)</li>
-</ol>
-
-<h4>🖱️ Шаг 2 — Добавь скрипт внутрь MaskTool:</h4>
-<ol>
-  <li>Правой кнопкой на <strong>MaskTool</strong> → <strong>Insert Object → Script</strong>.</li>
-  <li>Скопируй этот код (нажми на кнопку):</li>
-</ol>
+<h4>Шаг 2 — Добавь скрипт в инструмент</h4>
+<p>Нажми правой кнопкой на <strong>MaskTool</strong> → <strong>Insert Object</strong> → <strong>LocalScript</strong>. Удали текст внутри и вставь:</p>
 
 <div class="code-block">
-  <div class="code-header">📜 Скрипт внутри MaskTool</div>
+  <div class="code-header">📜 LocalScript внутри MaskTool</div>
   <pre id="code4">local tool = script.Parent
+local player = game.Players.LocalPlayer
 
-tool.Activated:Connect(function(player)
+tool.Activated:Connect(function()
     local character = player.Character
-    if character then
-        local humanoid = character:FindFirstChild("Humanoid")
-        
-        if humanoid then
-            -- Делаем игрока прозрачным
-            for _, part in pairs(character:GetChildren()) do
-                if part:IsA("BasePart") then
-                    part.Transparency = 0.8
-                end
-            end
-            
-            -- Волшебное сообщение
-            print("🎭 Ты стал невидимкой на 5 секунд!")
-            
-            -- Ждём 5 секунд
-            task.wait(5)
-            
-            -- Возвращаем видимость
-            for _, part in pairs(character:GetChildren()) do
-                if part:IsA("BasePart") then
-                    part.Transparency = 0
-                end
-            end
-            
-            print("👋 Ты снова видим!")
+    if not character then return end
+
+    -- Делаем все части тела прозрачными
+    for _, part in pairs(character:GetChildren()) do
+        if part:IsA("BasePart") then
+            part.Transparency = 0.9
         end
     end
-end)
 
--- Красивое описание в инвентаре
-tool.Name = "🎭 Маска-невидимка"
-tool.ToolTip = "Надень — и исчезни на 5 секунд!"</pre>
+    print("🎭 Ты невидимка! 5 секунд...")
+
+    -- Ждём 5 секунд
+    task.wait(5)
+
+    -- Возвращаем видимость
+    for _, part in pairs(character:GetChildren()) do
+        if part:IsA("BasePart") then
+            part.Transparency = 0
+        end
+    end
+
+    print("👋 Ты снова видим!")
+end)</pre>
   <button class="copy-btn" data-code="code4">📋 Копировать код</button>
 </div>
 
-<h4>✅ Проверь себя:</h4>
-<p>• Инструмент лежит на земле и его можно взять?<br>• После активации игрок становится полупрозрачным?<br>• Через 5 секунд видимость возвращается?</p>`,
-      hint: 'Tool — это особый объект. Игрок может его подобрать, нажав E. В инвентаре он появится на панели снизу!',
+<h4>✅ Проверь</h4>
+<p>Нажми <strong>Play</strong>. Подойди к маске и нажми <strong>E</strong> — подберёшь её. Потом нажми <strong>левую кнопку мыши</strong> — игрок станет почти прозрачным. Через 5 секунд вернётся обратно.</p>
+`,
+      hint: 'Tool — особый объект в Roblox. Его можно подобрать с земли нажав E. После этого он появится в нижней панели инвентаря.',
       difficulty: 'medium',
     },
+
     {
       title: '🎄 Живая ёлка',
-      desc: `<p>Посади волшебную ёлку, которая вырастает сама и мигает огоньками!</p>
+      desc: `
+<p>Посади горшочек — и через 10 секунд из него вырастет ёлка с мигающей звездой!</p>
 
-<h4>🎯 Что должно получиться:</h4>
-<p>Маленький горшочек. Ждёшь 10 секунд — вырастает ёлка с мигающими огоньками.</p>
+<h4>Шаг 1 — Создай горшочек</h4>
+<p>В <strong>Explorer</strong> нажми правой кнопкой на <strong>Workspace</strong> → <strong>Insert Object</strong> → <strong>Part</strong>.</p>
+<p>В <strong>Properties</strong> задай:</p>
+<ul>
+  <li><strong>Name</strong> → <code>Pot</code></li>
+  <li><strong>Size</strong> → <code>3, 1, 3</code></li>
+  <li><strong>BrickColor</strong> → <code>Brown</code></li>
+  <li><strong>Anchored</strong> → галочка ✅</li>
+</ul>
 
-<h4>🖱️ Шаг 1 — Сделай горшочек:</h4>
-<ol>
-  <li>Создай Part, назови <strong>Pot</strong>.</li>
-  <li>Размер: 3, 1, 3, цвет: Brown (коричневый).</li>
-</ol>
-
-<h4>🖱️ Шаг 2 — Создай пустую папку Tree:</h4>
-<ol>
-  <li>В Workspace создай <strong>Folder</strong>, назови <strong>Tree</strong>.</li>
-</ol>
-
-<h4>🖱️ Шаг 3 — Добавь скрипт внутрь Pot:</h4>
-<ol>
-  <li>Правой кнопкой на <strong>Pot</strong> → <strong>Insert Object → Script</strong>.</li>
-  <li>Скопируй этот код (нажми на кнопку):</li>
-</ol>
+<h4>Шаг 2 — Добавь скрипт в горшочек</h4>
+<p>Нажми правой кнопкой на <strong>Pot</strong> → <strong>Insert Object</strong> → <strong>Script</strong>. Удали текст и вставь:</p>
 
 <div class="code-block">
   <div class="code-header">📜 Скрипт внутри Pot</div>
   <pre id="code5">local pot = script.Parent
-local treeFolder = workspace:WaitForChild("Tree")
-local grown = false
 
--- Ждём 10 секунд
+-- Ждём 10 секунд перед тем как вырастить ёлку
 task.wait(10)
 
-if not grown then
-    grown = true
-    
-    -- Ствол ёлки (коричневый)
-    local trunk = Instance.new("Part")
-    trunk.Size = Vector3.new(1, 2, 1)
-    trunk.BrickColor = BrickColor.new("Brown")
-    trunk.Anchored = true
-    trunk.Position = pot.Position + Vector3.new(0, 1.5, 0)
-    trunk.Parent = treeFolder
-    
-    -- Первый ярус (зелёный, большой)
-    local layer1 = Instance.new("Part")
-    layer1.Size = Vector3.new(4, 1, 4)
-    layer1.BrickColor = BrickColor.new("Bright green")
-    layer1.Anchored = true
-    layer1.Position = trunk.Position + Vector3.new(0, 1.5, 0)
-    layer1.Parent = treeFolder
-    
-    -- Второй ярус (зелёный, средний)
-    local layer2 = Instance.new("Part")
-    layer2.Size = Vector3.new(3, 1, 3)
-    layer2.BrickColor = BrickColor.new("Bright green")
-    layer2.Anchored = true
-    layer2.Position = layer1.Position + Vector3.new(0, 1.2, 0)
-    layer2.Parent = treeFolder
-    
-    -- Третий ярус (зелёный, маленький)
-    local layer3 = Instance.new("Part")
-    layer3.Size = Vector3.new(2, 1, 2)
-    layer3.BrickColor = BrickColor.new("Bright green")
-    layer3.Anchored = true
-    layer3.Position = layer2.Position + Vector3.new(0, 1.2, 0)
-    layer3.Parent = treeFolder
-    
-    -- Звезда на макушке!
-    local star = Instance.new("Part")
-    star.Size = Vector3.new(1, 1, 1)
-    star.BrickColor = BrickColor.new("Bright yellow")
-    star.Material = Enum.Material.Neon
-    star.Anchored = true
-    star.Shape = Enum.PartType.Ball
-    star.Position = layer3.Position + Vector3.new(0, 1, 0)
-    star.Parent = treeFolder
-    
-    -- Ёлочные игрушки (разноцветные шарики)
-    local colors = {"Bright red", "Bright blue", "Bright yellow", "Bright orange"}
-    for i = 1, 12 do
-        local ornament = Instance.new("Part")
-        ornament.Size = Vector3.new(0.5, 0.5, 0.5)
-        ornament.BrickColor = BrickColor.new(colors[math.random(1, #colors)])
-        ornament.Material = Enum.Material.Neon
-        ornament.Anchored = true
-        ornament.Shape = Enum.PartType.Ball
-        
-        -- Случайное место на ёлке
-        local x = math.random(-2, 2)
-        local z = math.random(-2, 2)
-        local y = math.random(1, 5)
-        ornament.Position = trunk.Position + Vector3.new(x, y + 1, z)
-        ornament.Parent = treeFolder
-    end
-    
-    print("🎄 Ёлка выросла! С Рождеством!")
-    
-    -- Заставляем звёздочку мигать каждую секунду
-    while true do
-        task.wait(0.5)
-        star.Transparency = star.Transparency == 0 and 0.5 or 0
+-- Ствол
+local trunk = Instance.new("Part")
+trunk.Size = Vector3.new(1, 2, 1)
+trunk.BrickColor = BrickColor.new("Brown")
+trunk.Anchored = true
+trunk.Position = pot.Position + Vector3.new(0, 2, 0)
+trunk.Parent = workspace
+
+-- Нижний ярус (самый широкий)
+local layer1 = Instance.new("Part")
+layer1.Size = Vector3.new(5, 1, 5)
+layer1.BrickColor = BrickColor.new("Bright green")
+layer1.Anchored = true
+layer1.Position = trunk.Position + Vector3.new(0, 1.5, 0)
+layer1.Parent = workspace
+
+-- Средний ярус
+local layer2 = Instance.new("Part")
+layer2.Size = Vector3.new(3, 1, 3)
+layer2.BrickColor = BrickColor.new("Bright green")
+layer2.Anchored = true
+layer2.Position = layer1.Position + Vector3.new(0, 1.2, 0)
+layer2.Parent = workspace
+
+-- Верхний ярус (маленький)
+local layer3 = Instance.new("Part")
+layer3.Size = Vector3.new(2, 1, 2)
+layer3.BrickColor = BrickColor.new("Bright green")
+layer3.Anchored = true
+layer3.Position = layer2.Position + Vector3.new(0, 1.2, 0)
+layer3.Parent = workspace
+
+-- Звезда на макушке
+local star = Instance.new("Part")
+star.Size = Vector3.new(1, 1, 1)
+star.BrickColor = BrickColor.new("Bright yellow")
+star.Material = Enum.Material.Neon
+star.Shape = Enum.PartType.Ball
+star.Anchored = true
+star.Position = layer3.Position + Vector3.new(0, 1, 0)
+star.Parent = workspace
+
+print("🎄 Ёлка выросла!")
+
+-- Звезда мигает бесконечно
+while true do
+    task.wait(0.5)
+    if star.Transparency == 0 then
+        star.Transparency = 0.8
+    else
+        star.Transparency = 0
     end
 end</pre>
   <button class="copy-btn" data-code="code5">📋 Копировать код</button>
 </div>
 
-<h4>✅ Проверь себя:</h4>
-<p>• Горшочек стоит на земле?<br>• Через 10 секунд вырастает зелёная ёлка?<br>• На ёлке есть мигающая звезда и разноцветные шарики?</p>`,
-      hint: "Попробуй изменить время роста! Найди строку 'task.wait(10)' и поменяй 10 на 3 — ёлка вырастет быстрее! 🌱",
+<h4>✅ Проверь</h4>
+<p>Нажми <strong>Play</strong> и жди. Через 10 секунд прямо из горшочка вырастет ёлка, а звезда на макушке начнёт мигать.</p>
+`,
+      hint: 'Хочешь чтобы ёлка росла быстрее? Найди строку task.wait(10) и замени 10 на 3. Теперь ждать нужно всего 3 секунды!',
       difficulty: 'hard',
     },
+
     {
-      title: '🚪 Портальная пушка',
-      desc: `<p>Сделай портал! Наступи на синюю кнопку — телепорт в красный портал.</p>
+      title: '🚪 Портал-телепорт',
+      desc: `
+<p>Создай два портала: синий и красный. Наступишь на синий — мгновенно окажешься на красном!</p>
 
-<h4>🎯 Что должно получиться:</h4>
-<p>Два круга на земле: синий (вход) и красный (выход). Наступил на синий — оказался на красном.</p>
+<h4>Шаг 1 — Создай синий портал (вход)</h4>
+<p>В <strong>Explorer</strong> нажми правой кнопкой на <strong>Workspace</strong> → <strong>Insert Object</strong> → <strong>Part</strong>.</p>
+<p>В <strong>Properties</strong>:</p>
+<ul>
+  <li><strong>Name</strong> → <code>PortalIn</code></li>
+  <li><strong>Size</strong> → <code>4, 0.5, 4</code></li>
+  <li><strong>BrickColor</strong> → <code>Bright blue</code></li>
+  <li><strong>Material</strong> → <code>Neon</code></li>
+  <li><strong>Anchored</strong> → галочка ✅</li>
+</ul>
 
-<h4>🖱️ Шаг 1 — Создай синий портал (вход):</h4>
-<ol>
-  <li>Part, назови <strong>PortalIn</strong>.</li>
-  <li>Size: 4, 0.5, 4, Color: Bright blue, Material: Neon.</li>
-</ol>
+<h4>Шаг 2 — Создай красный портал (выход)</h4>
+<p>Снова: правой кнопкой на <strong>Workspace</strong> → <strong>Insert Object</strong> → <strong>Part</strong>.</p>
+<p>В <strong>Properties</strong>:</p>
+<ul>
+  <li><strong>Name</strong> → <code>PortalOut</code></li>
+  <li><strong>Size</strong> → <code>4, 0.5, 4</code></li>
+  <li><strong>BrickColor</strong> → <code>Bright red</code></li>
+  <li><strong>Material</strong> → <code>Neon</code></li>
+  <li><strong>Anchored</strong> → галочка ✅</li>
+</ul>
+<p>Перетащи красный портал подальше от синего — в другой конец карты.</p>
 
-<h4>🖱️ Шаг 2 — Создай красный портал (выход):</h4>
-<ol>
-  <li>Part, назови <strong>PortalOut</strong>.</li>
-  <li>Size: 4, 0.5, 4, Color: Bright red, Material: Neon.</li>
-  <li>Поставь его в другом месте карты!</li>
-</ol>
-
-<h4>🖱️ Шаг 3 — Добавь скрипт внутрь PortalIn:</h4>
-<ol>
-  <li>Правой кнопкой на <strong>PortalIn</strong> → <strong>Insert Object → Script</strong>.</li>
-  <li>Скопируй этот код (нажми на кнопку):</li>
-</ol>
+<h4>Шаг 3 — Добавь скрипт в синий портал</h4>
+<p>Нажми правой кнопкой на <strong>PortalIn</strong> → <strong>Insert Object</strong> → <strong>Script</strong>. Удали текст и вставь:</p>
 
 <div class="code-block">
   <div class="code-header">📜 Скрипт внутри PortalIn</div>
   <pre id="code6">local portalIn = script.Parent
 local portalOut = workspace:WaitForChild("PortalOut")
 
--- Эффект портала (вращающиеся частицы)
-local function createPortalEffect(position)
-    for i = 1, 8 do
-        local particle = Instance.new("Part")
-        particle.Size = Vector3.new(0.5, 0.5, 0.5)
-        particle.BrickColor = BrickColor.new("Bright blue")
-        particle.Material = Enum.Material.Neon
-        particle.Anchored = true
-        particle.CanCollide = false
-        
-        local angle = (i / 8) * math.pi * 2
-        local x = math.cos(angle) * 2
-        local z = math.sin(angle) * 2
-        particle.Position = position + Vector3.new(x, 1, z)
-        particle.Parent = workspace
-        
-        task.wait(0.05)
-        particle:Destroy()
-    end
-end
+-- Защита от двойной телепортации
+local cooldown = false
 
 portalIn.Touched:Connect(function(hit)
     local character = hit.Parent
     local humanoid = character:FindFirstChild("Humanoid")
-    
-    if humanoid then
+
+    if humanoid and not cooldown then
+        cooldown = true
+
         local rootPart = character:FindFirstChild("HumanoidRootPart")
-        
         if rootPart then
-            -- Создаём красивый эффект
-            createPortalEffect(rootPart.Position)
-            
-            -- Телепортируем!
-            rootPart.CFrame = portalOut.CFrame + Vector3.new(0, 2, 0)
-            
-            -- Эффект на выходе
-            createPortalEffect(rootPart.Position)
-            
-            print("🌀 Телепортация успешна!")
+            -- Телепортируем игрока к красному порталу
+            -- +3 по высоте чтобы появиться НАД порталом, а не внутри него
+            rootPart.CFrame = portalOut.CFrame + Vector3.new(0, 3, 0)
+            print("🌀 Телепортация!")
         end
+
+        -- Пауза 2 секунды чтобы не телепортировало снова сразу
+        task.wait(2)
+        cooldown = false
     end
 end)
 
-print("🚪 Портал готов! Наступи на синий — попадёшь в красный!")</pre>
+print("🚪 Порталы готовы!")</pre>
   <button class="copy-btn" data-code="code6">📋 Копировать код</button>
 </div>
 
-<h4>✅ Проверь себя:</h4>
-<p>• Синий и красный порталы стоят в разных местах?<br>• Наступаешь на синий — появляешься на красном?<br>• Появляются ли голубые искры при телепортации?</p>`,
-      hint: 'Сделай порталы в разных концах карты! Например, синий у старта, красный — на высокой горе. Бам — и ты на вершине! 🏔️',
+<h4>✅ Проверь</h4>
+<p>Нажми <strong>Play</strong>. Подойди и наступи на синий светящийся портал — ты мгновенно перенесёшься к красному порталу в другом месте карты.</p>
+`,
+      hint: 'Поставь синий портал у старта, а красный на высокой горе или острове. Получится крутой секретный проход!',
       difficulty: 'medium',
     },
   ],
