@@ -19,7 +19,7 @@ export default class Task097Validator {
     });
     if (hasSwitch) score += 15;
 
-    const hasCase = /\bcase\s+/.test(js);
+    const hasCase = /\bcase\s+[^:]+:/m.test(js);
     checks.push({
       label: "Использованы case",
       passed: hasCase,
@@ -27,7 +27,7 @@ export default class Task097Validator {
     });
     if (hasCase) score += 15;
 
-    const hasDefault = /\bdefault\s*:/.test(js);
+    const hasDefault = /\bcase\s+[^:]*:/m.test(js);
     checks.push({
       label: "Использован default",
       passed: hasDefault,

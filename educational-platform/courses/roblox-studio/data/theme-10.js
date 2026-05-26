@@ -1,9 +1,9 @@
 const theme10 = {
   id: 10,
-  title: "Инструменты и предметы игрока",
+  title: 'Инструменты и предметы игрока',
   theory: {
-    title: "Как сделать предметы, которые можно брать в руки?",
-    subtitle: "Tool, Handle, Backpack, StarterPack, Activated",
+    title: 'Как сделать предметы, которые можно брать в руки?',
+    subtitle: 'Tool, Handle, Backpack, StarterPack, Activated',
     content: `<p>В Roblox можно создавать предметы, которые игрок берёт в руки — мечи, ключи, магические палочки, еду и многое другое! Такие предметы называются <strong>Tool</strong> (инструмент).</p>
 
       <h3 style="color:var(--accent);margin-top:24px">🛠️ Что такое Tool?</h3>
@@ -74,94 +74,149 @@ end)</pre></div>`,
   },
   tasks: [
     {
-      title: "Мой первый меч",
-      desc: `<p>Создадим простой меч, который можно взять в руки! При нажатии мышки меч издаёт звук.</p>
+      title: 'Мой первый меч',
+      desc: `<p>Создадим магический меч с плавной анимацией и частицами! При взмахе лезвие вспыхивает и летят искры.</p>
 
 <h4>🎯 Что должно получиться:</h4>
-<p>На земле лежит меч. Игрок подходит, нажимает на него — и меч попадает в инвентарь. Теперь можно взять его в руки (клавиша 1) и нажимать мышкой — меч будет махать и издавать звук!</p>
-
-<h4>👆 Шаг 1 — Создай меч (Tool):</h4>
+<p>На земле лежит светящийся меч. Подходишь, подбираешь, берёшь в руку (клавиша 1) — и нажимаешь мышку. Лезвие плавно вспыхивает белым, летят синие искры и слышен звук удара. Как в настоящей RPG!</p>
+<br>
+<h4>👆 Шаг 1 — Создай Tool:</h4>
 <ol>
-  <li>В <strong>Workspace</strong> нажми «+» → <strong>Tool</strong></li>
-  <li>Назови его <strong>Sword</strong></li>
-</ol>
+  <li>В <strong>Explorer</strong> нажми «+» рядом с Workspace → <strong>Tool</strong></li>
+  <li>Назови его <strong>MagicSword</strong></li>
+</ol><br>
 
-<h4>👆 Шаг 2 — Добавь Handle (рукоятку):</h4>
+<h4>👆 Шаг 2 — Собери меч из деталей:</h4>
 <ol>
-  <li>Внутри Sword нажми «+» → <strong>Part</strong> → назови <strong>Handle</strong>  </li>
-  <li>Настрой Handle:<br>
-    &nbsp;&nbsp;• <strong>Size</strong> → 1, 1, 3 (длинная палка)<br>
-    &nbsp;&nbsp;• <strong>Color</strong> → серый или серебряный<br>
-    &nbsp;&nbsp;• <strong>Material</strong> → Metal<br>
-    &nbsp;&nbsp;• <strong>Anchored</strong> → ❌ (чтобы не парил в воздухе)</li>
-  <li>Добавь лезвие (ещё один Part):<br>
-    &nbsp;&nbsp;• Назови <strong>Blade</strong><br>
-    &nbsp;&nbsp;• Size → 0.5, 0.5, 2<br>
-    &nbsp;&nbsp;• Position → X: 0, Y: 0, Z: 1.8<br>
-    &nbsp;&nbsp;• Color → голубой (Neon)</li>
-</ol>
+  <li>Внутри MagicSword нажми «+» → <strong>Part</strong> → назови <strong>Handle</strong> (это волшебное слово — без него меч не возьмётся в руки!)<br>
+    &nbsp;&nbsp;• <strong>Size</strong> → 0.3, 0.3, 2<br>
+    &nbsp;&nbsp;• <strong>Color</strong> → коричневый<br>
+    &nbsp;&nbsp;• <strong>Material</strong> → Wood<br>
+    &nbsp;&nbsp;• <strong>Anchored</strong> → ❌</li>
+  <li>Добавь лезвие: нажми «+» → <strong>Part</strong> → назови <strong>Blade</strong><br>
+    &nbsp;&nbsp;• <strong>Size</strong> → 0.15, 0.6, 3<br>
+    &nbsp;&nbsp;• <strong>Color</strong> → голубой (Cyan)<br>
+    &nbsp;&nbsp;• <strong>Material</strong> → Neon<br>
+    &nbsp;&nbsp;• <strong>Position</strong> → сдвинь по оси Z вперёд на 2.5 от рукояти</li>
+    <li>  Кликни на <strong>Handle</strong> в Explorer
+  Нажми «+» → <strong>WeldConstraint</strong>
+  В Properties у WeldConstraint:<br>
+    &nbsp;&nbsp;• <strong>Part0</strong> → выбери <strong>Handle</strong><br>
+    &nbsp;&nbsp;• <strong>Part1</strong> → выбери <strong>Blade</strong></li>
+    <li>Измени MagicSword -> Grip -> Orientation x = 90</li>
+</ol><br>
 
-<h4>👆 Шаг 3 — Добавь звук в Tool:</h4>
+<h4>👆 Шаг 3 — Добавь звук:</h4>
 <ol>
-  <li>Внутри Sword нажми «+» → <strong>Sound</strong> → назови <strong>SwingSound</strong></li>
+  <li>Внутри MagicSword нажми «+» → <strong>Sound</strong> → назови <strong>SwingSound</strong></li>
   <li>В Properties:<br>
-    &nbsp;&nbsp;• <strong>SoundId</strong> → найди в Toolbox звук «sword swing»<br>
-    &nbsp;&nbsp;• <strong>Volume</strong> → 0.5</li>
+    &nbsp;&nbsp;• <strong>SoundId</strong> → <code>rbxassetid://9119713951</code><br>
+    &nbsp;&nbsp;• <strong>Volume</strong> → 0.8</li>
+</ol><br>
+
+<h4>👆 Шаг 4 — Добавь искры (ParticleEmitter):</h4>
+<ol>
+  <li>Кликни на <strong>Blade</strong> в Explorer → нажми «+» → <strong>ParticleEmitter</strong></li>
+  <li>Настрой:<br>
+    &nbsp;&nbsp;• <strong>Rate</strong> → 0 (частицы спят до взмаха)<br>
+    &nbsp;&nbsp;• <strong>SpreadAngle</strong> → 45, 45<br>
+    &nbsp;&nbsp;• <strong>Lifetime</strong> → 0.3, 0.5<br>
+    &nbsp;&nbsp;• <strong>Size</strong> → 0.2<br>
+    &nbsp;&nbsp;• <strong>Speed</strong> → 8</li>
+</ol><br>
+<ol
+    <li>
+        👆 Шаг 5 — Создай Animation объект:
+        Внутри MagicSword нажми «+» → Animation
+        Назови SwingAnim
+        В Properties → AnimationId → вставь готовую анимацию взмаха:
+        rbxassetid://522635514
+    </li>
+</ol><br>
+
+<h4>👆 Шаг 6 — Добавь LocalScript:</h4>
+<ol>
+  <li>Внутри MagicSword нажми «+» → <strong>LocalScript</strong> → назови <strong>SwordScript</strong></li>
+  <li>Открой двойным кликом, удали всё и вставь код:</li>
 </ol>
+<div class="code-block"><div class="code-header">LocalScript внутри MagicSword</div><pre>-- 🗡️ Магический меч
+local tool      = script.Parent
+local blade     = tool:WaitForChild("Blade")
+local swing     = tool:WaitForChild("SwingSound")
+local particles = blade:WaitForChild("ParticleEmitter")
+local animObj   = tool:WaitForChild("SwingAnim")
 
-<h4>👆 Шаг 4 — Добавь Script в Sword:</h4>
-<div class="code-block"><div class="code-header">Script внутри Sword</div><pre>-- Получаем инструмент и звук
-local tool = script.Parent
-local swingSound = tool:WaitForChild("SwingSound")
+local normalColor = Color3.fromRGB(0, 200, 255)
+local hitColor    = Color3.fromRGB(255, 255, 255)
+local damage      = 25  -- урон за удар, меняй как хочешь
 
--- Анимация взмаха (меняем цвет лезвия)
-local blade = tool:WaitForChild("Blade")
-local originalColor = blade.Color
+local character, animator, swingTrack
+local swinging = false
+local canHit   = false  -- урон наносим только во время взмаха
 
--- Функция взмаха
-local function swing()
-    print("🎮 Меч активирован!")
-    
-    -- Играем звук
-    swingSound:Play()
-    
-    -- Лезвие светится белым
-    blade.Color = Color3.fromRGB(255, 255, 255)
-    blade.Material = Enum.Material.Neon
-    
-    -- Через 0.2 секунды возвращаем цвет обратно
-    task.wait(0.2)
-    blade.Color = originalColor
-    blade.Material = Enum.Material.Metal
-end
+-- Когда лезвие касается чего-либо
+blade.Touched:Connect(function(hit)
+    if not canHit then return end
 
--- Когда игрок нажимает левую кнопку мыши с мечом в руках
-tool.Activated:Connect(swing)
+    -- Ищем Humanoid внутри того, чего коснулись
+    local humanoid = hit.Parent:FindFirstChildOfClass("Humanoid")
 
--- Когда игрок берёт меч в руки
-tool.Equipped:Connect(function()
-    print("🗡️ Меч в руках!")
+    -- Не бьём самого игрока
+    if humanoid and hit.Parent ~= character then
+        humanoid:TakeDamage(damage)
+        canHit = false  -- чтобы один взмах = один удар
+        print("💥 Попал! Урон: " .. damage)
+    end
 end)
 
-print("✅ Меч готов! Нажми на него, чтобы взять")</pre></div>
+tool.Equipped:Connect(function()
+    character = tool.Parent
+    animator = character:FindFirstChildOfClass("Humanoid")
+        :FindFirstChildOfClass("Animator")
+    swingTrack = animator:LoadAnimation(animObj)
+    swingTrack.Priority = Enum.AnimationPriority.Action
+    print("⚔️ Меч готов!")
+end)
 
-<h4>👆 Шаг 5 — Проверь работу:</h4>
+local function onSwing()
+    if swinging then return end
+    swinging = true
+    canHit   = true  -- разрешаем урон
+
+    swing:Play()
+    particles.Rate = 80
+    blade.Color = hitColor
+
+    swingTrack:Play()
+    swingTrack.Stopped:Wait()
+
+    particles.Rate = 0
+    blade.Color = normalColor
+    canHit   = false  -- запрещаем урон до следующего взмаха
+    swinging = false
+end
+
+tool.Activated:Connect(onSwing)
+</pre></div>
+
+<h4>👆 Шаг 7 — Проверь работу:</h4>
 <ol>
   <li>Нажми <strong>Play</strong></li>
-  <li>Подойди к мечу на земле</li>
-  <li>Нажми на меч, чтобы взять его в инвентарь</li>
-  <li>Нажми клавишу <strong>1</strong>, чтобы взять меч в руки</li>
-  <li>Нажимай левую кнопку мыши — меч машет и издаёт звук!</li>
+  <li>Подойди к мечу и подбери его</li>
+  <li>Нажми клавишу <strong>1</strong> — меч в руках</li>
+  <li>Кликай мышкой — лезвие вспыхивает, летят искры, звук удара!</li>
 </ol>
+<p>Если что-то пошло не так — открой <strong>Output</strong> (меню View → Output). Красные строчки подскажут, где ошибка.</p>
 
 <h4>🔍 Проверь себя:</h4>
-<p>• Есть ли у меча деталь Handle? ✅<br>• Меч можно подобрать? ✅<br>• Меч появляется в инвентаре (внизу экрана)? ✅<br>• При нажатии мышки меч меняет цвет? ✅<br>• Слышен звук взмаха? ✅</p>`,
-      hint: "Handle — самая важная часть Tool! Без него предмет не возьмётся в руки  . Попробуй изменить SoundId на другой звук — например, magic spell для волшебного меча!",
-      difficulty: "easy",
-      solution: "local tool=script.Parent local sound=tool.SwingSound tool.Activated:Connect(function() sound:Play() end)",
+<p>• Меч можно подобрать с земли? ✅<br>• Меч появляется в инвентаре внизу экрана? ✅<br>• Лезвие плавно вспыхивает (не прыгает резко)? ✅<br>• Слышен звук удара? ✅<br>• При взмахе летят синие искры? ✅</p>`,
+      hint: "Handle — самая важная деталь! Без неё Roblox не знает, как держать предмет. А TweenService — это как аниматор: говоришь ему 'измени цвет за 0.15 секунды' — и он делает плавный переход сам. Попробуй изменить hitColor на fromRGB(255, 50, 50) — получится огненный меч! 🔥",
+      difficulty: 'easy',
+      solution:
+        "local tool=script.Parent local blade=tool:WaitForChild('Blade') local particles=blade:WaitForChild('ParticleEmitter') local TweenService=game:GetService('TweenService') local info=TweenInfo.new(0.15) tool.Activated:Connect(function() tool.SwingSound:Play() particles.Rate=80 TweenService:Create(blade,info,{Color=Color3.fromRGB(255,255,255)}):Play() task.wait(0.2) particles.Rate=0 TweenService:Create(blade,info,{Color=Color3.fromRGB(0,200,255)}):Play() end)",
     },
     {
-      title: "Ключ, открывающий дверь",
+      title: 'Ключ, открывающий дверь',
       desc: `<p>Сделаем ключ, который открывает секретную дверь! Без ключа дверь не открыть.</p>
 
 <h4>🎯 Что должно получиться:</h4>
@@ -292,11 +347,12 @@ print("🚪 Дверь создана! Нужен ключ, чтобы откр�
 <h4>🔍 Проверь себя:</h4>
 <p>• Ключ можно подобрать? ✅<br>• Без ключа дверь не открывается? ✅<br>• С ключом дверь открывается? ✅<br>• После открытия ключ исчезает? ✅</p>`,
       hint: "ProximityPrompt — это кнопка, которая появляется на экране, когда игрок подходит близко к объекту. Можно менять ActionText на 'Взять ключ' или 'Использовать'!  ",
-      difficulty: "medium",
-      solution: "prompt.Triggered:Connect(function(p) if p.Backpack:FindFirstChild('Key') then door:Destroy() else p.PlayerGui:FindFirstChild('Hint').Text='Нужен ключ!' end end)",
+      difficulty: 'medium',
+      solution:
+        "prompt.Triggered:Connect(function(p) if p.Backpack:FindFirstChild('Key') then door:Destroy() else p.PlayerGui:FindFirstChild('Hint').Text='Нужен ключ!' end end)",
     },
     {
-      title: "Волшебная палочка с анимацией",
+      title: 'Волшебная палочка с анимацией',
       desc: `<p>Создадим волшебную палочку, которая стреляет огненными шарами и имеет красивую анимацию взмаха!</p>
 
 <h4>🎯 Что должно получиться:</h4>
@@ -431,12 +487,13 @@ print("🪄 Волшебная палочка готова! Нажимай мы�
 
 <h4>🔍 Проверь себя:</h4>
 <p>• Палочка есть в инвентаре с самого начала? ✅<br>• При нажатии мышки слышен звук? ✅<br>• Появляется огненный шар? ✅<br>• Шар летит вперёд? ✅<br>• При попадании происходит взрыв? ✅</p>`,
-      hint: "Можно изменить цвет огненного шара на синий (ледяная магия) или зелёный (яд). Поменяй Color3.fromRGB(255,100,0) на другой цвет!",
-      difficulty: "medium",
-      solution: "tool.Activated:Connect(function() local ball=Instance.new('Part') ball.Position=character.HumanoidRootPart.Position+Vector3.new(0,2,0)+direction*3 ball.Velocity=direction*70 ball.Parent=workspace end)",
+      hint: 'Можно изменить цвет огненного шара на синий (ледяная магия) или зелёный (яд). Поменяй Color3.fromRGB(255,100,0) на другой цвет!',
+      difficulty: 'medium',
+      solution:
+        "tool.Activated:Connect(function() local ball=Instance.new('Part') ball.Position=character.HumanoidRootPart.Position+Vector3.new(0,2,0)+direction*3 ball.Velocity=direction*70 ball.Parent=workspace end)",
     },
     {
-      title: "Сбор монеток (инвентарь и счёт)",
+      title: 'Сбор монеток (инвентарь и счёт)',
       desc: `<p>Сделаем монетки, которые игрок собирает, и счётчик монеток на экране!</p>
 
 <h4>🎯 Что должно получиться:</h4>
@@ -577,11 +634,12 @@ end)</pre></div>
 <h4>🔍 Проверь себя:</h4>
 <p>• Монетка вращается? ✅<br>• При касании слышен звон? ✅<br>• Монетка исчезает? ✅<br>• Счётчик монеток увеличивается? ✅<br>• Можно собрать несколько монеток? ✅</p>`,
       hint: "Leaderstats автоматически показывается в правой части экрана! NumberValue с именем 'Монетки' отобразится как 'Монетки: 0'  . Чтобы создать другие ресурсы, добавь ещё NumberValue — например, 'Алмазы' или 'Здоровье'!",
-      difficulty: "medium",
-      solution: "local c=script.Parent c.Touched:Connect(function(h) if h.Parent:FindFirstChild('Humanoid') then local p=game.Players:GetPlayerFromCharacter(h.Parent) p.leaderstats.Монетки.Value+=1 c:Destroy() end end)",
+      difficulty: 'medium',
+      solution:
+        "local c=script.Parent c.Touched:Connect(function(h) if h.Parent:FindFirstChild('Humanoid') then local p=game.Players:GetPlayerFromCharacter(h.Parent) p.leaderstats.Монетки.Value+=1 c:Destroy() end end)",
     },
     {
-      title: "Настоящий бластер",
+      title: 'Настоящий бластер',
       desc: `<p>Создадим крутой бластер с перезарядкой! Нажми R, чтобы перезарядить, а мышкой — стрелять.</p>
 
 <h4>🎯 Что должно получиться:</h4>
@@ -806,9 +864,10 @@ print("🔫 Бластер готов! Стреляй мышкой, переза
 
 <h4>🔍 Проверь себя:</h4>
 <p>• Бластер можно взять в руки? ✅<br>• При стрельбе патроны уменьшаются? ✅<br>• Когда патроны кончаются, слышен звук? ✅<br>• Клавиша R перезаряжает бластер? ✅<br>• Лазер летит из бластера? ✅</p>`,
-      hint: "ContextActionService позволяет привязать клавиши к действиям даже когда инструмент в руках  . Клавиша R отлично подходит для перезарядки! Можно изменить MAX_AMMO на 10 или 30 — будет больше патронов!",
-      difficulty: "hard",
-      solution: "-- Используем ContextActionService для клавиши R  \n-- Отслеживаем количество патронов\n-- При выстреле создаём лазерный луч\n-- При перезарядке ждём 2 секунды",
+      hint: 'ContextActionService позволяет привязать клавиши к действиям даже когда инструмент в руках  . Клавиша R отлично подходит для перезарядки! Можно изменить MAX_AMMO на 10 или 30 — будет больше патронов!',
+      difficulty: 'hard',
+      solution:
+        '-- Используем ContextActionService для клавиши R  \n-- Отслеживаем количество патронов\n-- При выстреле создаём лазерный луч\n-- При перезарядке ждём 2 секунды',
     },
   ],
 };
@@ -822,9 +881,9 @@ print("🔫 Бластер готов! Стреляй мышкой, переза
 // 4	Сбор монеток	⭐⭐ Medium	Leaderstats, счётчик, GUI
 // 5	Настоящий бластер	⭐⭐⭐ Hard	ContextActionService, перезарядка
 // Главные понятия для детей:
-// Tool — предмет, который можно взять в руки 
+// Tool — предмет, который можно взять в руки
 
-// Handle — рукоятка, за которую персонаж держит предмет 
+// Handle — рукоятка, за которую персонаж держит предмет
 
 // StarterPack — место, откуда игроки получают предметы при старте
 
@@ -833,10 +892,10 @@ print("🔫 Бластер готов! Стреляй мышкой, переза
 // leaderstats — табличка с очками игрока
 
 // Полезные советы:
-// Всегда называй деталь, за которую держат предмет, Handle — иначе предмет не возьмётся в руки! 
+// Всегда называй деталь, за которую держат предмет, Handle — иначе предмет не возьмётся в руки!
 
 // Чтобы дать предмет всем игрокам при старте — положи его в StarterPack
 
 // Чтобы предмет лежал на карте — положи в Workspace
 
-// ContextActionService нужен для обработки клавиш (например, R для перезарядки) 
+// ContextActionService нужен для обработки клавиш (например, R для перезарядки)
