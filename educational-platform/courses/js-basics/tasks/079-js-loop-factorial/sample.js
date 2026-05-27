@@ -1,13 +1,5 @@
-// Напишите функцию factorial(n), которая считает факториал числа n
-// Факториал n! = 1 * 2 * 3 * ... * n
-// Пример: factorial(5) = 1 * 2 * 3 * 4 * 5 = 120
+const fruits = ['яблоко', 'банан', 'апельсин', 'виноград', 'груша'];
 
-function factorial(n) {
-  let result = 1;
-  for (let i = 2; i <= n; i++) {
-    result *= i;
-  }
-  return result;
+for (let i = fruits.length - 1; i >= 0; i--) {
+  console.log('Элемент ' + i + ': ' + fruits[i]);
 }
-
-document.getElementById('output').textContent = factorial(5);

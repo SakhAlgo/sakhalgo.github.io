@@ -1,12 +1,11 @@
 {
   "id": "073",
   "title": "Цикл for...of для массива",
-  "description": "Переберите массив fruits с помощью цикла for...of и выведите каждый элемент",
+  "description": "Переберите массив fruits с помощью цикла for...of и выведите каждый элемент в консоль",
   "requirements": [
     "Объявите массив: const fruits = ['яблоко', 'банан', 'апельсин']",
     "Создайте цикл for (const fruit of fruits) для перебора массива",
-    "Внутри цикла добавьте fruit к textContent элемента #output",
-    "Используйте document.getElementById('output').textContent"
+    "Внутри цикла выведите fruit в консоль с помощью console.log()"
   ],
   "difficulty": "easy",
   "points": 50,

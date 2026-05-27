@@ -3,59 +3,59 @@ export default class Task078Validator {
     const checks = [];
     let score = 0;
 
-    // Проверка цикла for...in
-    const hasFor = /\bfor\s*\(/.test(js);
+    // Проверка массива numbers
+    const hasArray = /const\s+numbers\s*=\s*\[\s*23\s*,\s*45\s*,\s*12\s*,\s*67\s*,\s*34\s*,\s*89\s*,\s*5\s*\]/.test(js);
     checks.push({
-      label: "Использован цикл for",
-      passed: hasFor,
-      hint: "Добавьте for (const key in user)",
+      label: "Массив numbers объявлен правильно",
+      passed: hasArray,
+      hint: "Объявите const numbers = [23, 45, 12, 67, 34, 89, 5]",
     });
-    if (hasFor) score += 15;
+    if (hasArray) score += 15;
 
-    // Проверка ключевого слова in
-    const hasIn = /\bin\b/.test(js);
+    // Проверка переменной max
+    const hasMax = /(let|var)\s+max\s*=\s*numbers\s*\[\s*0\s*\]/.test(js);
     checks.push({
-      label: "Использовано ключевое слово in (for...in)",
-      passed: hasIn,
-      hint: "Напишите for (const key in user)",
+      label: "Переменная max инициализирована первым элементом",
+      passed: hasMax,
+      hint: "Создайте let max = numbers[0]",
     });
-    if (hasIn) score += 20;
+    if (hasMax) score += 15;
 
-    // Проверка объекта user
-    const hasUser = /const\s+user\s*=/.test(js);
+    // Проверка цикла for с i = 1
+    const hasForStart = /\bfor\s*\(\s*(let|var)\s+i\s*=\s*1/.test(js);
     checks.push({
-      label: "Объект user объявлен",
-      passed: hasUser,
-      hint: "Объявите const user = { name: 'Алиса', age: 25, city: 'Москва' }",
+      label: "Цикл начинается с i = 1",
+      passed: hasForStart,
+      hint: "Напишите for (let i = 1; i < numbers.length; i++)",
     });
-    if (hasUser) score += 15;
+    if (hasForStart) score += 15;
 
-    // Проверка доступа через скобочную нотацию user[key]
-    const hasBracketNotation = /user\s*\[\s*key\s*\]/.test(js);
+    // Проверка условия if (numbers[i] > max)
+    const hasIf = /\bif\s*\(\s*numbers\s*\[\s*i\s*\]\s*>\s*max\s*\)/.test(js);
     checks.push({
-      label: "Обращение к свойству через user[key]",
-      passed: hasBracketNotation,
-      hint: "Используйте user[key] для получения значения",
+      label: "Проверка numbers[i] > max",
+      passed: hasIf,
+      hint: "Добавьте if (numbers[i] > max)",
     });
-    if (hasBracketNotation) score += 20;
+    if (hasIf) score += 15;
 
-    // Проверка вывода в формате "ключ: значение"
-    const hasOutputFormat = /key.*:.*user/.test(js) || /user.*key/.test(js);
+    // Проверка обновления max
+    const hasUpdate = /max\s*=\s*numbers\s*\[\s*i\s*\]/.test(js);
     checks.push({
-      label: "Вывод в формате 'ключ: значение'",
-      passed: hasOutputFormat,
-      hint: "Выведите key + ': ' + user[key]",
+      label: "Обновление переменной max",
+      passed: hasUpdate,
+      hint: "Внутри if присвойте max = numbers[i]",
     });
-    if (hasOutputFormat) score += 15;
+    if (hasUpdate) score += 15;
 
-    // Проверка вывода
-    const hasOutput = /textContent\s*\+=/.test(js);
+    // Проверка вывода в консоль
+     const hasConsoleLog = /console\.log\s*\(/.test(js);
     checks.push({
-      label: "Вывод результата в #output",
-      passed: hasOutput,
-      hint: "Используйте textContent += key",
+      label: "Вывод максимума в консоль",
+      passed: hasConsoleLog,
+      hint: "Выведите console.log('Максимальное число: ' + max)",
     });
-    if (hasOutput) score += 15;
+    if (hasConsoleLog) score += 15;
 
     return { passed: score >= (config.passThreshold || 70), score, checks };
   }

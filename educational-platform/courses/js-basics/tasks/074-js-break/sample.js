@@ -1,14 +1,15 @@
-// Функция findNumber ищет число в массиве и возвращает его индекс
-// Добавьте break, когда число найдено
-
 function findNumber(arr, target) {
+  let foundIndex = -1;
+  
   for (let i = 0; i < arr.length; i++) {
     if (arr[i] === target) {
-      return i;
+      foundIndex = i;
+      break;
     }
   }
-  return -1;
+  
+  return foundIndex;
 }
 
-const numbers = [10, 20, 30, 40, 50];
-document.getElementById('output').textContent = findNumber(numbers, 30);
+const result = findNumber([3, 7, 1, 9, 4], 1);
+console.log(result);

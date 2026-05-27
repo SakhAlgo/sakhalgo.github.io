@@ -39,23 +39,23 @@ export default class Task073Validator {
     });
     if (hasElement) score += 15;
 
-    // Проверка вывода
-    const hasOutput = /textContent\s*\+=/.test(js);
+    // Проверка вывода в консоль
+    const hasConsoleLog = /console\.log\s*\(/.test(js);
     checks.push({
-      label: "Вывод результата в #output",
-      passed: hasOutput,
-      hint: "Добавьте textContent += fruit",
+      label: "Вывод результата в консоль",
+      passed: hasConsoleLog,
+      hint: "Добавьте console.log(fruit) внутри цикла",
     });
-    if (hasOutput) score += 15;
+    if (hasConsoleLog) score += 20;
 
-    // Проверка getElementById
-    const hasGetElement = /getElementById\s*\(\s*['"]output['"]\s*\)/.test(js);
+    // Проверка что fruit передается в console.log
+    const hasFruitInLog = /console\.log\s*\(\s*fruit\s*\)/.test(js);
     checks.push({
-      label: "Обращение к #output",
-      passed: hasGetElement,
-      hint: 'Используйте document.getElementById("output")',
+      label: "В console.log передается fruit",
+      passed: hasFruitInLog,
+      hint: "Напишите console.log(fruit)",
     });
-    if (hasGetElement) score += 15;
+    if (hasFruitInLog) score += 10;
 
     return { passed: score >= (config.passThreshold || 70), score, checks };
   }

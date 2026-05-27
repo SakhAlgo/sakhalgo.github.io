@@ -1,16 +1,17 @@
 {
   "id": "077",
-  "title": "Цикл do...while",
-  "description": "Перепишите цикл while на do...while для вывода чисел от 1 до 5",
+  "title": "Сумма элементов массива",
+  "description": "Найдите сумму всех элементов массива с помощью цикла for",
   "requirements": [
-    "Создайте цикл do { ... } while (i <= 5)",
-    "Внутри do-блока добавьте i к textContent элемента #output",
-    "Добавьте инкремент i++ внутри do-блока",
-    "Используйте document.getElementById('output').textContent"
+    "Объявите массив: const numbers = [5, 12, 8, 3, 10]",
+    "Создайте переменную sum = 0 для хранения суммы",
+    "Используйте цикл for для перебора массива",
+    "Внутри цикла добавляйте каждый элемент к переменной sum",
+    "Выведите результат в консоль: console.log('Сумма: ' + sum)"
   ],
-  "difficulty": "medium",
-  "points": 75,
-  "tags": ["js", "loop", "do-while"],
+  "difficulty": "easy",
+  "points": 60,
+  "tags": ["js", "loop", "array", "sum"],
   "sample": {
     "html": "sample.html",
     "css": "sample.css",

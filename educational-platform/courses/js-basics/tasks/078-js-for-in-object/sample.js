@@ -1,12 +1,10 @@
-// Переберите объект user с помощью for...in
-// Выведите каждое свойство в формате "ключ: значение"
+const numbers = [23, 45, 12, 67, 34, 89, 5];
+let max = numbers[0];
 
-const user = {
-  name: "Алиса",
-  age: 25,
-  city: "Москва"
-};
-
-for (const key in user) {
-  document.getElementById('output').textContent += key + ": " + user[key] + '\n';
+for (let i = 1; i < numbers.length; i++) {
+  if (numbers[i] > max) {
+    max = numbers[i];
+  }
 }
+
+console.log('Максимальное число: ' + max);

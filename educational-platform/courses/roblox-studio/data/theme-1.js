@@ -204,25 +204,47 @@ print("🌈 Радуга готова!")</pre>
 
 <div class="code-block">
   <div class="code-header">📜 Скрипт внутри Booster</div>
-  <pre id="code3">local booster = script.Parent
-
--- Сила прыжка. Попробуй изменить это число!
-local jumpPower = 80
+  <pre id="code3">
+-- Script (обычный) внутри пада
+local booster = script.Parent
+local jumpPower = 150
+local debounce = {}
 
 booster.Touched:Connect(function(hit)
-    local character = hit.Parent
-    local humanoid = character:FindFirstChild("Humanoid")
+	local character = hit.Parent
+	local humanoid = character:FindFirstChildOfClass("Humanoid")
+	if not humanoid or humanoid.Health <= 0 then return end
 
-    if humanoid then
-        local rootPart = character:FindFirstChild("HumanoidRootPart")
+	local rootPart = character:FindFirstChild("HumanoidRootPart")
+	if not rootPart then return end
 
-        if rootPart then
-            -- Подбрасываем игрока вверх
-            rootPart.Velocity = Vector3.new(0, jumpPower, 0)
-            print("💨 Взлетаем!")
-        end
-    end
-end)</pre>
+	if debounce[character] then return end
+	debounce[character] = true
+
+	-- Сбрасываем вертикальную скорость перед импульсом
+	rootPart.AssemblyLinearVelocity = Vector3.new(
+		rootPart.AssemblyLinearVelocity.X,
+		0,
+		rootPart.AssemblyLinearVelocity.Z
+	)
+
+	-- Передаём NetworkOwnership серверу, чтобы физика работала корректно
+	rootPart:SetNetworkOwner(nil)
+
+	rootPart:ApplyImpulse(Vector3.new(0, jumpPower * rootPart.AssemblyMass, 0))
+
+	print("💨 Взлетаем!")
+
+	task.wait(1)
+	-- Возвращаем владение клиенту
+	local player = game.Players:GetPlayerFromCharacter(character)
+	if player then
+		rootPart:SetNetworkOwner(player)
+	end
+
+	debounce[character] = nil
+end)
+</pre>
   <button class="copy-btn" data-code="code3">📋 Копировать код</button>
 </div>
 

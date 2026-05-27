@@ -5,8 +5,7 @@
   "requirements": [
     "Создайте цикл for (let i = 1; i <= 10; i++)",
     "Внутри цикла проверьте: if (i % 2 !== 0) { continue; } — пропустите нечётные числа",
-    "Чётные числа добавляйте к textContent элемента #output",
-    "Используйте document.getElementById('output').textContent"
+    "Чётные числа выводите в консоль с помощью console.log()"
   ],
   "difficulty": "medium",
   "points": 75,

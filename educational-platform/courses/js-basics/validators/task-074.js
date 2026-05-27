@@ -12,6 +12,15 @@ export default class Task074Validator {
     });
     if (hasFunction) score += 15;
 
+    // Проверка параметров функции (arr, target)
+    const hasParams = /function\s+findNumber\s*\(\s*\w+\s*,\s*\w+\s*\)/.test(js);
+    checks.push({
+      label: "Функция принимает два параметра (arr, target)",
+      passed: hasParams,
+      hint: "Укажите параметры: function findNumber(arr, target)",
+    });
+    if (hasParams) score += 10;
+
     // Проверка цикла for
     const hasFor = /\bfor\s*\(/.test(js);
     checks.push({
@@ -30,41 +39,33 @@ export default class Task074Validator {
     });
     if (hasIf) score += 15;
 
-    // Проверка return i (возврат индекса)
-    const hasReturnIndex = /return\s+i/.test(js);
+    // Проверка вызова findNumber с правильными аргументами
+    const hasCall = /findNumber\s*\(\s*\[\s*3\s*,\s*7\s*,\s*1\s*,\s*9\s*,\s*4\s*\]\s*,\s*1\s*\)/.test(js);
     checks.push({
-      label: "Возврат индекса найденного элемента (return i)",
-      passed: hasReturnIndex,
-      hint: "Добавьте return i; если элемент найден",
-    });
-    if (hasReturnIndex) score += 15;
-
-    // Проверка return -1
-    const hasReturnNegative = /return\s+-1/.test(js);
-    checks.push({
-      label: "Возврат -1 если элемент не найден",
-      passed: hasReturnNegative,
-      hint: "Добавьте return -1; после цикла",
-    });
-    if (hasReturnNegative) score += 15;
-
-    // Проверка использования arr.length
-    const hasLength = /arr\.length/.test(js);
-    checks.push({
-      label: "Использовано arr.length в условии цикла",
-      passed: hasLength,
-      hint: "Укажите i < arr.length в цикле",
-    });
-    if (hasLength) score += 10;
-
-    // Проверка вызова findNumber
-    const hasCall = /findNumber\s*\(/.test(js);
-    checks.push({
-      label: "Функция findNumber вызывается",
+      label: "Вызов findNumber([3, 7, 1, 9, 4], 1)",
       passed: hasCall,
-      hint: "Вызовите findNumber(numbers, 30)",
+      hint: "Вызовите findNumber([3, 7, 1, 9, 4], 1)",
     });
-    if (hasCall) score += 15;
+    if (hasCall) score += 25;
+
+    // Проверка вывода в консоль
+    const hasConsoleLog = /console\.log\s*\(/.test(js);
+    checks.push({
+      label: "Вывод результата в консоль",
+      passed: hasConsoleLog,
+      hint: "Добавьте console.log(result) или console.log(findNumber(...))",
+    });
+    if (hasConsoleLog) score += 10;
+
+    // Проверка что в console.log передается результат вызова функции
+    const hasLogWithCall = /console\.log\s*\(\s*findNumber\s*\([^)]+\)\s*\)/.test(js) ||
+                           /console\.log\s*\(\s*result\s*\)/.test(js);
+    checks.push({
+      label: "В console.log передается результат работы функции",
+      passed: hasLogWithCall,
+      hint: "Напишите console.log(findNumber([3, 7, 1, 9, 4], 1)) или сохраните результат в переменную и выведите её",
+    });
+    if (hasLogWithCall) score += 10;
 
     return { passed: score >= (config.passThreshold || 70), score, checks };
   }

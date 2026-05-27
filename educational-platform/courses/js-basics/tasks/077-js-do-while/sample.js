@@ -1,8 +1,8 @@
-// Исправьте код: замените while на do...while
-// Цикл должен вывести числа от 1 до 5
+const numbers = [5, 12, 8, 3, 10];
+let sum = 0;
 
-let i = 1;
-do {
-  document.getElementById('output').textContent += i + '\n';
-  i++;
-} while (i <= 5);
+for (let i = 0; i < numbers.length; i++) {
+  sum += numbers[i];
+}
+
+console.log('Сумма: ' + sum);
