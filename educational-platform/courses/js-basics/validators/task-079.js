@@ -46,7 +46,7 @@ export default class Task079Validator {
       passed: hasConsoleLog,
       hint: "Выведите console.log('Элемент ' + i + ': ' + fruits[i])",
     });
-    if (hasConsoleLog) score += 25;
+    if (hasConsoleLog) score += 35;
 
     return { passed: score >= (config.passThreshold || 70), score, checks };
   }
