@@ -1,0 +1,20 @@
+{
+  "id": "170",
+  "title": "Объединение массивов — concat",
+  "difficulty": "easy",
+  "points": 50,
+  "passThreshold": 70,
+  "tags": ["js", "array", "concat"],
+  "timeLimit": 10,
+  "description": "Объедините массивы arr1 = [1, 2] и arr2 = [3, 4] в новый массив combined. Выведите его",
+  "requirements": [
+    "Создайте массивы <code>arr1</code> = [1, 2] и <code>arr2</code> = [3, 4]",
+    "Объедините через <code>arr1.concat(arr2)</code> в новый массив combined",
+    "Выведите результат в консоль"
+  ],
+  "sampleFiles": {
+    "html": "sample.html",
+    "css": "sample.css",
+    "js": "sample.js"
+  }
+}

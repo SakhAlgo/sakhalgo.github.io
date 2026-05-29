@@ -1,0 +1,20 @@
+{
+  "id": "161",
+  "title": "Изменение по индексу",
+  "difficulty": "easy",
+  "points": 50,
+  "passThreshold": 70,
+  "tags": ["js", "array", "index", "modify"],
+  "timeLimit": 10,
+  "description": "Замените последний элемент массива fruits = ['apple', 'banana', 'cherry'] на 'orange'. Выведите массив",
+  "requirements": [
+    "Создайте массив <code>fruits</code> с элементами 'apple', 'banana', 'cherry'",
+    "Замените последний элемент на 'orange', используя <code>fruits[fruits.length - 1] = 'orange'</code>",
+    "Выведите массив в консоль"
+  ],
+  "sampleFiles": {
+    "html": "sample.html",
+    "css": "sample.css",
+    "js": "sample.js"
+  }
+}

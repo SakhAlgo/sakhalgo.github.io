@@ -1,0 +1,20 @@
+{
+  "id": "168",
+  "title": "Копирование части — slice",
+  "difficulty": "easy",
+  "points": 50,
+  "passThreshold": 70,
+  "tags": ["js", "array", "slice"],
+  "timeLimit": 10,
+  "description": "Из массива letters = ['a', 'b', 'c', 'd', 'e'] получите новый массив, содержащий элементы с индекса 1 по 3 (не включая 4). Выведите новый массив",
+  "requirements": [
+    "Создайте массив <code>letters</code> с элементами 'a', 'b', 'c', 'd', 'e'",
+    "Используйте <code>letters.slice(1, 4)</code> для копирования в новый массив part",
+    "Выведите новый массив в консоль"
+  ],
+  "sampleFiles": {
+    "html": "sample.html",
+    "css": "sample.css",
+    "js": "sample.js"
+  }
+}

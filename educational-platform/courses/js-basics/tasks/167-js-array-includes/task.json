@@ -1,0 +1,20 @@
+{
+  "id": "167",
+  "title": "Проверка существования — includes",
+  "difficulty": "easy",
+  "points": 50,
+  "passThreshold": 70,
+  "tags": ["js", "array", "includes"],
+  "timeLimit": 10,
+  "description": "Проверьте, есть ли строка 'cat' в массиве animals = ['dog', 'cat', 'bird']. Результат (true/false) выведите в консоль",
+  "requirements": [
+    "Создайте массив <code>animals</code> с элементами 'dog', 'cat', 'bird'",
+    "Проверьте наличие 'cat' через <code>animals.includes('cat')</code>",
+    "Выведите результат в консоль"
+  ],
+  "sampleFiles": {
+    "html": "sample.html",
+    "css": "sample.css",
+    "js": "sample.js"
+  }
+}

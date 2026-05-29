@@ -1,0 +1,20 @@
+{
+  "id": "171",
+  "title": "Переворот — reverse",
+  "difficulty": "easy",
+  "points": 50,
+  "passThreshold": 70,
+  "tags": ["js", "array", "reverse"],
+  "timeLimit": 10,
+  "description": "Создайте массив [1, 2, 3, 4, 5]. Переверните его, не создавая новый массив (измените исходный). Выведите результат",
+  "requirements": [
+    "Создайте массив <code>nums</code> = [1, 2, 3, 4, 5]",
+    "Используйте <code>nums.reverse()</code> для переворота",
+    "Выведите изменённый массив в консоль"
+  ],
+  "sampleFiles": {
+    "html": "sample.html",
+    "css": "sample.css",
+    "js": "sample.js"
+  }
+}

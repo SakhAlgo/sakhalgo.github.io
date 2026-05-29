@@ -1,0 +1,20 @@
+{
+  "id": "162",
+  "title": "Добавление в конец — push",
+  "difficulty": "easy",
+  "points": 50,
+  "passThreshold": 70,
+  "tags": ["js", "array", "push"],
+  "timeLimit": 10,
+  "description": "Добавьте числа 4, 5 в конец массива numbers = [1, 2, 3]. Выведите длину нового массива",
+  "requirements": [
+    "Создайте массив <code>numbers</code> с элементами 1, 2, 3",
+    "Добавьте 4 и 5 в конец через <code>numbers.push(4, 5)</code>",
+    "Выведите длину массива <code>numbers.length</code> в консоль"
+  ],
+  "sampleFiles": {
+    "html": "sample.html",
+    "css": "sample.css",
+    "js": "sample.js"
+  }
+}

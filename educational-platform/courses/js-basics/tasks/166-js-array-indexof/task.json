@@ -1,0 +1,20 @@
+{
+  "id": "166",
+  "title": "Поиск индекса — indexOf",
+  "difficulty": "easy",
+  "points": 50,
+  "passThreshold": 70,
+  "tags": ["js", "array", "indexOf"],
+  "timeLimit": 10,
+  "description": "Найдите индекс числа 25 в массиве scores = [10, 20, 30, 25, 40]. Если элемента нет, выведите -1",
+  "requirements": [
+    "Сооздайте массив <code>scores</code> с элементами 10, 20, 30, 25, 40",
+    "Найдите индекс числа 25 через <code>scores.indexOf(25)</code>",
+    "Выведите результат в консоль"
+  ],
+  "sampleFiles": {
+    "html": "sample.html",
+    "css": "sample.css",
+    "js": "sample.js"
+  }
+}

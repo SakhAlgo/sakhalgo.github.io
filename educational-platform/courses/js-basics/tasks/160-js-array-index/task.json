@@ -1,0 +1,20 @@
+{
+  "id": "160",
+  "title": "Доступ по индексу",
+  "difficulty": "easy",
+  "points": 50,
+  "passThreshold": 70,
+  "tags": ["js", "array", "index"],
+  "timeLimit": 10,
+  "description": "Создайте массив colors = ['red', 'green', 'blue'] и выведите в консоль второй элемент",
+  "requirements": [
+    "Создайте массив <code>colors</code> с элементами 'red', 'green', 'blue'",
+    "Выведите в консоль второй элемент массива (с индексом 1)",
+    "Используйте <code>console.log(colors[1])</code>"
+  ],
+  "sampleFiles": {
+    "html": "sample.html",
+    "css": "sample.css",
+    "js": "sample.js"
+  }
+}

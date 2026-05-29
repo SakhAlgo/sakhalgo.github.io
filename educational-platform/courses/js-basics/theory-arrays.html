@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Теория: Массивы в JavaScript</title>
+    <style>
+        body {
+            font-family: 'Syne', sans-serif;
+            line-height: 1.6;
+            color: #c9d1d9;
+            background: #0d1117;
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        h1, h2, h3 { color: #58a6ff; margin-top: 1.5em; margin-bottom: 0.8em; }
+        h1 { font-size: 24px; border-bottom: 1px solid #30363d; padding-bottom: 10px; }
+        h2 { font-size: 20px; margin-top: 2em; }
+        h3 { font-size: 18px; margin-top: 1.5em; }
+        code { background: #21262d; padding: 2px 6px; border-radius: 4px; font-family: 'JetBrains Mono', monospace; color: #9ecbc6; }
+        pre { background: #161b22; padding: 15px; border-radius: 6px; overflow-x: auto; margin: 15px 0; border: 1px solid #30363d; }
+        .code-block { background: #161b22; padding: 15px; border-radius: 6px; margin: 15px 0; border: 1px solid #30363d; }
+        .code-block pre { margin: 0; background: none; border: none; padding: 0; }
+        .important { background: rgba(88, 166, 255, 0.1); padding: 12px; border-radius: 6px; border-left: 3px solid #58a6ff; margin: 15px 0; }
+        .tip { background: rgba(63, 185, 80, 0.1); padding: 12px; border-radius: 6px; border-left: 3px solid #3fb950; margin: 15px 0; }
+        .warning { background: rgba(210, 153, 34, 0.1); padding: 12px; border-radius: 6px; border-left: 3px solid #d29922; margin: 15px 0; }
+        ul, ol { margin: 10px 0 15px 25px; padding: 0; }
+        li { margin: 8px 0; }
+        table { width: 100%; border-collapse: collapse; margin: 15px 0; }
+        th, td { padding: 10px; border: 1px solid #30363d; text-align: left; }
+        th { background: #161b22; color: #58a6ff; }
+        td { background: #0d1117; }
+    </style>
+</head>
+<body>
+    <article>
+        <h1>📦 Массивы в JavaScript</h1>
+
+        <section>
+            <h2>1. Что такое массив?</h2>
+            <p>Массив — это упорядоченная коллекция элементов. Каждый элемент имеет свой <strong>индекс</strong> (порядковый номер). В JavaScript массивы могут содержать элементы любых типов: числа, строки, булевы значения и даже другие массивы.</p>
+
+            <div class="important">
+                <strong>💡 Важно:</strong> Индексация в массивах начинается с <code>0</code>. Первый элемент имеет индекс <code>0</code>, второй — <code>1</code> и так далее.
+            </div>
+
+            <div class="code-block">
+                <pre><code>const fruits = ["яблоко", "банан", "апельсин"];
+// Индекс:       0         1         2
+
+console.log(fruits[0]); // "яблоко"
+console.log(fruits[1]); // "банан"
+console.log(fruits[2]); // "апельсин"</code></pre>
+            </div>
+        </section>
+
+        <section>
+            <h2>2. Создание массива</h2>
+
+            <h3>2.1. Литерал массива (основной способ)</h3>
+            <div class="code-block">
+                <pre><code>const numbers = [1, 2, 3, 4, 5];
+const mixed = [1, "два", true, null];
+const empty = [];</code></pre>
+            </div>
+
+            <h3>2.2. Конструктор Array (реже)</h3>
+            <div class="code-block">
+                <pre><code>const arr = new Array(1, 2, 3);
+console.log(arr); // [1, 2, 3]</code></pre>
+            </div>
+
+            <div class="tip">
+                <strong>🎯 Совет:</strong> Всегда используйте литерал массива <code>[]</code>. Это короче и понятнее.
+            </div>
+        </section>
+
+        <section>
+            <h2>3. Доступ и изменение элементов</h2>
+
+            <h3>3.1. Чтение по индексу</h3>
+            <p>Используйте квадратные скобки с индексом элемента:</p>
+            <div class="code-block">
+                <pre><code>const colors = ['red', 'green', 'blue'];
+console.log(colors[0]); // 'red'
+console.log(colors[2]); // 'blue'</code></pre>
+            </div>
+
+            <h3>3.2. Изменение по индексу</h3>
+            <div class="code-block">
+                <pre><code>const fruits = ['apple', 'banana', 'cherry'];
+fruits[1] = 'mango';
+console.log(fruits); // ['apple', 'mango', 'cherry']</code></pre>
+            </div>
+
+            <div class="important">
+                <strong>📝 Свойство length:</strong> <code>arr.length</code> возвращает количество элементов. Последний элемент всегда находится по индексу <code>arr.length - 1</code>.
+            </div>
+        </section>
+
+        <section>
+            <h2>4. Добавление и удаление элементов</h2>
+
+            <h3>4.1. push() — добавить в конец</h3>
+            <p>Добавляет один или несколько элементов в конец массива. Возвращает новую длину массива.</p>
+            <div class="code-block">
+                <pre><code>const numbers = [1, 2, 3];
+numbers.push(4, 5);
+console.log(numbers);       // [1, 2, 3, 4, 5]
+console.log(numbers.length); // 5</code></pre>
+            </div>
+
+            <h3>4.2. pop() — удалить с конца</h3>
+            <p>Удаляет последний элемент из массива и возвращает его. Массив уменьшается на один элемент.</p>
+            <div class="code-block">
+                <pre><code>const items = ['a', 'b', 'c'];
+const removed = items.pop();
+console.log(removed); // 'c'
+console.log(items);   // ['a', 'b']</code></pre>
+            </div>
+
+            <h3>4.3. unshift() — добавить в начало</h3>
+            <p>Добавляет элемент в начало массива, сдвигая остальные вправо.</p>
+            <div class="code-block">
+                <pre><code>const data = [10, 20, 30];
+data.unshift('start');
+console.log(data); // ['start', 10, 20, 30]</code></pre>
+            </div>
+
+            <h3>4.4. shift() — удалить из начала</h3>
+            <p>Удаляет первый элемент массива и возвращает его. Остальные сдвигаются влево.</p>
+            <div class="code-block">
+                <pre><code>const queue = [100, 200, 300];
+queue.shift();
+console.log(queue); // [200, 300]</code></pre>
+            </div>
+
+            <table>
+                <tr>
+                    <th>Метод</th>
+                    <th>Действие</th>
+                    <th>Возвращает</th>
+                    <th>Изменяет исходный</th>
+                </tr>
+                <tr>
+                    <td><code>push(el)</code></td>
+                    <td>Добавляет в конец</td>
+                    <td>Новую длину</td>
+                    <td>✅ Да</td>
+                </tr>
+                <tr>
+                    <td><code>pop()</code></td>
+                    <td>Удаляет с конца</td>
+                    <td>Удалённый элемент</td>
+                    <td>✅ Да</td>
+                </tr>
+                <tr>
+                    <td><code>unshift(el)</code></td>
+                    <td>Добавляет в начало</td>
+                    <td>Новую длину</td>
+                    <td>✅ Да</td>
+                </tr>
+                <tr>
+                    <td><code>shift()</code></td>
+                    <td>Удаляет из начала</td>
+                    <td>Удалённый элемент</td>
+                    <td>✅ Да</td>
+                </tr>
+            </table>
+        </section>
+
+        <section>
+            <h2>5. Поиск и проверка</h2>
+
+            <h3>5.1. indexOf() — поиск индекса</h3>
+            <p>Возвращает индекс первого найденного элемента или <code>-1</code>, если элемент не найден.</p>
+            <div class="code-block">
+                <pre><code>const scores = [10, 20, 30, 25, 40];
+console.log(scores.indexOf(25)); // 3
+console.log(scores.indexOf(99)); // -1 (не найден)</code></pre>
+            </div>
+
+            <h3>5.2. includes() — проверка наличия</h3>
+            <p>Возвращает <code>true</code>, если элемент есть в массиве, иначе <code>false</code>.</p>
+            <div class="code-block">
+                <pre><code>const animals = ['dog', 'cat', 'bird'];
+console.log(animals.includes('cat')); // true
+console.log(animals.includes('fish')); // false</code></pre>
+            </div>
+        </section>
+
+        <section>
+            <h2>6. slice() — копирование части массива</h2>
+            <p><code>slice(start, end)</code> возвращает новый массив, содержащий элементы с индекса <code>start</code> до <code>end</code> (не включая <code>end</code>). Исходный массив не изменяется.</p>
+            <div class="code-block">
+                <pre><code>const letters = ['a', 'b', 'c', 'd', 'e'];
+const part = letters.slice(1, 4);
+console.log(part);   // ['b', 'c', 'd']
+console.log(letters); // ['a', 'b', 'c', 'd', 'e'] (не изменился)</code></pre>
+            </div>
+
+            <div class="tip">
+                <strong>🎯 Совет:</strong> <code>slice()</code> без аргументов копирует весь массив: <code>const copy = arr.slice()</code>.
+            </div>
+        </section>
+
+        <section>
+            <h2>7. splice() — удаление и вставка</h2>
+            <p><code>splice(start, deleteCount, item1, item2, ...)</code> изменяет массив: удаляет элементы и/или вставляет новые.</p>
+            <div class="code-block">
+                <pre><code>const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May'];
+months.splice(2, 2, 'X', 'Y');
+//       start: 2  (с какого индекса)
+//   deleteCount: 2  (сколько удалить)
+//   вставляем: 'X', 'Y'
+
+console.log(months); // ['Jan', 'Feb', 'X', 'Y', 'May']</code></pre>
+            </div>
+
+            <p>Можно использовать splice и только для удаления:</p>
+            <div class="code-block">
+                <pre><code>const arr = [1, 2, 3, 4, 5];
+arr.splice(1, 2); // удаляем 2 элемента с индекса 1
+console.log(arr); // [1, 4, 5]</code></pre>
+            </div>
+        </section>
+
+        <section>
+            <h2>8. concat() — объединение массивов</h2>
+            <p><code>concat()</code> объединяет два или более массивов в новый массив. Исходные не изменяются.</p>
+            <div class="code-block">
+                <pre><code>const arr1 = [1, 2];
+const arr2 = [3, 4];
+const combined = arr1.concat(arr2);
+console.log(combined); // [1, 2, 3, 4]
+
+// Можно использовать spread-оператор:
+const combined2 = [...arr1, ...arr2];
+console.log(combined2); // [1, 2, 3, 4]</code></pre>
+            </div>
+        </section>
+
+        <section>
+            <h2>9. reverse() — переворот массива</h2>
+            <p><code>reverse()</code> переворачивает массив — первый элемент становится последним, последний — первым. Изменяет исходный массив.</p>
+            <div class="code-block">
+                <pre><code>const nums = [1, 2, 3, 4, 5];
+nums.reverse();
+console.log(nums); // [5, 4, 3, 2, 1]</code></pre>
+            </div>
+        </section>
+
+        <section>
+            <h2>10. sort() — сортировка</h2>
+
+            <h3>10.1. Сортировка строк</h3>
+            <p><code>sort()</code> сортирует строки в алфавитном порядке. Изменяет исходный массив.</p>
+            <div class="code-block">
+                <pre><code>const names = ['John', 'Anna', 'Zoe', 'Bob'];
+names.sort();
+console.log(names); // ['Anna', 'Bob', 'John', 'Zoe']</code></pre>
+            </div>
+
+            <h3>10.2. Сортировка чисел (с функцией сравнения)</h3>
+            <div class="warning">
+                <strong>⚠️ Важно:</strong> <code>sort()</code> без функции сравнения сортирует числа как строки! <code>[10, 2, 5].sort()</code> даст <code>[10, 2, 5]</code>.
+            </div>
+            <div class="code-block">
+                <pre><code>const numbers = [10, 2, 5, 1, 9];
+numbers.sort((a, b) => a - b);  // по возрастанию
+console.log(numbers); // [1, 2, 5, 9, 10]
+
+numbers.sort((a, b) => b - a);  // по убыванию
+console.log(numbers); // [10, 9, 5, 2, 1]</code></pre>
+            </div>
+
+            <div class="tip">
+                <strong>📝 Как работает функция сравнения:</strong> Если <code>(a, b) => a - b</code> возвращает отрицательное число, <code>a</code> ставится перед <code>b</code>. Если положительное — <code>b</code> перед <code>a</code>.
+            </div>
+        </section>
+
+        <section>
+            <h2>11. Удаление дубликатов через Set</h2>
+            <p>Объект <code>Set</code> хранит только уникальные значения. Комбинируя его с spread-оператором, можно легко убрать дубликаты:</p>
+            <div class="code-block">
+                <pre><code>const data = [3, 8, 1, 8, 5, 3, 9, 9, 2];
+const unique = [...new Set(data)];
+console.log(unique); // [3, 8, 1, 5, 9, 2]</code></pre>
+            </div>
+        </section>
+
+        <section>
+            <h2>12. Сводная таблица методов</h2>
+
+            <table>
+                <tr>
+                    <th>Метод</th>
+                    <th>Что делает</th>
+                    <th>Меняет массив</th>
+                    <th>Возвращает</th>
+                </tr>
+                <tr><td><code>push(e1, e2, ...)</code></td><td>Добавляет в конец</td><td>✅</td><td>Новую длину</td></tr>
+                <tr><td><code>pop()</code></td><td>Удаляет с конца</td><td>✅</td><td>Удалённый элемент</td></tr>
+                <tr><td><code>unshift(e1, ...)</code></td><td>Добавляет в начало</td><td>✅</td><td>Новую длину</td></tr>
+                <tr><td><code>shift()</code></td><td>Удаляет из начала</td><td>✅</td><td>Удалённый элемент</td></tr>
+                <tr><td><code>indexOf(el)</code></td><td>Поиск индекса</td><td>❌</td><td>Индекс или -1</td></tr>
+                <tr><td><code>includes(el)</code></td><td>Проверка наличия</td><td>❌</td><td>true/false</td></tr>
+                <tr><td><code>slice(s, e)</code></td><td>Копирует часть</td><td>❌</td><td>Новый массив</td></tr>
+                <tr><td><code>splice(s, n, ...)</code></td><td>Удаляет/вставляет</td><td>✅</td><td>Массив удалённых</td></tr>
+                <tr><td><code>concat(arr)</code></td><td>Объединяет массивы</td><td>❌</td><td>Новый массив</td></tr>
+                <tr><td><code>reverse()</code></td><td>Переворачивает</td><td>✅</td><td>Тот же массив</td></tr>
+                <tr><td><code>sort(fn)</code></td><td>Сортирует</td><td>✅</td><td>Тот же массив</td></tr>
+            </table>
+        </section>
+
+        <section>
+            <h2>13. Практические советы</h2>
+            <ul>
+                <li><strong>const для массива:</strong> можно объявлять массив через <code>const</code> — это не запрещает изменять его содержимое (добавлять, удалять, менять элементы).</li>
+                <li><strong>Проверка на массив:</strong> используйте <code>Array.isArray(arr)</code> — <code>typeof arr</code> вернёт <code>"object"</code>.</li>
+                <li><strong>Длина массива:</strong> <code>arr.length</code> можно не только читать, но и изменять — это укорачивает массив.</li>
+                <li><strong>Пустые элементы:</strong> <code>const arr = [1, , 3]</code> создаёт массив с пустым элементом. Избегайте этого.</li>
+            </ul>
+        </section>
+    </article>
+</body>
+</html>

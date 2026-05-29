@@ -1,0 +1,20 @@
+{
+  "id": "164",
+  "title": "Добавление в начало — unshift",
+  "difficulty": "easy",
+  "points": 50,
+  "passThreshold": 70,
+  "tags": ["js", "array", "unshift"],
+  "timeLimit": 10,
+  "description": "Добавьте строку 'start' в начало массива data = [10, 20, 30]. Выведите массив",
+  "requirements": [
+    "Создайте массив <code>data</code> с элементами 10, 20, 30",
+    "Добавьте 'start' в начало через <code>data.unshift('start')</code>",
+    "Выведите массив в консоль"
+  ],
+  "sampleFiles": {
+    "html": "sample.html",
+    "css": "sample.css",
+    "js": "sample.js"
+  }
+}

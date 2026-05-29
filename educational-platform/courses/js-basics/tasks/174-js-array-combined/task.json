@@ -1,0 +1,23 @@
+{
+  "id": "174",
+  "title": "Комбинация методов",
+  "difficulty": "medium",
+  "points": 100,
+  "passThreshold": 70,
+  "tags": ["js", "array", "Set", "sort", "unshift", "pop"],
+  "timeLimit": 15,
+  "description": "Дан массив data = [3, 8, 1, 8, 5, 3, 9, 9, 2]. Удалите дубликаты, отсортируйте по убыванию, добавьте 0 в начало, удалите последний элемент",
+  "requirements": [
+    "Создайте массив data = [3, 8, 1, 8, 5, 3, 9, 9, 2]",
+    "Удалите дубликаты через <code>[...new Set(data)]</code>",
+    "Отсортируйте по убыванию через <code>sort((a, b) => b - a)</code>",
+    "Добавьте 0 в начало через <code>unshift(0)</code>",
+    "Удалите последний элемент через <code>pop()</code>",
+    "Выведите итоговый массив в консоль"
+  ],
+  "sampleFiles": {
+    "html": "sample.html",
+    "css": "sample.css",
+    "js": "sample.js"
+  }
+}

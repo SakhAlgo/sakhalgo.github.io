@@ -1,0 +1,20 @@
+{
+  "id": "172",
+  "title": "Сортировка строк — sort",
+  "difficulty": "easy",
+  "points": 50,
+  "passThreshold": 70,
+  "tags": ["js", "array", "sort"],
+  "timeLimit": 10,
+  "description": "Отсортируйте массив имен names = ['John', 'Anna', 'Zoe', 'Bob'] в алфавитном порядке и выведите",
+  "requirements": [
+    "Создайте массив <code>names</code> = ['John', 'Anna', 'Zoe', 'Bob']",
+    "Используйте <code>names.sort()</code> для сортировки",
+    "Выведите отсортированный массив в консоль"
+  ],
+  "sampleFiles": {
+    "html": "sample.html",
+    "css": "sample.css",
+    "js": "sample.js"
+  }
+}

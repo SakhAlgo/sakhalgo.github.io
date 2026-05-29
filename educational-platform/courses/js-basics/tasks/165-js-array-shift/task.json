@@ -1,0 +1,20 @@
+{
+  "id": "165",
+  "title": "Удаление из начала — shift",
+  "difficulty": "easy",
+  "points": 50,
+  "passThreshold": 70,
+  "tags": ["js", "array", "shift"],
+  "timeLimit": 10,
+  "description": "Удалите первый элемент из массива queue = [100, 200, 300, 400] и выведите обновлённый массив",
+  "requirements": [
+    "Создайте массив <code>queue</code> с элементами 100, 200, 300, 400",
+    "Удалите первый элемент через <code>queue.shift()</code>",
+    "Выведите обновлённый массив в консоль"
+  ],
+  "sampleFiles": {
+    "html": "sample.html",
+    "css": "sample.css",
+    "js": "sample.js"
+  }
+}

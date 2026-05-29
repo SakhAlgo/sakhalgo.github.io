@@ -1,0 +1,20 @@
+{
+  "id": "173",
+  "title": "Сортировка чисел — sort с callback",
+  "difficulty": "medium",
+  "points": 75,
+  "passThreshold": 70,
+  "tags": ["js", "array", "sort", "compare"],
+  "timeLimit": 10,
+  "description": "Массив numbers = [10, 2, 5, 1, 9] отсортируйте по возрастанию чисел",
+  "requirements": [
+    "Создайте массив <code>numbers</code> = [10, 2, 5, 1, 9]",
+    "Используйте <code>numbers.sort((a, b) => a - b)</code> для сортировки по возрастанию",
+    "Выведите отсортированный массив в консоль"
+  ],
+  "sampleFiles": {
+    "html": "sample.html",
+    "css": "sample.css",
+    "js": "sample.js"
+  }
+}

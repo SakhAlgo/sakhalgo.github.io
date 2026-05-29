@@ -1,0 +1,20 @@
+{
+  "id": "163",
+  "title": "Удаление с конца — pop",
+  "difficulty": "easy",
+  "points": 50,
+  "passThreshold": 70,
+  "tags": ["js", "array", "pop"],
+  "timeLimit": 10,
+  "description": "Удалите последний элемент из массива items = ['a', 'b', 'c', 'd'] и сохраните его в переменную. Выведите удалённый элемент и оставшийся массив",
+  "requirements": [
+    "Создайте массив <code>items</code> с элементами 'a', 'b', 'c', 'd'",
+    "Удалите последний элемент через <code>items.pop()</code> и сохраните в переменную let removed",
+    "Выведите удалённый элемент и оставшийся массив в консоль"
+  ],
+  "sampleFiles": {
+    "html": "sample.html",
+    "css": "sample.css",
+    "js": "sample.js"
+  }
+}

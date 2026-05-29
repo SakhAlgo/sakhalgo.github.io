@@ -1,0 +1,20 @@
+{
+  "id": "169",
+  "title": "Удаление/вставка — splice",
+  "difficulty": "medium",
+  "points": 75,
+  "passThreshold": 70,
+  "tags": ["js", "array", "splice"],
+  "timeLimit": 10,
+  "description": "Из массива months = ['Jan', 'Feb', 'Mar', 'Apr', 'May'] удалите два элемента, начиная с индекса 2, и вставьте на их место 'X', 'Y'. Выведите изменённый массив",
+  "requirements": [
+    "Создайте массив <code>months</code> ['Jan', 'Feb', 'Mar', 'Apr', 'May']",
+    "Используйте <code>months.splice(2, 2, 'X', 'Y')</code> для удаления и вставки",
+    "Выведите изменённый массив в консоль"
+  ],
+  "sampleFiles": {
+    "html": "sample.html",
+    "css": "sample.css",
+    "js": "sample.js"
+  }
+}
