@@ -37,7 +37,7 @@ export default class Task077Validator {
       passed: hasLength,
       hint: "Укажите i < numbers.length в цикле",
     });
-    if (hasLength) score += 10;
+    if (hasLength) score += 20;
 
     // Проверка суммирования
     const hasSummation = /sum\s*\+=\s*numbers\s*\[\s*i\s*\]/.test(js);

@@ -55,7 +55,7 @@ export default class Task078Validator {
       passed: hasConsoleLog,
       hint: "Выведите console.log('Максимальное число: ' + max)",
     });
-    if (hasConsoleLog) score += 15;
+    if (hasConsoleLog) score += 25;
 
     return { passed: score >= (config.passThreshold || 70), score, checks };
   }
