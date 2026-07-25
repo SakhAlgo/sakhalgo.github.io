@@ -2,35 +2,50 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
-    <title>Тестирование сотрудников</title>
+    <title>Тесты. Теория.</title>
+    <link rel="icon" type="image/png" href="images/favicon.ico">
     <link rel="stylesheet" href="css/style.css">
 </head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XLES0L7DYX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-XLES0L7DYX');
+</script>
 <body>
     <div class="app" id="app">
         <!-- Header -->
-        <header class="header">
-            <div class="logo">📡 Солнце ТК. Тесты.</div>
-            <div class="timer-box">
-                ⏱ <span id="timerDisplay">00:00</span>
+        <header class="header" id="header">
+            <div class="logo"><img src="images/logo_512.png"/></div>
+
+            <div class="header-right">
+                <div class="timer-box">
+                    ⏱ <span id="timerDisplay">00:00</span>
+                </div>
+                <a class="email-link" href="mailto:sakhalgo@gmail.com">✉ sakhalgo@gmail.com</a>
             </div>
         </header>
-
-        <!-- Tabs -->
+                  <!-- Tabs -->
         <nav class="tabs" id="tabsContainer">
-            <button class="tab-btn active" data-section="tv">📺 Кабельное ТВ</button>
-            <button class="tab-btn" data-section="internet">🌐 Интернет</button>
-            <button class="tab-btn" data-section="domofon">📞 Домофоны</button>
+            <button class="tab-btn active" data-section="tv">📺 ТВ</button>
+            <button class="tab-btn" data-section="internet">🌐 Инт.</button>
+            <button class="tab-btn" data-section="domofon">📞 Дом.</button>
+            <button class="tab-btn" data-section="oformlenie">📋 Доп.</button>
         </nav>
 
         <!-- Controls -->
         <div class="controls">
             <label>
-                Кол-во вопросов
+                <span class="count-questions">Кол.:</span>
                 <input type="number" id="questionCount" value="20" min="1" max="50">
             </label>
             <button class="btn" id="startTestBtn">▶ Начать тест</button>
-            <button class="btn btn-outline" id="resetTestBtn">🔄 Сброс</button>
+            <button class="btn btn-outline btn-reset" id="resetTestBtn">🔄 Сброс</button>
         </div>
 
         <!-- Questions Container -->
@@ -81,6 +96,16 @@
                 <div class="theory-body hidden" id="theoryBodyDomofon"></div>
             </div>
         </div>
+
+        <div id="section-oformlenie" class="section-content">
+            <div class="theory-block" id="theoryOformlenie">
+                <div class="theory-header">
+                    <h3>📘 Теория: Оформление</h3>
+                    <button class="btn btn-sm btn-outline toggle-theory" data-section="oformlenie">Показать теорию</button>
+                </div>
+                <div class="theory-body hidden" id="theoryBodyOformlenie"></div>
+            </div>
+        </div>
     </div>
 
     <!-- Подключаем скрипты в правильном порядке -->
@@ -91,6 +116,8 @@
     <script src="js/data/internet/questions.js"></script>
     <script src="js/data/domofon/theory.js"></script>
     <script src="js/data/domofon/questions.js"></script>
+    <script src="js/data/oformlenie/theory.js"></script>
+    <script src="js/data/oformlenie/questions.js"></script>
     <script src="js/data/index.js"></script>
     
     <!-- Затем модули -->

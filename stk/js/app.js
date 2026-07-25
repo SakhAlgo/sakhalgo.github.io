@@ -176,6 +176,9 @@ class App {
 
         this.renderer.hideResults();
 
+        // Прячем секции теории во время теста
+        document.querySelectorAll('.section-content.active').forEach(el => el.classList.remove('active'));
+
         // Запускаем таймер
         this.timer.start(0);
 
