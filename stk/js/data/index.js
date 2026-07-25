@@ -26,7 +26,20 @@ const DataAPI = {
     getTestQuestions(section, count) {
         const questions = this.getQuestions(section);
         const shuffled = [...questions].sort(() => Math.random() - 0.5);
-        return shuffled.slice(0, Math.min(count, shuffled.length));
+        return shuffled.slice(0, Math.min(count, shuffled.length)).map(q => {
+            const indices = q.options.map((_, i) => i);
+            for (let i = indices.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [indices[i], indices[j]] = [indices[j], indices[i]];
+            }
+            const indexMap = {};
+            indices.forEach((oldIdx, newIdx) => { indexMap[oldIdx] = newIdx; });
+            return {
+                ...q,
+                options: indices.map(i => q.options[i]),
+                correct: q.correct.map(oldIdx => indexMap[oldIdx]).sort((a, b) => a - b)
+            };
+        });
     },
 
     checkAnswer(question, userAnswer) {
