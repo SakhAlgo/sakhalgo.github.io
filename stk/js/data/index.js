@@ -119,6 +119,19 @@ if (typeof DOMOFON_THEORY !== 'undefined' && typeof DOMOFON_QUESTIONS !== 'undef
     console.warn('⚠️ Данные Domofon не найдены');
 }
 
+// Регистрируем раздел Oformlenie
+if (typeof OFORMLENIE_THEORY !== 'undefined' && typeof OFORMLENIE_QUESTIONS !== 'undefined') {
+    registerSection('oformlenie', {
+        name: 'Оформление',
+        icon: '📋',
+        theory: OFORMLENIE_THEORY,
+        questions: OFORMLENIE_QUESTIONS
+    });
+    console.log('✅ Раздел Oformlenie зарегистрирован');
+} else {
+    console.warn('⚠️ Данные Oformlenie не найдены');
+}
+
 // Проверяем загрузку
 console.log(`📊 Загружено разделов: ${DataAPI.getSections().length}`);
 console.log(`📋 Список разделов: ${DataAPI.getSections().join(', ')}`);
