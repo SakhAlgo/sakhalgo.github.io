@@ -10,7 +10,7 @@
     <div class="app" id="app">
         <!-- Header -->
         <header class="header">
-            <div class="logo">📡 Солнце ТелеКом. Тесты.</div>
+            <div class="logo">📡 Солнце ТК. Тесты.</div>
             <div class="timer-box">
                 ⏱ <span id="timerDisplay">00:00</span>
             </div>
@@ -23,7 +23,35 @@
             <button class="tab-btn" data-section="domofon">📞 Домофоны</button>
         </nav>
 
-        <!-- Sections -->
+        <!-- Controls -->
+        <div class="controls">
+            <label>
+                Кол-во вопросов
+                <input type="number" id="questionCount" value="20" min="1" max="50">
+            </label>
+            <button class="btn" id="startTestBtn">▶ Начать тест</button>
+            <button class="btn btn-outline" id="resetTestBtn">🔄 Сброс</button>
+        </div>
+
+        <!-- Questions Container -->
+        <div id="questionsContainer">
+            <div class="empty-state">Нажмите «Начать тест» для старта</div>
+        </div>
+
+        <!-- Result Area -->
+        <div id="resultArea" class="result-area hidden">
+            <div class="result-stats">
+                <div>✅ Правильно: <span id="correctCount">0</span> / <span id="totalCount">0</span></div>
+                <div>⏳ Время: <span id="resultTime">00:00</span></div>
+                <div class="grade" id="gradeDisplay">Отлично</div>
+            </div>
+            <div id="resultDetail" class="result-detail"></div>
+            <div class="flex-row">
+                <button class="btn" id="retryTestBtn">🔄 Пройти заново</button>
+            </div>
+        </div>
+
+                <!-- Sections -->
         <div id="section-tv" class="section-content active">
             <div class="theory-block" id="theoryTv">
                 <div class="theory-header">
@@ -51,34 +79,6 @@
                     <button class="btn btn-sm btn-outline toggle-theory" data-section="domofon">Показать теорию</button>
                 </div>
                 <div class="theory-body hidden" id="theoryBodyDomofon"></div>
-            </div>
-        </div>
-
-        <!-- Controls -->
-        <div class="controls">
-            <label>
-                Кол-во вопросов
-                <input type="number" id="questionCount" value="20" min="1" max="50">
-            </label>
-            <button class="btn" id="startTestBtn">▶ Начать тест</button>
-            <button class="btn btn-outline" id="resetTestBtn">🔄 Сброс</button>
-        </div>
-
-        <!-- Questions Container -->
-        <div id="questionsContainer">
-            <div class="empty-state">Нажмите «Начать тест» для старта</div>
-        </div>
-
-        <!-- Result Area -->
-        <div id="resultArea" class="result-area hidden">
-            <div class="result-stats">
-                <div>✅ Правильно: <span id="correctCount">0</span> / <span id="totalCount">0</span></div>
-                <div>⏳ Время: <span id="resultTime">00:00</span></div>
-                <div class="grade" id="gradeDisplay">Отлично</div>
-            </div>
-            <div id="resultDetail" class="result-detail"></div>
-            <div class="flex-row">
-                <button class="btn" id="retryTestBtn">🔄 Пройти заново</button>
             </div>
         </div>
     </div>
