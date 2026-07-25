@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
+    <title>Тестирование сотрудников</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="app" id="app">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">📡 Солнце ТелеКом. Тесты.</div>
+            <div class="timer-box">
+                ⏱ <span id="timerDisplay">00:00</span>
+            </div>
+        </header>
+
+        <!-- Tabs -->
+        <nav class="tabs" id="tabsContainer">
+            <button class="tab-btn active" data-section="tv">📺 Кабельное ТВ</button>
+            <button class="tab-btn" data-section="internet">🌐 Интернет</button>
+            <button class="tab-btn" data-section="domofon">📞 Домофоны</button>
+        </nav>
+
+        <!-- Sections -->
+        <div id="section-tv" class="section-content active">
+            <div class="theory-block" id="theoryTv">
+                <div class="theory-header">
+                    <h3>📘 Теория: Кабельное ТВ</h3>
+                    <button class="btn btn-sm btn-outline toggle-theory" data-section="tv">Показать теорию</button>
+                </div>
+                <div class="theory-body hidden" id="theoryBodyTv"></div>
+            </div>
+        </div>
+
+        <div id="section-internet" class="section-content">
+            <div class="theory-block" id="theoryInternet">
+                <div class="theory-header">
+                    <h3>📘 Теория: Интернет</h3>
+                    <button class="btn btn-sm btn-outline toggle-theory" data-section="internet">Показать теорию</button>
+                </div>
+                <div class="theory-body hidden" id="theoryBodyInternet"></div>
+            </div>
+        </div>
+
+        <div id="section-domofon" class="section-content">
+            <div class="theory-block" id="theoryDomofon">
+                <div class="theory-header">
+                    <h3>📘 Теория: Домофоны</h3>
+                    <button class="btn btn-sm btn-outline toggle-theory" data-section="domofon">Показать теорию</button>
+                </div>
+                <div class="theory-body hidden" id="theoryBodyDomofon"></div>
+            </div>
+        </div>
+
+        <!-- Controls -->
+        <div class="controls">
+            <label>
+                Кол-во вопросов
+                <input type="number" id="questionCount" value="20" min="1" max="50">
+            </label>
+            <button class="btn" id="startTestBtn">▶ Начать тест</button>
+            <button class="btn btn-outline" id="resetTestBtn">🔄 Сброс</button>
+        </div>
+
+        <!-- Questions Container -->
+        <div id="questionsContainer">
+            <div class="empty-state">Нажмите «Начать тест» для старта</div>
+        </div>
+
+        <!-- Result Area -->
+        <div id="resultArea" class="result-area hidden">
+            <div class="result-stats">
+                <div>✅ Правильно: <span id="correctCount">0</span> / <span id="totalCount">0</span></div>
+                <div>⏳ Время: <span id="resultTime">00:00</span></div>
+                <div class="grade" id="gradeDisplay">Отлично</div>
+            </div>
+            <div id="resultDetail" class="result-detail"></div>
+            <div class="flex-row">
+                <button class="btn" id="retryTestBtn">🔄 Пройти заново</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Подключаем скрипты в правильном порядке -->
+    <!-- Сначала данные -->
+    <script src="js/data/tv/theory.js"></script>
+    <script src="js/data/tv/questions.js"></script>
+    <script src="js/data/internet/theory.js"></script>
+    <script src="js/data/internet/questions.js"></script>
+    <script src="js/data/domofon/theory.js"></script>
+    <script src="js/data/domofon/questions.js"></script>
+    <script src="js/data/index.js"></script>
+    
+    <!-- Затем модули -->
+    <script src="js/storage.js"></script>
+    <script src="js/timer.js"></script>
+    <script src="js/renderer.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

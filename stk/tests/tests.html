@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тесты для проверки системы</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            background: #f4f7fc;
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h1 {
+            color: #0b2b5c;
+            border-bottom: 3px solid #0b2b5c;
+            padding-bottom: 10px;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            color: #4a5a72;
+            margin-bottom: 20px;
+        }
+        .test-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        .test-card {
+            background: white;
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            border-left: 4px solid #0b2b5c;
+            transition: 0.2s;
+        }
+        .test-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+        }
+        .test-card.pass { border-left-color: #0f7b3a; }
+        .test-card.fail { border-left-color: #b13a3a; }
+        .test-card.running { border-left-color: #f0ad4e; }
+        .test-card h3 {
+            margin-top: 0;
+            color: #0b2b5c;
+            font-size: 1.1rem;
+        }
+        .test-card .status {
+            font-weight: 600;
+            padding: 4px 12px;
+            border-radius: 20px;
+            display: inline-block;
+            font-size: 0.85rem;
+            margin-top: 8px;
+        }
+        .test-card .status.pass {
+            background: #d4edda;
+            color: #0f7b3a;
+        }
+        .test-card .status.fail {
+            background: #f8d7da;
+            color: #b13a3a;
+        }
+        .test-card .status.running {
+            background: #fff3cd;
+            color: #856404;
+        }
+        .test-card .details {
+            margin-top: 12px;
+            padding: 12px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+        .test-card .details pre {
+            margin: 0;
+            white-space: pre-wrap;
+            word-break: break-all;
+            font-size: 0.85rem;
+        }
+        .summary {
+            background: white;
+            border-radius: 16px;
+            padding: 20px;
+            margin-top: 30px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+        .summary .stats {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+        .summary .stat-item {
+            font-size: 1.1rem;
+        }
+        .summary .stat-item strong {
+            color: #0b2b5c;
+        }
+        .btn {
+            background: #0b2b5c;
+            color: white;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: 0.2s;
+        }
+        .btn:hover {
+            background: #1b3f74;
+            transform: scale(0.97);
+        }
+        .btn-outline {
+            background: white;
+            color: #0b2b5c;
+            border: 2px solid #0b2b5c;
+        }
+        .btn-outline:hover {
+            background: #eef3fa;
+        }
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+        .controls {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        .progress-bar {
+            height: 6px;
+            background: #e9edf4;
+            border-radius: 3px;
+            margin-top: 15px;
+            overflow: hidden;
+        }
+        .progress-bar .fill {
+            height: 100%;
+            background: linear-gradient(90deg, #0b2b5c, #1b4a8b);
+            transition: width 0.5s;
+            border-radius: 3px;
+        }
+        .hidden {
+            display: none;
+        }
+        .test-count {
+            color: #4a5a72;
+            margin-bottom: 15px;
+        }
+        @media (max-width: 700px) {
+            .test-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hidden elements for App constructor -->
+    <div id="tabsContainer" style="display:none"></div>
+    <div id="questionsContainer" style="display:none"></div>
+    <div id="timerDisplay" style="display:none"></div>
+    <input type="hidden" id="questionCount" value="10">
+    <button id="startTestBtn" style="display:none"></button>
+    <button id="resetTestBtn" style="display:none"></button>
+    <button id="retryTestBtn" style="display:none"></button>
+    <div id="section-tv" class="section-content" style="display:none"></div>
+    <div id="section-internet" class="section-content" style="display:none"></div>
+    <div id="section-domofon" class="section-content" style="display:none"></div>
+    <div id="theoryBodyTv" style="display:none"></div>
+    <div id="theoryBodyInternet" style="display:none"></div>
+    <div id="theoryBodyDomofon" style="display:none"></div>
+    <div id="resultArea" style="display:none">
+        <span id="correctCount"></span>
+        <span id="totalCount"></span>
+        <span id="resultTime"></span>
+        <div id="resultDetail"></div>
+        <div id="gradeDisplay"></div>
+    </div>
+    <button class="tab-btn" data-section="tv" style="display:none"></button>
+    <button class="tab-btn" data-section="internet" style="display:none"></button>
+    <button class="tab-btn" data-section="domofon" style="display:none"></button>
+    <button class="toggle-theory" data-section="tv" style="display:none"></button>
+    <button class="toggle-theory" data-section="internet" style="display:none"></button>
+    <button class="toggle-theory" data-section="domofon" style="display:none"></button>
+
+    <h1>🧪 Тесты для проверки системы тестирования</h1>
+    <p class="subtitle">Запустите тесты для проверки всех модулей системы.</p>
+
+    <div class="controls">
+        <button class="btn" id="runAllBtn">▶ Запустить все тесты</button>
+        <button class="btn btn-outline" id="runDataBtn">📊 Тест данных</button>
+        <button class="btn btn-outline" id="runStorageBtn">💾 Тест хранилища</button>
+        <button class="btn btn-outline" id="runTimerBtn">⏱ Тест таймера</button>
+        <button class="btn btn-outline" id="runIntegrationBtn">🔗 Интеграционные тесты</button>
+        <button class="btn btn-outline" id="clearBtn">🗑️ Очистить</button>
+    </div>
+
+    <div class="test-count" id="testCount">Тестов: 0</div>
+    <div id="testResults" class="test-grid"></div>
+
+    <div id="summary" class="summary hidden">
+        <h3>📊 Результаты тестирования</h3>
+        <div class="stats">
+            <div class="stat-item">✅ Пройдено: <strong id="passedCount">0</strong></div>
+            <div class="stat-item">❌ Провалено: <strong id="failedCount">0</strong></div>
+            <div class="stat-item">📊 Всего: <strong id="totalCount">0</strong></div>
+            <div class="stat-item">🎯 Процент: <strong id="percentCount">0%</strong></div>
+        </div>
+        <div class="progress-bar">
+            <div class="fill" id="progressFill" style="width: 0%"></div>
+        </div>
+    </div>
+
+    <script src="../js/data/tv/theory.js"></script>
+    <script src="../js/data/tv/questions.js"></script>
+    <script src="../js/data/internet/theory.js"></script>
+    <script src="../js/data/internet/questions.js"></script>
+    <script src="../js/data/domofon/theory.js"></script>
+    <script src="../js/data/domofon/questions.js"></script>
+    <script src="../js/data/index.js"></script>
+    <script src="../js/storage.js"></script>
+    <script src="../js/timer.js"></script>
+    <script src="../js/renderer.js"></script>
+    <script src="../js/app.js"></script>
+    <script>
+        // ===== ТЕСТЫ =====
+        const testResults = [];
+        let tests = [];
+
+        // ---- Утилиты ----
+        function assert(condition, message) {
+            if (!condition) {
+                throw new Error(message || 'Assertion failed');
+            }
+            return true;
+        }
+
+        function test(name, fn) {
+            tests.push({ name, fn });
+        }
+
+        function runTest(testItem) {
+            try {
+                const result = testItem.fn();
+                if (result instanceof Promise) {
+                    return result.then(value => ({
+                        name: testItem.name,
+                        passed: true,
+                        result: value || 'OK',
+                        error: null
+                    })).catch(e => ({
+                        name: testItem.name,
+                        passed: false,
+                        result: null,
+                        error: e.message || String(e)
+                    }));
+                }
+                return Promise.resolve({ 
+                    name: testItem.name, 
+                    passed: true, 
+                    result: result || 'OK',
+                    error: null
+                });
+            } catch (e) {
+                return Promise.resolve({ 
+                    name: testItem.name, 
+                    passed: false, 
+                    result: null,
+                    error: e.message 
+                });
+            }
+        }
+
+        // ---- ТЕСТЫ ДАННЫХ ----
+        test('DataAPI: загрузка данных', function() {
+            assert(typeof DataAPI !== 'undefined', 'DataAPI не определён');
+            assert(typeof DataAPI.getSections === 'function', 'getSections не функция');
+            const sections = DataAPI.getSections();
+            assert(sections.length > 0, 'Нет загруженных разделов');
+            assert(sections.includes('tv'), 'Нет раздела tv');
+            assert(sections.includes('internet'), 'Нет раздела internet');
+            assert(sections.includes('domofon'), 'Нет раздела domofon');
+            return `Загружено разделов: ${sections.length} (${sections.join(', ')})`;
+        });
+
+        test('DataAPI: получение данных раздела', function() {
+            const tvData = DataAPI.getSectionData('tv');
+            assert(tvData !== null, 'Данные TV не загружены');
+            assert(tvData.name === 'Кабельное ТВ', 'Неверное имя раздела TV');
+            assert(tvData.questions && tvData.questions.length > 0, 'Нет вопросов в TV');
+            assert(tvData.theory && tvData.theory.length > 0, 'Нет теории в TV');
+            
+            const internetData = DataAPI.getSectionData('internet');
+            assert(internetData !== null, 'Данные Internet не загружены');
+            assert(internetData.questions && internetData.questions.length > 0, 'Нет вопросов в Internet');
+            
+            const domofonData = DataAPI.getSectionData('domofon');
+            assert(domofonData !== null, 'Данные Domofon не загружены');
+            assert(domofonData.questions && domofonData.questions.length > 0, 'Нет вопросов в Domofon');
+            
+            return 'Все разделы содержат данные';
+        });
+
+        test('DataAPI: структура вопросов', function() {
+            const questions = DataAPI.getQuestions('tv');
+            assert(questions.length > 0, 'Нет вопросов');
+            const q = questions[0];
+            assert(q.id !== undefined, 'Вопрос без ID');
+            assert(q.type !== undefined, 'Вопрос без типа');
+            assert(q.question !== undefined, 'Вопрос без текста');
+            assert(q.options && q.options.length > 0, 'Вопрос без вариантов');
+            assert(q.correct && q.correct.length > 0, 'Вопрос без правильного ответа');
+            return 'Структура вопросов корректна';
+        });
+
+        test('DataAPI: проверка ответов', function() {
+            const question = { correct: [0, 2] };
+            assert(DataAPI.checkAnswer(question, [0, 2]) === true, 'Правильные ответы не распознаны');
+            assert(DataAPI.checkAnswer(question, [0]) === false, 'Неполные ответы должны быть ложными');
+            assert(DataAPI.checkAnswer(question, [0, 1, 2]) === false, 'Лишние ответы должны быть ложными');
+            return 'Проверка ответов работает';
+        });
+
+        test('DataAPI: расчёт результатов', function() {
+            const questions = [
+                { correct: [0] },
+                { correct: [0, 1] },
+                { correct: [2] }
+            ];
+            const answers = [
+                [0],
+                [0, 1],
+                [2]
+            ];
+            const results = DataAPI.calculateResults(questions, answers);
+            assert(results.correct === 3, 'Неверный подсчёт правильных');
+            assert(results.total === 3, 'Неверный подсчёт общего количества');
+            assert(results.percent === 100, 'Неверный процент');
+            return 'Расчёт результатов корректен';
+        });
+
+        test('DataAPI: получение оценки', function() {
+            const grades = [
+                { percent: 95, expected: 'Отлично' },
+                { percent: 80, expected: 'Хорошо' },
+                { percent: 60, expected: 'Удовлетворительно' },
+                { percent: 40, expected: 'Плохо' }
+            ];
+            grades.forEach(g => {
+                const result = DataAPI.getGrade(g.percent);
+                assert(result.text === g.expected, `Неверная оценка для ${g.percent}%`);
+            });
+            return 'Оценки работают корректно';
+        });
+
+        test('DataAPI: количество вопросов в разделах', function() {
+            const tvQuestions = DataAPI.getQuestions('tv');
+            const internetQuestions = DataAPI.getQuestions('internet');
+            const domofonQuestions = DataAPI.getQuestions('domofon');
+            
+            assert(tvQuestions.length >= 10, `TV: мало вопросов (${tvQuestions.length})`);
+            assert(internetQuestions.length >= 5, `Internet: мало вопросов (${internetQuestions.length})`);
+            assert(domofonQuestions.length >= 5, `Domofon: мало вопросов (${domofonQuestions.length})`);
+            
+            return `TV: ${tvQuestions.length}, Internet: ${internetQuestions.length}, Domofon: ${domofonQuestions.length}`;
+        });
+
+        // ---- ТЕСТЫ ХРАНИЛИЩА ----
+        test('StorageAPI: сохранение и загрузка', function() {
+            assert(typeof StorageAPI !== 'undefined', 'StorageAPI не определён');
+            
+            const testState = {
+                section: 'tv',
+                questions: [{ id: 1, question: 'Test?' }],
+                answers: [[0]],
+                current: 0,
+                timer: 10,
+                active: true,
+                finished: false
+            };
+            
+            StorageAPI.save(testState);
+            const loaded = StorageAPI.load();
+            assert(loaded !== null, 'Не удалось загрузить сохранённое состояние');
+            assert(loaded.section === 'tv', 'Неверный раздел');
+            assert(loaded.questions.length === 1, 'Неверное количество вопросов');
+            assert(loaded.timer === 10, 'Неверное время');
+            
+            StorageAPI.clear();
+            const cleared = StorageAPI.load();
+            assert(cleared === null, 'Очистка не работает');
+            
+            return 'Сохранение и загрузка работают';
+        });
+
+        // ---- ТЕСТЫ ТАЙМЕРА ----
+        test('Timer: создание и запуск', function() {
+            return new Promise((resolve, reject) => {
+                assert(typeof Timer !== 'undefined', 'Timer не определён');
+                
+                const display = document.createElement('span');
+                const timer = new Timer(display);
+                timer.setLimit(3);
+                
+                let tickCount = 0;
+                timer.onTick = function(sec) {
+                    tickCount++;
+                };
+                
+                let finished = false;
+                timer.onFinish = function() {
+                    finished = true;
+                };
+                
+                timer.start(0);
+                
+                setTimeout(() => {
+                    try {
+                        assert(tickCount >= 2, `Тиков太少: ${tickCount}`);
+                        assert(finished === true, 'Финиш не сработал');
+                        assert(timer.getTime() >= 3, `Неверное время: ${timer.getTime()}`);
+                        resolve('Таймер работает корректно');
+                    } catch (e) {
+                        reject(e);
+                    }
+                }, 3500);
+            });
+        });
+
+        // ---- ИНТЕГРАЦИОННЫЕ ТЕСТЫ ----
+        test('Интеграция: загрузка всех модулей', function() {
+            assert(typeof App !== 'undefined', 'App не загружен');
+            assert(typeof Renderer !== 'undefined', 'Renderer не загружен');
+            assert(typeof Timer !== 'undefined', 'Timer не загружен');
+            assert(typeof StorageAPI !== 'undefined', 'StorageAPI не загружен');
+            assert(typeof DataAPI !== 'undefined', 'DataAPI не загружен');
+            assert(typeof SECTION_DATA !== 'undefined', 'SECTION_DATA не загружен');
+            return 'Все модули загружены';
+        });
+
+        test('Интеграция: создание экземпляра App', function() {
+            // Проверяем, что App можно создать
+            const app = new App();
+            assert(app !== undefined, 'App не создался');
+            assert(typeof app.startTest === 'function', 'Метод startTest отсутствует');
+            assert(typeof app.finishTest === 'function', 'Метод finishTest отсутствует');
+            assert(typeof app.switchSection === 'function', 'Метод switchSection отсутствует');
+            return 'App создан и содержит методы';
+        });
+
+        // ---- ЗАПУСК ТЕСТОВ ----
+        let isRunning = false;
+
+        function runAllTests() {
+            if (isRunning) return;
+            isRunning = true;
+            
+            document.getElementById('runAllBtn').disabled = true;
+            document.getElementById('testResults').innerHTML = '';
+            
+            const results = [];
+            let passed = 0;
+            let failed = 0;
+            let total = tests.length;
+
+            tests.forEach((testItem, index) => {
+                // Добавляем карточку "в процессе"
+                const card = document.createElement('div');
+                card.className = 'test-card running';
+                card.id = `test-${index}`;
+                card.innerHTML = `
+                    <h3>⏳ ${testItem.name}</h3>
+                    <span class="status running">Выполняется...</span>
+                `;
+                document.getElementById('testResults').appendChild(card);
+            });
+
+            // Запускаем тесты последовательно
+            let currentIndex = 0;
+
+            function runNextTest() {
+                if (currentIndex >= tests.length) {
+                    // Все тесты завершены
+                    isRunning = false;
+                    document.getElementById('runAllBtn').disabled = false;
+                    document.getElementById('testCount').textContent = `Тестов: ${total}`;
+                    updateSummary(passed, failed);
+                    return;
+                }
+
+                const testItem = tests[currentIndex];
+                const card = document.getElementById(`test-${currentIndex}`);
+                
+                try {
+                    const resultPromise = runTest(testItem);
+                    resultPromise.then(result => {
+                        results.push(result);
+                        
+                        if (result.passed) {
+                            passed++;
+                            card.className = 'test-card pass';
+                            card.innerHTML = `
+                                <h3>✅ ${result.name}</h3>
+                                <span class="status pass">Пройден</span>
+                                ${result.result ? `<div class="details"><pre>${result.result}</pre></div>` : ''}
+                            `;
+                        } else {
+                            failed++;
+                            card.className = 'test-card fail';
+                            card.innerHTML = `
+                                <h3>❌ ${result.name}</h3>
+                                <span class="status fail">Провален</span>
+                                ${result.error ? `<div class="details" style="color:#b13a3a;"><pre>Ошибка: ${result.error}</pre></div>` : ''}
+                            `;
+                        }
+
+                        currentIndex++;
+                        setTimeout(runNextTest, 100);
+                    }).catch(e => {
+                        failed++;
+                        card.className = 'test-card fail';
+                        card.innerHTML = `
+                            <h3>❌ ${testItem.name}</h3>
+                            <span class="status fail">Ошибка</span>
+                            <div class="details" style="color:#b13a3a;"><pre>${e.message}</pre></div>
+                        `;
+                        currentIndex++;
+                        setTimeout(runNextTest, 100);
+                    });
+                } catch (e) {
+                    failed++;
+                    card.className = 'test-card fail';
+                    card.innerHTML = `
+                        <h3>❌ ${testItem.name}</h3>
+                        <span class="status fail">Ошибка</span>
+                        <div class="details" style="color:#b13a3a;"><pre>${e.message}</pre></div>
+                    `;
+                    currentIndex++;
+                    setTimeout(runNextTest, 100);
+                }
+            }
+
+            runNextTest();
+        }
+
+        function updateSummary(passed, failed) {
+            const total = passed + failed;
+            const percent = total > 0 ? Math.round((passed / total) * 100) : 0;
+            
+            const summary = document.getElementById('summary');
+            summary.classList.remove('hidden');
+            document.getElementById('passedCount').textContent = passed;
+            document.getElementById('failedCount').textContent = failed;
+            document.getElementById('totalCount').textContent = total;
+            document.getElementById('percentCount').textContent = percent + '%';
+            document.getElementById('progressFill').style.width = percent + '%';
+        }
+
+        function clearTests() {
+            document.getElementById('testResults').innerHTML = '';
+            document.getElementById('summary').classList.add('hidden');
+            document.getElementById('testCount').textContent = 'Тестов: 0';
+        }
+
+        // ---- Обработчики кнопок ----
+        document.getElementById('runAllBtn').addEventListener('click', runAllTests);
+        
+        document.getElementById('runDataBtn').addEventListener('click', function() {
+            // Запускаем только тесты данных (первые 7)
+            const dataTests = tests.slice(0, 7);
+            const originalTests = tests;
+            tests = dataTests;
+            clearTests();
+            runAllTests();
+            setTimeout(() => {
+                tests = originalTests;
+            }, 100);
+        });
+        
+        document.getElementById('runStorageBtn').addEventListener('click', function() {
+            const storageTests = tests.slice(7, 8);
+            const originalTests = tests;
+            tests = storageTests;
+            clearTests();
+            runAllTests();
+            setTimeout(() => {
+                tests = originalTests;
+            }, 100);
+        });
+        
+        document.getElementById('runTimerBtn').addEventListener('click', function() {
+            const timerTests = tests.slice(8, 9);
+            const originalTests = tests;
+            tests = timerTests;
+            clearTests();
+            runAllTests();
+            setTimeout(() => {
+                tests = originalTests;
+            }, 100);
+        });
+        
+        document.getElementById('runIntegrationBtn').addEventListener('click', function() {
+            const integrationTests = tests.slice(9, 11);
+            const originalTests = tests;
+            tests = integrationTests;
+            clearTests();
+            runAllTests();
+            setTimeout(() => {
+                tests = originalTests;
+            }, 100);
+        });
+        
+        document.getElementById('clearBtn').addEventListener('click', clearTests);
+
+        // ---- Инициализация ----
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('testCount').textContent = `Тестов: ${tests.length}`;
+            
+            // Проверяем загрузку модулей
+            console.log('🔍 Проверка загрузки модулей:');
+            console.log('DataAPI:', typeof DataAPI);
+            console.log('StorageAPI:', typeof StorageAPI);
+            console.log('Timer:', typeof Timer);
+            console.log('Renderer:', typeof Renderer);
+            console.log('App:', typeof App);
+            console.log('SECTION_DATA:', typeof SECTION_DATA);
+            
+            if (typeof DataAPI === 'undefined') {
+                document.getElementById('testResults').innerHTML = `
+                    <div class="test-card fail">
+                        <h3>❌ Ошибка загрузки</h3>
+                        <p>Модули не загружены. Проверьте подключение скриптов.</p>
+                        <div class="details">
+                            <pre>DataAPI: ${typeof DataAPI}
+StorageAPI: ${typeof StorageAPI}
+Timer: ${typeof Timer}
+Renderer: ${typeof Renderer}
+App: ${typeof App}
+SECTION_DATA: ${typeof SECTION_DATA}</pre>
+                        </div>
+                    </div>
+                `;
+            } else {
+                // Автозапуск
+                setTimeout(runAllTests, 500);
+            }
+        });
+    </script>
+</body>
+</html>
